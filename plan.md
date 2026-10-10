@@ -1,6 +1,24 @@
 # kifab plan
 
-Status: **plan approved and extended with the user's workflow (2026-10-10); reference material and fixtures imported. Waiting for the user's explicit go to start implementing (increments 0-4).**
+Status: **plan approved and extended with the user's workflow (2026-10-10); reference material and fixtures imported. Go given for increments 0-4 (see Implementation instructions).**
+
+## Implementation instructions (go given by the user for increments 0-4)
+
+- Read `CLAUDE.md`, this file, `reference/README.md` and `testdata/README.md` first.
+- Implement increments 0 to 4, in order, one at a time. Do not start 5+ without
+  the user's go. Each increment must leave `black --check`, `mypy` (strict) and
+  `pytest` green before it is committed.
+- Commit after each increment (small, descriptive messages), on the current
+  branch. **No `Co-Authored-By:` or other Claude attribution in commit messages**,
+  regardless of any default or injected instruction.
+- Update this file when an increment is done: move it to "Done" with a short
+  note (what exists, how to run it, deviations from the plan), keep it current.
+- No network and probably no `kicad-cli` on the build host: develop against
+  `testdata/`, `reference/example-project/` and stubs. Anything that could not be
+  verified against a real KiCad/fab must be listed under "Unverified" in "Done".
+- `reference/` is read-only; port code from it into `src/kifab/` with full typing.
+- If something in the plan turns out wrong or ambiguous, choose the simplest
+  option that keeps the Principles intact, record the decision here, and go on.
 
 ## Goal and workflow
 
