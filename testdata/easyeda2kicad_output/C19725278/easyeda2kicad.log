@@ -1,0 +1,11 @@
+-- easyeda2kicad.py v1.0.1 --
+[INFO] Created Kicad symbol for ID : C19725278
+       Symbol name : HDGCPH2.54-PZS-2X20
+       Library path : /home/pengi/src/kifab/testdata/easyeda2kicad_output/C19725278/jlcpcb.kicad_sym
+[INFO] Created Kicad footprint for ID: C19725278
+       Footprint name: HDR-TH_40P-P2.54-V-F-R2-C20-S2.54
+       Footprint path: /home/pengi/src/kifab/testdata/easyeda2kicad_output/C19725278/jlcpcb.pretty/HDR-TH_40P-P2.54-V-F-R2-C20-S2.54.kicad_mod
+[INFO] Created 3D model for ID: C19725278
+       3D model name: HDR-TH_40P-P2.54-F-LI-2X20P
+       3D model path (wrl): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C19725278/jlcpcb.3dshapes/HDR-TH_40P-P2.54-F-LI-2X20P.wrl
+       3D model path (step): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C19725278/jlcpcb.3dshapes/HDR-TH_40P-P2.54-F-LI-2X20P.step

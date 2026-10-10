@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": null,
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": true,
+      "isLastPage": true,
+      "list": null,
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 8,
+      "navigatepageNums": [],
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 0,
+      "pages": 0,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 0
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": null,
+    "queryString": "24C32",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

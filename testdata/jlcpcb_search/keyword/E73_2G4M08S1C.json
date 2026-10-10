@@ -1,0 +1,437 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Sensitivity",
+              "attribute_value_name": "-103dBm、-95dBm"
+            },
+            {
+              "attribute_name_en": "Output Power(Max)",
+              "attribute_value_name": "8dBm"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "3.3V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Communication Distance",
+              "attribute_value_name": "120m"
+            },
+            {
+              "attribute_name_en": "Utilized IC / Part",
+              "attribute_value_name": "nRF52840 Chip"
+            },
+            {
+              "attribute_name_en": "Interface Type",
+              "attribute_value_name": "PWM、SPI、ADC、USB、I2C、ISP、JTAG、DMA"
+            },
+            {
+              "attribute_name_en": "Send  Current",
+              "attribute_value_name": "17.05mA"
+            },
+            {
+              "attribute_name_en": "Receive  Current",
+              "attribute_value_name": "8.27mA"
+            },
+            {
+              "attribute_name_en": "Wireless Standard",
+              "attribute_value_name": "Bluetooth 5.0、Bluetooth 4.2"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.3677,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 13,
+              "productPrice": 7.2155,
+              "startNumber": 12
+            },
+            {
+              "endNumber": 15,
+              "productPrice": 7.2155,
+              "startNumber": 14
+            },
+            {
+              "endNumber": 11,
+              "productPrice": 7.2155,
+              "startNumber": 10
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 6.8092,
+              "startNumber": 18
+            },
+            {
+              "endNumber": 17,
+              "productPrice": 6.8092,
+              "startNumber": 16
+            }
+          ],
+          "canPresaleNumber": 1415,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Chengdu Ebyte Elec Tech",
+          "componentBrandHigh": null,
+          "componentCode": "C356849",
+          "componentCodeHigh": null,
+          "componentId": 332782,
+          "componentImageUrl": "https://assets.lcsc.com/images/lcsc/900x900/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_front.jpg",
+          "componentLibraryType": "expand",
+          "componentModelEn": "E73-2G4M08S1C",
+          "componentModelHigh": "<span class='lucene_highlight_class'>E73-2G4M08S1C</span>",
+          "componentName": "EBYTE E73-2G4M08S1C",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.6484,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 11,
+              "productPrice": 7.4904,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 13,
+              "productPrice": 7.4904,
+              "startNumber": 12
+            },
+            {
+              "endNumber": 15,
+              "productPrice": 7.4904,
+              "startNumber": 14
+            },
+            {
+              "endNumber": 17,
+              "productPrice": 7.0686,
+              "startNumber": 16
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 7.0686,
+              "startNumber": 18
+            }
+          ],
+          "componentProductType": 2,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SMD,18x13mm",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Bluetooth Modules",
+          "dataManualFileAccessId": "8757809255427002368",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2504101957_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849.pdf",
+          "describe": "-103dBm、-95dBm -40℃~+85℃ 120m 17.05mA 3.3V 8.27mA 8dBm Bluetooth 5.0、Bluetooth 4.2 PWM、SPI、ADC、USB、I2C、ISP、JTAG、DMA nRF52840 Chip SMD,18x13mm Bluetooth Modules ROHS",
+          "encapsulationNumber": 1000,
+          "erpComponentName": "2.4GHz BLE4.2/5.0低功耗蓝牙模块",
+          "estimateDate": null,
+          "firstSortAccessId": "3f47180447344e189d9b9aa7555c0cb3",
+          "firstSortName": "Bluetooth Modules",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_front.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_front.jpg",
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_back.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_back.jpg",
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_blank.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_blank.jpg",
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 7.6484,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/bluetooth-modules_chengdu-ebyte-elec-tech-e73-2g4m08s1c_C356849.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "https://assets.lcsc.com/images/lcsc/96x96/20230110_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1C_C356849_front.jpg",
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "e86a5950b77949bf93ad46f3eae8f30d",
+          "secondSortName": "IoT/Communication Modules",
+          "shopCostPrice": 32.43933,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1471,
+          "urlSuffix": "Chengdu_Ebyte_ElecTech-E732G4M08S1C/C356849"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Antenna Type",
+              "attribute_value_name": "IPEX interface"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Sensitivity",
+              "attribute_value_name": "-103dBm、-95dBm"
+            },
+            {
+              "attribute_name_en": "Output Power(Max)",
+              "attribute_value_name": "8dBm"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "3.3V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Communication Distance",
+              "attribute_value_name": "120m"
+            },
+            {
+              "attribute_name_en": "Utilized IC / Part",
+              "attribute_value_name": "nRF52840 Chip"
+            },
+            {
+              "attribute_name_en": "Interface Type",
+              "attribute_value_name": "PWM、SPI、ADC、USB、I2C、DMA"
+            },
+            {
+              "attribute_name_en": "Send  Current",
+              "attribute_value_name": "17.05mA"
+            },
+            {
+              "attribute_name_en": "Receive  Current",
+              "attribute_value_name": "8.27mA"
+            },
+            {
+              "attribute_name_en": "Wireless Standard",
+              "attribute_value_name": "Bluetooth 5.0、Bluetooth 4.2"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 6.1047,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 13,
+              "productPrice": 5.9588,
+              "startNumber": 12
+            },
+            {
+              "endNumber": 11,
+              "productPrice": 5.9588,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 15,
+              "productPrice": 5.9588,
+              "startNumber": 14
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 5.9588,
+              "startNumber": 18
+            },
+            {
+              "endNumber": 17,
+              "productPrice": 5.9588,
+              "startNumber": 16
+            }
+          ],
+          "canPresaleNumber": 1072,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Chengdu Ebyte Elec Tech",
+          "componentBrandHigh": null,
+          "componentCode": "C2764963",
+          "componentCodeHigh": null,
+          "componentId": 2900293,
+          "componentImageUrl": "https://assets.lcsc.com/images/lcsc/900x900/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_front.jpg",
+          "componentLibraryType": "expand",
+          "componentModelEn": "E73-2G4M08S1CX",
+          "componentModelHigh": "<span class='lucene_highlight_class'>E73-2G4M08S1C</span>X",
+          "componentName": "EBYTE E73-2G4M08S1CX",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 6.3373,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 11,
+              "productPrice": 6.1858,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 13,
+              "productPrice": 6.1858,
+              "startNumber": 12
+            },
+            {
+              "endNumber": 15,
+              "productPrice": 6.1858,
+              "startNumber": 14
+            },
+            {
+              "endNumber": 17,
+              "productPrice": 6.1858,
+              "startNumber": 16
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 6.1858,
+              "startNumber": 18
+            }
+          ],
+          "componentProductType": 2,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SMD,18x13mm",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Bluetooth Modules",
+          "dataManualFileAccessId": "8588894554552066048",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2412091543_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963.pdf",
+          "describe": "-103dBm、-95dBm -40℃~+85℃ 120m 17.05mA 3.3V 8.27mA 8dBm Bluetooth 5.0、Bluetooth 4.2 IPEX interface PWM、SPI、ADC、USB、I2C、DMA nRF52840 Chip SMD,18x13mm Bluetooth Modules ROHS",
+          "encapsulationNumber": 1000,
+          "erpComponentName": "nRF52840 2.4GHz BLE4.2/5.0 低功耗蓝牙模块 OTA窜升级ARM",
+          "estimateDate": null,
+          "firstSortAccessId": "3f47180447344e189d9b9aa7555c0cb3",
+          "firstSortName": "Bluetooth Modules",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_front.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_front.jpg",
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_back.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_back.jpg",
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": "https://assets.lcsc.com/images/lcsc/900x900/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_blank.jpg",
+              "productBigImageAccessId": null,
+              "productImage": "https://assets.lcsc.com/images/lcsc/96x96/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_blank.jpg",
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 6.3373,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/bluetooth-modules_chengdu-ebyte-elec-tech-e73-2g4m08s1cx_C2764963.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "https://assets.lcsc.com/images/lcsc/96x96/20230129_Chengdu-Ebyte-Elec-Tech-E73-2G4M08S1CX_C2764963_front.jpg",
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "e86a5950b77949bf93ad46f3eae8f30d",
+          "secondSortName": "IoT/Communication Modules",
+          "shopCostPrice": 31.26,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1458,
+          "urlSuffix": "2900293-E732G4M08S1CX/C2764963"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 2
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "E73-2G4M08S1C",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

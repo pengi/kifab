@@ -1,0 +1,2120 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "40 Years"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "400kHz"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "900ns"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "5uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2.5V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Built-in power-on reset (POR)"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "5mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.2867,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.1759,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.2434,
+              "startNumber": 50
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1697,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2247,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.2015,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 32706,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C7998",
+          "componentCodeHigh": null,
+          "componentId": 8475,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "M24C32-WMN6TP",
+          "componentModelHigh": "M<span class='lucene_highlight_class'>24C32</span>-WMN6TP",
+          "componentName": "ST M24C32-WMN6TP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.2976,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.2527,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2333,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.2092,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.1826,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1762,
+              "startNumber": 5000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOIC-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8586172184272650240",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1809051918_STMicroelectronics-M24C32-WMN6TP_C7998.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 2.5V~5.5V 32Kbit 40 Years 400kHz 5ms Hardware write protection function、Built-in power-on reset (POR)、Built-in error correction code (ECC) function I2C SOIC-8 EEPROM ROHS",
+          "encapsulationNumber": 2500,
+          "erpComponentName": "串行I2C总线EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.2976,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_stmicroelectronics-m24c32-wmn6tp_C7998.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8553285318825963520",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 31,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8553285318217248768",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.54864,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 32936,
+          "urlSuffix": "STMicroelectronics-M24C32WMN6TP/C7998"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "0.9us"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "6uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function、Page write protection function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "2mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 149,
+              "productPrice": 0.2594,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 49,
+              "productPrice": 0.3227,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1419,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.1661,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2323,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.151,
+              "startNumber": 2500
+            }
+          ],
+          "canPresaleNumber": 50426,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Microchip Tech",
+          "componentBrandHigh": null,
+          "componentCode": "C60583",
+          "componentCodeHigh": null,
+          "componentId": 61635,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "AT24C32D-SSHM-T",
+          "componentModelHigh": "AT<span class='lucene_highlight_class'>24C32</span>D-SSHM-T",
+          "componentName": "MICROCHIP AT24C32D-SSHM-T",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.335,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.2693,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2411,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.1724,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.1567,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1473,
+              "startNumber": 4000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOIC-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8586177752185233408",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1811081920_Microchip-Tech-AT24C32D-SSHM-T_C60583.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.7V~5.5V 100 Years 1MHz 32Kbit 5ms Hardware write protection function、Noise suppression function I2C SOIC-8 EEPROM ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "低压和标准电压操作的2线串行EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.335,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_microchip-tech-at24c32d-sshm-t_C60583.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8553687442151387136",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 27,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8553687441497616384",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.80088,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 51871,
+          "urlSuffix": "MicrochipTech-AT24C32D_SSHMT/C60583"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "200 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "400kHz~1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,200,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "1uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.8V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Built-in power-on reset (POR)、Built-in error correction code (ECC) function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "3mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.3766,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.2279,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.2192,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.3163,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2905,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.2581,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 8707,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C79920",
+          "componentCodeHigh": null,
+          "componentId": 81064,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "M24C32-RMN6TP",
+          "componentModelHigh": "M<span class='lucene_highlight_class'>24C32</span>-RMN6TP",
+          "componentName": "ST M24C32-RMN6TP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.3909,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.3283,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.3015,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.268,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.2365,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.2276,
+              "startNumber": 5000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOIC-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8586176542003511296",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-M24C32-RMN6TP_C79920.pdf",
+          "describe": "-40℃~+85℃ 1,200,000 cycles 1.8V~5.5V 200 Years 32Kbit 400kHz~1MHz 5ms Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)、Built-in error correction code (ECC) function I2C SOIC-8 EEPROM ROHS",
+          "encapsulationNumber": 2500,
+          "erpComponentName": "32 Kbit串行I2C总线EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.3909,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_stmicroelectronics-m24c32-rmn6tp_C79920.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8553712859407134720",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 24,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8553712858790572032",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.76335,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 8770,
+          "urlSuffix": "STMicroelectronics-M24C32RMN6TP/C79920"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "0.4us、0.9us、3.5us"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "5uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "2mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 2999,
+              "productPrice": 0.1861,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.258,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 5999,
+              "productPrice": 0.169,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": 49,
+              "productPrice": 0.3298,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2272,
+              "startNumber": 150
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1587,
+              "startNumber": 6000
+            }
+          ],
+          "canPresaleNumber": 5850,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "onsemi",
+          "componentBrandHigh": null,
+          "componentCode": "C81193",
+          "componentCodeHigh": null,
+          "componentId": 82343,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CAT24C32WI-GT3",
+          "componentModelHigh": "CAT<span class='lucene_highlight_class'>24C32</span>WI-GT3",
+          "componentName": "onsemi CAT24C32WI-GT3",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.3424,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.2678,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.2359,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.1932,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 5999,
+              "productPrice": 0.1755,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1648,
+              "startNumber": 6000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOIC-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8586176127475306496",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1809291220_onsemi-CAT24C32WI-GT3_C81193.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.7V~5.5V 100 Years 1MHz 32Kbit 5ms I2C SOIC-8 EEPROM ROHS",
+          "encapsulationNumber": 3000,
+          "erpComponentName": "32 Kb I2C接口CMOS串行EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.3424,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_onsemi-cat24c32wi-gt3_C81193.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8553715330376478720",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 27,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8553715329714319360",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.84669,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 5956,
+          "urlSuffix": "onsemi-CAT24C32WIGT3/C81193"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "4500ns"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "0.8uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~3.6V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "1mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.7359,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.6072,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.5445,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4801,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.4425,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.4237,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 312,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Microchip Tech",
+          "componentBrandHigh": null,
+          "componentCode": "C116670",
+          "componentCodeHigh": null,
+          "componentId": 117924,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "AT24C32E-SSHM-T",
+          "componentModelHigh": "AT<span class='lucene_highlight_class'>24C32</span>E-SSHM-T",
+          "componentName": "MICROCHIP AT24C32E-SSHM-T",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.7639,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.6304,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.5652,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4984,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.4593,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.4398,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOIC-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588879912774078464",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1810010730_Microchip-Tech-AT24C32E-SSHM-T_C116670.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.7V~3.6V 100 Years 1MHz 32Kbit 5ms Hardware write protection function、Noise suppression function、Built-in power-on reset (POR) I2C SOIC-8 EEPROM ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "支持I2C接口的串行EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.7639,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_microchip-tech-at24c32e-sshm-t_C116670.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582981629728206848",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 15,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582981628813172736",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 1.88158,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 328,
+          "urlSuffix": "MicrochipTech-AT24C32E_SSHMT/C116670"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "0.55us"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "0.03uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "3ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "0.28mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 5999,
+              "productPrice": 0.0614,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0744,
+              "startNumber": 150
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0586,
+              "startNumber": 6000
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0672,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 49,
+              "productPrice": 0.1034,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0841,
+              "startNumber": 50
+            }
+          ],
+          "canPresaleNumber": 10776,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "BL(Shanghai Belling)",
+          "componentBrandHigh": null,
+          "componentCode": "C177775",
+          "componentCodeHigh": null,
+          "componentId": 189167,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "BL24C32A-SFRC",
+          "componentModelHigh": "BL<span class='lucene_highlight_class'>24C32</span>A-SFRC",
+          "componentName": "BL BL24C32A-SFRC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.1074,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0873,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0772,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0698,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 5999,
+              "productPrice": 0.0637,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0608,
+              "startNumber": 6000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "TSSOP-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588881576776515584",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_BL-Shanghai-Belling-BL24C32A-SFRC_C177775.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.7V~5.5V 100 Years 1MHz 32Kbit 3ms Hardware write protection function、Noise suppression function I2C TSSOP-8 EEPROM ROHS",
+          "encapsulationNumber": 3000,
+          "erpComponentName": "32Kbits EEPROM存储器",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.1074,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_bl-shanghai-belling-bl24c32a-sfrc_C177775.html",
+          "leastPatchNumber": 5,
+          "lossNumber": 2,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583004207758102528",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 104,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583004206781911040",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.25683,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 11686,
+          "urlSuffix": "BL_Shanghai_Belling-BL24C32ASFRC/C177775"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "200 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "4,000,000 Cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "1uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Built-in power-on reset (POR)、Built-in error correction code (ECC) function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "3mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.6904,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.4943,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.5602,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4299,
+              "startNumber": 100
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.3719,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.3923,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 17,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C222084",
+          "componentCodeHigh": null,
+          "componentId": 222461,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "M24C32-FMH6TG",
+          "componentModelHigh": "M<span class='lucene_highlight_class'>24C32</span>-FMH6TG",
+          "componentName": "ST M24C32-FMH6TG",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.7167,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.5815,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.5131,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4463,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.4072,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.386,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "UFDFPN-5(1.4x1.7)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588910676161413120",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-M24C32-FMH6TG_C222084.pdf",
+          "describe": "-40℃~+85℃ 1.7V~5.5V 1MHz 200 Years 32Kbit 4,000,000 Cycles 5ms Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)、Built-in error correction code (ECC) function I2C UFDFPN-5(1.4x1.7) EEPROM ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "32 Kbit串行I2C总线EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.7167,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_stmicroelectronics-m24c32-fmh6tg_C222084.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583446711444377600",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 16,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583446710550990848",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 1.9217,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 21,
+          "urlSuffix": "STMicroelectronics-M24C32FMH6TG/C222084"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "900ns"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "1uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.8V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "3mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 149,
+              "productPrice": 0.0852,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0578,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0735,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 49,
+              "productPrice": 0.1086,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0542,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.0648,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 2623,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "FMD(Fremont Micro Devices)",
+          "componentBrandHigh": null,
+          "componentCode": "C232881",
+          "componentCodeHigh": null,
+          "componentId": 232743,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "FT24C32A-ETR-T",
+          "componentModelHigh": "FT<span class='lucene_highlight_class'>24C32</span>A-ETR-T",
+          "componentName": "FMD(Fremont Micro Devices) FT24C32A-ETR-T",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.1128,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0885,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0763,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.0673,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.06,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0562,
+              "startNumber": 5000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "TSSOP-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588884354113789952",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FMD-Fremont-Micro-Devices-FT24C32A-ETR-T_C232881.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.8V~5.5V 100 Years 1MHz 32Kbit 5ms Hardware write protection function、Noise suppression function I2C TSSOP-8 EEPROM ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "32Kbit 串行EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.1128,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_fmd-fremont-micro-devices-ft24c32a-etr-t_C232881.html",
+          "leastPatchNumber": 5,
+          "lossNumber": 2,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583018668720050176",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 102,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583018667760635904",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.27,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 2642,
+          "urlSuffix": "232743-FT24C32A_ETRT/C232881"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "0.55us"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "1uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.8V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "3mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.1202,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0625,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0586,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0937,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0804,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.0705,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 875,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "FMD(Fremont Micro Devices)",
+          "componentBrandHigh": null,
+          "componentCode": "C232883",
+          "componentCodeHigh": null,
+          "componentId": 232745,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "FT24C32A-ESR-T",
+          "componentModelHigh": "FT<span class='lucene_highlight_class'>24C32</span>A-ESR-T",
+          "componentName": "FMD(Fremont Micro Devices) FT24C32A-ESR-T",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.1248,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0973,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0834,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.0732,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0649,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0608,
+              "startNumber": 5000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOP-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588884310099709953",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1809131553_FMD-Fremont-Micro-Devices-FT24C32A-ESR-T_C232883.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.8V~5.5V 100 Years 1MHz 32Kbit 5ms Hardware write protection function、Noise suppression function I2C SOP-8 EEPROM ROHS",
+          "encapsulationNumber": 2500,
+          "erpComponentName": "32Kbit 串行EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.1248,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_fmd-fremont-micro-devices-ft24c32a-esr-t_C232883.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583018099838210048",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 93,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583018099004084224",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.25,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 879,
+          "urlSuffix": "232745-FT24C32A_ESRT/C232883"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "3.5us"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "5uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.7V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "2mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 29,
+              "productPrice": 0.5853,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4441,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 0.728,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.5147,
+              "startNumber": 30
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.3797,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.4017,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 2,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "onsemi",
+          "componentBrandHigh": null,
+          "componentCode": "C233772",
+          "componentCodeHigh": null,
+          "componentId": 233536,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CAT24C32HU4I-GT3",
+          "componentModelHigh": "CAT<span class='lucene_highlight_class'>24C32</span>HU4I-GT3",
+          "componentName": "onsemi CAT24C32HU4I-GT3",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.7558,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.6076,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.5343,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.461,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.417,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.3942,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "TDFN-8-EP(2x3)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8588911377570676736",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2210210130_onsemi-CAT24C32HU4I-GT3_C233772.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.7V~5.5V 100 Years 1MHz 32Kbit 5ms Hardware write protection function、Noise suppression function、Built-in power-on reset (POR) I2C TDFN-8-EP(2x3) EEPROM ROHS",
+          "encapsulationNumber": 3000,
+          "erpComponentName": "32 Kb 串行 I²C EEPROM",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.7558,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_onsemi-cat24c32hu4i-gt3_C233772.html",
+          "leastPatchNumber": 2,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583452601061158912",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 15,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583452600083210240",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 2.09988,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 2,
+          "urlSuffix": "onsemi-CAT24C32HU4IGT3/C233772"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 28,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 274
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "24C32",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

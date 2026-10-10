@@ -1,0 +1,1778 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "18pF"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "C0G"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 0.0067,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0095,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0075,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0085,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0114,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.007,
+              "startNumber": 24000
+            }
+          ],
+          "canPresaleNumber": 289819,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C1647",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C1647</span>",
+          "componentId": 1999,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "CL10C180JB8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10C180JB8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0119,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0099,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0088,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0078,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0072,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0069,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8579707035346395136",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10C180JB8NNNC_C1647.pdf",
+          "describe": "18pF 50V C0G ±5% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "18pF ±5% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0119,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10c180jb8nnnc_C1647.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552474046315970560",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 912,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552474045519458304",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.02259,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 385881,
+          "urlSuffix": "1999-CL10C180JB8NNNC/C1647"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "470Ω"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "250mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "150V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0064,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.017,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0063,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.017,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0066,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "KAMAYA",
+          "componentBrandHigh": null,
+          "componentCode": "C2596823",
+          "componentCodeHigh": null,
+          "componentId": 2688713,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "RPC16471JTP",
+          "componentModelHigh": "RP<span class='lucene_highlight_class'>C1647</span>1JTP",
+          "componentName": "KAMAYA RPC16471JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0176,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0176,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0176,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0068,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0066,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0065,
+              "startNumber": 50000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8589986085062275072",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://datasheet.lcsc.com/lcsc/2304140030_KAMAYA-RPC16471JTP_C2596823.pdf",
+          "describe": "-55℃~+155℃ 150V 250mW 470Ω Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 470Ω ±5% 250mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0176,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip resistor - surface mount_kamaya_rpc16471jtp_C2596823.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 513,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 513,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "KAMAYA-RPC16471JTP/C2596823"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "47Ω"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "250mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "150V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0064,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.017,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0063,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.017,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0066,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "KAMAYA",
+          "componentBrandHigh": null,
+          "componentCode": "C2596892",
+          "componentCodeHigh": null,
+          "componentId": 2688782,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "RPC16470JTP",
+          "componentModelHigh": "RP<span class='lucene_highlight_class'>C1647</span>0JTP",
+          "componentName": "KAMAYA RPC16470JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0176,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0176,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0176,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0068,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0066,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0065,
+              "startNumber": 50000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8589967681140129792",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://datasheet.lcsc.com/lcsc/2304140030_KAMAYA-RPC16470JTP_C2596892.pdf",
+          "describe": "-55℃~+155℃ 150V 250mW 47Ω Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 47Ω ±5% 250mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0176,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip resistor - surface mount_kamaya_rpc16470jtp_C2596892.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 513,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 513,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "KAMAYA-RPC16470JTP/C2596892"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "47kΩ"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "250mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "150V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0064,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.017,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0063,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.017,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0066,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "KAMAYA",
+          "componentBrandHigh": null,
+          "componentCode": "C2596900",
+          "componentCodeHigh": null,
+          "componentId": 2688790,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "RPC16473JTP",
+          "componentModelHigh": "RP<span class='lucene_highlight_class'>C1647</span>3JTP",
+          "componentName": "KAMAYA RPC16473JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0176,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0176,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0176,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0068,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0066,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0065,
+              "startNumber": 50000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8589975315863793664",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://datasheet.lcsc.com/lcsc/2304140030_KAMAYA-RPC16473JTP_C2596900.pdf",
+          "describe": "-55℃~+155℃ 150V 250mW 47kΩ Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 47kΩ ±5% 250mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0176,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip resistor - surface mount_kamaya_rpc16473jtp_C2596900.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 513,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 513,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "KAMAYA-RPC16473JTP/C2596900"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "470kΩ"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "250mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "150V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0064,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.017,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0063,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.017,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0066,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "KAMAYA",
+          "componentBrandHigh": null,
+          "componentCode": "C2596927",
+          "componentCodeHigh": null,
+          "componentId": 2688817,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "RPC16474JTP",
+          "componentModelHigh": "RP<span class='lucene_highlight_class'>C1647</span>4JTP",
+          "componentName": "KAMAYA RPC16474JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0176,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0176,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0176,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0068,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0066,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0065,
+              "startNumber": 50000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8589969242168209408",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://datasheet.lcsc.com/lcsc/2304140030_KAMAYA-RPC16474JTP_C2596927.pdf",
+          "describe": "-55℃~+155℃ 150V 250mW 470kΩ Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 470kΩ ±5% 250mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0176,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip resistor - surface mount_kamaya_rpc16474jtp_C2596927.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 513,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 513,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "KAMAYA-RPC16474JTP/C2596927"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "4.7kΩ"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "250mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0078,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0209,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0209,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0077,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0209,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0081,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "KAMAYA",
+          "componentBrandHigh": null,
+          "componentCode": "C4317246",
+          "componentCodeHigh": null,
+          "componentId": 4887693,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "RPC16472JTP",
+          "componentModelHigh": "RP<span class='lucene_highlight_class'>C1647</span>2JTP",
+          "componentName": "KAMAYA RPC16472JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0217,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0217,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0217,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 24999,
+              "productPrice": 0.0084,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0081,
+              "startNumber": 25000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.008,
+              "startNumber": 50000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8590294879877300225",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2404121228_KAMAYA-RPC16472JTP_C4317246.pdf",
+          "describe": "-55℃~+155℃ 250mW 4.7kΩ Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 4.7kΩ ±5% 250mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0217,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_kamaya-rpc16472jtp_C4317246.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 416,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 416,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "KAMAYA-RPC16472JTP/C4317246"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Threshold Voltage",
+              "attribute_value_name": "50mV"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Sink)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "2.7V~16.5V"
+            },
+            {
+              "attribute_name_en": "FET Type",
+              "attribute_value_name": "External FET"
+            },
+            {
+              "attribute_name_en": "Trigger Current",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Surface Mount"
+            },
+            {
+              "attribute_name_en": "RDS(on)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Source)",
+              "attribute_value_name": "10uA"
+            },
+            {
+              "attribute_name_en": "Length",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Number of Lines",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Short-Circuit  Protection、Undervoltage lockout、Overload protection、Soft-start"
+            },
+            {
+              "attribute_name_en": "Height",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Reset Voltage",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Width",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating temperature",
+              "attribute_value_name": "0℃~+70℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 2.1134,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.2295,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 5.7611,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 5.7611,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.151,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.7611,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "Analog Devices",
+          "componentBrandHigh": null,
+          "componentCode": "C676253",
+          "componentCodeHigh": null,
+          "componentId": 707159,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "LTC1647-1CS8#PBF",
+          "componentModelHigh": "LT<span class='lucene_highlight_class'>C1647</span>-1CS8#PBF",
+          "componentName": "ADI LTC1647-1CS8#PBF",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 5.9806,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.9806,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 5.9806,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.3144,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.233,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.1939,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SO-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Surge Protection Devices (SPDs)",
+          "dataManualFileAccessId": "8589852887477088256",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205191100_Analog-Devices-LTC1647-1CS8-PBF_C676253.pdf",
+          "describe": "0℃~+70℃ 2 2.7V~16.5V Surface Mount SO-8 Surge Protection Devices (SPDs) ROHS",
+          "encapsulationNumber": 100,
+          "erpComponentName": "双热插拔控制器",
+          "estimateDate": null,
+          "firstSortAccessId": "68f218c9a74e4148a83415d14e926c64",
+          "firstSortName": "Surge Protection Devices (SPDs)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 5.9806,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/surge-protection-devices-spds_analog-devices-ltc1647-1cs8-pbf_C676253.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 2,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "f3fb026f315d421f8a4354c83f63dcd1",
+          "secondSortName": "Power Management (PMIC)",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "AnalogDevices-LTC1647_1CS8PBF/C676253"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Threshold Voltage",
+              "attribute_value_name": "50mV"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Sink)",
+              "attribute_value_name": "50uA"
+            },
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "2.7V~16.5V"
+            },
+            {
+              "attribute_name_en": "FET Type",
+              "attribute_value_name": "External FET"
+            },
+            {
+              "attribute_name_en": "Trigger Current",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Surface Mount"
+            },
+            {
+              "attribute_name_en": "RDS(on)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Source)",
+              "attribute_value_name": "10uA"
+            },
+            {
+              "attribute_name_en": "Length",
+              "attribute_value_name": "4.8mm"
+            },
+            {
+              "attribute_name_en": "Number of Lines",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Overcurrent Protection、Short-Circuit  Protection、Undervoltage lockout、Soft-start"
+            },
+            {
+              "attribute_name_en": "Height",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Reset Voltage",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Width",
+              "attribute_value_name": "3.81mm"
+            },
+            {
+              "attribute_name_en": "Operating temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 2.777,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.9308,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 7.5717,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 7.5717,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.8272,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 7.5717,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "Analog Devices",
+          "componentBrandHigh": null,
+          "componentCode": "C676255",
+          "componentCodeHigh": null,
+          "componentId": 707161,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "LTC1647-1IS8#PBF",
+          "componentModelHigh": "LT<span class='lucene_highlight_class'>C1647</span>-1IS8#PBF",
+          "componentName": "ADI LTC1647-1IS8#PBF",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.8601,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 7.8601,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 7.8601,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.0424,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.9349,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.8828,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SO-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Surge Protection Devices (SPDs)",
+          "dataManualFileAccessId": "8589851495560097792",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205191100_Analog-Devices-LTC1647-1IS8-PBF_C676255.pdf",
+          "describe": "-40℃~+85℃ 2 2.7V~16.5V Surface Mount SO-8 Surge Protection Devices (SPDs) ROHS",
+          "encapsulationNumber": 100,
+          "erpComponentName": "双热插拔控制器",
+          "estimateDate": null,
+          "firstSortAccessId": "68f218c9a74e4148a83415d14e926c64",
+          "firstSortName": "Surge Protection Devices (SPDs)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 7.8601,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/surge-protection-devices-spds_analog-devices-ltc1647-1is8-pbf_C676255.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 2,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "f3fb026f315d421f8a4354c83f63dcd1",
+          "secondSortName": "Power Management (PMIC)",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "AnalogDevices-LTC1647_1IS8PBF/C676255"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Threshold Voltage",
+              "attribute_value_name": "50mV"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Sink)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "2.7V~16.5V"
+            },
+            {
+              "attribute_name_en": "FET Type",
+              "attribute_value_name": "External FET"
+            },
+            {
+              "attribute_name_en": "Trigger Current",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Surface Mount"
+            },
+            {
+              "attribute_name_en": "RDS(on)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Source)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Length",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Number of Lines",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Overcurrent Protection、Short-Circuit  Protection、Under-voltage lockout、Soft-start"
+            },
+            {
+              "attribute_name_en": "Height",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Reset Voltage",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Width",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating temperature",
+              "attribute_value_name": "0℃~+70℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 2.0632,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.1777,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 5.6262,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 5.6262,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.1008,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.6262,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "Analog Devices",
+          "componentBrandHigh": null,
+          "componentCode": "C676257",
+          "componentCodeHigh": null,
+          "componentId": 707163,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "LTC1647-2CS8#PBF",
+          "componentModelHigh": "LT<span class='lucene_highlight_class'>C1647</span>-2CS8#PBF",
+          "componentName": "ADI LTC1647-2CS8#PBF",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 5.8405,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.8405,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 5.8405,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.2607,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.1809,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.1418,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SO-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Surge Protection Devices (SPDs)",
+          "dataManualFileAccessId": "8589861314828279808",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205191100_Analog-Devices-LTC1647-2CS8-PBF_C676257.pdf",
+          "describe": "0℃~+70℃ 2 2.7V~16.5V Surface Mount SO-8 Surge Protection Devices (SPDs) ROHS",
+          "encapsulationNumber": 100,
+          "erpComponentName": "双热插拔控制器",
+          "estimateDate": null,
+          "firstSortAccessId": "68f218c9a74e4148a83415d14e926c64",
+          "firstSortName": "Surge Protection Devices (SPDs)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 5.8405,
+          "isBuyComponent": "0",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/surge-protection-devices-spds_analog-devices-ltc1647-2cs8-pbf_C676257.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 2,
+          "noBuyReason": "This product is no longer manufactured.",
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "f3fb026f315d421f8a4354c83f63dcd1",
+          "secondSortName": "Power Management (PMIC)",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "AnalogDevices-LTC1647_2CS8PBF/C676257"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Threshold Voltage",
+              "attribute_value_name": "50mV"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Sink)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "2.7V~16.5V"
+            },
+            {
+              "attribute_name_en": "FET Type",
+              "attribute_value_name": "External FET"
+            },
+            {
+              "attribute_name_en": "Trigger Current",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Surface Mount"
+            },
+            {
+              "attribute_name_en": "RDS(on)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Peak Output Current(Source)",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Length",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Number of Lines",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Overcurrent Protection、Short-Circuit  Protection、Undervoltage lockout、Soft-start"
+            },
+            {
+              "attribute_name_en": "Height",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Reset Voltage",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Width",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 2.4287,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.5621,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 6.6209,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 6.6209,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.4727,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.6209,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 0,
+          "componentAlternativesCode": "",
+          "componentBrandEn": "Analog Devices",
+          "componentBrandHigh": null,
+          "componentCode": "C676259",
+          "componentCodeHigh": null,
+          "componentId": 707165,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "LTC1647-2IS8#PBF",
+          "componentModelHigh": "LT<span class='lucene_highlight_class'>C1647</span>-2IS8#PBF",
+          "componentName": "ADI LTC1647-2IS8#PBF",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 6.8731,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.8731,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 6.8731,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.6597,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.5669,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.5213,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SO-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Surge Protection Devices (SPDs)",
+          "dataManualFileAccessId": "8589861616695992320",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205191100_Analog-Devices-LTC1647-2IS8-PBF_C676259.pdf",
+          "describe": "-40℃~+85℃ 2 2.7V~16.5V SO-8 Surge Protection Devices (SPDs) ROHS",
+          "encapsulationNumber": 100,
+          "erpComponentName": "双热插拔控制器",
+          "estimateDate": null,
+          "firstSortAccessId": "68f218c9a74e4148a83415d14e926c64",
+          "firstSortName": "Surge Protection Devices (SPDs)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 6.8731,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/surge-protection-devices-spds_analog-devices-ltc1647-2is8-pbf_C676259.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "",
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 2,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "f3fb026f315d421f8a4354c83f63dcd1",
+          "secondSortName": "Power Management (PMIC)",
+          "shopCostPrice": 0.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 0,
+          "urlSuffix": "AnalogDevices-LTC1647_2IS8PBF/C676259"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 2,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 19
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C1647",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

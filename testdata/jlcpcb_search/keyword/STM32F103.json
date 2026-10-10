@@ -1,0 +1,2124 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "512KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "64KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "112"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 101,
+              "productPrice": 5.4834,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 5.4834,
+              "startNumber": 102
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 6.031,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 7.4854,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.5989,
+              "startNumber": 10
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 5.4834,
+              "startNumber": 104
+            }
+          ],
+          "canPresaleNumber": 3641,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8287",
+          "componentCodeHigh": null,
+          "componentId": 8779,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103ZET6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>ZET6",
+          "componentName": "ST STM32F103ZET6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.7705,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.8503,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 6.2607,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 5.6923,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 5.6923,
+              "startNumber": 102
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 5.6923,
+              "startNumber": 104
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-144(20x20)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8579708040993423360",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103ZET6_C8287.pdf",
+          "describe": "-40℃~+85℃ 112 12bit 12bit 2V~3.6V 32 Bit 512KB 64KB 72MHz ARM Cortex-M3 Built-in FLASH LQFP-144(20x20) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 60,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有512 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 7.7705,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103zet6_C8287.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552478886165569537",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552478885196279808",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 31.02164,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 4051,
+          "urlSuffix": "STMicroelectronics-STM32F103ZET6/C8287"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "768KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "96KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "80"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 9.8215,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 9.2018,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 9.0057,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 9.0057,
+              "startNumber": 102
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 9.0057,
+              "startNumber": 104
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 9.4371,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 4138,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8294",
+          "componentCodeHigh": null,
+          "componentId": 8786,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103VFT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>VFT6",
+          "componentName": "ST STM32F103VFT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 10.1956,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 9.7966,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 9.5523,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 9.3487,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 9.3487,
+              "startNumber": 102
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 9.3487,
+              "startNumber": 104
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-100(14x14)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8586181433912541184",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103VFT6_C8294.pdf",
+          "describe": "-40℃~+85℃ 12bit 12bit 2V~3.6V 32 Bit 72MHz 768KB 80 96KB ARM Cortex-M3 Built-in FLASH LQFP-100(14x14) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 90,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有768 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 10.1956,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103vft6_C8294.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582977886337052672",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582977885506580480",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 42.51618,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 4141,
+          "urlSuffix": "STMicroelectronics-STM32F103VFT6/C8294"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "384KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "64KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "112"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 29,
+              "productPrice": 6.6256,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 5.7941,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 7.3677,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 6.1738,
+              "startNumber": 30
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 5.7941,
+              "startNumber": 104
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 5.7941,
+              "startNumber": 102
+            }
+          ],
+          "canPresaleNumber": 4,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8302",
+          "componentCodeHigh": null,
+          "componentId": 8794,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103ZDT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>ZDT6",
+          "componentName": "ST STM32F103ZDT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.6484,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.878,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 6.4089,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 6.0148,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 6.0148,
+              "startNumber": 102
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 6.0148,
+              "startNumber": 104
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-144(20x20)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8586181455211081728",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103ZDT6_C8302.pdf",
+          "describe": "-40℃~+85℃ 112 12bit 12bit 2V~3.6V 32 Bit 384KB 64KB 72MHz ARM Cortex-M3 Built-in FLASH LQFP-144(20x20) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 60,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有384 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 7.6484,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103zdt6_C8302.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8766094329502666752",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8766094328433659904",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 20.51342,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 4,
+          "urlSuffix": "STMicroelectronics-STM32F103ZDT6/C8302"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "32KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "10KB"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "37"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 4.9625,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 4.3522,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 249,
+              "productPrice": 3.9882,
+              "startNumber": 30
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 3.083,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 3.1583,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.3277,
+              "startNumber": 250
+            }
+          ],
+          "canPresaleNumber": 2116,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8303",
+          "componentCodeHigh": null,
+          "componentId": 8795,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103C6T6A",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>C6T6A",
+          "componentName": "ST STM32F103C6T6A",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 5.1516,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 4.518,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 249,
+              "productPrice": 4.1402,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.4545,
+              "startNumber": 250
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 3.2786,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 3.2004,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-48(7x7)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8586181466648272896",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103C6T6A_C8303.pdf",
+          "describe": "-40℃~+85℃ 10KB 12bit 2V~3.6V 32 Bit 32KB 37 72MHz ARM Cortex-M3 Built-in FLASH LQFP-48(7x7) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 250,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有32 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 5.1516,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103c6t6a_C8303.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582977895355076608",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582977894423941120",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 14.54838,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 3069,
+          "urlSuffix": "STMicroelectronics-STM32F103C6T6A/C8303"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "128KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "20KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "37"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 2.3785,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 2.0663,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 249,
+              "productPrice": 1.8467,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 1.5517,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 1.6458,
+              "startNumber": 250
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 1.5141,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 21375,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8304",
+          "componentCodeHigh": null,
+          "componentId": 8796,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103CBT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>CBT6",
+          "componentName": "ST STM32F103CBT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 2.4691,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 2.145,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 249,
+              "productPrice": 1.917,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 1.7085,
+              "startNumber": 250
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 1.6108,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 1.5717,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-48(7x7)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8579708219386105856",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103CBT6_C8304.pdf",
+          "describe": "-40℃~+85℃ 128KB 12bit 20KB 2V~3.6V 32 Bit 37 72MHz ARM Cortex-M3 Built-in FLASH LQFP-48(7x7) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 250,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有128 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 2.4691,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103cbt6_C8304.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552479049655480320",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 4,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552479049021599744",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 8.77007,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 23117,
+          "urlSuffix": "STMicroelectronics-STM32F103CBT6/C8304"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "1MB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "96KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "80"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 4.1169,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 3.9082,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 3.8125,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 5.78,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 4.5719,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.0222,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 418,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8305",
+          "componentCodeHigh": null,
+          "componentId": 8797,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103VGT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>VGT6",
+          "componentName": "ST STM32F103VGT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 6.0001,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 5.2135,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 4.746,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 4.2737,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 4.0571,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 3.9578,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-100(14x14)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8586172419254472704",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103VGT6_C8305.pdf",
+          "describe": "-40℃~+85℃ 12bit 12bit 1MB 2V~3.6V 32 Bit 72MHz 80 96KB ARM Cortex-M3 Built-in FLASH LQFP-100(14x14) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 90,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有1 MB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 6.0001,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103vgt6_C8305.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8553287120748617728",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8553287120053039104",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 18.0,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 449,
+          "urlSuffix": "STMicroelectronics-STM32F103VGT6/C8305"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "512KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "64KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "80"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 4.1216,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 3.5772,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.2995,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.9277,
+              "startNumber": 100
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.7378,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.7943,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 1990,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8308",
+          "componentCodeHigh": null,
+          "componentId": 8800,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103VET6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>VET6",
+          "componentName": "ST STM32F103VET6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 4.2786,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 3.7135,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.4252,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.0392,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.9007,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.8421,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-100(14x14)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8770407725023285248",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103VET6_C8308.pdf",
+          "describe": "-40℃~+85℃ 12bit 12bit 2V~3.6V 32 Bit 512KB 64KB 72MHz 80 ARM Cortex-M3 Built-in FLASH LQFP-100(14x14) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 90,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有512 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 4.2786,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103vet6_C8308.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552478810437275648",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 3,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552478809774440448",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 15.84689,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 2454,
+          "urlSuffix": "STMicroelectronics-STM32F103VET6/C8308"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "256KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "48KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "80"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 2.8696,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 4.0353,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.7394,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.2336,
+              "startNumber": 30
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.6829,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 3.5034,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 4351,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8313",
+          "componentCodeHigh": null,
+          "componentId": 8805,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103VCT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>VCT6",
+          "componentName": "ST STM32F103VCT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 4.189,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 3.6369,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.3568,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 2.9789,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 2.8437,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.7851,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-100(14x14)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8588879065587179520",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103VCT6_C8313.pdf",
+          "describe": "-40℃~+85℃ 12bit 12bit 256KB 2V~3.6V 32 Bit 48KB 72MHz 80 ARM Cortex-M3 Built-in FLASH LQFP-100(14x14) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 90,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有256 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 4.189,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103vct6_C8313.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552478727792574464",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 3,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552478727071289345",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 15.47057,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 4891,
+          "urlSuffix": "STMicroelectronics-STM32F103VCT6/C8313"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "128KB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "20KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "80"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 2.9104,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 4.5797,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.6729,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.0689,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 4.0118,
+              "startNumber": 10
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.8398,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 589,
+          "componentAlternativesCode": "C40446",
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8314",
+          "componentCodeHigh": null,
+          "componentId": 8806,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103VBT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>VBT6",
+          "componentName": "ST STM32F103VBT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 4.7542,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 4.1646,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 3.8128,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 3.1858,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 3.0213,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 2.948,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-100(14x14)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8579707999038070784",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103VBT6_C8314.pdf",
+          "describe": "-40℃~+85℃ 128KB 12bit 20KB 2V~3.6V 32 Bit 72MHz 80 ARM Cortex-M3 Built-in FLASH LQFP-100(14x14) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 90,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有128 KB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 4.7542,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103vbt6_C8314.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": "C40446",
+          "minImage": "",
+          "minImageAccessId": "8552478786919677952",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552478786240606208",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 13.51556,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 739,
+          "urlSuffix": "STMicroelectronics-STM32F103VBT6/C8314"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "DAC (Bit)",
+              "attribute_value_name": "12bit"
+            },
+            {
+              "attribute_name_en": "Program Memory Type",
+              "attribute_value_name": "FLASH"
+            },
+            {
+              "attribute_name_en": "RAM Size",
+              "attribute_value_name": "96KB"
+            },
+            {
+              "attribute_name_en": "CPU Core",
+              "attribute_value_name": "ARM Cortex-M3"
+            },
+            {
+              "attribute_name_en": "Number of I/O",
+              "attribute_value_name": "51"
+            },
+            {
+              "attribute_name_en": "Oscillator Type",
+              "attribute_value_name": "Built-in"
+            },
+            {
+              "attribute_name_en": "EEPROM",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "CPU Maximum Speed",
+              "attribute_value_name": "72MHz"
+            },
+            {
+              "attribute_name_en": "Program Storage Size",
+              "attribute_value_name": "1MB"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "2V~3.6V"
+            },
+            {
+              "attribute_name_en": "Core Size",
+              "attribute_value_name": "32 Bit"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Power-on reset (POR)、Power-down reset (PDR)、Undervoltage detection (BOR/LVD/LVR/LVI)、External pin reset (NRST)、Built-in general-purpose timer、Hardware CRC、Calendar function、Built-in temperature sensor、Independent watchdog (IWDG)、Window watchdog (WWDG)"
+            },
+            {
+              "attribute_name_en": "ADC (Bit)",
+              "attribute_value_name": "12bit"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 29,
+              "productPrice": 6.4891,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 4.9939,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 7.3959,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 5.4583,
+              "startNumber": 30
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 4.9939,
+              "startNumber": 104
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 4.9939,
+              "startNumber": 102
+            }
+          ],
+          "canPresaleNumber": 449,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "STMicroelectronics",
+          "componentBrandHigh": null,
+          "componentCode": "C8317",
+          "componentCodeHigh": null,
+          "componentId": 8809,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "STM32F103RGT6",
+          "componentModelHigh": "<span class='lucene_highlight_class'>STM32F103</span>RGT6",
+          "componentName": "ST STM32F103RGT6",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 7.6777,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 6.7363,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 5.6663,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 101,
+              "productPrice": 5.1842,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 103,
+              "productPrice": 5.1842,
+              "startNumber": 102
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 5.1842,
+              "startNumber": 104
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "LQFP-64(10x10)",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Microcontrollers (MCU/MPU/SOC)",
+          "dataManualFileAccessId": "8586181484038533120",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_STMicroelectronics-STM32F103RGT6_C8317.pdf",
+          "describe": "-40℃~+85℃ 12bit 12bit 1MB 2V~3.6V 32 Bit 51 72MHz 96KB ARM Cortex-M3 Built-in FLASH LQFP-64(10x10) Microcontrollers (MCU/MPU/SOC) ROHS",
+          "encapsulationNumber": 160,
+          "erpComponentName": "主流增强型ARM Cortex-M3 MCU，具有1 MB Flash、72 MHz CPU、电机控制、USB和CAN",
+          "estimateDate": null,
+          "firstSortAccessId": "020f44184a0843cfbab4d2906384b0aa",
+          "firstSortName": "Microcontrollers (MCU/MPU/SOC)",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 7.6777,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/microcontrollers-mcu-mpu-soc_stmicroelectronics-stm32f103rgt6_C8317.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582977901743001600",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582977900874510336",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4dce313c6749477f9b4c051cebfc1018",
+          "secondSortName": "Embedded Processors & Controllers",
+          "shopCostPrice": 23.4,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 480,
+          "urlSuffix": "STMicroelectronics-STM32F103RGT6/C8317"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 19,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 189
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "STM32F103",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

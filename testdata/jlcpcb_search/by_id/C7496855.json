@@ -1,0 +1,314 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Power(Watts) - R",
+              "attribute_value_name": "60mW"
+            },
+            {
+              "attribute_name_en": "Viewing Angle",
+              "attribute_value_name": "120°"
+            },
+            {
+              "attribute_name_en": "Antistatic Capacity",
+              "attribute_value_name": "G:2000V、B:2000V、R:2500V"
+            },
+            {
+              "attribute_name_en": "Installation Method",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Height",
+              "attribute_value_name": "0.6mm"
+            },
+            {
+              "attribute_name_en": "Width",
+              "attribute_value_name": "1.5mm"
+            },
+            {
+              "attribute_name_en": "Forward Current - R",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Luminous Intensity - B",
+              "attribute_value_name": "60mcd~80mcd"
+            },
+            {
+              "attribute_name_en": "Forward Voltage(Vf) - B",
+              "attribute_value_name": "2.6V~3V"
+            },
+            {
+              "attribute_name_en": "Peak Wavelength - B",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Forward Voltage(Vf) - G",
+              "attribute_value_name": "2.5V~2.9V"
+            },
+            {
+              "attribute_name_en": "Lamp Holder Type",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Dominant Wavelength - B",
+              "attribute_value_name": "466nm~469nm"
+            },
+            {
+              "attribute_name_en": "Forward Current - G",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Luminous Intensity - G",
+              "attribute_value_name": "250mcd~350mcd"
+            },
+            {
+              "attribute_name_en": "Power(Watts) - G",
+              "attribute_value_name": "90mW"
+            },
+            {
+              "attribute_name_en": "Forward Current - B",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Luminous Intensity - R",
+              "attribute_value_name": "70mcd~90mcd"
+            },
+            {
+              "attribute_name_en": "Forward Voltage(Vf) - R",
+              "attribute_value_name": "1.8V~2.2V"
+            },
+            {
+              "attribute_name_en": "Power(Watts) - B",
+              "attribute_value_name": "90mW"
+            },
+            {
+              "attribute_name_en": "Peak Wavelength - R",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Length",
+              "attribute_value_name": "1.6mm"
+            },
+            {
+              "attribute_name_en": "Dominant Wavelength - G",
+              "attribute_value_name": "526nm~529nm"
+            },
+            {
+              "attribute_name_en": "Diode Configuration",
+              "attribute_value_name": "Common Anode"
+            },
+            {
+              "attribute_name_en": "Pitch",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Dominant Wavelength - R",
+              "attribute_value_name": "620nm~625nm"
+            },
+            {
+              "attribute_name_en": "Lens Color",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Peak Wavelength - G",
+              "attribute_value_name": "-"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0112,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0135,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0105,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0087,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0175,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0093,
+              "startNumber": 24000
+            }
+          ],
+          "canPresaleNumber": 75286,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "TUOZHAN",
+          "componentBrandHigh": null,
+          "componentCode": "C7496855",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C7496855</span>",
+          "componentId": 8563219,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "F.1615.00026/P4-1615G2B2R4TS2-06T-001-24",
+          "componentModelHigh": null,
+          "componentName": "TUOZHAN F.1615.00026/P4-1615G2B2R4TS2-06T-001-24",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0181,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.014,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0116,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0109,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0097,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.009,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SMD-4P,1.6x1.5mm",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "RGB LEDs",
+          "dataManualFileAccessId": "8590905937106718720",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2308091129_TUOZHAN-F-1615-00026-P4-1615G2B2R4TS2-06T-001-24_C7496855.pdf",
+          "describe": "-40℃~+85℃ 0.6mm 1.5mm 1.6mm 120° Common Anode G:2000V、B:2000V、R:2500V R:1.8V~2.2V、G:2.5V~2.9V、B:2.6V~3.0V R:60mW、G:90mW、B:90mW R:620nm~625nm、G:526nm~529nm、B:466nm~469nm R:70mcd~90mcd、G:250mcd~350mcd、B:60mcd~80mcd SMD-4P,1.6x1.5mm RGB LEDs ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "1615小贴片LED灯珠",
+          "estimateDate": null,
+          "firstSortAccessId": "2a1317eec5064bbb856a96033019985f",
+          "firstSortName": "RGB LEDs",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0181,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/rgb-leds_tuozhan-f-1615-00026-p4-1615g2b2r4ts2-06t-001-24_C7496855.html",
+          "leastPatchNumber": 10,
+          "lossNumber": 5,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8585213919804080128",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 499,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8585213918838444032",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7cf800a2b6a64f49a6a6cfb25e8cf540",
+          "secondSortName": "Optoelectronics",
+          "shopCostPrice": 0.04775,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 75836,
+          "urlSuffix": "C7496855"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C7496855",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

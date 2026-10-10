@@ -1,0 +1,222 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Load Capacitance",
+              "attribute_value_name": "12.5pF"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Normal temperature Frequency Tolerance",
+              "attribute_value_name": "±20ppm"
+            },
+            {
+              "attribute_name_en": "Equivalent Series Resistance(ESR)",
+              "attribute_value_name": "70kΩ"
+            },
+            {
+              "attribute_name_en": "Frequency Stability",
+              "attribute_value_name": "-"
+            },
+            {
+              "attribute_name_en": "Frequency",
+              "attribute_value_name": "32.768kHz"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 0.3625,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.5711,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4284,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.499,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 0.7139,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.3844,
+              "startNumber": 500
+            }
+          ],
+          "canPresaleNumber": 5251,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Micro Crystal",
+          "componentBrandHigh": null,
+          "componentCode": "C7462182",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C7462182</span>",
+          "componentId": 8493177,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CC7V-T1A-32.768KHZ-12.5PF-20PPM-TA-QC",
+          "componentModelHigh": null,
+          "componentName": "Micro Crystal CC7V-T1A-32.768KHZ-12.5PF-20PPM-TA-QC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.7411,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.5929,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.518,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.4447,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.3991,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.3763,
+              "startNumber": 1000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SMD3215-2P",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Crystals",
+          "dataManualFileAccessId": "",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "https://www.microcrystal.com/fileadmin/Media/Products/32kHz/Datasheet/CC7V-T1A.pdf",
+          "dataManualUrl": "",
+          "describe": "-40℃~+85℃ 12.5pF 32.768kHz 70kΩ ±20ppm SMD3215-2P Crystals ROHS",
+          "encapsulationNumber": 1000,
+          "erpComponentName": "32.768kHz ±20ppm 12.5pF",
+          "estimateDate": null,
+          "firstSortAccessId": "fef7fb84489e4849acf8e6b9cb97ff9f",
+          "firstSortName": "Crystals",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.7411,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/crystals_micro-crystal-cc7v-t1a-32-768khz-12-5pf-20ppm-ta-qc_C7462182.html",
+          "leastPatchNumber": 2,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8617492389460127744",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 16,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8617492388516950016",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "213d215ee4994747b67e6cdc3e5be590",
+          "secondSortName": "Crystals, Oscillators, Resonators",
+          "shopCostPrice": 1.92715,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 5297,
+          "urlSuffix": "C7462182"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C7462182",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

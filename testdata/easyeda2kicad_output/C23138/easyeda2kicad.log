@@ -1,0 +1,11 @@
+-- easyeda2kicad.py v1.0.1 --
+[INFO] Created Kicad symbol for ID : C23138
+       Symbol name : 0603WAF3300T5E
+       Library path : /home/pengi/src/kifab/testdata/easyeda2kicad_output/C23138/jlcpcb.kicad_sym
+[INFO] Created Kicad footprint for ID: C23138
+       Footprint name: R0603
+       Footprint path: /home/pengi/src/kifab/testdata/easyeda2kicad_output/C23138/jlcpcb.pretty/R0603.kicad_mod
+[INFO] Created 3D model for ID: C23138
+       3D model name: R0603
+       3D model path (wrl): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C23138/jlcpcb.3dshapes/R0603.wrl
+       3D model path (step): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C23138/jlcpcb.3dshapes/R0603.step

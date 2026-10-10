@@ -1,0 +1,225 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+105℃"
+            },
+            {
+              "attribute_name_en": "Number of Rows",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Insulation Height",
+              "attribute_value_name": "2.5mm"
+            },
+            {
+              "attribute_name_en": "Color",
+              "attribute_value_name": "Black"
+            },
+            {
+              "attribute_name_en": "Current Rating",
+              "attribute_value_name": "3A"
+            },
+            {
+              "attribute_name_en": "Row Spacing",
+              "attribute_value_name": "2.54mm"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Through Hole"
+            },
+            {
+              "attribute_name_en": "Contact Plating",
+              "attribute_value_name": "Gold"
+            },
+            {
+              "attribute_name_en": "Number of Pins",
+              "attribute_value_name": "8P"
+            },
+            {
+              "attribute_name_en": "Pitch",
+              "attribute_value_name": "2.54mm"
+            },
+            {
+              "attribute_name_en": "Contact Material",
+              "attribute_value_name": "Copper alloy"
+            },
+            {
+              "attribute_name_en": "Pin Structure",
+              "attribute_value_name": "2x4P"
+            },
+            {
+              "attribute_name_en": "Length of Mating Pin",
+              "attribute_value_name": "6mm"
+            },
+            {
+              "attribute_name_en": "Circluar Pins/Square Pins",
+              "attribute_value_name": "Square pin"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 1999,
+              "productPrice": 0.0242,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 19999,
+              "productPrice": 0.0192,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0214,
+              "startNumber": 2000
+            },
+            {
+              "endNumber": 199,
+              "productPrice": 0.0368,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0286,
+              "startNumber": 200
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0178,
+              "startNumber": 20000
+            }
+          ],
+          "canPresaleNumber": 124,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "BXCONN",
+          "componentBrandHigh": null,
+          "componentCode": "C41413841",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C41413841</span>",
+          "componentId": 43230048,
+          "componentImageUrl": null,
+          "componentLibraryType": "expand",
+          "componentModelEn": "A254UP-ZS04P",
+          "componentModelHigh": null,
+          "componentName": "BXCONN A254UP-ZS04P",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 199,
+              "productPrice": 0.0382,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0297,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 1999,
+              "productPrice": 0.0251,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0222,
+              "startNumber": 2000
+            },
+            {
+              "endNumber": 19999,
+              "productPrice": 0.0199,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0185,
+              "startNumber": 20000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "Plugin,P=2.54mm",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Pin Headers",
+          "dataManualFileAccessId": "",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": null,
+          "describe": "-40℃~+105℃ 2 2.54mm 2.54mm 2.5mm 2x4P 3A 6mm 8P Black Copper alloy Gold Pin Header Through Hole 插件,P=2.54mm Pin Headers ROHS",
+          "encapsulationNumber": 1000,
+          "erpComponentName": "2x4P 间距:2.54mm 方针 直插",
+          "estimateDate": null,
+          "firstSortAccessId": null,
+          "firstSortName": "Pin Headers",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": null,
+          "initialPrice": 0.0382,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": null,
+          "leastPatchNumber": 2,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": null,
+          "minImageAccessId": null,
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 304,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": null,
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": null,
+          "secondSortName": "Connectors",
+          "shopCostPrice": 0.09585,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 126,
+          "urlSuffix": "BXCONN-A254UPZS04P/C41413841"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C41413841",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

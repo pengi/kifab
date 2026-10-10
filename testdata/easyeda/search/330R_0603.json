@@ -1,0 +1,26 @@
+{
+  "code": 0,
+  "result": {
+    "facets": {
+      "SMT": 44919,
+      "easyeda": 1038,
+      "following": 0,
+      "lcsc": 49732,
+      "mine": 0,
+      "user": 196293
+    },
+    "lists": {
+      "SMT": [],
+      "easyeda": [],
+      "following": [],
+      "lcsc": [],
+      "mine": [],
+      "user": []
+    },
+    "pageSize": 100,
+    "totalPage": 0,
+    "type": "3",
+    "uid": "lcsc"
+  },
+  "success": true
+}

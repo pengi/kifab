@@ -1,0 +1,11 @@
+-- easyeda2kicad.py v1.0.1 --
+[INFO] Created Kicad symbol for ID : C41413841
+       Symbol name : A254UP-ZS04P
+       Library path : /home/pengi/src/kifab/testdata/easyeda2kicad_output/C41413841/jlcpcb.kicad_sym
+[INFO] Created Kicad footprint for ID: C41413841
+       Footprint name: HDR-TH_8P-P2.54-V-M-R2-C4-S2.54
+       Footprint path: /home/pengi/src/kifab/testdata/easyeda2kicad_output/C41413841/jlcpcb.pretty/HDR-TH_8P-P2.54-V-M-R2-C4-S2.54.kicad_mod
+[INFO] Created 3D model for ID: C41413841
+       3D model name: HDR-TH_8P-P2.54-M-LI-2X4P
+       3D model path (wrl): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C41413841/jlcpcb.3dshapes/HDR-TH_8P-P2.54-M-LI-2X4P.wrl
+       3D model path (step): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C41413841/jlcpcb.3dshapes/HDR-TH_8P-P2.54-M-LI-2X4P.step

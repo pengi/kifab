@@ -1,0 +1,607 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0016,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0012,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0012,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0025,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0013,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0019,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 2478417,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "UNI-ROYAL(Uniroyal Elec)",
+          "componentBrandHigh": null,
+          "componentCode": "C23138",
+          "componentCodeHigh": null,
+          "componentId": 23865,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "0603WAF3300T5E",
+          "componentModelHigh": null,
+          "componentName": "UNI-ROYAL 0603WAF3300T5E",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0026,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.002,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0017,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0014,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0012,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0012,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8579706223213461504",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010116_UNI-ROYAL-Uniroyal-Elec-0603WAF3300T5E_C23138.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0026,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_uni-royal-uniroyal-elec-0603waf3300t5e_C23138.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552465285459161088",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 4512,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552465284851257345",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0055,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 3044392,
+          "urlSuffix": "23865-0603WAF3300T5E/C23138"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "125mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "150V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0032,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 99999,
+              "productPrice": 0.0025,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0024,
+              "startNumber": 100000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0048,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0028,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0038,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 1745234,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "UNI-ROYAL(Uniroyal Elec)",
+          "componentBrandHigh": null,
+          "componentCode": "C17630",
+          "componentCodeHigh": null,
+          "componentId": 18318,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "0805W8F3300T5E",
+          "componentModelHigh": null,
+          "componentName": "UNI-ROYAL 0805W8F3300T5E",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0049,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0039,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0033,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0029,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 99999,
+              "productPrice": 0.0026,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0025,
+              "startNumber": 100000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0805",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8579706569889464320",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2205311830_UNI-ROYAL-Uniroyal-Elec-0805W8F3300T5E_C17630.pdf",
+          "describe": "-55℃~+155℃ 125mW 150V 330Ω Thick Film Resistor ±1% ±100ppm/℃ 0805 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 125mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0049,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_uni-royal-uniroyal-elec-0805w8f3300t5e_C17630.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552469482107777024",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2314,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552469481482825728",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 125mW 150V <span class='lucene_highlight_class'>330Ω</span> Thick Film Resistor ±1% ±100ppm/℃ 0805 Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.01161,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1954690,
+          "urlSuffix": "18318-0805W8F3300T5E/C17630"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "62.5mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0039,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0027,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0017,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0025,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0031,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0017,
+              "startNumber": 50200
+            }
+          ],
+          "canPresaleNumber": 835052,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "UNI-ROYAL(Uniroyal Elec)",
+          "componentBrandHigh": null,
+          "componentCode": "C25104",
+          "componentCodeHigh": null,
+          "componentId": 25847,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "0402WGF3300TCE",
+          "componentModelHigh": null,
+          "componentName": "UNI-ROYAL 0402WGF3300TCE",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0041,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0032,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0028,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0025,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0017,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0017,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0402",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8579706017514917888",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2205311900_UNI-ROYAL-Uniroyal-Elec-0402WGF3300TCE_C25104.pdf",
+          "describe": "-55℃~+155℃ 330Ω 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 10000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 62.5mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0041,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_uni-royal-uniroyal-elec-0402wgf3300tce_C25104.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552462608310956032",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2820,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552462607739990016",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ <span class='lucene_highlight_class'>330Ω</span> 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00802,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1117370,
+          "urlSuffix": "25847-0402WGF3300TCE/C25104"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 3
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "330R 0603",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

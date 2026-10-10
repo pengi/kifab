@@ -1,0 +1,1810 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "25V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0068,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0063,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0107,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0061,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0093,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0137,
+              "startNumber": 1
+            }
+          ],
+          "canPresaleNumber": 1497576,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C1590",
+          "componentCodeHigh": null,
+          "componentId": 1942,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10B104KA8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10B104KA8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0143,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0111,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0097,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.007,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0066,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0063,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8586178021733126144",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10B104KA8NNNC_C1590.pdf",
+          "describe": "100nF 25V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 25V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0143,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10b104ka8nnnc_C1590.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582976126776463360",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 813,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582976125832744960",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 25V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.03596,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1789202,
+          "urlSuffix": "1942-CL10B104KA8NNNC/C1590"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 99999,
+              "productPrice": 0.004,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.0049,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0057,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0043,
+              "startNumber": 8000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0076,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0038,
+              "startNumber": 100000
+            }
+          ],
+          "canPresaleNumber": -1356258,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C1591",
+          "componentCodeHigh": null,
+          "componentId": 1943,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10B104KB8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10B104KB8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0079,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0059,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.005,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0044,
+              "startNumber": 8000
+            },
+            {
+              "endNumber": 99999,
+              "productPrice": 0.0042,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.004,
+              "startNumber": 100000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8586177280427642880",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10B104KB8NNNC_C1591.pdf",
+          "describe": "100nF 50V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0059,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10b104kb8nnnc_C1591.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8578703832416903168",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1530,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 1530,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8578703831422582784",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 50V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.022,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 26870,
+          "urlSuffix": "1943-CL10B104KB8NNNC/C1591"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "-20%~+80%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "Y5V"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0157,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0137,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0107,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0192,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0123,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0113,
+              "startNumber": 24000
+            }
+          ],
+          "canPresaleNumber": 5037,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C1688",
+          "componentCodeHigh": null,
+          "componentId": 2040,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10F104ZB8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10F104ZB8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0199,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0163,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0142,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0128,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0117,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0111,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8586178151450230784",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10F104ZB8NNNC_C1688.pdf",
+          "describe": "-20%~+80% 100nF 50V Y5V 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF -20%~+80% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0199,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10f104zb8nnnc_C1688.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8763785007217287168",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 454,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8763785006105796608",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-20%~+80% <span class='lucene_highlight_class'>100nF</span> 50V Y5V <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.04222,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 11516,
+          "urlSuffix": "2040-CL10F104ZB8NNNC/C1688"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0073,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0135,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0069,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0087,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0102,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0066,
+              "startNumber": 48000
+            }
+          ],
+          "canPresaleNumber": 39458142,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "YAGEO",
+          "componentBrandHigh": null,
+          "componentCode": "C14663",
+          "componentCodeHigh": null,
+          "componentId": 15331,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "CC0603KRX7R9BB104",
+          "componentModelHigh": null,
+          "componentName": "YAGEO CC0603KRX7R9BB104",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.014,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0106,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.009,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0076,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0071,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0068,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8667086713681608704",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2211101700_YAGEO-CC0603KRX7R9BB104_C14663.pdf",
+          "describe": "100nF 50V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.014,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_yageo-cc0603krx7r9bb104_C14663.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8667086724243136512",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 852,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8667086722678525952",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 50V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.03906,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 56602731,
+          "urlSuffix": "YAGEO-CC0603KRX7R9BB104/C14663"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "100V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0089,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0062,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0068,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0077,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0064,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0117,
+              "startNumber": 1
+            }
+          ],
+          "canPresaleNumber": 519409,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C15725",
+          "componentCodeHigh": null,
+          "componentId": 16407,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10B104KC8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10B104KC8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0121,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0093,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.008,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0071,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0067,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0064,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8586178586332446721",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10B104KC8NNNC_C15725.pdf",
+          "describe": "100V 100nF X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 100V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0121,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10b104kc8nnnc_C15725.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 12,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582976294024065024",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 971,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582976293139202048",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "100V <span class='lucene_highlight_class'>100nF</span> X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.03242,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 750750,
+          "urlSuffix": "16407-CL10B104KC8NNNC/C15725"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 199,
+              "productPrice": 0.0176,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0092,
+              "startNumber": 20000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0116,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.0102,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 19999,
+              "productPrice": 0.0096,
+              "startNumber": 8000
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0134,
+              "startNumber": 200
+            }
+          ],
+          "canPresaleNumber": 655814,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C24452",
+          "componentCodeHigh": null,
+          "componentId": 25192,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10B104JB8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10B104JB8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 199,
+              "productPrice": 0.0183,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 599,
+              "productPrice": 0.0139,
+              "startNumber": 200
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.012,
+              "startNumber": 600
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.0105,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 19999,
+              "productPrice": 0.01,
+              "startNumber": 8000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0096,
+              "startNumber": 20000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8563426422237782016",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10B104JB8NNNC_C24452.pdf",
+          "describe": "100nF 50V X7R ±5% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±5% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0183,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10b104jb8nnnc_C24452.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8563426420916846592",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 752,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8563426420090703872",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 50V X7R ±5% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.04949,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 743753,
+          "urlSuffix": "25192-CL10B104JB8NNNC/C24452"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0064,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0093,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0125,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0068,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0079,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0061,
+              "startNumber": 48000
+            }
+          ],
+          "canPresaleNumber": 1248634,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "FH (Guangdong Fenghua Advanced Tech)",
+          "componentBrandHigh": null,
+          "componentCode": "C30926",
+          "componentCodeHigh": null,
+          "componentId": 31683,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "0603B104K500NT",
+          "componentModelHigh": null,
+          "componentName": "FH 0603B104K500NT",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.013,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0097,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0082,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0071,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0067,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0064,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8770986810409533440",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FH--Guangdong-Fenghua-Advanced-Tech-0603B104K500NT_C30926.pdf",
+          "describe": "100nF 50V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.013,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_fh-guangdong-fenghua-advanced-tech-0603b104k500nt_C30926.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 12,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8578704418256453632",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 931,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8578704417295958016",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 50V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.03755,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1880397,
+          "urlSuffix": "31683-0603B104K500NT/C30926"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "16V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0164,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0132,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0105,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0096,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0116,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0091,
+              "startNumber": 48000
+            }
+          ],
+          "canPresaleNumber": 34940,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Murata Electronics",
+          "componentBrandHigh": null,
+          "componentCode": "C45000",
+          "componentCodeHigh": null,
+          "componentId": 46002,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "GRM188R71C104KA01D",
+          "componentModelHigh": null,
+          "componentName": "muRata GRM188R71C104KA01D",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0137,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.012,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0108,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0099,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0094,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8588934465808969728",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/1810311119_Murata-Electronics-GRM188R71C104KA01D_C45000.pdf",
+          "describe": "100nF 16V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 16V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.017,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_murata-electronics-grm188r71c104ka01d_C45000.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 8,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583544257940762624",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 659,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583544257109614592",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 16V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.036,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 41431,
+          "urlSuffix": "MurataElectronics-GRM188R71C104KA01D/C45000"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 3999,
+              "productPrice": 0.011,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0124,
+              "startNumber": 300
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.0186,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.0086,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 299,
+              "productPrice": 0.0146,
+              "startNumber": 100
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.008,
+              "startNumber": 8000
+            }
+          ],
+          "canPresaleNumber": 239773,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "TDK",
+          "componentBrandHigh": null,
+          "componentCode": "C56476",
+          "componentCodeHigh": null,
+          "componentId": 57505,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "C1608X7R1H104KT000N",
+          "componentModelHigh": null,
+          "componentName": "TDK C1608X7R1H104KT000N",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 99,
+              "productPrice": 0.0193,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 299,
+              "productPrice": 0.0151,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0128,
+              "startNumber": 300
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0115,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 7999,
+              "productPrice": 0.0089,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0083,
+              "startNumber": 8000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8588894527025795072",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_TDK-C1608X7R1H104KT000N_C56476.pdf",
+          "describe": "100nF 50V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0193,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_tdk-c1608x7r1h104kt000n_C56476.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583293339672727552",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 705,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583293338858762240",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 50V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.04668,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 272518,
+          "urlSuffix": "TDK-C1608X7R1H104KT000N/C56476"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "16V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>100nF</span>"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0047,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.006,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0045,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0043,
+              "startNumber": 48000
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0069,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0089,
+              "startNumber": 1
+            }
+          ],
+          "canPresaleNumber": 1196633,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "Samsung Electro-Mechanics",
+          "componentBrandHigh": null,
+          "componentCode": "C66501",
+          "componentCodeHigh": null,
+          "componentId": 67585,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CL10B104KO8NNNC",
+          "componentModelHigh": null,
+          "componentName": "Samsung Electro-Mechanics CL10B104KO8NNNC",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0093,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0072,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0063,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 23999,
+              "productPrice": 0.0049,
+              "startNumber": 4000
+            },
+            {
+              "endNumber": 47999,
+              "productPrice": 0.0046,
+              "startNumber": 24000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0044,
+              "startNumber": 48000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8586178403602587648",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_1810271710_Samsung-Electro-Mechanics-CL10B104KO8NNNC_C66501.pdf",
+          "describe": "100nF 16V X7R ±10% 0603 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "100nF ±10% 16V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0093,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_samsung-electro-mechanics-cl10b104ko8nnnc_C66501.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8582976091246379008",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 1254,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8582976090293460992",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "<span class='lucene_highlight_class'>100nF</span> 16V X7R ±10% <span class='lucene_highlight_class'>0603</span> Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.02368,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1460110,
+          "urlSuffix": "67585-CL10B104KO8NNNC/C66501"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1600,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 15991
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "100nF 0603",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

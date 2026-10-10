@@ -1,0 +1,1937 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0025,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.003,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.002,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0039,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.002,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0023,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 158087,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "FH (Guangdong Fenghua Advanced Tech)",
+          "componentBrandHigh": null,
+          "componentCode": "C22104",
+          "componentCodeHigh": null,
+          "componentId": 22829,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RS-03K331JT",
+          "componentModelHigh": null,
+          "componentName": "FH RS-03K331JT",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0041,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0031,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0026,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0024,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0021,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0021,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8756881066101747712",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FH--Guangdong-Fenghua-Advanced-Tech-RS-03K331JT_C22104.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 50V Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±5% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0041,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_fh-guangdong-fenghua-advanced-tech-rs-03k331jt_C22104.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583413268857958400",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2911,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583413267926822912",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 50V Thick Film Resistor ±100ppm/℃ ±5% <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00903,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 167032,
+          "urlSuffix": "22829-RS03K331JT/C22104"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0016,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0012,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0012,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0025,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0013,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0019,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 2478417,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "UNI-ROYAL(Uniroyal Elec)",
+          "componentBrandHigh": null,
+          "componentCode": "C23138",
+          "componentCodeHigh": null,
+          "componentId": 23865,
+          "componentImageUrl": "",
+          "componentLibraryType": "base",
+          "componentModelEn": "0603WAF3300T5E",
+          "componentModelHigh": null,
+          "componentName": "UNI-ROYAL 0603WAF3300T5E",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0026,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.002,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0017,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0014,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0012,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0012,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8579706223213461504",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2206010116_UNI-ROYAL-Uniroyal-Elec-0603WAF3300T5E_C23138.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0026,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_uni-royal-uniroyal-elec-0603waf3300t5e_C23138.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8552465285459161088",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 4512,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8552465284851257345",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0055,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 3044392,
+          "urlSuffix": "23865-0603WAF3300T5E/C23138"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0009,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0008,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0008,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0014,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0009,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0011,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 1597625,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "UNI-ROYAL(Uniroyal Elec)",
+          "componentBrandHigh": null,
+          "componentCode": "C25231",
+          "componentCodeHigh": null,
+          "componentId": 25974,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "0603WAJ0331T5E",
+          "componentModelHigh": null,
+          "componentName": "UNI-ROYAL 0603WAJ0331T5E",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0015,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0012,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.001,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0009,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0008,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0008,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8588882068205932544",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2205311845_UNI-ROYAL-Uniroyal-Elec-0603WAJ0331T5E_C25231.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±5% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0015,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_uni-royal-uniroyal-elec-0603waj0331t5e_C25231.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583008540332068864",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 5000,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583008539401203712",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±100ppm/℃ ±5% <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00311,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 1629903,
+          "urlSuffix": "25974-0603WAJ0331T5E/C25231"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+125℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": -1,
+              "productPrice": 0.004,
+              "startNumber": 5200
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0042,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0041,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0041,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 5099,
+              "productPrice": 0.004,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 5199,
+              "productPrice": 0.004,
+              "startNumber": 5100
+            }
+          ],
+          "canPresaleNumber": 2944,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "LIZ Elec",
+          "componentBrandHigh": null,
+          "componentCode": "C100967",
+          "componentCodeHigh": null,
+          "componentId": 102182,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "CR0603FA3300G",
+          "componentModelHigh": null,
+          "componentName": "LIZ CR0603FA3300G",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 499,
+              "productPrice": 0.0044,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 1499,
+              "productPrice": 0.0043,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0042,
+              "startNumber": 1500
+            },
+            {
+              "endNumber": 5099,
+              "productPrice": 0.0041,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 5199,
+              "productPrice": 0.0041,
+              "startNumber": 5100
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0041,
+              "startNumber": 5200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8588898039854977024",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_LIZ-Elec-CR0603FA3300G_C100967.pdf",
+          "describe": "-55℃~+125℃ 100mW 330Ω 50V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0044,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_liz-elec-cr0603fa3300g_C100967.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8761221169930211328",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2149,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8761221168882311168",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+125℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 50V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0203,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 2971,
+          "urlSuffix": "LIZElec-CR0603FA3300G/C100967"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0012,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.001,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.001,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0017,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0011,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0014,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 31,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "RALEC",
+          "componentBrandHigh": null,
+          "componentCode": "C103542",
+          "componentCodeHigh": null,
+          "componentId": 104757,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RTT033300FTP",
+          "componentModelHigh": null,
+          "componentName": "RALEC RTT033300FTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0018,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0014,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0012,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0011,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.001,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.001,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8588898351316549632",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_RALEC-RTT033300FTP_C103542.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0018,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_ralec-rtt033300ftp_C103542.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8759580471947223040",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 5000,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8759580470911229952",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.0035,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 135,
+          "urlSuffix": "RALEC-RTT033300FTP/C103542"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0012,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.001,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.001,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0018,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0011,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0014,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 7795,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "RALEC",
+          "componentBrandHigh": null,
+          "componentCode": "C103548",
+          "componentCodeHigh": null,
+          "componentId": 104763,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RTT03331JTP",
+          "componentModelHigh": null,
+          "componentName": "RALEC RTT03331JTP",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0019,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0015,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0013,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0012,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.001,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.001,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8588898352813105152",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_RALEC-RTT03331JTP_C103548.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±5% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0019,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_ralec-rtt03331jtp_C103548.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8760657665557315584",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 5000,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8760657664521322496",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±100ppm/℃ ±5% <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00373,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 7832,
+          "urlSuffix": "RALEC-RTT03331JTP/C103548"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0033,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0029,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0029,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0047,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0031,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0038,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 482221,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "YAGEO",
+          "componentBrandHigh": null,
+          "componentCode": "C105879",
+          "componentCodeHigh": null,
+          "componentId": 107094,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RC0603JR-07330RL",
+          "componentModelHigh": null,
+          "componentName": "YAGEO RC0603JR-07330RL",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0049,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.004,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0035,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0033,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.003,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.003,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8755548388849139712",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0603JR-07330RL_C105879.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±100ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±5% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0049,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_yageo-rc0603jr-07330rl_C105879.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8759971593072324608",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2256,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8759971591889936384",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±100ppm/℃ ±5% <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00872,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 493465,
+          "urlSuffix": "YAGEO-RC0603JR07330RL/C105879"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0027,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0022,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0022,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0043,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0025,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0033,
+              "startNumber": 1000
+            }
+          ],
+          "canPresaleNumber": 679276,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "YAGEO",
+          "componentBrandHigh": null,
+          "componentCode": "C105881",
+          "componentCodeHigh": null,
+          "componentId": 107096,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RC0603FR-07330RL",
+          "componentModelHigh": null,
+          "componentName": "YAGEO RC0603FR-07330RL",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0045,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0034,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0029,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0026,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0022,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0022,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8729823711414120448",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_YAGEO-RC0603FR-07330RL_C105881.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 75V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0045,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_yageo-rc0603fr-07330rl_C105881.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583257262534508544",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2654,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583257261615144960",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00996,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 759935,
+          "urlSuffix": "YAGEO-RC0603FR07330RL/C105881"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "100mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±1%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±100ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0015,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0018,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0012,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 999,
+              "productPrice": 0.0023,
+              "startNumber": 1
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0012,
+              "startNumber": 50200
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0014,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 903454,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "FH (Guangdong Fenghua Advanced Tech)",
+          "componentBrandHigh": null,
+          "componentCode": "C125768",
+          "componentCodeHigh": null,
+          "componentId": 137047,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RS-03K3300FT",
+          "componentModelHigh": null,
+          "componentName": "FH RS-03K3300FT",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0024,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0019,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0016,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0014,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 50199,
+              "productPrice": 0.0013,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0013,
+              "startNumber": 50200
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8756897138036871168",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_FH--Guangdong-Fenghua-Advanced-Tech-RS-03K3300FT_C125768.pdf",
+          "describe": "-55℃~+155℃ 100mW 330Ω 50V Thick Film Resistor ±1% ±100ppm/℃ 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±1% 100mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0024,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_fh-guangdong-fenghua-advanced-tech-rs-03k3300ft_C125768.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583352668596789248",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 4749,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583352667679182848",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 100mW <span class='lucene_highlight_class'>330Ω</span> 50V Thick Film Resistor ±1% ±100ppm/℃ <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.00532,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 933237,
+          "urlSuffix": "137047-RS03K3300FT/C125768"
+        },
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω",
+              "attribute_value_name_high": "<span class='lucene_highlight_class'>330Ω</span>"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-55℃~+155℃"
+            },
+            {
+              "attribute_name_en": "Power(Watts)",
+              "attribute_value_name": "125mW"
+            },
+            {
+              "attribute_name_en": "Type",
+              "attribute_value_name": "Thick Film Resistor"
+            },
+            {
+              "attribute_name_en": "Voltage-Supply(Max)",
+              "attribute_value_name": "75V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±5%"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "±200ppm/℃"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0051,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 99999,
+              "productPrice": 0.0025,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0031,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0023,
+              "startNumber": 100000
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0041,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0027,
+              "startNumber": 10000
+            }
+          ],
+          "canPresaleNumber": 5708,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "KOA Speer Elec",
+          "componentBrandHigh": null,
+          "componentCode": "C131709",
+          "componentCodeHigh": null,
+          "componentId": 143005,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "RK73B1JTTD331J",
+          "componentModelHigh": null,
+          "componentName": "KOA RK73B1JTTD331J",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0053,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 4999,
+              "productPrice": 0.0042,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0032,
+              "startNumber": 5000
+            },
+            {
+              "endNumber": 49999,
+              "productPrice": 0.0029,
+              "startNumber": 10000
+            },
+            {
+              "endNumber": 99999,
+              "productPrice": 0.0025,
+              "startNumber": 50000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0024,
+              "startNumber": 100000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0603",
+          "componentSpecificationHigh": "<span class='lucene_highlight_class'>0603</span>",
+          "componentTypeEn": "Chip Resistor - Surface Mount",
+          "dataManualFileAccessId": "8588906803501674496",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://www.lcsc.com/datasheet/lcsc_datasheet_2403141437_KOA-Speer-Elec-RK73B1JTTD331J_C131709.pdf",
+          "describe": "-55℃~+155℃ 125mW 330Ω 75V Thick Film Resistor ±200ppm/℃ ±5% 0603 Chip Resistor - Surface Mount ROHS",
+          "encapsulationNumber": 5000,
+          "erpComponentName": "厚膜电阻 330Ω ±5% 125mW",
+          "estimateDate": null,
+          "firstSortAccessId": "b97df1fd049743c0a0330513eac35a72",
+          "firstSortName": "Chip Resistor - Surface Mount",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0053,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/chip-resistor-surface-mount_koa-speer-elec-rk73b1jttd331j_C131709.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 10,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8583422667991367680",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 2149,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8583422666997452800",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": "-55℃~+155℃ 125mW <span class='lucene_highlight_class'>330Ω</span> 75V Thick Film Resistor ±200ppm/℃ ±5% <span class='lucene_highlight_class'>0603</span> Chip Resistor - Surface Mount ROHS",
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "a49341812cad4b0bafa2ddd547a82bd4",
+          "secondSortName": "Resistors",
+          "shopCostPrice": 0.01178,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 5720,
+          "urlSuffix": "KOA_SpeerElec-RK73B1JTTD331J/C131709"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 493,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 4924
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "330R 0603",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

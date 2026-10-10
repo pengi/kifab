@@ -1,0 +1,27 @@
+{
+  "code": 0,
+  "result": {
+    "facets": {
+      "SMT": 0,
+      "easyeda": 0,
+      "following": 0,
+      "lcsc": 0,
+      "mine": 0,
+      "user": 0
+    },
+    "lists": {
+      "SMT": [],
+      "easyeda": [],
+      "following": [],
+      "lcsc": [],
+      "mine": [],
+      "user": []
+    },
+    "pageSize": 100,
+    "totalPage": 0,
+    "type": "3",
+    "uid": "0819f05c4eef4c71ace90d822a990e87",
+    "wd": "xyzzy-no-such-part"
+  },
+  "success": true
+}

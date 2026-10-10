@@ -1,0 +1,11 @@
+-- easyeda2kicad.py v1.0.1 --
+[INFO] Created Kicad symbol for ID : C356849
+       Symbol name : E73-2G4M08S1C
+       Library path : /home/pengi/src/kifab/testdata/easyeda2kicad_output/C356849/jlcpcb.kicad_sym
+[INFO] Created Kicad footprint for ID: C356849
+       Footprint name: WIRELM-SMD_E73-2G4M08S1C
+       Footprint path: /home/pengi/src/kifab/testdata/easyeda2kicad_output/C356849/jlcpcb.pretty/WIRELM-SMD_E73-2G4M08S1C.kicad_mod
+[INFO] Created 3D model for ID: C356849
+       3D model name: WIRELM-SMD_L18.0-W13.0-H3.0-E73-2G4M08S1C
+       3D model path (wrl): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C356849/jlcpcb.3dshapes/WIRELM-SMD_L18.0-W13.0-H3.0-E73-2G4M08S1C.wrl
+       3D model path (step): /home/pengi/src/kifab/testdata/easyeda2kicad_output/C356849/jlcpcb.3dshapes/WIRELM-SMD_L18.0-W13.0-H3.0-E73-2G4M08S1C.step

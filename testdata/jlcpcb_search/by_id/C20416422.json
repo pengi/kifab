@@ -1,0 +1,214 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Voltage Rating",
+              "attribute_value_name": "50V"
+            },
+            {
+              "attribute_name_en": "Tolerance",
+              "attribute_value_name": "±10%"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "4.7uF"
+            },
+            {
+              "attribute_name_en": "Temperature Coefficient",
+              "attribute_value_name": "X7R"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0586,
+              "startNumber": 300
+            },
+            {
+              "endNumber": 8999,
+              "productPrice": 0.0457,
+              "startNumber": 6000
+            },
+            {
+              "endNumber": 99,
+              "productPrice": 0.087,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 5999,
+              "productPrice": 0.0514,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0429,
+              "startNumber": 9000
+            },
+            {
+              "endNumber": 299,
+              "productPrice": 0.068,
+              "startNumber": 100
+            }
+          ],
+          "canPresaleNumber": 56946,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "CCTC",
+          "componentBrandHigh": null,
+          "componentCode": "C20416422",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C20416422</span>",
+          "componentId": 21748364,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "TCC0805X7R475K500FT",
+          "componentModelHigh": null,
+          "componentName": "CCTC TCC0805X7R475K500FT",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 99,
+              "productPrice": 0.0903,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 299,
+              "productPrice": 0.0706,
+              "startNumber": 100
+            },
+            {
+              "endNumber": 2999,
+              "productPrice": 0.0608,
+              "startNumber": 300
+            },
+            {
+              "endNumber": 5999,
+              "productPrice": 0.0533,
+              "startNumber": 3000
+            },
+            {
+              "endNumber": 8999,
+              "productPrice": 0.0474,
+              "startNumber": 6000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0445,
+              "startNumber": 9000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "0805",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "dataManualFileAccessId": "8757020836484263936",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2401051412_CCTC-TCC0805X7R475K500FT_C20416422.pdf",
+          "describe": "4.7uF 50V X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS",
+          "encapsulationNumber": 3000,
+          "erpComponentName": "4.7uF ±10% 50V",
+          "estimateDate": null,
+          "firstSortAccessId": "1a513feddccb44f5bf49e1f5b9e5ffdb",
+          "firstSortName": "Multilayer Ceramic Capacitors MLCC - SMD/SMT",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0903,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/multilayer-ceramic-capacitors-mlcc-smd-smt_cctc-tcc0805x7r475k500ft_C20416422.html",
+          "leastPatchNumber": 20,
+          "lossNumber": 6,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8585281140710117376",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 128,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8585281139632586752",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "7e74f1d772c74e3d99bc4868d21962f2",
+          "secondSortName": "Capacitors",
+          "shopCostPrice": 0.25156,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 58655,
+          "urlSuffix": "CCTC-TCC0805X7R475K500FT/C20416422"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C20416422",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

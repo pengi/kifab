@@ -1,0 +1,246 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Data Retention - TDR (Year)",
+              "attribute_value_name": "100 Years"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+85℃"
+            },
+            {
+              "attribute_name_en": "Clock Frequency",
+              "attribute_value_name": "1MHz"
+            },
+            {
+              "attribute_name_en": "Write Cycle Endurance",
+              "attribute_value_name": "1,000,000 cycles"
+            },
+            {
+              "attribute_name_en": "Access Time",
+              "attribute_value_name": "900ns"
+            },
+            {
+              "attribute_name_en": "Standby Current",
+              "attribute_value_name": "1uA"
+            },
+            {
+              "attribute_name_en": "Memory Size",
+              "attribute_value_name": "32Kbit"
+            },
+            {
+              "attribute_name_en": "Voltage - Supply",
+              "attribute_value_name": "1.8V~5.5V"
+            },
+            {
+              "attribute_name_en": "Features",
+              "attribute_value_name": "Hardware write protection function、Noise suppression function、Built-in power-on reset (POR)"
+            },
+            {
+              "attribute_name_en": "Write Cycle Time(Tw)",
+              "attribute_value_name": "5ms"
+            },
+            {
+              "attribute_name_en": "Operating Current",
+              "attribute_value_name": "2mA"
+            },
+            {
+              "attribute_name_en": "Interface",
+              "attribute_value_name": "I2C"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 149,
+              "productPrice": 0.0573,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0386,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0493,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 49,
+              "productPrice": 0.073,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.0434,
+              "startNumber": 500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0363,
+              "startNumber": 4000
+            }
+          ],
+          "canPresaleNumber": 20823,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "XBLW",
+          "componentBrandHigh": null,
+          "componentCode": "C18723546",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C18723546</span>",
+          "componentId": 19916673,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "24C32BN(XBLW)",
+          "componentModelHigh": null,
+          "componentName": "XBLW 24C32BN(XBLW)",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 49,
+              "productPrice": 0.0758,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.0595,
+              "startNumber": 50
+            },
+            {
+              "endNumber": 499,
+              "productPrice": 0.0512,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 2499,
+              "productPrice": 0.045,
+              "startNumber": 500
+            },
+            {
+              "endNumber": 3999,
+              "productPrice": 0.0401,
+              "startNumber": 2500
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0377,
+              "startNumber": 4000
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "SOP-8",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "EEPROM",
+          "dataManualFileAccessId": "8590906131055124480",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2310191805_XBLW-24C32BN-XBLW_C18723546.pdf",
+          "describe": "-40℃~+85℃ 1,000,000 cycles 1.8V~5.5V 100 Years 1MHz 1uA 2mA 32Kbit 5ms 900ns Hardware write protection function、Noise suppression function、Built-in power-on reset (POR) I2C SOP-8 EEPROM ROHS",
+          "encapsulationNumber": 4000,
+          "erpComponentName": "串行 EEPROM，CMOS 工艺，1.8‑5.5V，2 线接口适配低压低功耗应用",
+          "estimateDate": null,
+          "firstSortAccessId": "9b9f940a554b41dfbb16725c834c0a0b",
+          "firstSortName": "EEPROM",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.0758,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/eeprom_xblw-24c32bn-xblw_C18723546.html",
+          "leastPatchNumber": 0,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8585214494369202176",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 177,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8585214493165436928",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "4069c5d6187f4608b287ba3a374b24e6",
+          "secondSortName": "Memory",
+          "shopCostPrice": 0.21,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 20858,
+          "urlSuffix": "XBLW-24C32BN_XBLW/C18723546"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C18723546",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}

@@ -1,0 +1,243 @@
+{
+  "code": 200,
+  "data": {
+    "basePart": null,
+    "brandList": [],
+    "componentPageInfo": {
+      "endRow": 0,
+      "hasNextPage": false,
+      "hasPreviousPage": false,
+      "isFirstPage": false,
+      "isLastPage": false,
+      "list": [
+        {
+          "allowPostFlag": true,
+          "assemblyComponentFlag": false,
+          "attributes": [
+            {
+              "attribute_name_en": "Circular Hole / Square Hole",
+              "attribute_value_name": "Square Hole"
+            },
+            {
+              "attribute_name_en": "Holes Structure",
+              "attribute_value_name": "2x20P"
+            },
+            {
+              "attribute_name_en": "Operating Temperature",
+              "attribute_value_name": "-40℃~+105℃"
+            },
+            {
+              "attribute_name_en": "Number of Rows",
+              "attribute_value_name": "2"
+            },
+            {
+              "attribute_name_en": "Number of Positions",
+              "attribute_value_name": "40P"
+            },
+            {
+              "attribute_name_en": "Contact Plating",
+              "attribute_value_name": "Gold"
+            },
+            {
+              "attribute_name_en": "Contact Material",
+              "attribute_value_name": "Brass"
+            },
+            {
+              "attribute_name_en": "Pitch",
+              "attribute_value_name": "2.54mm"
+            },
+            {
+              "attribute_name_en": "Current Rating",
+              "attribute_value_name": "3A"
+            },
+            {
+              "attribute_name_en": "Row Spacing",
+              "attribute_value_name": "2.54mm"
+            },
+            {
+              "attribute_name_en": "Holes Direction",
+              "attribute_value_name": "Top"
+            },
+            {
+              "attribute_name_en": "PIN Length",
+              "attribute_value_name": "3mm"
+            },
+            {
+              "attribute_name_en": "Mounting Type",
+              "attribute_value_name": "Through Hole"
+            }
+          ],
+          "buyComponentPrices": [
+            {
+              "endNumber": 149,
+              "productPrice": 0.2715,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 449,
+              "productPrice": 0.226,
+              "startNumber": 150
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.1946,
+              "startNumber": 1050
+            },
+            {
+              "endNumber": 1049,
+              "productPrice": 0.2071,
+              "startNumber": 450
+            },
+            {
+              "endNumber": 9,
+              "productPrice": 0.3907,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.3076,
+              "startNumber": 10
+            }
+          ],
+          "canPresaleNumber": 355,
+          "componentAlternativesCode": null,
+          "componentBrandEn": "HDGC",
+          "componentBrandHigh": null,
+          "componentCode": "C19725278",
+          "componentCodeHigh": "<span class='lucene_highlight_class'>C19725278</span>",
+          "componentId": 21047375,
+          "componentImageUrl": "",
+          "componentLibraryType": "expand",
+          "componentModelEn": "HDGCPH2.54-PZS-2X20",
+          "componentModelHigh": null,
+          "componentName": "HDGC HDGCPH2.54-PZS-2X20",
+          "componentNameEn": null,
+          "componentPrices": [
+            {
+              "endNumber": 9,
+              "productPrice": 0.4056,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 29,
+              "productPrice": 0.3193,
+              "startNumber": 10
+            },
+            {
+              "endNumber": 149,
+              "productPrice": 0.2818,
+              "startNumber": 30
+            },
+            {
+              "endNumber": 449,
+              "productPrice": 0.2346,
+              "startNumber": 150
+            },
+            {
+              "endNumber": 1049,
+              "productPrice": 0.215,
+              "startNumber": 450
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.202,
+              "startNumber": 1050
+            }
+          ],
+          "componentProductType": 0,
+          "componentSource": "shop",
+          "componentSpecificationEn": "Plugin,P=2.54mm",
+          "componentSpecificationHigh": null,
+          "componentTypeEn": "Female Headers",
+          "dataManualFileAccessId": "8600570299150438400",
+          "dataManualFileAccessIdUrl": null,
+          "dataManualOfficialLink": "",
+          "dataManualUrl": "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2312271542_HDGC-HDGCPH2-54-PZS-2X20_C19725278.pdf",
+          "describe": "-40℃~+105℃ 2 2.54mm 2.54mm 2x20P 3A 40P Brass Gold Square Hole Through Hole Top 插件,P=2.54mm Female Headers ROHS",
+          "encapsulationNumber": 150,
+          "erpComponentName": "2x20P 间距:2.54mm 直插",
+          "estimateDate": null,
+          "firstSortAccessId": "248c42d1f2d246498d91d5c9cad9dd16",
+          "firstSortName": "Female Headers",
+          "fullReelPrice": null,
+          "idleFlag": null,
+          "imageList": [
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            },
+            {
+              "fileType": null,
+              "productBigImage": null,
+              "productBigImageAccessId": null,
+              "productImage": null,
+              "productImageAccessId": null
+            }
+          ],
+          "initialPrice": 0.4056,
+          "isBuyComponent": "1",
+          "lcscGoodsUrl": "https://www.lcsc.com/product-detail/female-headers_hdgc-hdgcph2-54-pzs-2x20_C19725278.html",
+          "leastPatchNumber": 2,
+          "lossNumber": 0,
+          "manufacturerBlackFlag": null,
+          "mergedComponentCode": null,
+          "minImage": "",
+          "minImageAccessId": "8585294377534676992",
+          "minImageAccessIdUrl": null,
+          "minPurchaseNum": 1,
+          "noBuyReason": null,
+          "preMinPurchaseNum": 29,
+          "preferredComponentFlag": false,
+          "productBigImageAccessId": "8585294376587710464",
+          "productBigImageAccessIdUrl": null,
+          "rankScore": null,
+          "remarkHigh": null,
+          "replaceUrlSuffix": null,
+          "rohsFileId": null,
+          "rohsFlag": 1,
+          "rohsUrl": null,
+          "score": null,
+          "secondSortAccessId": "b74d2d6944f14ecc9036735f5231a3ac",
+          "secondSortName": "Connectors",
+          "shopCostPrice": 1.06,
+          "shopRealPriceFlag": true,
+          "shopShowForeignPriceFlag": true,
+          "shopShowPriceFlag": true,
+          "stockCount": 359,
+          "urlSuffix": "HDGC-HDGCPH2_54_PZS2X20/C19725278"
+        }
+      ],
+      "navigateFirstPage": 0,
+      "navigateLastPage": 0,
+      "navigatePages": 0,
+      "navigatepageNums": null,
+      "nextPage": 0,
+      "pageNum": 1,
+      "pageSize": 10,
+      "pages": 1,
+      "prePage": 0,
+      "size": 0,
+      "startRow": 0,
+      "total": 1
+    },
+    "dataSheetPart": null,
+    "economicPart": null,
+    "photo": null,
+    "preferredPart": null,
+    "presaleTypeList": [],
+    "queryString": "C19725278",
+    "sortAndCountVoList": null,
+    "standardPart": null
+  },
+  "message": null
+}
