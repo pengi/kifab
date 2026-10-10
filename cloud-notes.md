@@ -1,5 +1,23 @@
 # Notes from the cloud session (2026-10-10): tweaks that make the next sessions cheaper
 
+## Status of these notes (second pass)
+
+- Done in the repo: `main` created from `feature/implement` (same commit);
+  CLAUDE.md/plan.md updated (branch, `scripts/check.sh`, `KIFAB_OFFLINE`,
+  real-KiCad testing); session-start hook; increment 10 (KiCad plugin) and a
+  PyPI publish workflow.
+- Still yours (settings a session cannot change):
+  1. GitHub: make `main` the default branch (Settings > General > Default
+     branch), so new sessions get the code, hook and CI.
+  2. Cloud environment: allow `jlcpcb.com`, `easyeda.com`,
+     `modules.easyeda.com` (section 1 below); set `UV_SYSTEM_CERTS=1` instead of
+     `UV_NATIVE_TLS`.
+  3. PyPI: add a trusted publisher (repo `pengi/kifab`, workflow
+     `publish.yml`, environment `pypi`), then push tag `v0.1.0` on `main`.
+  4. Desktop checks: GUI look, KiCad plugin (`kifab kicad-plugin install`,
+     enable IPC API), new parts visible in a running KiCad, bottom-side CPL in
+     JLCPCB's preview.
+
 Work is on branch `feature/implement` (own git root): increments 0-9 done, see
 its `plan.md` ("Done", "Verified with real KiCad", "Next"). These are the
 settings/instruction tweaks that would let more of the work happen in the cloud
