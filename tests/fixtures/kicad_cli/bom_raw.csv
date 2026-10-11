@@ -1,4 +1,4 @@
-"Value","Reference","Footprint","Part"
+"Value","Reference","Footprint","sku:lcsc"
 "100nF","C1,C3","jlcpcb:C0603","C900003"
 "4.7uF","C2","jlcpcb:C0805","C900004"
 "LED","D1","demo-board:LED_0603","C900008"

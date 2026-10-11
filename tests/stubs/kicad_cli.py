@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 from kifab.kicad.board import read_board
-from kifab.kicad.schematic import find_lcsc, read_schematic, ref_sort_key, sorted_refs
+from kifab.kicad.schematic import read_schematic, ref_sort_key, sorted_refs
 
 EXT = {
     "F.Cu": "gtl",
@@ -78,6 +78,29 @@ def drill(args: list[str], pcb: Path) -> None:
             (out / f"{pcb.stem}-{kind}-drl_map.pdf").write_text("%PDF\n")
 
 
+def ipcd356(args: list[str], pcb: Path) -> None:
+    Path(opt(args, "-o")).write_text(
+        "P  CODE 00\nP  UNITS CUST 0\nP  arrayDim   N\n"
+        + "".join(f"327N/C  {fp.reference}  -1\n" for fp in read_board(pcb).footprints)
+        + "999\n"
+    )
+
+
+def odb(args: list[str], pcb: Path) -> None:
+    """The layout of kicad-cli's uncompressed ODB++ (empty dirs, stamped files)."""
+    out = Path(opt(args, "-o"))
+    for d in ("fonts", "input", "matrix", "misc", "symbols", "user", "wheels"):
+        (out / d).mkdir(parents=True, exist_ok=True)
+    (out / "misc" / "info").write_text(
+        "JOB_NAME=job\nUNITS=MM\nCREATION_DATE=20261010.195502\n"
+        "SAVE_DATE=20261010.195502\nSAVE_APP=KiCad EDA 10.0.6\n"
+    )
+    (out / "matrix" / "matrix").write_text("STEP {\nNAME=PCB\n}\n")
+    eda = out / "steps" / "pcb" / "eda"
+    eda.mkdir(parents=True)
+    (eda / "data").write_text("# 2026-10-10T19:55:02\nUNITS=MM\n")
+
+
 def pos(args: list[str], pcb: Path) -> None:
     board = read_board(pcb)
     smd_only = "--smd-only" in args
@@ -103,24 +126,28 @@ def pos(args: list[str], pcb: Path) -> None:
 
 
 def bom(args: list[str], sch: Path) -> None:
+    """Like kicad-cli: any fields (missing ones are empty), grouped by --group-by."""
     schematic = read_schematic(sch)
     fields = opt(args, "--fields").split(",")
     labels = opt(args, "--labels").split(",")
-    groups: dict[tuple[str, str, str], list[str]] = {}
+    group_by = opt(args, "--group-by").split(",")
+    groups: dict[tuple[str, ...], list[str]] = {}
+    values: dict[tuple[str, ...], dict[str, str]] = {}
     for part in schematic.parts():
         if not part.in_bom or ("--exclude-dnp" in args and part.dnp):
             continue
-        key = (part.value, part.footprint, find_lcsc(part.properties) or "")
+        props = {**part.properties, "Value": part.value, "Footprint": part.footprint}
+        key = tuple(props.get(f, "") for f in group_by)
         groups.setdefault(key, []).append(part.reference)
+        values.setdefault(key, props)
     buf = io.StringIO()
     writer = csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n")
     writer.writerow(labels)
     rows = []
-    for (value, footprint, lcsc), refs in groups.items():
-        values = {"Value": value, "Footprint": footprint, "LCSC": lcsc}
+    for key, refs in groups.items():
         refs = sorted_refs(refs)
-        values["Reference"] = ",".join(refs)
-        rows.append((refs[0], [values.get(f, "") for f in fields]))
+        props = {**values[key], "Reference": ",".join(refs)}
+        rows.append((refs[0], [props.get(f, "") for f in fields]))
     for _, row in sorted(rows, key=lambda r: ref_sort_key(r[0])):
         writer.writerow(row)
     Path(opt(args, "-o")).write_text(buf.getvalue(), encoding="utf-8")
@@ -176,6 +203,10 @@ def main() -> int:
         gerbers(args, target)
     elif cmd == "pcb export drill":
         drill(args, target)
+    elif cmd == "pcb export ipcd356":
+        ipcd356(args, target)
+    elif cmd == "pcb export odb":
+        odb(args, target)
     elif cmd == "pcb export pos":
         pos(args, target)
     elif cmd == "sch export bom":

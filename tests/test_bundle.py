@@ -14,6 +14,7 @@ from kifab.core.bundle import BundleOptions, BundleResult, bundle
 from kifab.core.git import GitCli
 from kifab.core.init import init_project
 from kifab.core.issues import Code, Severity
+from kifab.core.partref import PartRef
 from kifab.core.manufacturing import (
     Bom,
     BomLine,
@@ -48,6 +49,10 @@ def stub(kicad_cli_stub: str, monkeypatch: pytest.MonkeyPatch) -> pytest.MonkeyP
     return monkeypatch
 
 
+def lcsc(number: str) -> PartRef:
+    return PartRef.with_sku("lcsc", number)
+
+
 def run(project_dir: Path, **options: Any) -> BundleResult:
     return bundle(Project.open(project_dir), BundleOptions(**options))
 
@@ -76,9 +81,9 @@ def test_golden_demo(stub: pytest.MonkeyPatch, demo_copy: Path) -> None:
         "DRC",
         "gerbers",
         "drill",
-        "zip",
         "BOM",
         "placement",
+        "zip",
         "report",
     ]
     # the zip holds gerbers, drill and job file, with normalised time stamps
@@ -324,8 +329,8 @@ def test_deterministic_zip() -> None:
 def test_jlcpcb_formats() -> None:
     bom = Bom(
         (
-            BomLine("4.7uF", ("C1", "C5"), "jlcpcb:C0805", "C900004"),
-            BomLine("a,b", ("R1",), "f", ""),
+            BomLine("4.7uF", ("C1", "C5"), "jlcpcb:C0805", lcsc("C900004")),
+            BomLine("a,b", ("R1",), "f", lcsc("")),
         )
     )
     assert bom_csv(bom) == (
@@ -345,7 +350,7 @@ def test_jlcpcb_formats() -> None:
         "R10,0.0000mm,0.0000mm,Bottom,90",
     ]
     assert bom.without({"C1", "R1"}).lines == (
-        BomLine("4.7uF", ("C5",), "jlcpcb:C0805", "C900004"),
+        BomLine("4.7uF", ("C5",), "jlcpcb:C0805", lcsc("C900004")),
     )
 
 

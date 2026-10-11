@@ -6,13 +6,17 @@ import csv
 import io
 from dataclasses import dataclass
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
 
+from kifab.core.partref import FieldSpec, PartRef, field_specs
 from kifab.kicad.board import Side
 from kifab.kicad.schematic import sorted_refs
 
 #: Column labels kifab asks kicad-cli for; fab plugins map them to their format.
-BOM_VALUE, BOM_REFS, BOM_FOOTPRINT, BOM_PART = "Value", "Reference", "Footprint", "Part"
+#: The part's columns are labelled with :class:`kifab.core.partref.FieldSpec`
+#: keys (``mpn``, ``manufacturer``, ``sku:lcsc``).
+BOM_VALUE, BOM_REFS, BOM_FOOTPRINT = "Value", "Reference", "Footprint"
 
 
 @dataclass(frozen=True)
@@ -20,7 +24,7 @@ class BomLine:
     value: str
     references: tuple[str, ...]
     footprint: str
-    part_number: str  # the fab's part number (e.g. LCSC), "" when missing
+    part: PartRef = PartRef()  # MPN, manufacturer, supplier numbers
 
 
 @dataclass(frozen=True)
@@ -37,9 +41,7 @@ class Bom:
         for line in self.lines:
             kept = tuple(r for r in line.references if r not in refs)
             if kept:
-                lines.append(
-                    BomLine(line.value, kept, line.footprint, line.part_number)
-                )
+                lines.append(BomLine(line.value, kept, line.footprint, line.part))
         return Bom(tuple(lines))
 
 
@@ -52,6 +54,7 @@ class PlacedPart:
     y: float
     rotation: float  # degrees, as KiCad exports it
     side: Side
+    through_hole: bool = False  # not in KiCad's SMD-only position export
 
 
 @dataclass(frozen=True)
@@ -73,6 +76,13 @@ class FileArtifact:
     data: bytes
 
 
+class ExtraOutput(Enum):
+    """Outputs a fab can ask the bundle for besides gerbers and drill files."""
+
+    IPC_D356 = "ipc-d-356"  # netlist for the electrical test
+    ODB = "odb++"  # ODB++ directory
+
+
 @dataclass(frozen=True)
 class BuildOutputs:
     """What kicad-cli produced for one board, in the staging directory."""
@@ -83,6 +93,17 @@ class BuildOutputs:
     job: Path | None
     others: tuple[Path, ...]  # drill maps etc.
     stamp: datetime | None = None  # the reproducible time stamp of this build
+    netlist: Path | None = None  # IPC-D-356, if the fab asked for it
+    odb: Path | None = None  # ODB++ directory (time stamps normalised), if asked
+
+
+@dataclass(frozen=True)
+class OrderFiles:
+    """The assembly data of a bundle: BOM, placement and the fab's files of them."""
+
+    bom: Bom
+    placement: Placement
+    files: tuple[FileArtifact, ...]  # the fab's BOM and placement exports
 
 
 # ---------------------------------------------------------------- parsing
@@ -96,8 +117,13 @@ def _rows(text: str) -> list[dict[str, str]]:
     return list(csv.DictReader(io.StringIO(text)))
 
 
-def parse_kicad_bom(text: str) -> Bom:
-    """``kicad-cli sch export bom`` CSV made with kifab's labels -> :class:`Bom`."""
+def parse_kicad_bom(text: str, specs: tuple[FieldSpec, ...] | None = None) -> Bom:
+    """``kicad-cli sch export bom`` CSV made with kifab's labels -> :class:`Bom`.
+
+    Part columns are labelled with the keys of ``specs`` (default: every known
+    :class:`FieldSpec`), whose parsers clean the values.
+    """
+    specs = field_specs() if specs is None else specs
     lines = []
     for row in _rows(text):
         try:
@@ -107,7 +133,9 @@ def parse_kicad_bom(text: str) -> Bom:
                     value=row[BOM_VALUE],
                     references=tuple(sorted_refs(refs)),
                     footprint=row[BOM_FOOTPRINT],
-                    part_number=row.get(BOM_PART, "").strip(),
+                    part=PartRef.from_values(
+                        {s.key: s.parse(row.get(s.key) or "") or "" for s in specs}
+                    ),
                 )
             )
         except KeyError as exc:

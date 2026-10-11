@@ -2,45 +2,45 @@
   (version 20211014)
   (generator https://github.com/uPesy/easyeda2kicad.py)
 
-  (symbol "KF-C100N-0603"
+  (symbol "KF-R330-0603"
     (in_bom yes)
     (on_board yes)
     (property
       "Reference"
-      "C"
+      "R"
       (id 0)
       (at 0 5.08 0)
       (effects (font (size 1.27 1.27) ) )
     )
     (property
       "Value"
-      "KF-C100N-0603"
+      "KF-R330-0603"
       (id 1)
       (at 0 -5.08 0)
       (effects (font (size 1.27 1.27) ) )
     )
     (property
       "Footprint"
-      "jlcpcb:C0603"
+      "easyeda:R0603"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
     (property
       "Datasheet"
-      "https://example.invalid/datasheet/C900003.pdf"
+      "https://example.invalid/datasheet/C900001.pdf"
       (id 3)
       (at 0 -10.16 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
     (property
       "LCSC Part"
-      "C900003"
+      "C900001"
       (id 5)
       (at 0 -12.7 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
-    (symbol "KF-C100N-0603_0_1"
+    (symbol "KF-R330-0603_0_1"
       (rectangle
         (start -2.54 2.54)
         (end 2.54 -2.54)

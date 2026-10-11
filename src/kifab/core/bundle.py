@@ -9,6 +9,8 @@ failed run leaves the previous results untouched.
 
 from __future__ import annotations
 
+import dataclasses
+
 import hashlib
 import json
 import re
@@ -35,12 +37,13 @@ from kifab.core.issues import (
 from kifab.core.orderability import AvailabilityReport, check_availability
 from kifab.core.manufacturing import (
     BOM_FOOTPRINT,
-    BOM_PART,
     BOM_REFS,
     BOM_VALUE,
     Bom,
     BuildOutputs,
+    ExtraOutput,
     FileArtifact,
+    OrderFiles,
     ParseError,
     Placement,
     parse_kicad_bom,
@@ -49,6 +52,8 @@ from kifab.core.manufacturing import (
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
 from kifab.core.reproducible import normalize_timestamps, source_date
+from kifab.core.partref import FieldSpec, field_specs, sku_key
+from kifab.core.sourcing import Sourcing, sourcing_for
 from kifab.fabs.base import Fab
 from kifab.kicad import sexpr
 from kifab.kicad.board import Board, read_board
@@ -135,15 +140,39 @@ def input_hashes(project: Project, schematic: Schematic | None) -> dict[str, str
     }
 
 
-def _part_number_field(schematic: Schematic, fab: Fab) -> str:
-    """The field name the schematic actually uses for the fab's part numbers."""
-    wanted = {f.lower() for f in fab.part_number_fields}
-    used: Counter[str] = Counter()
-    for part in schematic.parts():
-        for name, value in part.properties.items():
-            if name.lower() in wanted and value.strip():
-                used[name] += 1
-    return used.most_common(1)[0][0] if used else fab.part_number_fields[0]
+def bom_columns(
+    schematic: Schematic, sourcing: Sourcing
+) -> tuple[BomColumns, tuple[FieldSpec, ...]]:
+    """The kicad-cli BOM columns for the part fields the schematic uses.
+
+    Each :class:`FieldSpec` (MPN, manufacturer, supplier numbers) becomes a
+    column under its key, read from the field name the schematic uses most;
+    the configured suppliers' number columns are always there.
+    """
+    always = {sku_key(s.sku_kind) for s in sourcing.suppliers}
+    fields: list[str] = []
+    specs: list[FieldSpec] = []
+    for spec in field_specs():
+        used: Counter[str] = Counter(
+            name
+            for part in schematic.parts()
+            if (name := spec.field_name(part.properties))
+        )
+        if used:
+            fields.append(used.most_common(1)[0][0])
+        elif spec.key in always:
+            fields.append(spec.names[0])
+        else:
+            continue
+        specs.append(spec)
+    return (
+        BomColumns(
+            fields=("Value", "Reference", "Footprint", *fields),
+            labels=(BOM_VALUE, BOM_REFS, BOM_FOOTPRINT, *(s.key for s in specs)),
+            group_by=("Value", "Footprint", *fields),
+        ),
+        tuple(specs),
+    )
 
 
 class _Run:
@@ -184,6 +213,9 @@ class _Run:
     def tool(self, what: str, exc: Exception) -> StepFailed:
         code = Code.TOOL_MISSING if isinstance(exc, ToolMissing) else Code.TOOL_FAILED
         return self.fail(error(code, f"{what}: {exc}"))
+
+    def sourcing(self) -> Sourcing:
+        return self.project.sourcing() or sourcing_for(self.fab)
 
     # ------------------------------------------------------------ steps
 
@@ -313,11 +345,33 @@ class _Run:
         self.reporter.step("drill", ", ".join(kinds))
         return moved
 
-    def normalize(self, files: list[Path]) -> None:
+    def extra_outputs(self, tmp: Path) -> tuple[Path | None, Path | None]:
+        """The IPC-D-356 netlist and ODB++ directory, if the fab wants them."""
+        wanted = self.fab.extra_outputs
+        pcb = self.project.kicad.pcb
+        netlist = odb = None
+        try:
+            if ExtraOutput.IPC_D356 in wanted:
+                netlist = tmp / "netlist.ipc"
+                self.cli.export_ipcd356(pcb, netlist)
+                self.reporter.step("netlist", "IPC-D-356")
+            if ExtraOutput.ODB in wanted:
+                odb = tmp / "odb"
+                self.cli.export_odb(pcb, odb)
+                # misc/info and steps/*/eda/data carry the export time
+                stamped = [odb / "misc" / "info", *odb.glob("steps/*/eda/data")]
+                self.normalize([p for p in stamped if p.is_file()], any_name=True)
+                self.reporter.step("ODB++", "exported")
+        except (ToolMissing, ToolFailed) as exc:
+            raise self.tool("export for the fab", exc)
+        return netlist, odb
+
+    def normalize(self, files: list[Path], *, any_name: bool = False) -> None:
+        """Set the plot time in text outputs to the build's stamp."""
         if self.stamp is None:
             return
         for f in files:
-            if TEXT_OUTPUTS.search(f.name):
+            if any_name or TEXT_OUTPUTS.search(f.name):
                 text = f.read_text(encoding="utf-8")
                 new = normalize_timestamps(text, self.stamp)
                 if new != text:
@@ -326,24 +380,25 @@ class _Run:
     def bom_and_placement(self, tmp: Path) -> tuple[Bom, Placement]:
         assert self.schematic is not None
         kicad = self.project.kicad
-        pn_field = _part_number_field(self.schematic, self.fab)
-        columns = BomColumns(
-            fields=("Value", "Reference", "Footprint", pn_field),
-            labels=(BOM_VALUE, BOM_REFS, BOM_FOOTPRINT, BOM_PART),
-            group_by=("Value", "Footprint", pn_field),
-        )
+        columns, specs = bom_columns(self.schematic, self.sourcing())
         raw_bom, pos_all, pos_smd = (tmp / n for n in ("bom.csv", "all.csv", "smd.csv"))
         try:
             self.cli.export_bom(kicad.sch, raw_bom, columns)
             self.cli.export_pos(kicad.pcb, pos_all, smd_only=False)
             self.cli.export_pos(kicad.pcb, pos_smd, smd_only=True)
-            bom = parse_kicad_bom(raw_bom.read_text(encoding="utf-8"))
+            bom = parse_kicad_bom(raw_bom.read_text(encoding="utf-8"), specs)
             every = parse_kicad_pos(pos_all.read_text(encoding="utf-8"))
             smd = parse_kicad_pos(pos_smd.read_text(encoding="utf-8"))
         except (ToolMissing, ToolFailed, ParseError, OSError) as exc:
             raise self.tool("BOM/placement export", exc)
 
         through_hole = every.references() - smd.references()
+        every = Placement(
+            tuple(
+                dataclasses.replace(p, through_hole=p.reference in through_hole)
+                for p in every.parts
+            )
+        )
         assemble_tht = self.options.assemble_through_hole
         if assemble_tht is None:
             config = self.project.config
@@ -375,7 +430,7 @@ class _Run:
             self.add(issue)
         if self.options.stock:
             report = check_availability(
-                bom, self.fab.catalog(), boards=self.options.boards
+                bom, self.sourcing().supplier_catalogs(), boards=self.options.boards
             )
             self.result.availability = report
             for issue in report.issues:
@@ -522,6 +577,7 @@ class _Run:
                 plotted = self.gerbers(stage, plot)
                 plotted += self.drill(stage, plot)
                 self.normalize(plotted)
+                netlist, odb = self.extra_outputs(tmp)
                 built = BuildOutputs(
                     board_name=self.name,
                     gerbers=tuple(p for p in plotted if GERBER_SUFFIX.search(p.name)),
@@ -529,14 +585,20 @@ class _Run:
                     job=next((p for p in plotted if p.suffix == ".gbrjob"), None),
                     others=tuple(p for p in plotted if p.suffix == ".pdf"),
                     stamp=self.stamp,
+                    netlist=netlist,
+                    odb=odb,
                 )
-                uploads = [self.write(stage, a) for a in self.fab.bundle_files(built)]
-                self.reporter.step("zip", ", ".join(p.name for p in uploads))
                 bom, placement = self.bom_and_placement(tmp)
-                uploads.append(self.write(stage, self.fab.export_bom(bom, self.name)))
-                uploads.append(
-                    self.write(stage, self.fab.export_placement(placement, self.name))
+                order_files = (
+                    self.fab.export_bom(bom, self.name),
+                    self.fab.export_placement(placement, self.name),
                 )
+                order = OrderFiles(bom, placement, order_files)
+                uploads = [
+                    self.write(stage, a) for a in self.fab.bundle_files(built, order)
+                ]
+                self.reporter.step("zip", ", ".join(p.name for p in uploads))
+                uploads += [self.write(stage, a) for a in order_files]
                 report = self.write(
                     stage,
                     FileArtifact(

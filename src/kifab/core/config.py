@@ -37,17 +37,34 @@ class BundleConfig:
 
 
 @dataclass(frozen=True)
+class PartsConfig:
+    """Where parts come from; empty values mean the fab's defaults."""
+
+    #: Suppliers for search, stock and price, preferred first.
+    suppliers: tuple[str, ...] = ()
+    #: Where vendored symbols, footprints and 3D models come from.
+    library_source: str = ""
+    #: Nickname of the project library parts are vendored into (``lib/<name>/``).
+    library: str = ""
+
+    def is_default(self) -> bool:
+        return self == PartsConfig()
+
+
+@dataclass(frozen=True)
 class Config:
     fab: str
     project: str  # KiCad project name (the .kicad_pro stem)
     board: BoardConfig = field(default_factory=BoardConfig)
     rules: RulesConfig = field(default_factory=RulesConfig)
     bundle: BundleConfig = field(default_factory=BundleConfig)
+    parts: PartsConfig = field(default_factory=PartsConfig)
 
     def rule_options(self) -> RuleOptions:
         return RuleOptions(
             layers=self.board.layers,
             relax_fab_footprint_silk=self.rules.relax_fab_footprint_silk,
+            library=self.parts.library,
         )
 
     def dumps(self) -> str:
@@ -67,6 +84,15 @@ class Config:
                 {"assemble_through_hole": self.bundle.assemble_through_hole},
             ),
         ]
+        if not self.parts.is_default():
+            values: dict[str, toml.Value] = {}
+            if self.parts.suppliers:
+                values["suppliers"] = list(self.parts.suppliers)
+            if self.parts.library_source:
+                values["library_source"] = self.parts.library_source
+            if self.parts.library:
+                values["library"] = self.parts.library
+            parts.append(toml.table("parts", values))
         return "\n".join(parts)
 
     def save(self, directory: Path) -> Path:
@@ -102,7 +128,12 @@ def parse_config(text: str) -> Config:
         raise ConfigError(f'{CONFIG_NAME} must name the fab (fab = "jlcpcb")')
     if not project:
         raise ConfigError(f"{CONFIG_NAME} must name the KiCad project (project = ...)")
-    board, rules, bundle = (_section(data, n) for n in ("board", "rules", "bundle"))
+    board, rules, bundle, parts = (
+        _section(data, n) for n in ("board", "rules", "bundle", "parts")
+    )
+    suppliers = _get(parts, "suppliers", list, [], "parts.")
+    if not all(isinstance(s, str) and s for s in suppliers):
+        raise ConfigError("parts.suppliers must be a list of supplier names")
     layers = _get(board, "layers", int, 2, "board.")
     if layers not in SUPPORTED_LAYERS:
         raise ConfigError(
@@ -122,6 +153,11 @@ def parse_config(text: str) -> Config:
             assemble_through_hole=_get(
                 bundle, "assemble_through_hole", bool, False, "bundle."
             ),
+        ),
+        parts=PartsConfig(
+            suppliers=tuple(suppliers),
+            library_source=_get(parts, "library_source", str, "", "parts."),
+            library=_get(parts, "library", str, "", "parts."),
         ),
     )
 

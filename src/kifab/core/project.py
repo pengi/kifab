@@ -8,6 +8,7 @@ from datetime import datetime
 from pathlib import Path
 
 from kifab.core.config import CONFIG_NAME, Config, load_config
+from kifab.core.sourcing import Sourcing, sourcing_for
 from kifab.fabs.base import Fab, get_fab
 from kifab.fabs.rules import DesignRuleProfile
 from kifab.kicad.project import InputError, KicadProject, locked_files
@@ -49,6 +50,19 @@ class Project:
     def fab(self) -> Fab | None:
         return get_fab(self.config.fab) if self.config else None
 
+    def sourcing(self) -> Sourcing | None:
+        """Fab, suppliers and library source (``None`` without ``kifab.toml``)."""
+        if self.config is None:
+            return None
+        return sourcing_for(get_fab(self.config.fab), self.config.parts)
+
+    @property
+    def library_name(self) -> str | None:
+        """Nickname of the vendored parts library (``None`` without a config)."""
+        if self.config is None:
+            return None
+        return self.config.parts.library or get_fab(self.config.fab).library_name
+
     def design_rules(self) -> DesignRuleProfile | None:
         if self.config is None:
             return None
@@ -57,8 +71,8 @@ class Project:
         return fab.design_rules(profile, self.config.rule_options())
 
     def fab_library_dir(self) -> Path | None:
-        fab = self.fab()
-        return self.lib_dir / fab.library_name if fab else None
+        name = self.library_name
+        return self.lib_dir / name if name else None
 
     @classmethod
     def open(cls, path: Path) -> Project:

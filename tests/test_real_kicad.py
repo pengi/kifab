@@ -48,12 +48,14 @@ def test_version(real_cli: list[str]) -> None:
     assert KicadCli().version().startswith("10.")
 
 
-@pytest.mark.parametrize("layers", [2, 4])
+@pytest.mark.parametrize(
+    "fab, layers", [("jlcpcb", 2), ("jlcpcb", 4), ("aisler", 2), ("aisler", 4)]
+)
 def test_new_project_bundles_clean(
-    real_cli: list[str], tmp_path: Path, layers: int
+    real_cli: list[str], tmp_path: Path, fab: str, layers: int
 ) -> None:
     project = init_project(
-        tmp_path / "p", "p", "jlcpcb", layers=layers, git=GitCli()
+        tmp_path / "p", "p", fab, layers=layers, git=GitCli()
     ).project
     commit_all(project.directory)
     result = bundle(project, git=GitCli())
@@ -94,7 +96,7 @@ def test_exports_match_the_format_samples(
         tmp_path / "bom.csv",
         BomColumns(
             ("Value", "Reference", "Footprint", "LCSC"),
-            ("Value", "Reference", "Footprint", "Part"),
+            ("Value", "Reference", "Footprint", "sku:lcsc"),
             ("Value", "Footprint", "LCSC"),
         ),
     )
@@ -150,12 +152,12 @@ def test_vendored_library_is_readable(
 def test_kicad_reads_the_description(
     real_cli: list[str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from kifab.fabs.base import get_fab
+    from kifab.suppliers.base import get_supplier
     from kifab.kicad.symbol_lib import read_symbol_library
 
     monkeypatch.setenv("KIFAB_OFFLINE", str(FIXTURES))
     project = init_project(tmp_path / "d", "d", "jlcpcb").project
-    vendor_part(project, "C900001", catalog=get_fab("jlcpcb").catalog())
+    vendor_part(project, "C900001", catalog=get_supplier("jlcpcb").catalog())
     lib = project.directory / "lib/jlcpcb/jlcpcb.kicad_sym"
     assert "ki_description" in lib.read_text()  # the file's 20211014 syntax
     upgraded = tmp_path / "upgraded.kicad_sym"

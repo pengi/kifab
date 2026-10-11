@@ -44,7 +44,10 @@ from kifab.core.parts import LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
 from kifab.core.quick import QuickResult, format_value, parse_quick, quick_search
 from kifab.core.reporter import Reporter
-from kifab.fabs.base import Catalog, Fab, PartSource, get_fab
+from kifab.core.sourcing import Sourcing, sourcing_for
+from kifab.fabs.base import get_fab
+from kifab.libraries.base import PartSource
+from kifab.suppliers.base import Catalog
 from kifab.gui.detail import PartDetail
 from kifab.gui.issues import SORT_ROLE, Index
 from kifab.gui.jobs import Job, Task
@@ -442,16 +445,16 @@ class PartsPanel(QWidget):
 
     # ------------------------------------------------------------ state
 
-    def _fab(self) -> Fab:
+    def _sourcing(self) -> Sourcing:
         project = self._project()
-        fab = project.fab() if project else None
-        return fab or get_fab("jlcpcb")
+        sourcing = project.sourcing() if project else None
+        return sourcing or sourcing_for(get_fab("jlcpcb"))
 
     def _catalog(self) -> Catalog:
-        return self._fab().catalog()
+        return self._sourcing().catalog()
 
     def _part_source(self) -> PartSource:
-        return self._fab().part_source()
+        return self._sourcing().part_source()
 
     def refresh(self) -> None:
         """Reload the project library and update buttons and "in project" marks."""
@@ -771,7 +774,6 @@ class PartsPanel(QWidget):
             part_id = row.id
         else:
             return None
-        description = hit.description if hit is not None else ""
         catalog = None if hit is not None else self._catalog()
 
         def done(result: object) -> None:
@@ -785,9 +787,7 @@ class PartsPanel(QWidget):
 
         return self._run_job(
             f"add {part_id}",
-            lambda _r: vendor_part(
-                project, part_id, description=description, catalog=catalog
-            ),
+            lambda _r: vendor_part(project, part_id, hit=hit, catalog=catalog),
             done,
         )
 
@@ -798,7 +798,10 @@ class PartsPanel(QWidget):
 
         def task(reporter: Reporter) -> object:
             return sync_parts(
-                project, delay=0.5, reporter=reporter, catalog=self._catalog()
+                project,
+                delay=0.5,
+                reporter=reporter,
+                catalog=self._sourcing().library_catalog(),
             )
 
         def done(result: object) -> None:

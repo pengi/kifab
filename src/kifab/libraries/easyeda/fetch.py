@@ -24,12 +24,15 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
-from kifab.fabs.base import FetchedPart, FetchError, PartSource
+from kifab.libraries.base import FetchedPart, FetchError, PartSource
 
 ENV_COMMAND = "KIFAB_EASYEDA2KICAD"
-OUTPUT_NAME = "jlcpcb"  # easyeda2kicad's library name: footprints become jlcpcb:<name>
+#: easyeda2kicad's output library name, in a scratch directory: its symbols'
+#: Footprint fields say easyeda:<name>; vendoring renames files and fields to
+#: the project's library.
+OUTPUT_NAME = "easyeda"
 _VERSION = re.compile(r"easyeda2kicad(?:\.py)?\s+v?(\d+(?:\.\d+)+)", re.IGNORECASE)
-_LCSC = re.compile(r"^C\d+$")
+LCSC_ID = re.compile(r"^C\d+$")
 
 
 def _collect(part_id: str, out: Path, log: str) -> FetchedPart:
@@ -118,7 +121,7 @@ def retryable(log: str) -> bool:
 
 def _check_id(part_id: str) -> str:
     wanted = part_id.strip().upper()
-    if not _LCSC.match(wanted):
+    if not LCSC_ID.match(wanted):
         raise FetchError(f"{part_id!r} is not an LCSC part number (C123456)")
     return wanted
 
@@ -133,7 +136,7 @@ class _Failed(Exception):
 
 @dataclass
 class Easyeda2kicad:
-    """:class:`kifab.fabs.base.PartSource` running the easyeda2kicad tool."""
+    """:class:`kifab.libraries.base.PartSource` running the easyeda2kicad tool."""
 
     command: tuple[str, ...] = ()
     timeout: float = 120.0
@@ -245,6 +248,8 @@ class CachedPartSource:
 
     def _fresh(self, entry: Path) -> bool:
         stamp = entry / COMPLETE
+        if not (entry / f"{OUTPUT_NAME}.pretty").is_dir():
+            return False  # older cache layout (jlcpcb.*): fetch again
         return stamp.is_file() and self.now() - stamp.stat().st_mtime < self.max_age
 
     def fetch(self, part_id: str, workdir: Path) -> FetchedPart:

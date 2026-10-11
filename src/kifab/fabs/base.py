@@ -8,73 +8,26 @@ runs from a source tree without being installed.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 from importlib.metadata import entry_points
-from pathlib import Path
-from typing import Protocol, runtime_checkable
 
 from kifab.core.issues import Issue
-from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
-from kifab.core.net import HttpClient
-from kifab.core.parts import PartHit, SearchPage, SearchSort
+from kifab.core.manufacturing import (
+    Bom,
+    BuildOutputs,
+    ExtraOutput,
+    FileArtifact,
+    OrderFiles,
+    Placement,
+)
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 
 ENTRY_POINT_GROUP = "kifab.fabs"
+#: The fab offered first (and used where no project names one).
+DEFAULT_FAB = "jlcpcb"
 
 
 class UnknownFab(Exception):
     pass
-
-
-class FetchError(Exception):
-    """A part's library data could not be fetched."""
-
-
-@dataclass(frozen=True)
-class FetchedPart:
-    """What a fetch produced, in a scratch directory (not yet vendored)."""
-
-    part_id: str
-    symbol_library: Path | None  # a .kicad_sym with the part's symbol(s)
-    footprints: tuple[Path, ...]  # .kicad_mod files
-    models: tuple[Path, ...]  # 3D models (.wrl, .step)
-    log: str
-    source: str  # tool and version, recorded in kifab.lock
-
-
-class PartSource(Protocol):
-    def fetch(self, part_id: str, workdir: Path) -> FetchedPart:
-        """Fetch ``part_id`` into ``workdir``; raise :class:`FetchError`."""
-
-
-@runtime_checkable
-class CachingPartSource(PartSource, Protocol):
-    """A part source that keeps fetched parts; ``forget`` forces a fresh fetch."""
-
-    def forget(self, part_id: str) -> None: ...
-
-
-class Catalog(Protocol):
-    """The fab's parts catalogue (online; ``$KIFAB_OFFLINE`` serves fixtures)."""
-
-    def search(
-        self,
-        query: str,
-        *,
-        page: int = 1,
-        page_size: int = 10,
-        basic_only: bool = False,
-        sort: SearchSort = SearchSort.RELEVANCE,
-    ) -> SearchPage: ...
-
-    def lookup(self, part_id: str) -> PartHit | None:
-        """The part with exactly this number, or ``None`` if the fab has none."""
-
-    def image(self, url: str) -> bytes:
-        """A product image of a hit (one of :attr:`PartHit.images`).
-
-        Raises :class:`kifab.core.parts.CatalogError`.
-        """
 
 
 class Fab(ABC):
@@ -84,10 +37,18 @@ class Fab(ABC):
     name: str = ""
     #: Human readable name.
     title: str = ""
+    #: Suppliers a project uses unless ``kifab.toml`` names others (first is
+    #: preferred).
+    default_suppliers: tuple[str, ...] = ()
+    #: Library source a project uses unless ``kifab.toml`` names another.
+    default_library_source: str = "easyeda"
 
     @property
     def library_name(self) -> str:
-        """Nickname of the project library vendored parts go into (``lib/<name>/``)."""
+        """Default nickname of the vendored parts library (``lib/<name>/``).
+
+        A project can name another (``[parts] library`` in ``kifab.toml``).
+        """
         return self.name
 
     @abstractmethod
@@ -97,11 +58,6 @@ class Fab(ABC):
     @abstractmethod
     def design_rules(self, profile: str, options: RuleOptions) -> DesignRuleProfile:
         """The capabilities as KiCad constraints and custom rules."""
-
-    @property
-    @abstractmethod
-    def part_number_fields(self) -> tuple[str, ...]:
-        """Schematic field names that hold this fab's part number (first preferred)."""
 
     @abstractmethod
     def check_parts(self, bom: Bom) -> list[Issue]:
@@ -115,23 +71,25 @@ class Fab(ABC):
         self, placement: Placement, board_name: str
     ) -> FileArtifact: ...
 
-    @abstractmethod
-    def catalog(self, client: HttpClient | None = None) -> Catalog:
-        """The parts catalogue; ``client`` replaces the default HTTP client."""
+    #: Outputs the fab's upload files need besides gerbers and drill files.
+    extra_outputs: frozenset[ExtraOutput] = frozenset()
 
     @abstractmethod
-    def part_source(self) -> PartSource:
-        """Where symbols, footprints and 3D models of the fab's parts come from."""
+    def bundle_files(
+        self, built: BuildOutputs, order: OrderFiles
+    ) -> list[FileArtifact]:
+        """Files to upload made from the build: e.g. the zip uploaded as "PCB".
 
-    @abstractmethod
-    def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:
-        """Files made from the plotted outputs, e.g. the zip uploaded as "PCB"."""
+        ``order`` has the BOM and placement, and the fab's files of them
+        (they are written to the bundle as well).
+        """
 
 
 def _builtin() -> dict[str, type[Fab]]:
+    from kifab.fabs.aisler import AislerFab
     from kifab.fabs.jlcpcb import JlcpcbFab
 
-    return {JlcpcbFab.name: JlcpcbFab}
+    return {JlcpcbFab.name: JlcpcbFab, AislerFab.name: AislerFab}
 
 
 def available_fabs() -> dict[str, type[Fab]]:

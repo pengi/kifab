@@ -1,7 +1,7 @@
 # kifab
 
 Manage KiCad projects in a git-friendly way, with the fabrication service
-(initially JLCPCB) as a first-class part of the project.
+(JLCPCB or AISLER) as a first-class part of the project.
 
 KiCad stays the editor; kifab manages everything around it: the fab's
 libraries (vendored into the project), the fab's design rules (written into the
@@ -27,13 +27,13 @@ Development:
 
 ## Commands
 
-    kifab init <name> <fab> [--layers N] [--no-git]   # new project (fab: jlcpcb)
+    kifab init <name> <fab> [--layers N] [--no-git]   # new project (fab: jlcpcb, aisler)
     kifab rules apply [PROJECT]                       # write the fab's design rules
     kifab check [PROJECT] [--json] [--strict]         # self-contained? rules? git?
     kifab bundle [PROJECT] [--json] [--skip-drc]      # all manufacturing files -> build/
     kifab ci init [PROJECT]                           # GitHub release workflow (tag v*)
     kifab order record [PROJECT]                      # archive what you ordered
-    kifab component search TEXT [--basic] [--add]     # find parts (JLCPCB catalogue)
+    kifab component search TEXT [--basic] [--add]     # find parts (the project's supplier)
     kifab component search R 4k7 0603 [-a]            # passives by value; -a: E24 values +/-10%
     kifab component search TEXT --sort stock|price    # the fab sorts before it pages
     kifab component add ID...                         # vendor symbol+footprint+3D into lib/
@@ -50,6 +50,37 @@ with power/ground symbols and an empty `jlcpcb` library), the fab's design rules
 in `demo.kicad_dru` and the board-setup constraints in `demo.kicad_pro`, a
 `.gitignore` with a kifab-managed block, and runs `git init` (unless the
 directory is already inside a repository).
+
+Parts have three independent roles, each a plugin: the **fab** (design rules,
+order files), the **suppliers** (search, stock, price) and the **library
+source** (symbols, footprints and 3D models). The fab brings defaults (JLCPCB:
+supplier `jlcpcb`, library source `easyeda`, library `jlcpcb`); a `[parts]`
+table in `kifab.toml` overrides them:
+
+    [parts]
+    suppliers = ["jlcpcb"]        # preferred first; searches go to the first
+    library_source = "easyeda"    # where vendored parts come from
+    library = "jlcpcb"            # nickname of lib/<name>/ (keep it once used)
+
+`kifab component search --supplier NAME` searches another supplier once.
+
+Fabs: **jlcpcb** (profile `standard`; BOM by LCSC number) and **aisler**
+(profiles `hasl`, the default, and `enig` for the finer limits ENIG allows;
+supplier `lcsc` by default; BOM by MPN with manufacturer and supplier numbers,
+which AISLER's BOM import matches and asks you to confirm; placement as KiCad
+writes it; `kifab bundle` writes `<name>_aisler.zip` to upload, laid out like the zip
+AISLER's own KiCad plugin uploads: gerbers, drill files, an IPC-D-356 netlist,
+`components.json` (parts with position, MPN and package) and the board as
+ODB++; the BOM and placement CSVs next to it are for reading). Suppliers: **jlcpcb** (JLCPCB's parts library: Basic/Extended,
+JLCPCB's stock) and **lcsc** (the same catalogue by LCSC number, without
+JLCPCB's part classes; its stock is JLCPCB's, an approximation of LCSC's).
+The stock check (`component check`, `bundle --stock`) asks the suppliers in
+order, by their own number when the symbol has one, else by MPN, and takes the
+first with enough stock. Vendored symbols get `MPN` and `Manufacturer` fields
+from the catalogue, so fabs that buy from distributors know what to order. `kifab component add`
+also takes an MPN (`kifab component add KF-R330-0603`), and `component sync`
+vendors symbols that only carry an `MPN` field: both look the MPN up at a
+supplier selling by the library source's numbers (LCSC numbers for EasyEDA).
 
 `kifab rules apply` (KiCad must be closed) rewrites the kifab block of the
 `.kicad_dru` (your own rules after it are kept) and raises board-setup

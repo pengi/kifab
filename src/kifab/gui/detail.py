@@ -33,7 +33,8 @@ from PySide6.QtWidgets import (
 from kifab.core.inventory import LibraryPart
 from kifab.core.parts import LibraryType, PartHit
 from kifab.core.project import Project
-from kifab.fabs.base import Catalog, PartSource
+from kifab.libraries.base import PartSource
+from kifab.suppliers.base import Catalog
 from kifab.gui.jobs import Job, Task
 from kifab.gui.previews import (
     Preview,

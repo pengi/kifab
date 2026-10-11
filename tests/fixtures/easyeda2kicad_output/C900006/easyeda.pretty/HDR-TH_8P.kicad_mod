@@ -19,7 +19,7 @@
 	(pad 6 thru_hole circle (at 5.08 2.54 0) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
 	(pad 7 thru_hole circle (at 7.62 0 0) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
 	(pad 8 thru_hole circle (at 7.62 2.54 0) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask))
-	(model "/tmp/easyeda2kicad-capture/C900006/jlcpcb.3dshapes/HDR-TH_8P.wrl"
+	(model "/tmp/easyeda2kicad-capture/C900006/easyeda.3dshapes/HDR-TH_8P.wrl"
 		(offset (xyz 0 0 0))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

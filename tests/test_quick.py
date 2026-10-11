@@ -9,7 +9,7 @@ from kifab.core.quick import (
     parse_value,
     quick_search,
 )
-from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
+from kifab.suppliers.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from tests.conftest import FIXTURES
 
 R, C, L = PassiveKind.RESISTOR, PassiveKind.CAPACITOR, PassiveKind.INDUCTOR

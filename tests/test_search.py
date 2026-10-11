@@ -11,8 +11,8 @@ import pytest
 from kifab.cli.main import main
 from kifab.core.net import NetError, UrllibClient
 from kifab.core.parts import CatalogError, LibraryType
-from kifab.fabs.base import get_fab
-from kifab.fabs.jlcpcb.search import (
+from kifab.suppliers.base import get_supplier
+from kifab.suppliers.jlcpcb.search import (
     FixtureClient,
     JlcpcbCatalog,
     lookup,
@@ -165,7 +165,7 @@ def test_urllib_client_gzip(local_server: str) -> None:
 
 def test_offline_env_uses_fixtures(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("KIFAB_OFFLINE", str(FIXTURES))
-    hit = get_fab("jlcpcb").catalog().lookup("C900002")
+    hit = get_supplier("jlcpcb").catalog().lookup("C900002")
     assert hit is not None and hit.mpn == "KF-R4K7-0603"
 
 

@@ -8,12 +8,14 @@ from kifab.cli.main import main
 from kifab.core import toml
 from kifab.core.bundle import BundleOptions, bundle
 from kifab.core.issues import Code, Severity
+from kifab.core.partref import PartRef
 from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
 from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
-from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
+from kifab.suppliers.base import Catalog, SupplierCatalog
+from kifab.suppliers.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from tests.conftest import DEMO, EXPECTED, FIXTURES
 from tests.test_bundle import make_project
 
@@ -43,8 +45,22 @@ class FakeCatalog:
             raise CatalogError("offline")
         return self.hits.get(part_id)
 
+    def lookup_mpn(self, mpn: str, manufacturer: str = "") -> PartHit | None:
+        self.calls += 1
+        if self.fail:
+            raise CatalogError("offline")
+        return next((h for h in self.hits.values() if h.mpn == mpn), None)
+
     def image(self, url: str) -> bytes:
         raise CatalogError("no images")
+
+
+def at(catalog: Catalog, name: str = "jlcpcb") -> list[SupplierCatalog]:
+    return [SupplierCatalog(name, name.upper(), "lcsc", catalog)]
+
+
+def lcsc(number: str) -> PartRef:
+    return PartRef.with_sku("lcsc", number)
 
 
 def hit(pn: str, stock: int, kind: LibraryType = LibraryType.BASIC) -> PartHit:
@@ -54,11 +70,11 @@ def hit(pn: str, stock: int, kind: LibraryType = LibraryType.BASIC) -> PartHit:
 def test_rules() -> None:
     bom = Bom(
         (
-            BomLine("a", ("R1", "R2"), "f", "C1"),
-            BomLine("b", ("R3",), "f", "C2"),
-            BomLine("c", ("R4",), "f", "C3"),
-            BomLine("d", ("R5",), "f", "C4"),
-            BomLine("e", ("R6",), "f", ""),  # no part number: not looked up
+            BomLine("a", ("R1", "R2"), "f", lcsc("C1")),
+            BomLine("b", ("R3",), "f", lcsc("C2")),
+            BomLine("c", ("R4",), "f", lcsc("C3")),
+            BomLine("d", ("R5",), "f", lcsc("C4")),
+            BomLine("e", ("R6",), "f", lcsc("")),  # no part number: not looked up
         )
     )
     catalog = FakeCatalog(
@@ -68,7 +84,7 @@ def test_rules() -> None:
             "C3": hit("C3", 25, LibraryType.EXTENDED),
         }
     )
-    report = check_availability(bom, catalog, boards=10)
+    report = check_availability(bom, at(catalog), boards=10)
     by_code = {i.code: i for i in report.issues}
     assert by_code[Code.OUT_OF_STOCK].ref == "R3"  # 4 < 10
     assert by_code[Code.LOW_STOCK].ref == "R4"  # 25 < 3 * 10
@@ -81,9 +97,11 @@ def test_rules() -> None:
 
 
 def test_catalog_failure_stops_lookups() -> None:
-    bom = Bom((BomLine("a", ("R1",), "f", "C1"), BomLine("b", ("R2",), "f", "C2")))
+    bom = Bom(
+        (BomLine("a", ("R1",), "f", lcsc("C1")), BomLine("b", ("R2",), "f", lcsc("C2")))
+    )
     catalog = FakeCatalog({}, fail=True)
-    report = check_availability(bom, catalog)
+    report = check_availability(bom, at(catalog))
     assert [i.code for i in report.issues] == [Code.CATALOG_ERROR]
     assert catalog.calls == 1
 
@@ -93,7 +111,7 @@ def test_schematic_bom_matches_the_expected_bom() -> None:
     bom = schematic_bom(Project.open(DEMO))
     rows = EXPECTED_BOM.read_text().splitlines()[1:]
     expected = [r.split('","')[3].rstrip('"') for r in rows]
-    assert [line.part_number for line in bom.lines] == expected
+    assert [line.part.sku("lcsc") for line in bom.lines] == expected
     assert bom.part_count == 8
     with_tht = schematic_bom(Project.open(DEMO), assemble_through_hole=True)
     assert "J1" in {r for line in with_tht.lines for r in line.references}
@@ -101,7 +119,9 @@ def test_schematic_bom_matches_the_expected_bom() -> None:
 
 def test_demo_against_the_fixture_catalogue() -> None:
     catalog = JlcpcbCatalog(FixtureClient(FIXTURES))
-    report = check_availability(schematic_bom(Project.open(DEMO)), catalog, boards=5)
+    report = check_availability(
+        schematic_bom(Project.open(DEMO)), at(catalog), boards=5
+    )
     assert not [i for i in report.issues if i.severity is Severity.ERROR]
     assert report.extended_types == ["C900004", "C900005"]  # C900008 is preferred
     assert 32 < report.parts_cost < 33
@@ -140,3 +160,55 @@ def test_cli(
     assert main(["component", "check", str(demo_copy), "--json"]) == 0
     payload = json.loads(capsys.readouterr().out)
     assert payload["parts"]["C900005"]["type"] == "extended"
+
+
+def test_suppliers_in_order_of_preference() -> None:
+    bom = Bom(
+        (
+            BomLine("a", ("R1",), "f", PartRef("MPN-A")),
+            BomLine("b", ("R2",), "f", PartRef("MPN-B")),
+        )
+    )
+    first = FakeCatalog(
+        {"X1": PartHit("X1", "MPN-A", "m", "", "", "", 1, LibraryType.UNKNOWN)}
+    )
+    second = FakeCatalog(
+        {
+            "Y1": PartHit("Y1", "MPN-A", "m", "", "", "", 500, LibraryType.UNKNOWN),
+            "Y2": PartHit("Y2", "MPN-B", "m", "", "", "", 5, LibraryType.UNKNOWN),
+        }
+    )
+    sources = at(first, "one") + at(second, "two")
+    report = check_availability(bom, sources, boards=10)
+    chosen = {
+        s.line.part.mpn: (s.supplier, s.hit.id if s.hit else "") for s in report.lines
+    }
+    # MPN-A: not enough at "one", enough at "two"; MPN-B: only "two", too few
+    assert chosen == {"MPN-A": ("two", "Y1"), "MPN-B": ("two", "Y2")}
+    assert [(i.code, i.ref) for i in report.issues] == [(Code.OUT_OF_STOCK, "R2")]
+    assert "at TWO" in report.issues[0].message
+
+
+def test_unreachable_supplier_is_skipped() -> None:
+    bom = Bom(
+        (
+            BomLine("a", ("R1",), "f", PartRef("MPN-A")),
+            BomLine("b", ("R2",), "f", PartRef("MPN-A")),
+        )
+    )
+    down = FakeCatalog({}, fail=True)
+    up = FakeCatalog(
+        {"Y1": PartHit("Y1", "MPN-A", "m", "", "", "", 500, LibraryType.UNKNOWN)}
+    )
+    report = check_availability(bom, at(down, "down") + at(up, "up"))
+    assert [i.code for i in report.issues] == [Code.CATALOG_ERROR]
+    assert down.calls == 1 and [s.supplier for s in report.lines] == ["up", "up"]
+
+
+def test_lookup_by_mpn_in_the_fixture_catalogue() -> None:
+    catalog = JlcpcbCatalog(FixtureClient(FIXTURES))
+    found = catalog.lookup_mpn("KF-R330-0603")  # the answer also has C900002
+    assert found is not None and found.id == "C900001"
+    assert catalog.lookup_mpn("KF-R330-0603", "example components") is not None
+    assert catalog.lookup_mpn("KF-R330-0603", "Someone Else") is None
+    assert catalog.lookup_mpn("xyzzy no such part") is None

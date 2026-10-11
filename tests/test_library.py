@@ -1,3 +1,4 @@
+import dataclasses
 import io
 import json
 import shlex
@@ -20,8 +21,8 @@ from kifab.core.library import (
 from kifab.core.lockfile import load_lockfile
 from kifab.core.project import KicadOpen, Project
 from kifab.core.reporter import RecordingReporter
-from kifab.fabs.base import FetchError
-from kifab.fabs.jlcpcb.fetch import Easyeda2kicad, FixturePartSource
+from kifab.libraries.base import FetchError
+from kifab.libraries.easyeda.fetch import Easyeda2kicad, FixturePartSource
 from kifab.kicad import sexpr
 from kifab.kicad.board import read_footprint_file
 from kifab.kicad.symbol_lib import read_symbol_library
@@ -214,7 +215,7 @@ def test_fixture_source_has_a_log(tmp_path: Path) -> None:
 
 def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     from kifab.core.inventory import library_contents
-    from kifab.fabs.base import get_fab
+    from kifab.suppliers.base import get_supplier
     from kifab.kicad.symbol_lib import parse_symbol_library
 
     project = new_project(tmp_path)
@@ -223,7 +224,7 @@ def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     symbol = read_symbol_library(lib_path).get("KF-R330-0603")
     assert symbol is not None and symbol.description == ""
     # vendoring again with the catalogue fills it in, without a "kept" note
-    catalog = get_fab("jlcpcb").catalog()
+    catalog = get_supplier("jlcpcb").catalog()
     again = vendor_part(project, "C900001", catalog=catalog)
     assert again.issues == [] and again.written == ["lib/jlcpcb/jlcpcb.kicad_sym"]
     text = "330R 0603 Chip Resistor (synthetic test part)"
@@ -232,7 +233,13 @@ def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     assert '(property "ki_description" "' + text in lib_path.read_text()
     assert run_check(project).issues == []  # the lock follows
     # an explicit description (from the selected search hit) wins over a lookup
-    vendor_part(project, "C900005", description="Radio module, 2.4 GHz")
+    hit = catalog.lookup("C900005")
+    assert hit is not None
+    vendor_part(
+        project,
+        "C900005",
+        hit=dataclasses.replace(hit, description="Radio module, 2.4 GHz"),
+    )
     contents = library_contents(project)
     assert [(p.id, p.description) for p in contents.parts] == [
         ("C900001", text),
@@ -301,7 +308,7 @@ def test_fetch_failures_are_explained(
 
 
 def test_unknown_failure_points_at_the_log() -> None:
-    from kifab.fabs.jlcpcb.fetch import explain_failure
+    from kifab.libraries.easyeda.fetch import explain_failure
 
     message = explain_failure("C5", "-- easyeda2kicad.py v1.0.1 --\nTraceback ...", 1)
     assert message.startswith("C5: easyeda2kicad failed: Traceback ...")
@@ -338,8 +345,8 @@ def test_fetched_parts_are_cached(
     monkeypatch: pytest.MonkeyPatch,
     kifab_cache: Path,
 ) -> None:
-    from kifab.fabs.base import get_fab
-    from kifab.fabs.jlcpcb.fetch import CachedPartSource
+    from kifab.libraries.base import get_library_source
+    from kifab.libraries.easyeda.fetch import CachedPartSource
 
     log = tmp_path / "calls.log"
     monkeypatch.setenv("STUB_E2K_LOG", str(log))
@@ -347,7 +354,7 @@ def test_fetched_parts_are_cached(
     def calls() -> int:
         return len(log.read_text().splitlines()) if log.is_file() else 0
 
-    source = get_fab("jlcpcb").part_source()
+    source = get_library_source("easyeda").part_source()
     assert isinstance(source, CachedPartSource)
     assert source.root == kifab_cache / "easyeda2kicad"
     first = source.fetch("C900001", tmp_path / "a")
@@ -374,6 +381,13 @@ def test_fetched_parts_are_cached(
     assert calls() == 4
     vendor_part(project, "C900001", refresh=True, fresh=False)  # just fetched
     assert calls() == 4
+    # entries in the layout before the rename (jlcpcb.*) are fetched again
+    entry = source.root / "C900001"
+    for item in list(entry.iterdir()):
+        if item.name.startswith("easyeda."):
+            item.rename(entry / item.name.replace("easyeda.", "jlcpcb.", 1))
+    renamed = source.fetch("C900001", tmp_path / "old-layout")
+    assert calls() == 5 and renamed.footprints
 
 
 def test_redundant_pin_names_are_dropped(offline: None, tmp_path: Path) -> None:

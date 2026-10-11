@@ -17,7 +17,7 @@ from dataclasses import dataclass
 from enum import Enum
 
 from kifab.core.parts import LibraryType, PartHit, SearchSort
-from kifab.fabs.base import Catalog
+from kifab.suppliers.base import Catalog
 
 
 class PassiveKind(Enum):

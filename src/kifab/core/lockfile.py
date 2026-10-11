@@ -16,7 +16,10 @@ from typing import Any
 
 from kifab.core import toml
 
-LOCK_VERSION = 1
+LOCK_VERSION = 2
+#: Version 1 recorded the fab a part came from; the only fab then (JLCPCB)
+#: vendored from EasyEDA, which version 2 records as the library source.
+_V1_LIBRARY_SOURCE = {"jlcpcb": "easyeda"}
 
 
 class LockError(Exception):
@@ -33,9 +36,9 @@ def sha256_file(path: Path) -> str:
 
 @dataclass(frozen=True)
 class LockedPart:
-    id: str  # the fab's part number, e.g. "C123456"
-    fab: str
-    source: str  # where/how it was fetched, e.g. "easyeda2kicad 1.0.1"
+    id: str  # the library source's part number, e.g. "C123456"
+    library_source: str  # e.g. "easyeda"
+    source: str  # the tool it was fetched with, e.g. "easyeda2kicad 1.0.1"
     symbols: tuple[str, ...] = ()
     files: tuple[str, ...] = ()  # project-relative posix paths
 
@@ -65,13 +68,13 @@ class Lockfile:
             "do not edit.\n",
             toml.table(None, {"version": LOCK_VERSION}),
         ]
-        for p in sorted(self.parts, key=lambda p: (p.fab, p.id)):
+        for p in sorted(self.parts, key=lambda p: (p.library_source, p.id)):
             out.append(
                 toml.array_table(
                     "part",
                     {
                         "id": p.id,
-                        "fab": p.fab,
+                        "library_source": p.library_source,
                         "source": p.source,
                         "symbols": sorted(p.symbols),
                         "files": sorted(p.files),
@@ -119,13 +122,20 @@ def parse_lockfile(text: str) -> Lockfile:
     except toml.TOMLDecodeError as exc:
         raise LockError(f"kifab.lock: {exc}") from exc
     version = data.get("version")
-    if version != LOCK_VERSION:
+    if version not in (1, LOCK_VERSION):
         raise LockError(f"kifab.lock: unsupported version {version!r}")
+
+    def library_source(entry: dict[str, Any]) -> str:
+        if version == 1:
+            fab = _str(entry, "fab", "part")
+            return _V1_LIBRARY_SOURCE.get(fab, fab)
+        return _str(entry, "library_source", "part")
+
     return Lockfile(
         parts=tuple(
             LockedPart(
                 id=_str(e, "id", "part"),
-                fab=_str(e, "fab", "part"),
+                library_source=library_source(e),
                 source=_str(e, "source", "part"),
                 symbols=_strs(e, "symbols", "part"),
                 files=_strs(e, "files", "part"),

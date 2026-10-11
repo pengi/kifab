@@ -183,6 +183,21 @@ def lookup(client: HttpClient, part_id: str) -> PartHit | None:
     return next((h for h in found.hits if h.id == wanted), None)
 
 
+def lookup_mpn(client: HttpClient, mpn: str, manufacturer: str = "") -> PartHit | None:
+    """The best stocked part whose MPN is exactly ``mpn`` (case-insensitive)."""
+    wanted = mpn.strip().casefold()
+    maker = manufacturer.strip().casefold()
+    if not wanted:
+        return None
+    found = [
+        h
+        for h in search(client, mpn.strip(), page_size=10).hits
+        if h.mpn.strip().casefold() == wanted
+        and (not maker or not h.manufacturer or h.manufacturer.casefold() == maker)
+    ]
+    return max(found, key=lambda h: h.stock, default=None)
+
+
 def _slug(text: str) -> str:
     return "".join(c if c.isascii() and c.isalnum() else "_" for c in text)
 
@@ -250,7 +265,7 @@ class FixtureClient:
 
 
 class JlcpcbCatalog:
-    """:class:`kifab.fabs.base.Catalog` for JLCPCB; lookups are cached per instance."""
+    """:class:`kifab.suppliers.base.Catalog` for JLCPCB; lookups are cached per instance."""
 
     def __init__(self, client: HttpClient) -> None:
         self.client = client
@@ -281,4 +296,10 @@ class JlcpcbCatalog:
         key = part_id.strip().upper()
         if key not in self._cache:
             self._cache[key] = lookup(self.client, key)
+        return self._cache[key]
+
+    def lookup_mpn(self, mpn: str, manufacturer: str = "") -> PartHit | None:
+        key = f"mpn:{mpn.strip().casefold()}:{manufacturer.strip().casefold()}"
+        if key not in self._cache:
+            self._cache[key] = lookup_mpn(self.client, mpn, manufacturer)
         return self._cache[key]

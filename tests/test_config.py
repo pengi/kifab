@@ -57,9 +57,9 @@ def test_lockfile_round_trip_sorted() -> None:
     lock = Lockfile(
         parts=(
             LockedPart(
-                "C900009", "jlcpcb", "easyeda2kicad 1.0.1", ("B",), ("f2", "f1")
+                "C900009", "easyeda", "easyeda2kicad 1.0.1", ("B",), ("f2", "f1")
             ),
-            LockedPart("C900003", "jlcpcb", "easyeda2kicad 1.0.1"),
+            LockedPart("C900003", "easyeda", "easyeda2kicad 1.0.1"),
         ),
         files=(LockedFile("lib/b", "22"), LockedFile("lib/a", "11")),
         symbols=(LockedSymbol("lib/x.kicad_sym", "B", "33"),),
