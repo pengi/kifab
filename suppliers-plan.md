@@ -362,6 +362,11 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
   Not done: uploading from kifab (the plugin POSTs the zip to
   aisler.net/p/new.json -> upload_url; AISLER also has "Push for CLI").
 
+- easyeda2kicad's scratch/cache library name is `easyeda` instead of
+  `jlcpcb` (commit "easyeda2kicad's scratch library is called easyeda");
+  old cache entries are refetched. AISLER projects' library `lib/aisler/`
+  comes from `Fab.library_name` (= fab name) unless `[parts] library`.
+
 Next (needs the user's go): rest of step 6, then Mouser (step 7, needs a
 credentials loader and the user's API key for a manual test), PCBWay
 (step 8, needs its BOM template), DigiKey, GUI supplier picker.

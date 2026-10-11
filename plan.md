@@ -60,6 +60,10 @@ export for manufacturing.
 - Test data is synthetic only. Never commit data captured from third parties.
 - Licence GPL-3.0-only. easyeda2kicad (AGPL-3.0) must stay a separate
   process.
+- User caches (download cache, GUI previews): before kifab 1.0.0 their
+  layout may change whenever that makes the code cleaner, as long as the only
+  effect of an upgrade is extra fetches (old entries are refetched, never
+  misread). After 1.0.0: to be decided (user, 2026-10-11).
 
 ## Next
 
