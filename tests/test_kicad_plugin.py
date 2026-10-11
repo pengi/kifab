@@ -11,11 +11,24 @@ import pytest
 from kifab.cli.main import main
 from kifab.core.kicad_plugin import (
     PluginError,
+    default_plugin_dir,
     install_plugin,
     manifest,
     uninstall_plugin,
 )
 from kifab.gui.app import parse_args
+
+
+@pytest.mark.skipif(sys.platform in ("win32", "darwin"), reason="Linux paths")
+def test_default_plugin_dir_is_lowercase_kicad(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.delenv("XDG_DATA_HOME", raising=False)
+    monkeypatch.setenv("HOME", str(tmp_path))
+    assert default_plugin_dir() == tmp_path / ".local/share/kicad/10.0/plugins"
+    monkeypatch.setenv("XDG_DATA_HOME", str(tmp_path / "data"))
+    assert default_plugin_dir() == tmp_path / "data/kicad/10.0/plugins"
+
 
 FAKE_KIPY = """
 from types import SimpleNamespace
@@ -80,7 +93,7 @@ def test_install_and_run_actions(tmp_path: Path) -> None:
     result = install_plugin(tmp_path / "plugins", kifab_gui=gui)
     d = result.directory
     assert d == tmp_path / "plugins" / "kifab"
-    for name in ("plugin.json", "requirements.txt", "open_kifab.py", "add_part.py"):
+    for name in ("plugin.json", "requirements.txt", "open_kifab.py"):
         assert (d / name).is_file()
     assert (d / "icon-light.png").read_bytes().startswith(b"\x89PNG\r\n\x1a\n")
     # run the action as KiCad would, with a fake kicad-python that reports a project
@@ -94,8 +107,10 @@ def test_install_and_run_actions(tmp_path: Path) -> None:
     )
     env = {**os.environ, "PYTHONPATH": str(tmp_path / "site")}
     env.pop("KIFAB_PROJECT", None)
-    subprocess.run([sys.executable, str(d / "add_part.py")], check=True, env=env)
-    assert wait_for(log).splitlines() == ["/boards/hat", "--tab", "parts"]
+    assert not (d / "add_part.py").exists()
+    assert len(json.loads((d / "plugin.json").read_text())["actions"]) == 1
+    subprocess.run([sys.executable, str(d / "open_kifab.py")], check=True, env=env)
+    assert wait_for(log).splitlines() == ["/boards/hat"]
     log.unlink()
     # without kicad-python: no project argument, kifab-gui opens empty
     env.pop("PYTHONPATH")

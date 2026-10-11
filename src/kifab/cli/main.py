@@ -583,7 +583,7 @@ def _cmd_plugin_install(args: argparse.Namespace) -> int:
         error_line(str(exc))
         return EXIT_ERRORS
     print(f"installed the kifab KiCad plugin in {result.directory}")
-    print(f"  its buttons start {result.kifab_gui}")
+    print(f"  its button starts {result.kifab_gui}")
     print(
         "In KiCad: Preferences > Plugins > enable the IPC API server, then restart "
         "KiCad.\nThe plugin only opens kifab; everything works without it."
@@ -801,7 +801,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=_cmd_component_remove)
 
     plugin = sub.add_parser(
-        "kicad-plugin", help="optional KiCad toolbar buttons that open kifab"
+        "kicad-plugin", help="optional KiCad toolbar button that opens kifab"
     )
     plugin_sub = plugin.add_subparsers(dest="plugin_command", metavar="ACTION")
     p = plugin_sub.add_parser("install", help="install the plugin for KiCad 10")
