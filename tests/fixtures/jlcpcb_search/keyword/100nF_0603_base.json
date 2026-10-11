@@ -1,0 +1,55 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": [
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "100nF"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "0603"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900003",
+          "componentLibraryType": "base",
+          "componentModelEn": "KF-C100N-0603",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0031,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.00248,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.00186,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "0603",
+          "componentTypeEn": "Capacitor",
+          "dataManualUrl": "https://example.invalid/datasheet/C900003.pdf",
+          "describe": "100nF 0603 Capacitor (synthetic test part)",
+          "firstSortName": "Capacitor",
+          "lcscGoodsUrl": "https://example.invalid/part/C900003",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 1000000
+        }
+      ],
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 1
+    }
+  },
+  "message": null
+}

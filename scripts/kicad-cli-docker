@@ -1,0 +1,15 @@
+#!/bin/sh
+# kicad-cli from the official KiCad 10 docker image, for machines without KiCad
+# (e.g. a cloud session). Paths are mounted 1:1: $HOME, /tmp and the current
+# directory must contain every file you pass.
+#
+#   KIFAB_KICAD_CLI=scripts/kicad-cli-docker uv run pytest tests/test_real_kicad.py
+#
+# Needs a running docker daemon (in a cloud container: `dockerd &` as root).
+set -e
+image="${KICAD_IMAGE:-kicad/kicad:10.0}"
+mkdir -p /tmp/kicad-cli-home
+exec docker run --rm -i \
+  -v "$HOME:$HOME" -v /tmp:/tmp -v "$PWD:$PWD" -w "$PWD" \
+  -e HOME=/tmp/kicad-cli-home --user "$(id -u):$(id -g)" \
+  "$image" kicad-cli "$@"

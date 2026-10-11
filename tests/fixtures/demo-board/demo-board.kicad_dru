@@ -1,0 +1,8 @@
+(version 1)
+# Hand-written rules of the demo project (from before it used kifab).
+# TODO demo: a rule the designer keeps.
+
+(rule "Demo: keep-out clearance"
+	(condition "A.Type == 'track'")
+	(constraint edge_clearance (min 0.5mm))
+)

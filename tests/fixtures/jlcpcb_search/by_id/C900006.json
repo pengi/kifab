@@ -1,0 +1,55 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": [
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "hdr"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "2x4 2.54mm"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900006",
+          "componentLibraryType": "expand",
+          "componentModelEn": "KF-HDR-2X4",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.12,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.096,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.072,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "2x4 2.54mm",
+          "componentTypeEn": "Pin Header",
+          "dataManualUrl": "https://example.invalid/datasheet/C900006.pdf",
+          "describe": "hdr 2x4 2.54mm Pin Header (synthetic test part)",
+          "firstSortName": "Pin Header",
+          "lcscGoodsUrl": "https://example.invalid/part/C900006",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 100
+        }
+      ],
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 1
+    }
+  },
+  "message": null
+}

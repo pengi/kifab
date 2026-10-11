@@ -1,0 +1,11 @@
+board-F_Cu.gtl
+board-In1_Cu.g1
+board-In2_Cu.g2
+board-B_Cu.gbl
+board-F_Paste.gtp
+board-B_Paste.gbp
+board-F_Silkscreen.gto
+board-B_Silkscreen.gbo
+board-F_Mask.gts
+board-B_Mask.gbs
+board-Edge_Cuts.gm1

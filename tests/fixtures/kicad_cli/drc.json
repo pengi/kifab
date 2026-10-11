@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schemas.kicad.org/drc.v1.json",
+  "coordinate_units": "mm",
+  "date": "2026-01-01T00:00:00",
+  "ignored_checks": [
+    {
+      "description": "Silkscreen clipped by solder mask",
+      "key": "silk_over_copper"
+    }
+  ],
+  "included_severities": [
+    "error",
+    "warning",
+    "exclusion"
+  ],
+  "kicad_version": "10.0.6",
+  "schematic_parity": [],
+  "source": "demo-board.kicad_pcb",
+  "unconnected_items": [],
+  "violations": [
+    {
+      "description": "The current configuration does not include the footprint library 'Connector_PinHeader_2.54mm'",
+      "items": [
+        {
+          "description": "Footprint J1",
+          "pos": {
+            "x": 105,
+            "y": 80
+          },
+          "uuid": "18f6766d-bae1-5bd5-90d6-2c5feff5f9c9"
+        }
+      ],
+      "severity": "warning",
+      "type": "lib_footprint_issues"
+    },
+    {
+      "description": "The current configuration does not include the footprint library 'MountingHole'",
+      "items": [
+        {
+          "description": "Footprint MH1",
+          "pos": {
+            "x": 103,
+            "y": 53
+          },
+          "uuid": "0fa453b2-5db4-5af5-956d-8cd7e798dc0e"
+        }
+      ],
+      "severity": "warning",
+      "type": "lib_footprint_issues"
+    }
+  ]
+}

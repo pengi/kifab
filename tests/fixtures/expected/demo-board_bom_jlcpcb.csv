@@ -1,0 +1,7 @@
+"Comment","Designator","Footprint","LCSC Part #"
+"100nF","C1,C3","jlcpcb:C0603","C900003"
+"4.7uF","C2","jlcpcb:C0805","C900004"
+"LED","D1","demo-board:LED_0603","C900008"
+"330R","R1,R2","jlcpcb:R0603","C900001"
+"4k7","R4","jlcpcb:R0603","C900002"
+"KF-MOD-1","U1","jlcpcb:MOD-SMD_KF1","C900005"
