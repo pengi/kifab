@@ -294,3 +294,9 @@ library source is a small, independent plugin.
   page values, to turn into synthetic fixtures and rule profiles.
 * A decision on library nickname for new projects: keep `lib/<fab>/`, or a
   neutral `lib/parts/`? Existing projects keep theirs either way.
+
+## Progress
+
+Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
+
+(nothing yet)
