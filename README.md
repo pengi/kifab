@@ -74,7 +74,10 @@ JLCPCB's part classes; its stock is JLCPCB's, an approximation of LCSC's).
 The stock check (`component check`, `bundle --stock`) asks the suppliers in
 order, by their own number when the symbol has one, else by MPN, and takes the
 first with enough stock. Vendored symbols get `MPN` and `Manufacturer` fields
-from the catalogue, so fabs that buy from distributors know what to order.
+from the catalogue, so fabs that buy from distributors know what to order. `kifab component add`
+also takes an MPN (`kifab component add KF-R330-0603`), and `component sync`
+vendors symbols that only carry an `MPN` field: both look the MPN up at a
+supplier selling by the library source's numbers (LCSC numbers for EasyEDA).
 
 `kifab rules apply` (KiCad must be closed) rewrites the kifab block of the
 `.kicad_dru` (your own rules after it are kept) and raises board-setup

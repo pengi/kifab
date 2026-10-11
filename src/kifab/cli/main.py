@@ -35,7 +35,7 @@ from kifab.core.orderability import check_availability, schematic_bom
 from kifab.core.project import KicadOpen, Project
 from kifab.core.quick import QuickQuery, format_value, parse_quick, quick_search
 from kifab.core.inventory import RemoveError, library_contents, remove_part
-from kifab.core.library import VendorResult, sync_parts, vendor_part
+from kifab.core.library import VendorResult, resolve_part, sync_parts, vendor_part
 from kifab.core.lockfile import LockError
 from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchSort
 from kifab.core.sourcing import Sourcing, sourcing_for
@@ -413,15 +413,18 @@ _RELOAD_NOTE = (
 def _cmd_component_add(args: argparse.Namespace) -> int:
     project = Project.open(args.project)
     sourcing = project.sourcing()
-    # for the parts' descriptions
-    catalog = sourcing.library_catalog() if sourcing else None
+    if sourcing is None:
+        raise ConfigError("no kifab.toml: kifab does not know the fab")
+    # for the parts' descriptions, and to find parts given by MPN
+    catalog = sourcing.library_catalog()
     code = EXIT_OK
-    for i, part_id in enumerate(args.ids):
+    for i, wanted in enumerate(args.ids):
         if i and args.delay:
             time.sleep(args.delay)
         try:
+            part_id, hit = resolve_part(sourcing, wanted)
             result = vendor_part(
-                project, part_id, refresh=args.refresh, catalog=catalog
+                project, part_id, refresh=args.refresh, hit=hit, catalog=catalog
             )
         except FetchError as exc:
             error_line(str(exc))
@@ -735,9 +738,14 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=_cmd_component_search)
 
     p = comp_sub.add_parser(
-        "add", help="vendor parts' symbol, footprint and 3D model into lib/<fab>/"
+        "add", help="vendor parts' symbol, footprint and 3D model into lib/<name>/"
     )
-    p.add_argument("ids", nargs="+", metavar="ID", help="part numbers, e.g. C123456")
+    p.add_argument(
+        "ids",
+        nargs="+",
+        metavar="ID",
+        help="part numbers (e.g. C123456) or MPNs (looked up by the supplier)",
+    )
     p.add_argument("--project", type=Path, default=Path("."))
     p.add_argument(
         "--refresh", action="store_true", help="replace already vendored files"

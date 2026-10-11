@@ -29,7 +29,7 @@ from kifab.libraries.base import FetchedPart, FetchError, PartSource
 ENV_COMMAND = "KIFAB_EASYEDA2KICAD"
 OUTPUT_NAME = "jlcpcb"  # easyeda2kicad's library name: footprints become jlcpcb:<name>
 _VERSION = re.compile(r"easyeda2kicad(?:\.py)?\s+v?(\d+(?:\.\d+)+)", re.IGNORECASE)
-_LCSC = re.compile(r"^C\d+$")
+LCSC_ID = re.compile(r"^C\d+$")
 
 
 def _collect(part_id: str, out: Path, log: str) -> FetchedPart:
@@ -118,7 +118,7 @@ def retryable(log: str) -> bool:
 
 def _check_id(part_id: str) -> str:
     wanted = part_id.strip().upper()
-    if not _LCSC.match(wanted):
+    if not LCSC_ID.match(wanted):
         raise FetchError(f"{part_id!r} is not an LCSC part number (C123456)")
     return wanted
 

@@ -45,7 +45,13 @@ from kifab.core.lockfile import (
 )
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
-from kifab.core.partref import MANUFACTURER_FIELD, MPN_FIELD
+from kifab.core.partref import (
+    MANUFACTURER_FIELD,
+    MPN_FIELD,
+    PartRef,
+    field_specs,
+    part_ref,
+)
 from kifab.core.parts import CatalogError, PartHit
 from kifab.core.sourcing import Sourcing
 from kifab.libraries.base import (
@@ -440,6 +446,79 @@ def schematic_part_numbers(project: Project) -> tuple[dict[str, list[str]], list
     return {k: sorted_refs(v) for k, v in sorted(numbers.items())}, sorted_refs(missing)
 
 
+def _resolve_mpns(
+    project: Project,
+    sourcing: Sourcing,
+    catalog: Catalog,
+    result: SyncResult,
+    reporter: Reporter,
+) -> tuple[dict[str, list[str]], set[str]]:
+    """``{library part number: references}`` for the parts known by MPN only,
+    and the references looked up (found or reported as not found)."""
+    out: dict[str, list[str]] = {}
+    looked_up: set[str] = set()
+    for ref, refs in schematic_mpn_parts(project, sourcing.library.sku_kind).items():
+        try:
+            hit = catalog.lookup_mpn(ref.mpn, ref.manufacturer)
+        except CatalogError as exc:
+            issue = warning(Code.CATALOG_ERROR, str(exc), ref=",".join(refs))
+            result.issues.append(issue)
+            reporter.issue(issue)
+            break
+        looked_up.update(refs)
+        if hit is None:
+            issue = warning(
+                Code.FETCH_FAILED,
+                f"no {sourcing.library.title} part found for MPN {ref.mpn}",
+                ref=",".join(refs),
+            )
+            result.issues.append(issue)
+            reporter.issue(issue)
+            continue
+        reporter.step(ref.mpn, f"is {hit.id}")
+        out.setdefault(hit.id, []).extend(refs)
+    return out, looked_up
+
+
+def schematic_mpn_parts(project: Project, kind: str) -> dict[PartRef, list[str]]:
+    """Parts on the board with an MPN but no ``kind`` number: ``{ref: references}``."""
+    sch = read_schematic(project.kicad.sch, project.name)
+    specs = field_specs()
+    found: dict[PartRef, list[str]] = {}
+    for part in sch.parts():
+        if not part.on_board or part.is_power:
+            continue
+        ref = part_ref(part.properties, specs)
+        if ref.mpn and not ref.sku(kind):
+            found.setdefault(ref, []).append(part.reference)
+    return {k: sorted_refs(v) for k, v in sorted(found.items(), key=lambda i: i[0].mpn)}
+
+
+def resolve_part(sourcing: Sourcing, text: str) -> tuple[str, PartHit | None]:
+    """The library source's part number for ``text``: itself, or by MPN.
+
+    An MPN is looked up in the catalogue of a supplier that sells by the
+    library source's numbers (LCSC numbers for EasyEDA). Raises
+    :class:`FetchError` when nothing matches or no such supplier is configured.
+    """
+    own = sourcing.library.parse_id(text)
+    if own is not None:
+        return own, None
+    catalog = sourcing.library_catalog()
+    if catalog is None:
+        raise FetchError(
+            f"{text!r} is not a {sourcing.library.title} part number, and no "
+            f"configured supplier sells by {sourcing.library.title}'s numbers"
+        )
+    try:
+        hit = catalog.lookup_mpn(text)
+    except CatalogError as exc:
+        raise FetchError(f"{text}: {exc}") from exc
+    if hit is None:
+        raise FetchError(f"no part with MPN {text!r} found")
+    return hit.id, hit
+
+
 def sync_parts(
     project: Project,
     source: PartSource | None = None,
@@ -453,13 +532,22 @@ def sync_parts(
 ) -> SyncResult:
     """Vendor every part the schematic references (port of populate-jlc-library).
 
-    Parts already in ``kifab.lock`` are skipped unless ``refresh``. Never edits
-    the schematic or the board.
+    Parts already in ``kifab.lock`` are skipped unless ``refresh``. With a
+    ``catalog`` (of a supplier selling by the library source's numbers), parts
+    that only have an MPN are looked up there by it. Never edits the
+    schematic or the board.
     """
     reporter = reporter or NullReporter()
     result = SyncResult()
-    library_source = _sourcing(project).library.name
+    sourcing = _sourcing(project)
+    library_source = sourcing.library.name
     numbers, missing = schematic_part_numbers(project)
+    if catalog is not None:
+        by_mpn, looked_up = _resolve_mpns(project, sourcing, catalog, result, reporter)
+        for number, mpn_refs in by_mpn.items():
+            numbers[number] = sorted_refs([*numbers.get(number, []), *mpn_refs])
+        missing = [r for r in missing if r not in looked_up]
+        numbers = dict(sorted(numbers.items()))
     if missing:
         issue = warning(
             Code.NO_PART_NUMBER,

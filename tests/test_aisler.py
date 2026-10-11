@@ -11,7 +11,8 @@ from kifab.core.bundle import BundleOptions, bundle
 from kifab.core.check import run_check
 from kifab.core.init import init_project
 from kifab.core.issues import Code
-from kifab.core.library import vendor_part
+from kifab.core.library import sync_parts, vendor_part
+from kifab.core.lockfile import load_lockfile
 from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.partref import PartRef
 from kifab.core.project import Project
@@ -136,3 +137,40 @@ def test_bundle(env: None, tmp_path: Path) -> None:
     codes = {i.code for i in result.issues}
     assert Code.EXTENDED_PART not in codes  # a JLCPCB notion
     assert Code.NO_PART_NUMBER in codes  # R3: no MPN, no number
+
+
+def test_add_by_mpn(
+    env: None, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    from kifab.cli.main import main
+
+    project = init_project(tmp_path / "m", "m", "aisler").project
+    assert (
+        main(["component", "add", "KF-R330-0603", "--project", str(project.directory)])
+        == 0
+    )
+    assert "C900001" in capsys.readouterr().out
+    lock = load_lockfile(project.lock_path)
+    assert lock is not None and [p.id for p in lock.parts] == ["C900001"]
+    code = main(
+        ["component", "add", "NO-SUCH-MPN", "--project", str(project.directory)]
+    )
+    assert code == 1 and "no part with MPN 'NO-SUCH-MPN'" in capsys.readouterr().err
+
+
+def test_sync_resolves_mpn_only_symbols(env: None, tmp_path: Path) -> None:
+    project = init_project(tmp_path / "s", "s", "aisler").project
+    mpn = (("MPN", "KF-R330-0603"),)
+    project.kicad.sch.write_text(
+        schematic(
+            symbol("R1", "", "330", fields=mpn, project="s"),
+            symbol("R2", "", "330", fields=(("MPN", "NOPE-1"),), project="s"),
+        )
+    )
+    sourcing = project.sourcing()
+    assert sourcing is not None
+    result = sync_parts(project, catalog=sourcing.library_catalog())
+    assert [r.part_id for r in result.vendored] == ["C900001"]
+    assert [(i.code, i.ref) for i in result.issues] == [(Code.FETCH_FAILED, "R2")]
+    without = sync_parts(project)  # no catalogue: MPN-only parts are not vendored
+    assert {i.ref for i in without.issues if i.code is Code.NO_PART_NUMBER} == {"R1,R2"}

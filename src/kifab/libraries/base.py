@@ -61,6 +61,10 @@ class LibrarySource(ABC):
     #: ``"lcsc"``): a part is vendored from this source by that number.
     sku_kind: str = ""
 
+    def parse_id(self, text: str) -> str | None:
+        """``text`` as this source's part number, ``None`` if it is none."""
+        return text.strip() or None
+
     @abstractmethod
     def part_source(self) -> PartSource:
         """The fetcher (``$KIFAB_OFFLINE`` serves fixtures)."""

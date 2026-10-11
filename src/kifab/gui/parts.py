@@ -798,7 +798,10 @@ class PartsPanel(QWidget):
 
         def task(reporter: Reporter) -> object:
             return sync_parts(
-                project, delay=0.5, reporter=reporter, catalog=self._catalog()
+                project,
+                delay=0.5,
+                reporter=reporter,
+                catalog=self._sourcing().library_catalog(),
             )
 
         def done(result: object) -> None:
