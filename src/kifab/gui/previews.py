@@ -17,7 +17,8 @@ from pathlib import Path
 
 from kifab.core.inventory import LibraryPart
 from kifab.core.project import Project
-from kifab.fabs.base import Catalog, PartSource
+from kifab.libraries.base import PartSource
+from kifab.suppliers.base import Catalog
 from kifab.kicad.drawing import (
     Drawing,
     library_symbol_drawing,

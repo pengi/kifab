@@ -38,7 +38,8 @@ from kifab.core.inventory import RemoveError, library_contents, remove_part
 from kifab.core.library import VendorResult, sync_parts, vendor_part
 from kifab.core.lockfile import LockError
 from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchSort
-from kifab.fabs.base import Fab, FetchError, UnknownFab, available_fabs, get_fab
+from kifab.fabs.base import Fab, UnknownFab, available_fabs, get_fab
+from kifab.libraries.base import FetchError
 from kifab.kicad.project import InputError
 from kifab.kicad.schematic import sorted_refs
 

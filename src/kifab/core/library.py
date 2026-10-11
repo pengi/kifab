@@ -41,14 +41,14 @@ from kifab.core.lockfile import (
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
 from kifab.core.parts import CatalogError
-from kifab.fabs.base import (
+from kifab.fabs.base import Fab
+from kifab.libraries.base import (
     CachingPartSource,
-    Catalog,
-    Fab,
     FetchedPart,
     FetchError,
     PartSource,
 )
+from kifab.suppliers.base import Catalog
 from kifab.kicad.libtable import (
     LibTable,
     LibTableEntry,

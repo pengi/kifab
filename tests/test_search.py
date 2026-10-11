@@ -12,7 +12,7 @@ from kifab.cli.main import main
 from kifab.core.net import NetError, UrllibClient
 from kifab.core.parts import CatalogError, LibraryType
 from kifab.fabs.base import get_fab
-from kifab.fabs.jlcpcb.search import (
+from kifab.suppliers.jlcpcb.search import (
     FixtureClient,
     JlcpcbCatalog,
     lookup,

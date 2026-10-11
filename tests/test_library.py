@@ -20,8 +20,8 @@ from kifab.core.library import (
 from kifab.core.lockfile import load_lockfile
 from kifab.core.project import KicadOpen, Project
 from kifab.core.reporter import RecordingReporter
-from kifab.fabs.base import FetchError
-from kifab.fabs.jlcpcb.fetch import Easyeda2kicad, FixturePartSource
+from kifab.libraries.base import FetchError
+from kifab.libraries.easyeda.fetch import Easyeda2kicad, FixturePartSource
 from kifab.kicad import sexpr
 from kifab.kicad.board import read_footprint_file
 from kifab.kicad.symbol_lib import read_symbol_library
@@ -301,7 +301,7 @@ def test_fetch_failures_are_explained(
 
 
 def test_unknown_failure_points_at_the_log() -> None:
-    from kifab.fabs.jlcpcb.fetch import explain_failure
+    from kifab.libraries.easyeda.fetch import explain_failure
 
     message = explain_failure("C5", "-- easyeda2kicad.py v1.0.1 --\nTraceback ...", 1)
     assert message.startswith("C5: easyeda2kicad failed: Traceback ...")
@@ -339,7 +339,7 @@ def test_fetched_parts_are_cached(
     kifab_cache: Path,
 ) -> None:
     from kifab.fabs.base import get_fab
-    from kifab.fabs.jlcpcb.fetch import CachedPartSource
+    from kifab.libraries.easyeda.fetch import CachedPartSource
 
     log = tmp_path / "calls.log"
     monkeypatch.setenv("STUB_E2K_LOG", str(log))

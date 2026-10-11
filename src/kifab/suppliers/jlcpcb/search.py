@@ -250,7 +250,7 @@ class FixtureClient:
 
 
 class JlcpcbCatalog:
-    """:class:`kifab.fabs.base.Catalog` for JLCPCB; lookups are cached per instance."""
+    """:class:`kifab.suppliers.base.Catalog` for JLCPCB; lookups are cached per instance."""
 
     def __init__(self, client: HttpClient) -> None:
         self.client = client

@@ -44,6 +44,12 @@ kifab-gui = "kifab.gui.app:main"
 [project.entry-points."kifab.fabs"]
 jlcpcb = "kifab.fabs.jlcpcb:JlcpcbFab"
 
+[project.entry-points."kifab.suppliers"]
+jlcpcb = "kifab.suppliers.jlcpcb:JlcpcbSupplier"
+
+[project.entry-points."kifab.libraries"]
+easyeda = "kifab.libraries.easyeda:EasyedaLibrary"
+
 [project.optional-dependencies]
 gui = [
     "pyside6-essentials>=6.6",

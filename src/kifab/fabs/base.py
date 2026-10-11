@@ -8,73 +8,20 @@ runs from a source tree without being installed.
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from dataclasses import dataclass
 from importlib.metadata import entry_points
-from pathlib import Path
-from typing import Protocol, runtime_checkable
 
 from kifab.core.issues import Issue
 from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.core.net import HttpClient
-from kifab.core.parts import PartHit, SearchPage, SearchSort
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
+from kifab.libraries.base import PartSource, get_library_source
+from kifab.suppliers.base import Catalog, get_supplier
 
 ENTRY_POINT_GROUP = "kifab.fabs"
 
 
 class UnknownFab(Exception):
     pass
-
-
-class FetchError(Exception):
-    """A part's library data could not be fetched."""
-
-
-@dataclass(frozen=True)
-class FetchedPart:
-    """What a fetch produced, in a scratch directory (not yet vendored)."""
-
-    part_id: str
-    symbol_library: Path | None  # a .kicad_sym with the part's symbol(s)
-    footprints: tuple[Path, ...]  # .kicad_mod files
-    models: tuple[Path, ...]  # 3D models (.wrl, .step)
-    log: str
-    source: str  # tool and version, recorded in kifab.lock
-
-
-class PartSource(Protocol):
-    def fetch(self, part_id: str, workdir: Path) -> FetchedPart:
-        """Fetch ``part_id`` into ``workdir``; raise :class:`FetchError`."""
-
-
-@runtime_checkable
-class CachingPartSource(PartSource, Protocol):
-    """A part source that keeps fetched parts; ``forget`` forces a fresh fetch."""
-
-    def forget(self, part_id: str) -> None: ...
-
-
-class Catalog(Protocol):
-    """The fab's parts catalogue (online; ``$KIFAB_OFFLINE`` serves fixtures)."""
-
-    def search(
-        self,
-        query: str,
-        *,
-        page: int = 1,
-        page_size: int = 10,
-        basic_only: bool = False,
-        sort: SearchSort = SearchSort.RELEVANCE,
-    ) -> SearchPage: ...
-
-    def lookup(self, part_id: str) -> PartHit | None:
-        """The part with exactly this number, or ``None`` if the fab has none."""
-
-    def image(self, url: str) -> bytes:
-        """A product image of a hit (one of :attr:`PartHit.images`).
-
-        Raises :class:`kifab.core.parts.CatalogError`.
-        """
 
 
 class Fab(ABC):
@@ -84,6 +31,11 @@ class Fab(ABC):
     name: str = ""
     #: Human readable name.
     title: str = ""
+    #: Suppliers a project uses unless ``kifab.toml`` names others (first is
+    #: preferred).
+    default_suppliers: tuple[str, ...] = ()
+    #: Library source a project uses unless ``kifab.toml`` names another.
+    default_library_source: str = "easyeda"
 
     @property
     def library_name(self) -> str:
@@ -115,13 +67,13 @@ class Fab(ABC):
         self, placement: Placement, board_name: str
     ) -> FileArtifact: ...
 
-    @abstractmethod
     def catalog(self, client: HttpClient | None = None) -> Catalog:
-        """The parts catalogue; ``client`` replaces the default HTTP client."""
+        """The preferred default supplier's catalogue."""
+        return get_supplier(self.default_suppliers[0]).catalog(client)
 
-    @abstractmethod
     def part_source(self) -> PartSource:
         """Where symbols, footprints and 3D models of the fab's parts come from."""
+        return get_library_source(self.default_library_source).part_source()
 
     @abstractmethod
     def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:

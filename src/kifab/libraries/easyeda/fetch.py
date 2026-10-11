@@ -24,7 +24,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
-from kifab.fabs.base import FetchedPart, FetchError, PartSource
+from kifab.libraries.base import FetchedPart, FetchError, PartSource
 
 ENV_COMMAND = "KIFAB_EASYEDA2KICAD"
 OUTPUT_NAME = "jlcpcb"  # easyeda2kicad's library name: footprints become jlcpcb:<name>
@@ -133,7 +133,7 @@ class _Failed(Exception):
 
 @dataclass
 class Easyeda2kicad:
-    """:class:`kifab.fabs.base.PartSource` running the easyeda2kicad tool."""
+    """:class:`kifab.libraries.base.PartSource` running the easyeda2kicad tool."""
 
     command: tuple[str, ...] = ()
     timeout: float = 120.0

@@ -44,7 +44,9 @@ from kifab.core.parts import LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
 from kifab.core.quick import QuickResult, format_value, parse_quick, quick_search
 from kifab.core.reporter import Reporter
-from kifab.fabs.base import Catalog, Fab, PartSource, get_fab
+from kifab.fabs.base import Fab, get_fab
+from kifab.libraries.base import PartSource
+from kifab.suppliers.base import Catalog
 from kifab.gui.detail import PartDetail
 from kifab.gui.issues import SORT_ROLE, Index
 from kifab.gui.jobs import Job, Task

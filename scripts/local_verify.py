@@ -108,7 +108,7 @@ def main() -> int:
             if values != sorted(values, reverse=reverse):
                 raise RuntimeError(
                     f"--sort {sort}: JLCPCB did not return results in that order; "
-                    "the sort fields in kifab/fabs/jlcpcb/search.py (SORT_FIELDS) "
+                    "the sort fields in kifab/suppliers/jlcpcb/search.py (SORT_FIELDS) "
                     "need adjusting (answers saved in the scratch directory)"
                 )
             found.append(f"{sort}: {len(values)} hits in order")

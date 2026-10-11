@@ -13,7 +13,7 @@ from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
 from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
-from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
+from kifab.suppliers.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from tests.conftest import DEMO, EXPECTED, FIXTURES
 from tests.test_bundle import make_project
 

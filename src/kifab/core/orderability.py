@@ -14,7 +14,7 @@ from kifab.core.issues import Code, Issue, error, info, warning
 from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.parts import CatalogError, LibraryType, PartHit
 from kifab.core.project import Project
-from kifab.fabs.base import Catalog
+from kifab.suppliers.base import Catalog
 from kifab.kicad import sexpr
 from kifab.kicad.board import read_board
 from kifab.kicad.schematic import read_schematic, ref_sort_key, sorted_refs

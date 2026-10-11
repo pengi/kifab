@@ -4,12 +4,8 @@ from __future__ import annotations
 
 from kifab.core.issues import Code, Issue, warning
 from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
-from kifab.core.net import HttpClient, UrllibClient, offline_root
-from kifab.fabs.base import Catalog, Fab, PartSource
+from kifab.fabs.base import Fab
 from kifab.fabs.jlcpcb import export, rules
-from kifab.core.cache import user_cache_dir
-from kifab.fabs.jlcpcb.fetch import CachedPartSource, Easyeda2kicad, FixturePartSource
-from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 from kifab.kicad.schematic import LCSC_FIELDS
 
@@ -17,6 +13,8 @@ from kifab.kicad.schematic import LCSC_FIELDS
 class JlcpcbFab(Fab):
     name = "jlcpcb"
     title = "JLCPCB"
+    default_suppliers = ("jlcpcb",)
+    default_library_source = "easyeda"
 
     def profiles(self) -> tuple[str, ...]:
         return ("standard",)
@@ -51,15 +49,3 @@ class JlcpcbFab(Fab):
 
     def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:
         return [export.gerber_zip(built)]
-
-    def catalog(self, client: HttpClient | None = None) -> Catalog:
-        if client is None:
-            root = offline_root()
-            client = FixtureClient(root) if root else UrllibClient()
-        return JlcpcbCatalog(client)
-
-    def part_source(self) -> PartSource:
-        root = offline_root()
-        if root:
-            return FixturePartSource(root)
-        return CachedPartSource(Easyeda2kicad(), user_cache_dir() / "easyeda2kicad")
