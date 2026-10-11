@@ -311,3 +311,13 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
   diff in existing projects' locks).
   Decision taken (simplest; see "Needs from you"): new projects keep
   `lib/<fab>/`; `[parts] library` overrides.
+- Step 3 done (4446147): `kifab.core.partref` (PartRef, FieldSpec, MPN /
+  Manufacturer / supplier-number fields; suppliers declare `sku_fields`,
+  `parse_sku`). `BomLine.part` replaces `part_number`; bundle BOM columns
+  follow the fields the schematic uses. Vendoring writes `MPN` and
+  `Manufacturer` fields into symbols (like the description).
+  Deviation: no `Offer` rename of `PartHit` (churn without gain yet).
+- Step 4 done (c6b1771): `check_availability` over all suppliers
+  (`SupplierCatalog`), by supplier number else MPN (`Catalog.lookup_mpn`),
+  first with enough stock wins. Credentials loader postponed to the first
+  supplier that needs a key (Mouser).
