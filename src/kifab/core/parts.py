@@ -19,6 +19,14 @@ class LibraryType(Enum):
         return self is LibraryType.EXTENDED
 
 
+class SearchSort(Enum):
+    """The order the fab returns search results in (it decides what fits a page)."""
+
+    RELEVANCE = "relevance"  # the fab's own order
+    STOCK = "stock"  # most in stock first
+    PRICE = "price"  # cheapest (1 pc) first
+
+
 @dataclass(frozen=True)
 class PriceBreak:
     min_qty: int
@@ -46,6 +54,7 @@ class PartHit:
     url: str = ""
     min_order: int = 1
     attributes: tuple[tuple[str, str], ...] = ()
+    images: tuple[str, ...] = ()  # product photo URLs, largest first
 
     def unit_price(self, qty: int = 1) -> float | None:
         for brk in self.prices:
@@ -70,6 +79,7 @@ class PartHit:
             ],
             "datasheet": self.datasheet,
             "url": self.url,
+            "images": list(self.images),
         }
 
 

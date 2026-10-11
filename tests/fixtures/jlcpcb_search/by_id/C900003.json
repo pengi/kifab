@@ -12,6 +12,10 @@
             {
               "attribute_name_en": "Package",
               "attribute_value_name": "0603"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF"
             }
           ],
           "componentBrandEn": "Example Components",
@@ -54,6 +58,10 @@
             {
               "attribute_name_en": "Package",
               "attribute_value_name": "0603"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "100nF"
             }
           ],
           "componentBrandEn": "Example Components",
@@ -82,6 +90,11 @@
           "dataManualUrl": "https://example.invalid/datasheet/C900003.pdf",
           "describe": "100nF 0603 Capacitor (synthetic test part)",
           "firstSortName": "Capacitor",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900003.png"
+            }
+          ],
           "lcscGoodsUrl": "https://example.invalid/part/C900003",
           "minPurchaseNum": 1,
           "preferredComponentFlag": false,

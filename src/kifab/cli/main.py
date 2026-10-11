@@ -33,16 +33,14 @@ from kifab.core.issues import Issue, Severity
 from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
 from kifab.core.project import KicadOpen, Project
-from kifab.core.library import (
-    VendorResult,
-    schematic_part_numbers,
-    sync_parts,
-    vendor_part,
-)
-from kifab.core.lockfile import Lockfile, LockError, load_lockfile
-from kifab.core.parts import CatalogError, LibraryType, PartHit
+from kifab.core.quick import QuickQuery, format_value, parse_quick, quick_search
+from kifab.core.inventory import RemoveError, library_contents, remove_part
+from kifab.core.library import VendorResult, sync_parts, vendor_part
+from kifab.core.lockfile import LockError
+from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchSort
 from kifab.fabs.base import Fab, FetchError, UnknownFab, available_fabs, get_fab
 from kifab.kicad.project import InputError
+from kifab.kicad.schematic import sorted_refs
 
 
 def _cmd_init(args: argparse.Namespace) -> int:
@@ -255,12 +253,100 @@ def format_hit(n: int, hit: PartHit) -> str:
     )
 
 
+def _offer_add(args: argparse.Namespace, hits: Sequence[PartHit], first: int) -> int:
+    """Ask which listed hit to add (``--add``); hits are numbered from first + 1."""
+    try:
+        answer = input("Add which one? (number or part id, Enter to skip): ").strip()
+    except EOFError:
+        answer = ""
+    if not answer:
+        return EXIT_OK
+    chosen = answer.upper()
+    if answer.isdigit() and first < int(answer) <= first + len(hits):
+        chosen = hits[int(answer) - first - 1].id
+    project = Project.open(args.project)
+    picked = next((h for h in hits if h.id == chosen), None)
+    fab = project.fab()
+    try:
+        _print_vendored(
+            vendor_part(
+                project,
+                chosen,
+                description=picked.description if picked else "",
+                catalog=fab.catalog() if fab and picked is None else None,
+            )
+        )
+    except FetchError as exc:
+        error_line(str(exc))
+        return EXIT_ERRORS
+    print(_RELOAD_NOTE)
+    return EXIT_OK
+
+
+_HEADER = f"  # {'part':<10} {'type':<5} {'stock':>9} {'1 pc':>9}  {'package':<12} mpn"
+
+
+def _quick_search(args: argparse.Namespace, fab: Fab, query: QuickQuery) -> int:
+    try:
+        result = quick_search(
+            fab.catalog(),
+            query,
+            with_alternatives=args.alternatives,
+            basic_only=args.basic,
+            sort=SearchSort(args.sort),
+        )
+    except CatalogError as exc:
+        error_line(str(exc))
+        return EXIT_ERRORS
+    if args.json:
+        print_json(
+            {
+                "query": " ".join(args.query),
+                "fab": fab.name,
+                "quick": {
+                    "kind": query.kind.value,
+                    "value": query.value,
+                    "label": query.label,
+                    "extra": list(query.extra),
+                    "searched": list(result.searched),
+                },
+                "hits": [
+                    h.hit.to_json() | {"value": h.value, "deviation": h.deviation}
+                    for h in result.hits
+                ],
+            }
+        )
+        return EXIT_OK
+    searched = ", ".join(repr(s) for s in result.searched)
+    if not result.hits:
+        print(f"no {fab.title} parts found for {searched}")
+        return EXIT_OK
+    print(_HEADER)
+    for i, quick in enumerate(result.hits, start=1):
+        line = format_hit(i, quick.hit)
+        if not quick.exact:
+            line += (
+                f"\n      alternative: {format_value(quick.value)}{query.kind.unit} "
+                f"({quick.deviation:+.1%})"
+            )
+        print(line)
+    print(f"{len(result.hits)} parts; searched {searched}")
+    return _offer_add(args, [h.hit for h in result.hits], 0) if args.add else EXIT_OK
+
+
 def _cmd_component_search(args: argparse.Namespace) -> int:
     fab = _fab_for(args)
     query = " ".join(args.query)
+    quick = None if args.plain else parse_quick(query)
+    if quick is not None:
+        return _quick_search(args, fab, quick)
     try:
         page = fab.catalog().search(
-            query, page=args.page, page_size=args.limit, basic_only=args.basic
+            query,
+            page=args.page,
+            page_size=args.limit,
+            basic_only=args.basic,
+            sort=SearchSort(args.sort),
         )
     except CatalogError as exc:
         error_line(str(exc))
@@ -280,30 +366,12 @@ def _cmd_component_search(args: argparse.Namespace) -> int:
     if not page.hits:
         print(f"no {fab.title} parts found for {query!r}")
         return EXIT_OK
-    print(f"  # {'part':<10} {'type':<5} {'stock':>9} {'1 pc':>9}  {'package':<12} mpn")
+    print(_HEADER)
     first = (page.page - 1) * page.page_size
     for i, hit in enumerate(page.hits, start=first + 1):
         print(format_hit(i, hit))
     print(f"page {page.page} of {page.pages} ({page.total} parts)")
-    if not args.add:
-        return EXIT_OK
-    try:
-        answer = input("Add which one? (number or part id, Enter to skip): ").strip()
-    except EOFError:
-        answer = ""
-    if not answer:
-        return EXIT_OK
-    chosen = answer.upper()
-    if answer.isdigit() and first < int(answer) <= first + len(page.hits):
-        chosen = page.hits[int(answer) - first - 1].id
-    project = Project.open(args.project)
-    try:
-        _print_vendored(vendor_part(project, chosen))
-    except FetchError as exc:
-        error_line(str(exc))
-        return EXIT_ERRORS
-    print(_RELOAD_NOTE)
-    return EXIT_OK
+    return _offer_add(args, page.hits, first) if args.add else EXIT_OK
 
 
 def _print_vendored(result: VendorResult) -> None:
@@ -323,12 +391,16 @@ _RELOAD_NOTE = (
 
 def _cmd_component_add(args: argparse.Namespace) -> int:
     project = Project.open(args.project)
+    fab = project.fab()
+    catalog = fab.catalog() if fab else None  # for the parts' descriptions
     code = EXIT_OK
     for i, part_id in enumerate(args.ids):
         if i and args.delay:
             time.sleep(args.delay)
         try:
-            result = vendor_part(project, part_id, refresh=args.refresh)
+            result = vendor_part(
+                project, part_id, refresh=args.refresh, catalog=catalog
+            )
         except FetchError as exc:
             error_line(str(exc))
             code = EXIT_ERRORS
@@ -348,6 +420,7 @@ def _cmd_component_sync(args: argparse.Namespace) -> int:
         only=only,
         delay=args.delay,
         reporter=TextReporter(),
+        catalog=fab.catalog() if (fab := project.fab()) else None,
     )
     if args.json:
         print_json(
@@ -369,35 +442,65 @@ def _cmd_component_sync(args: argparse.Namespace) -> int:
 
 def _cmd_component_list(args: argparse.Namespace) -> int:
     project = Project.open(args.project)
-    lock = load_lockfile(project.lock_path) or Lockfile()
-    numbers, _ = schematic_part_numbers(project)
-    parts = sorted(lock.parts, key=lambda p: (p.fab, p.id))
-    missing = sorted(set(numbers) - {p.id for p in lock.parts})
+    contents = library_contents(project)
     if args.json:
         print_json(
             {
                 "parts": [
                     {
                         "id": p.id,
-                        "fab": p.fab,
-                        "source": p.source,
-                        "symbols": list(p.symbols),
-                        "files": list(p.files),
-                        "used_by": numbers.get(p.id, []),
+                        "fab": p.part.fab,
+                        "source": p.part.source,
+                        "symbols": list(p.part.symbols),
+                        "footprints": list(p.footprints),
+                        "files": list(p.part.files),
+                        "used_by": list(p.schematic_refs),
+                        "on_board": list(p.board_refs),
+                        "usages": p.usages,
+                        "description": p.description,
                     }
-                    for p in parts
+                    for p in contents.parts
                 ],
-                "not_vendored": missing,
+                "not_vendored": [m.id for m in contents.not_vendored],
             }
         )
         return EXIT_OK
-    for part in parts:
-        used = ",".join(numbers.get(part.id, [])) or "unused"
-        print(f"{part.id:<10} {', '.join(part.symbols)}  ({used})")
-    if missing:
-        print("used in the schematic but not vendored: " + ", ".join(missing))
+    for part in contents.parts:
+        refs = sorted_refs(set(part.schematic_refs) | set(part.board_refs))
+        used = f"{part.usages} used: {','.join(refs)}" if refs else "unused"
+        what = ", ".join(part.part.symbols + part.footprints)
+        print(f"{part.id:<10} {what}  ({used})")
+        if part.description:
+            print(f"           {part.description}")
+    if contents.not_vendored:
+        print(
+            "used in the schematic but not vendored: "
+            + ", ".join(m.id for m in contents.not_vendored)
+        )
         print("run `kifab component sync`")
     return EXIT_OK
+
+
+def _cmd_component_remove(args: argparse.Namespace) -> int:
+    project = Project.open(args.project)
+    code = EXIT_OK
+    for part_id in args.ids:
+        try:
+            result = remove_part(project, part_id, force=args.force)
+        except RemoveError as exc:
+            error_line(str(exc))
+            code = EXIT_ERRORS
+            continue
+        print(f"  {result.part_id:<10} removed")
+        for name in result.symbols:
+            print(f"      symbol {name}")
+        for path in result.deleted:
+            print(f"      deleted {path}")
+        for path in result.kept:
+            print(f"      kept {path} (other parts use it)")
+        if result.used_by:
+            print(f"      still referenced by {','.join(result.used_by)}")
+    return code
 
 
 def _cmd_component_check(args: argparse.Namespace) -> int:
@@ -565,8 +668,31 @@ def build_parser() -> argparse.ArgumentParser:
 
     component = sub.add_parser("component", help="parts from the fab's library")
     comp_sub = component.add_subparsers(dest="component_command", metavar="ACTION")
-    p = comp_sub.add_parser("search", help="search the fab's parts catalogue")
-    p.add_argument("query", nargs="+", help="keywords or a part number")
+    p = comp_sub.add_parser(
+        "search",
+        help="search the fab's parts catalogue",
+        description="Quick search for passives: R, C or L, then a value (4k7, "
+        "4.7k, 4700, 1R5, 18p, 100n, 4u7), then optional extra terms, e.g. "
+        "'R 4k7 0603' or 'C18p 0402'. Only parts of that kind and value are "
+        "listed, Basic parts first.",
+    )
+    p.add_argument("query", nargs="+", help="keywords, a part number, or R/C/L value")
+    p.add_argument(
+        "-a",
+        "--alternatives",
+        action="store_true",
+        help="quick search: also list E24 values within +/-10%%",
+    )
+    p.add_argument(
+        "--plain", action="store_true", help="no quick search: search the text as is"
+    )
+    p.add_argument(
+        "--sort",
+        choices=[s.value for s in SearchSort],
+        default=SearchSort.RELEVANCE.value,
+        help="order the fab returns results in: stock (most first), price "
+        "(cheapest first); decides what fits on a page",
+    )
     p.add_argument("--basic", action="store_true", help="Basic parts only")
     p.add_argument("--page", type=int, default=1)
     p.add_argument("--limit", type=int, default=10, help="results per page")
@@ -624,6 +750,19 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("project", nargs="?", type=Path, default=Path("."))
     p.add_argument("--json", action="store_true", help="machine-readable output")
     p.set_defaults(func=_cmd_component_list)
+
+    p = comp_sub.add_parser(
+        "remove",
+        help="remove vendored parts and the library files only they use",
+        description="Refuses parts still used in the schematic or board unless "
+        "--force. Never edits the schematic or the board.",
+    )
+    p.add_argument("ids", nargs="+", metavar="ID", help="part numbers, e.g. C123456")
+    p.add_argument("--project", type=Path, default=Path("."))
+    p.add_argument(
+        "--force", action="store_true", help="remove even if the part is still used"
+    )
+    p.set_defaults(func=_cmd_component_remove)
 
     plugin = sub.add_parser(
         "kicad-plugin", help="optional KiCad toolbar buttons that open kifab"

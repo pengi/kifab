@@ -133,3 +133,31 @@ def test_gui_args() -> None:
     args = parse_args(["/x", "--tab", "parts"])
     assert args.project == Path("/x") and args.tab == "parts"
     assert parse_args([]).project is None
+
+
+def test_platform_choice() -> None:
+    from kifab.gui.platform import choose_platform
+
+    def missing() -> str | None:
+        return "libxcb-icccm.so.4"
+
+    def fine() -> str | None:
+        return None
+
+    x11 = {"DISPLAY": ":0"}
+    assert choose_platform(x11, fine, "linux") == choose_platform({}, fine, "darwin")
+    error = choose_platform(x11, missing, "linux").error
+    assert error and "libxcb-icccm.so.4 is missing" in error
+    assert "sudo apt install libxcb-cursor0" in error
+    wayland = {"DISPLAY": ":0", "WAYLAND_DISPLAY": "wayland-0"}
+    assert choose_platform(wayland, missing, "linux").platform == "wayland"
+    assert choose_platform({}, fine, "linux").error  # no display at all
+    assert choose_platform({"QT_QPA_PLATFORM": "xcb"}, missing, "linux").error is None
+
+
+def test_xcb_plugin_check_names_the_library(tmp_path: Path) -> None:
+    from kifab.gui.platform import missing_xcb_library
+
+    broken = tmp_path / "libqxcb.so"
+    broken.write_bytes(b"not a shared object")
+    assert missing_xcb_library(broken)  # some loader error, not a crash

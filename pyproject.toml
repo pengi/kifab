@@ -7,6 +7,7 @@ requires-python = ">=3.10"
 authors = [{ name = "Max Sikström" }]
 dependencies = [
     "easyeda2kicad>=1.0.1",
+    "certifi",  # easyeda2kicad verifies easyeda.com with it when installed
     "tomli>=2.0; python_version < '3.11'",
 ]
 

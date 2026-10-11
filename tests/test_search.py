@@ -16,6 +16,7 @@ from kifab.fabs.jlcpcb.search import (
     FixtureClient,
     JlcpcbCatalog,
     lookup,
+    parse_part,
     parse_search,
     search,
 )
@@ -39,6 +40,31 @@ def test_parse_part_fields(client: FixtureClient) -> None:
     assert hit.prices[0].min_qty == 1  # sorted
     assert ("Value", "330R") in hit.attributes
     assert hit.datasheet.endswith(".pdf")
+
+
+def test_images(client: FixtureClient) -> None:
+    hit = lookup(client, "C900001")
+    assert hit is not None and hit.images == (
+        "https://example.invalid/images/C900001.png",
+    )
+    catalog = JlcpcbCatalog(client)
+    assert catalog.image(hit.images[0]).startswith(b"\x89PNG")
+    with pytest.raises(CatalogError, match="404"):
+        catalog.image("https://example.invalid/images/nothing.png")
+    no_image = lookup(client, "C900007")
+    assert no_image is not None and no_image.images == ()
+    # every known image field, protocol-relative URLs, duplicates dropped
+    item = {
+        "componentCode": "C1",
+        "imageList": [{"productBigImage": "//img.invalid/big.jpg", "productImage": ""}],
+        "componentImageUrl": "https://img.invalid/big.jpg",
+        "minImage": "https://img.invalid/min.jpg",
+        "productImage": "javascript:alert(1)",
+    }
+    assert parse_part(item).images == (
+        "https://img.invalid/big.jpg",
+        "https://img.invalid/min.jpg",
+    )
 
 
 def test_keyword_search_and_basic_filter(client: FixtureClient) -> None:
@@ -97,6 +123,14 @@ def test_preferred_extended() -> None:
 
 
 class _Handler(BaseHTTPRequestHandler):
+    def do_GET(self) -> None:
+        data = gzip.compress(b"image " + self.path.encode())
+        self.send_response(200)
+        self.send_header("Content-Encoding", "gzip")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers()
+        self.wfile.write(data)
+
     def do_POST(self) -> None:
         body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
         data = gzip.compress(json.dumps({"echo": body}).encode())
@@ -124,6 +158,9 @@ def test_urllib_client_gzip(local_server: str) -> None:
     assert answer == {"echo": {"keyword": "x"}}
     with pytest.raises(NetError):
         UrllibClient(timeout=2).post_json("http://127.0.0.1:9/", {}, {})
+    assert UrllibClient().get_bytes(local_server + "x.png", {}) == b"image /x.png"
+    with pytest.raises(NetError, match="not an http"):
+        UrllibClient().get_bytes("file:///etc/passwd", {})
 
 
 def test_offline_env_uses_fixtures(monkeypatch: pytest.MonkeyPatch) -> None:
@@ -145,3 +182,30 @@ def test_cli_search(
     assert main(["component", "search", "KF-MOD-1", "--json"]) == 0
     payload = json.loads(capsys.readouterr().out)
     assert payload["total"] == 1 and payload["hits"][0]["type"] == "extended"
+
+
+def test_sorted_search(client: FixtureClient) -> None:
+    from kifab.core.parts import SearchSort
+
+    sent: list[dict[str, Any]] = []
+
+    class Recording(FixtureClient):
+        def post_json(
+            self, url: str, payload: dict[str, Any], headers: dict[str, str]
+        ) -> Any:
+            sent.append(dict(payload))
+            return super().post_json(url, payload, headers)
+
+    catalog = JlcpcbCatalog(Recording(FIXTURES))
+    plain = catalog.search("100nF 0603")
+    assert [h.id for h in plain.hits] == ["C900007", "C900003"]
+    by_stock = catalog.search("100nF 0603", sort=SearchSort.STOCK)
+    assert [h.id for h in by_stock.hits] == ["C900003", "C900007"]
+    by_price = catalog.search("100nF 0603", sort=SearchSort.PRICE)
+    assert [h.id for h in by_price.hits] == ["C900003", "C900007"]  # $0.0031 first
+    assert "sortMode" not in sent[0]
+    assert (sent[1]["sortMode"], sent[1]["sortASC"]) == ("STOCK_SORT", "DESC")
+    assert (sent[2]["sortMode"], sent[2]["sortASC"]) == ("PRICE_SORT", "ASC")
+    page2 = catalog.search("100nF 0603", page=2)
+    assert [h.id for h in page2.hits] == ["C900012", "C900004"] and page2.page == 2
+    assert catalog.search("100nF 0603", page=3).hits == ()

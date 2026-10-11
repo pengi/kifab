@@ -104,6 +104,38 @@ def find_projects(start: Path) -> list[Path]:
 
 
 _RULES_PATH = ("board", "design_settings", "rules")
+_SETTINGS_PATH = ("board", "design_settings")
+
+
+@dataclass(frozen=True)
+class NetClass:
+    """Sizes of a net class (Board Setup > Net Classes); None: not set (inherits)."""
+
+    name: str
+    clearance: float | None = None
+    track_width: float | None = None
+    via_diameter: float | None = None
+    via_drill: float | None = None
+    diff_pair_width: float | None = None
+    diff_pair_gap: float | None = None
+
+
+@dataclass(frozen=True)
+class ViaSize:
+    diameter: float
+    drill: float
+
+
+@dataclass(frozen=True)
+class DiffPairSize:
+    width: float
+    gap: float
+
+
+def _number(value: Any) -> float | None:
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    return float(value)
 
 
 class ProjectFile:
@@ -166,6 +198,53 @@ class ProjectFile:
             for k, v in section.items()
             if isinstance(v, (int, float)) and not isinstance(v, bool)
         }
+
+    def net_classes(self) -> list[NetClass]:
+        settings = self._data.get("net_settings")
+        classes = settings.get("classes") if isinstance(settings, dict) else None
+        out = []
+        for c in classes if isinstance(classes, list) else []:
+            if isinstance(c, dict):
+                out.append(
+                    NetClass(
+                        name=str(c.get("name", "")),
+                        clearance=_number(c.get("clearance")),
+                        track_width=_number(c.get("track_width")),
+                        via_diameter=_number(c.get("via_diameter")),
+                        via_drill=_number(c.get("via_drill")),
+                        diff_pair_width=_number(c.get("diff_pair_width")),
+                        diff_pair_gap=_number(c.get("diff_pair_gap")),
+                    )
+                )
+        return out
+
+    def _sizes(self, key: str) -> list[Any]:
+        section = self._section(_SETTINGS_PATH, create=False) or {}
+        value = section.get(key)
+        return value if isinstance(value, list) else []
+
+    def track_widths(self) -> list[float]:
+        """Predefined track widths (Board Setup > Pre-defined Sizes); 0 is the
+        net-class entry and left out."""
+        return [w for v in self._sizes("track_widths") if (w := _number(v))]
+
+    def via_sizes(self) -> list[ViaSize]:
+        out = []
+        for v in self._sizes("via_dimensions"):
+            if isinstance(v, dict):
+                d, h = _number(v.get("diameter")), _number(v.get("drill"))
+                if d and h:
+                    out.append(ViaSize(d, h))
+        return out
+
+    def diff_pair_sizes(self) -> list[DiffPairSize]:
+        out = []
+        for v in self._sizes("diff_pair_dimensions"):
+            if isinstance(v, dict):
+                w, g = _number(v.get("width")), _number(v.get("gap"))
+                if w and g:
+                    out.append(DiffPairSize(w, g))
+        return out
 
     def set_board_rules(self, values: Mapping[str, float | int]) -> None:
         """Set constraint values (ints stay ints, like KiCad's spoke count)."""

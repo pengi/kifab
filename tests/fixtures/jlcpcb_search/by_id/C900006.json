@@ -40,6 +40,11 @@
           "dataManualUrl": "https://example.invalid/datasheet/C900006.pdf",
           "describe": "hdr 2x4 2.54mm Pin Header (synthetic test part)",
           "firstSortName": "Pin Header",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900006.png"
+            }
+          ],
           "lcscGoodsUrl": "https://example.invalid/part/C900006",
           "minPurchaseNum": 1,
           "preferredComponentFlag": false,

@@ -1,0 +1,59 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": [
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "4k3"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "0603"
+            },
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "4.3kΩ"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900010",
+          "componentLibraryType": "expand",
+          "componentModelEn": "KF-R4K3-0603",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0035,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.0028,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.0021,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "0603",
+          "componentTypeEn": "Chip Resistor",
+          "dataManualUrl": "https://example.invalid/datasheet/C900010.pdf",
+          "describe": "4k3 0603 Chip Resistor (synthetic test part)",
+          "firstSortName": "Chip Resistor",
+          "lcscGoodsUrl": "https://example.invalid/part/C900010",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 20000
+        }
+      ],
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 1
+    }
+  },
+  "message": null
+}

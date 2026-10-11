@@ -40,6 +40,11 @@
           "dataManualUrl": "https://example.invalid/datasheet/C900005.pdf",
           "describe": "KF-MOD-1 SMD,18x13mm Radio Module (synthetic test part)",
           "firstSortName": "Radio Module",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900005.png"
+            }
+          ],
           "lcscGoodsUrl": "https://example.invalid/part/C900005",
           "minPurchaseNum": 1,
           "preferredComponentFlag": false,

@@ -40,6 +40,11 @@
           "dataManualUrl": "https://example.invalid/datasheet/C900008.pdf",
           "describe": "LED 0603 LED (synthetic test part)",
           "firstSortName": "LED",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900008.png"
+            }
+          ],
           "lcscGoodsUrl": "https://example.invalid/part/C900008",
           "minPurchaseNum": 1,
           "preferredComponentFlag": true,

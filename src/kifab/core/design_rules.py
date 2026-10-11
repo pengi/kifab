@@ -13,9 +13,11 @@ from pathlib import Path
 
 from kifab.core import managed
 from kifab.core.config import CONFIG_NAME, ConfigError
-from kifab.core.issues import Code, Issue, error, info
+from kifab.core.issues import Code, Issue, error, info, warning
 from kifab.core.project import Project
-from kifab.fabs.rules import DesignRuleProfile
+from kifab.fabs.rules import BoardConstraints, DesignRuleProfile
+from kifab.kicad import sexpr
+from kifab.kicad.board import read_board
 from kifab.kicad.project import ProjectFile
 
 DRU_MARKERS = managed.Markers(
@@ -109,10 +111,15 @@ def apply_rules(project: Project, *, force: bool = False) -> ApplyResult:
 
 
 def check_rules(project: Project) -> list[Issue]:
-    """Drift between the project's rules and the fab profile in ``kifab.toml``."""
+    """The project's design settings against the fab profile in ``kifab.toml``:
+    drift of kifab's rules, then everything else that undercuts the fab."""
     profile = project.design_rules()
     if profile is None:
         return []
+    return _managed_issues(project, profile) + check_fab_compatibility(project)
+
+
+def _managed_issues(project: Project, profile: DesignRuleProfile) -> list[Issue]:
     hint = "run `kifab rules apply`"
     issues: list[Issue] = []
     dru = project.kicad.dru
@@ -174,4 +181,225 @@ def check_rules(project: Project) -> list[Issue]:
                     path=pro_rel,
                 )
             )
+    return issues
+
+
+# ------------------------------------------------------------ fab compatibility
+#
+# The managed block and the board-setup minimums above are what kifab writes.
+# What follows checks the settings KiCad uses beside them, so a value below
+# the fab's limits shows up before DRC: net classes (new tracks and vias are
+# drawn with them), the pre-defined sizes picked while routing, custom rules
+# the user added after the managed block (later rules win), and the board's
+# copper layer count (the profile depends on it).
+
+#: ``.kicad_dru`` constraint kinds -> the board-setup minimum they must not undercut
+DRU_MINIMUMS = {
+    "clearance": "min_clearance",
+    "track_width": "min_track_width",
+    "connection_width": "min_connection",
+    "via_diameter": "min_via_diameter",
+    "annular_width": "min_via_annular_width",
+    "hole_size": "min_through_hole_diameter",
+    "hole_to_hole": "min_hole_to_hole",
+    "hole_clearance": "min_hole_clearance",
+    "edge_clearance": "min_copper_edge_clearance",
+}
+_UNITS_MM = {"mm": 1.0, "mil": 0.0254, "in": 25.4, "um": 0.001}
+
+
+@dataclass(frozen=True)
+class UserConstraint:
+    """A minimum in one of the user's own ``.kicad_dru`` rules."""
+
+    rule: str
+    kind: str
+    min: float  # mm
+
+
+def parse_length(text: str) -> float | None:
+    """``"0.1mm"``, ``"4mil"``, ``"0.004in"``, ``"100um"``, ``"0.1"`` -> mm."""
+    text = text.strip()
+    for unit, factor in _UNITS_MM.items():
+        if text.endswith(unit):
+            text, scale = text[: -len(unit)], factor
+            break
+    else:
+        scale = 1.0
+    try:
+        return float(text) * scale
+    except ValueError:
+        return None
+
+
+def user_constraints(dru_text: str) -> list[UserConstraint]:
+    """The minimums of the rules after kifab's managed block (or of all rules,
+    if there is no block). Unparsable text yields nothing (KiCad reports it)."""
+    parts = managed.split(dru_text, DRU_MARKERS)
+    text = parts.after if parts.block is not None else dru_text
+    body = "\n".join(
+        line for line in text.splitlines() if not line.lstrip().startswith("#")
+    )
+    try:
+        tree = sexpr.parse(f"(dru {body})")
+    except sexpr.SexprError:
+        return []
+    out = []
+    for rule in sexpr.children(tree, "rule"):
+        name = sexpr.atom(rule) or "?"
+        for constraint in sexpr.children(rule, "constraint"):
+            kind = sexpr.atom(constraint) or ""
+            low = sexpr.atom(sexpr.first(constraint, "min"))
+            value = parse_length(low) if low is not None else None
+            if kind in DRU_MINIMUMS and value is not None:
+                out.append(UserConstraint(name, kind, value))
+    return out
+
+
+def _below(have: float, wanted: float) -> bool:
+    return have < wanted - TOLERANCE
+
+
+def _fab_name(profile: DesignRuleProfile) -> str:
+    return profile.describe()
+
+
+def _net_class_issues(
+    pro: ProjectFile, c: BoardConstraints, profile: DesignRuleProfile, path: str
+) -> list[Issue]:
+    issues = []
+    hint = "Board Setup > Net Classes"
+    for nc in pro.net_classes():
+        checks = (
+            ("clearance", nc.clearance, c.min_clearance),
+            ("track width", nc.track_width, c.min_track_width),
+            ("via diameter", nc.via_diameter, c.min_via_diameter),
+            ("via drill", nc.via_drill, c.min_through_hole_diameter),
+            ("diff pair width", nc.diff_pair_width, c.min_track_width),
+            ("diff pair gap", nc.diff_pair_gap, c.min_clearance),
+        )
+        for what, have, wanted in checks:
+            if have is not None and _below(have, wanted):
+                issues.append(
+                    error(
+                        Code.RULES_LOOSENED,
+                        f"net class {nc.name!r}: {what} {have:g} mm is below the "
+                        f"fab's {wanted:g} mm ({_fab_name(profile)})",
+                        path=path,
+                        hint=hint,
+                    )
+                )
+        if nc.via_diameter is not None and nc.via_drill is not None:
+            ring = (nc.via_diameter - nc.via_drill) / 2
+            if _below(ring, c.min_via_annular_width):
+                issues.append(
+                    error(
+                        Code.RULES_LOOSENED,
+                        f"net class {nc.name!r}: via {nc.via_diameter:g}/"
+                        f"{nc.via_drill:g} mm leaves an annular ring of {ring:g} mm, "
+                        f"below the fab's {c.min_via_annular_width:g} mm",
+                        path=path,
+                        hint=hint,
+                    )
+                )
+    return issues
+
+
+def _predefined_issues(pro: ProjectFile, c: BoardConstraints, path: str) -> list[Issue]:
+    issues = []
+    hint = "Board Setup > Pre-defined Sizes"
+
+    def add(message: str) -> None:
+        issues.append(error(Code.RULES_LOOSENED, message, path=path, hint=hint))
+
+    for width in pro.track_widths():
+        if _below(width, c.min_track_width):
+            add(
+                f"pre-defined track width {width:g} mm is below the fab's "
+                f"{c.min_track_width:g} mm"
+            )
+    for via in pro.via_sizes():
+        ring = (via.diameter - via.drill) / 2
+        if _below(via.diameter, c.min_via_diameter):
+            add(
+                f"pre-defined via {via.diameter:g}/{via.drill:g} mm: diameter below "
+                f"the fab's {c.min_via_diameter:g} mm"
+            )
+        if _below(via.drill, c.min_through_hole_diameter):
+            add(
+                f"pre-defined via {via.diameter:g}/{via.drill:g} mm: drill below "
+                f"the fab's {c.min_through_hole_diameter:g} mm"
+            )
+        if _below(ring, c.min_via_annular_width):
+            add(
+                f"pre-defined via {via.diameter:g}/{via.drill:g} mm: annular ring "
+                f"{ring:g} mm below the fab's {c.min_via_annular_width:g} mm"
+            )
+    for pair in pro.diff_pair_sizes():
+        if _below(pair.width, c.min_track_width) or _below(pair.gap, c.min_clearance):
+            add(
+                f"pre-defined diff pair {pair.width:g}/{pair.gap:g} mm is below the "
+                f"fab's {c.min_track_width:g}/{c.min_clearance:g} mm"
+            )
+    return issues
+
+
+def _user_rule_issues(dru_text: str, c: BoardConstraints, path: str) -> list[Issue]:
+    limits = c.values()
+    issues = []
+    for uc in user_constraints(dru_text):
+        wanted = limits[DRU_MINIMUMS[uc.kind]]
+        if _below(uc.min, wanted):
+            issues.append(
+                warning(
+                    Code.RULES_LOOSENED,
+                    f"custom rule {uc.rule!r} allows {uc.kind} {uc.min:g} mm, below "
+                    f"the fab's {wanted:g} mm",
+                    path=path,
+                    hint="later rules override kifab's; remove the rule or make "
+                    "sure the fab accepts it",
+                )
+            )
+    return issues
+
+
+def _layer_issues(project: Project, profile: DesignRuleProfile) -> list[Issue]:
+    pcb = project.kicad.pcb
+    if not pcb.is_file():
+        return []
+    try:
+        layers = len(read_board(pcb).copper_layers)
+    except (OSError, ValueError):
+        return []  # reported by the board check
+    wanted = profile.options.layers
+    if layers == wanted:
+        return []
+    return [
+        error(
+            Code.RULES_DRIFT,
+            f"the board has {layers} copper layers but {CONFIG_NAME} says {wanted}; "
+            "the fab's limits depend on it",
+            path=project.rel(pcb),
+            hint=f"set [board] layers = {layers} in {CONFIG_NAME} and run "
+            "`kifab rules apply`",
+        )
+    ]
+
+
+def check_fab_compatibility(project: Project) -> list[Issue]:
+    """Settings beside kifab's managed rules that undercut the fab's limits."""
+    profile = project.design_rules()
+    if profile is None:
+        return []
+    c = profile.constraints
+    pro_rel = project.rel(project.kicad.pro)
+    pro = ProjectFile.load(project.kicad.pro)
+    issues = _net_class_issues(pro, c, profile, pro_rel)
+    issues += _predefined_issues(pro, c, pro_rel)
+    dru = project.kicad.dru
+    if dru.is_file():
+        issues += _user_rule_issues(
+            dru.read_text(encoding="utf-8"), c, project.rel(dru)
+        )
+    issues += _layer_issues(project, profile)
     return issues

@@ -82,6 +82,81 @@ def main() -> int:
             raise RuntimeError(f"{args.part} not found by part-number search")
         return f"{args.part} found"
 
+    def sorted_search() -> str:
+        found = []
+        for sort, key, reverse in (
+            ("stock", "stock", True),
+            ("price", "unit_price", False),
+        ):
+            proc = kifab(
+                "component",
+                "search",
+                *args.query.split(),
+                "--plain",
+                "--sort",
+                sort,
+                "--limit",
+                "30",
+                "--json",
+            )
+            (scratch / f"sorted_{sort}.json").write_text(proc.stdout + proc.stderr)
+            if proc.returncode != 0:
+                raise RuntimeError(proc.stderr.strip() or "search failed")
+            values = [
+                h[key] for h in json.loads(proc.stdout)["hits"] if h[key] is not None
+            ]
+            if values != sorted(values, reverse=reverse):
+                raise RuntimeError(
+                    f"--sort {sort}: JLCPCB did not return results in that order; "
+                    "the sort fields in kifab/fabs/jlcpcb/search.py (SORT_FIELDS) "
+                    "need adjusting (answers saved in the scratch directory)"
+                )
+            found.append(f"{sort}: {len(values)} hits in order")
+        return "; ".join(found)
+
+    def quick() -> str:
+        found = []
+        for words in (["R", "10k", "0603"], ["C", "100n", "0603"]):
+            proc = kifab("component", "search", *words, "--basic", "--json")
+            name = "_".join(words)
+            (scratch / f"quick_{name}.json").write_text(proc.stdout + proc.stderr)
+            if proc.returncode != 0:
+                raise RuntimeError(proc.stderr.strip() or "search failed")
+            hits = json.loads(proc.stdout)["hits"]
+            if not hits:
+                plain = kifab("component", "search", "--plain", *words[1:], "--json")
+                (scratch / f"plain_{name}.json").write_text(plain.stdout)
+                raise RuntimeError(
+                    f"quick search {' '.join(words)!r} found nothing; the keyword "
+                    "format or attribute names differ (answers saved in the scratch "
+                    "directory)"
+                )
+            found.append(f"{' '.join(words)}: {hits[0]['id']}")
+        return "; ".join(found)
+
+    def image() -> str:
+        from kifab.fabs.base import get_fab
+
+        catalog = get_fab("jlcpcb").catalog()
+        hit = catalog.lookup(args.part)
+        if hit is None:
+            raise RuntimeError(f"{args.part} not found")
+        if not hit.images:
+            raise RuntimeError(
+                "no image URL understood in the answer (look at the image fields "
+                f"of {args.part} in {scratch / 'search.json'} or the website)"
+            )
+        data = catalog.image(hit.images[0])
+        (scratch / "image.bin").write_bytes(data)
+        kind = (
+            "PNG"
+            if data[:4] == b"\x89PNG"
+            else "JPEG" if data[:2] == b"\xff\xd8" else "?"
+        )
+        if kind == "?":
+            raise RuntimeError(f"downloaded {len(data)} bytes, not an image")
+        return f"{len(hit.images)} image URL(s); first is a {kind} of {len(data)} bytes"
+
     def fetch() -> str:
         project = scratch / "p"
         proc = kifab("init", "p", "jlcpcb", "--dir", str(project), "--no-git")
@@ -108,6 +183,9 @@ def main() -> int:
 
     step("live JLCPCB search", search)
     step("live part-number lookup", lookup)
+    step("search sorted by the fab", sorted_search)
+    step("quick search for passives", quick)
+    step("product image", image)
     step("easyeda2kicad fetch + vendoring", fetch)
     step("tests against the real kicad-cli", real_kicad)
 

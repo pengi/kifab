@@ -54,3 +54,23 @@ def hermetic_git(
     for role in ("AUTHOR", "COMMITTER"):
         monkeypatch.setenv(f"GIT_{role}_NAME", "kifab tests")
         monkeypatch.setenv(f"GIT_{role}_EMAIL", "tests@kifab.invalid")
+
+
+@pytest.fixture(autouse=True)
+def gui_home(
+    tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch
+) -> Path:
+    """kifab-gui keeps its settings and cache here, never in the user's home."""
+    home = tmp_path_factory.mktemp("gui-home")
+    monkeypatch.setenv("KIFAB_GUI_HOME", str(home))
+    return home
+
+
+@pytest.fixture(autouse=True)
+def kifab_cache(
+    tmp_path_factory: pytest.TempPathFactory, monkeypatch: pytest.MonkeyPatch
+) -> Path:
+    """kifab's cache of fetched parts, empty for every test."""
+    cache = tmp_path_factory.mktemp("kifab-cache")
+    monkeypatch.setenv("KIFAB_CACHE", str(cache))
+    return cache

@@ -1,0 +1,59 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": [
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "10uH"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "0805"
+            },
+            {
+              "attribute_name_en": "Inductance",
+              "attribute_value_name": "10uH"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900013",
+          "componentLibraryType": "expand",
+          "componentModelEn": "KF-L10U-0805",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.03,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.024,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.018,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "0805",
+          "componentTypeEn": "Inductor",
+          "dataManualUrl": "https://example.invalid/datasheet/C900013.pdf",
+          "describe": "10uH 0805 Inductor (synthetic test part)",
+          "firstSortName": "Inductor",
+          "lcscGoodsUrl": "https://example.invalid/part/C900013",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 9000
+        }
+      ],
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 1
+    }
+  },
+  "message": null
+}

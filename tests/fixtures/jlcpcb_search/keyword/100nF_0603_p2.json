@@ -1,0 +1,110 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": [
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "18pF"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "0402"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "18pF"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900012",
+          "componentLibraryType": "base",
+          "componentModelEn": "KF-C18P-0402",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0018,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.00144,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.00108,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "0402",
+          "componentTypeEn": "Capacitor",
+          "dataManualUrl": "https://example.invalid/datasheet/C900012.pdf",
+          "describe": "18pF 0402 Capacitor (synthetic test part)",
+          "firstSortName": "Capacitor",
+          "lcscGoodsUrl": "https://example.invalid/part/C900012",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 400000
+        },
+        {
+          "attributes": [
+            {
+              "attribute_name_en": "Value",
+              "attribute_value_name": "4.7uF"
+            },
+            {
+              "attribute_name_en": "Package",
+              "attribute_value_name": "0805"
+            },
+            {
+              "attribute_name_en": "Capacitance",
+              "attribute_value_name": "4.7uF"
+            }
+          ],
+          "componentBrandEn": "Example Components",
+          "componentCode": "C900004",
+          "componentLibraryType": "expand",
+          "componentModelEn": "KF-C4U7-0805",
+          "componentPrices": [
+            {
+              "endNumber": 999,
+              "productPrice": 0.0102,
+              "startNumber": 1
+            },
+            {
+              "endNumber": 9999,
+              "productPrice": 0.00816,
+              "startNumber": 1000
+            },
+            {
+              "endNumber": -1,
+              "productPrice": 0.00612,
+              "startNumber": 10000
+            }
+          ],
+          "componentSpecificationEn": "0805",
+          "componentTypeEn": "Capacitor",
+          "dataManualUrl": "https://example.invalid/datasheet/C900004.pdf",
+          "describe": "4.7uF 0805 Capacitor (synthetic test part)",
+          "firstSortName": "Capacitor",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900004.png"
+            }
+          ],
+          "lcscGoodsUrl": "https://example.invalid/part/C900004",
+          "minPurchaseNum": 1,
+          "preferredComponentFlag": false,
+          "stockCount": 50000
+        }
+      ],
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 1534
+    }
+  },
+  "message": null
+}

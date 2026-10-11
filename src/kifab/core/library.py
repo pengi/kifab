@@ -8,6 +8,11 @@ is limited to known problems:
   drop them and DRC reports a library mismatch. Fixed when no pad is drilled.
 * 3D model paths are rewritten to ``${KIPRJMOD}/lib/<fab>/<fab>.3dshapes/...``
   (the tool writes absolute or cwd-relative paths).
+* Pin names that only repeat the pin number ("1", "2" on a resistor) are
+  dropped; with no real names left, pin names are hidden, and for two-pin
+  parts the pin numbers too (as KiCad's own ``Device:R``).
+* A symbol without a description gets the catalogue's description of the part,
+  so KiCad's symbol chooser and the placed symbol show it.
 
 Several parts can share a footprint name (all 0603 resistors -> ``R0603``) while
 EasyEDA's copies differ in details such as the description. The first vendored
@@ -35,7 +40,15 @@ from kifab.core.lockfile import (
 )
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
-from kifab.fabs.base import Fab, FetchedPart, FetchError, PartSource
+from kifab.core.parts import CatalogError
+from kifab.fabs.base import (
+    CachingPartSource,
+    Catalog,
+    Fab,
+    FetchedPart,
+    FetchError,
+    PartSource,
+)
 from kifab.kicad.libtable import (
     LibTable,
     LibTableEntry,
@@ -136,6 +149,9 @@ def _merge_symbols(
     changed = False
     for sym in fetched.symbols:
         old = merged.get(sym.name)
+        if old is not None and old.description and not sym.description:
+            # kifab added the description: compare (and refresh) with it kept
+            sym = sym.with_description(old.description, existing.version)
         if old is not None and old.digest() == sym.digest():
             continue
         if old is not None and not refresh:
@@ -156,6 +172,52 @@ def _merge_symbols(
     paths.symbols.parent.mkdir(parents=True, exist_ok=True)
     paths.symbols.write_text(library.dumps(), encoding="utf-8")
     result.written.append(rel)
+
+
+def _describe(
+    paths: LibraryPaths,
+    names: list[str],
+    description: str,
+    result: VendorResult,
+    rel: str,
+) -> None:
+    """Give the named symbols ``description`` where they have none."""
+    if not description or not paths.symbols.is_file():
+        return
+    library = read_symbol_library(paths.symbols)
+    changed = False
+    symbols = []
+    for sym in library.symbols:
+        if sym.name in names and not sym.description:
+            sym = sym.with_description(description, library.version)
+            changed = True
+        symbols.append(sym)
+    if not changed:
+        return
+    library = SymbolLibrary(tuple(symbols), library.version, library.generator)
+    paths.symbols.write_text(library.dumps(), encoding="utf-8")
+    if rel not in result.written:
+        result.written.append(rel)
+
+
+def _catalog_description(catalog: Catalog, part_id: str, result: VendorResult) -> str:
+    try:
+        hit = catalog.lookup(part_id)
+    except CatalogError as exc:
+        result.issues.append(
+            info(Code.CATALOG_ERROR, f"no description: {exc}", ref=part_id)
+        )
+        return ""
+    return hit.description if hit is not None else ""
+
+
+def tidy_pins(library: SymbolLibrary) -> SymbolLibrary:
+    """:meth:`LibrarySymbol.with_tidy_pins` for every symbol of a fetched library."""
+    return SymbolLibrary(
+        tuple(s.with_tidy_pins(library.version) for s in library.symbols),
+        library.version,
+        library.generator,
+    )
 
 
 def ensure_library_tables(project: Project, fab: Fab) -> list[Issue]:
@@ -231,9 +293,15 @@ def vendor_part(
     source: PartSource | None = None,
     *,
     refresh: bool = False,
+    description: str = "",
+    catalog: Catalog | None = None,
+    fresh: bool | None = None,
 ) -> VendorResult:
     """Fetch ``part_id`` and vendor it into ``lib/<fab>/``; update ``kifab.lock``.
 
+    ``description`` (or, if empty, the one ``catalog`` has for the part) goes
+    into symbols that have none; vendoring an already vendored part again fills
+    it in. ``fresh`` (default: ``refresh``) bypasses the part source's cache.
     Raises :class:`FetchError` when the part cannot be fetched and
     :class:`ConfigError` for a project without ``kifab.toml``.
     """
@@ -243,6 +311,8 @@ def vendor_part(
     source = source or fab.part_source()
     paths = LibraryPaths.of(project, fab)
     result = VendorResult(part_id=part_id.strip().upper())
+    if (refresh if fresh is None else fresh) and isinstance(source, CachingPartSource):
+        source.forget(result.part_id)
     result.issues += ensure_library_tables(project, fab)
     model_prefix = project_uri(project.directory, paths.models) + "/"
     with tempfile.TemporaryDirectory(prefix="kifab-fetch-") as tmp:
@@ -264,10 +334,15 @@ def vendor_part(
             result.footprints.append(f"{paths.nickname}:{fp.stem}")
         symbols: list[str] = []
         if fetched.symbol_library is not None:
-            lib = parse_symbol_library(fetched.symbol_library.read_text("utf-8"))
+            lib = tidy_pins(
+                parse_symbol_library(fetched.symbol_library.read_text("utf-8"))
+            )
             _merge_symbols(paths, lib, refresh, result, project.rel(paths.symbols))
             symbols = sorted(lib.names())
             result.symbols = [f"{paths.nickname}:{n}" for n in symbols]
+            if not description and catalog is not None:
+                description = _catalog_description(catalog, result.part_id, result)
+            _describe(paths, symbols, description, result, project.rel(paths.symbols))
         _lock_part(project, fab, fetched, files_rel, symbols)
     for kept in result.kept:
         result.issues.append(
@@ -314,6 +389,7 @@ def sync_parts(
     delay: float = 0.0,
     reporter: Reporter | None = None,
     sleep: Callable[[float], None] = time.sleep,
+    catalog: Catalog | None = None,
 ) -> SyncResult:
     """Vendor every part the schematic references (port of populate-jlc-library).
 
@@ -349,7 +425,9 @@ def sync_parts(
             sleep(delay)  # be polite to the service
         first = False
         try:
-            vendored = vendor_part(project, number, source, refresh=refresh)
+            vendored = vendor_part(
+                project, number, source, refresh=refresh, catalog=catalog
+            )
         except FetchError as exc:
             result.failed.append(number)
             issue = warning(Code.FETCH_FAILED, str(exc), ref=refs)

@@ -145,3 +145,31 @@ def test_vendored_library_is_readable(
             capture_output=True,
         )
         assert list(dest.glob("*.svg")), target
+
+
+def test_kicad_reads_the_description(
+    real_cli: list[str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from kifab.fabs.base import get_fab
+    from kifab.kicad.symbol_lib import read_symbol_library
+
+    monkeypatch.setenv("KIFAB_OFFLINE", str(FIXTURES))
+    project = init_project(tmp_path / "d", "d", "jlcpcb").project
+    vendor_part(project, "C900001", catalog=get_fab("jlcpcb").catalog())
+    lib = project.directory / "lib/jlcpcb/jlcpcb.kicad_sym"
+    assert "ki_description" in lib.read_text()  # the file's 20211014 syntax
+    upgraded = tmp_path / "upgraded.kicad_sym"
+    subprocess.run(
+        [*real_cli, "sym", "upgrade", "--force", "-o", str(upgraded), str(lib)],
+        check=True,
+        capture_output=True,
+    )
+    sym = read_symbol_library(upgraded).get("KF-R330-0603")
+    assert sym is not None
+    assert sym.description == "330R 0603 Chip Resistor (synthetic test part)"
+    assert '(property "Description"' in upgraded.read_text()
+    # kifab's hidden pin names/numbers (20211014 syntax) survive in KiCad's own
+    pin_names = sexpr.first(sym.node, "pin_names")
+    assert pin_names is not None and ["hide", "yes"] in pin_names
+    pin_numbers = sexpr.first(sym.node, "pin_numbers")
+    assert pin_numbers is not None and ["hide", "yes"] in pin_numbers

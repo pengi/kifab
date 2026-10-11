@@ -17,8 +17,11 @@ from __future__ import annotations
 
 import json
 import shutil
+import struct
 import sys
 import uuid
+import zlib
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -52,32 +55,59 @@ class FakePart:
     through_hole: bool = False
     attr_bug: bool = False  # easyeda2kicad writes (attr through_hole) on an SMD part
     fp_descr: str = ""
+    rated: str = ""  # the value as the catalogue's Resistance/Capacitance/... shows it
 
 
 PARTS = (
-    FakePart("C900001", "KF-R330-0603", "330R", "0603", "R0603", "base", 500000, 0.0021, "Chip Resistor", fp_descr="330R 1%"),
-    FakePart("C900002", "KF-R4K7-0603", "4k7", "0603", "R0603", "base", 800000, 0.0023, "Chip Resistor", fp_descr="4k7 1%"),
-    FakePart("C900003", "KF-C100N-0603", "100nF", "0603", "C0603", "base", 1000000, 0.0031, "Capacitor"),
-    FakePart("C900004", "KF-C4U7-0805", "4.7uF", "0805", "C0805", "expand", 50000, 0.0102, "Capacitor", attr_bug=True),
+    FakePart("C900001", "KF-R330-0603", "330R", "0603", "R0603", "base", 500000, 0.0021, "Chip Resistor", fp_descr="330R 1%", rated="330Ω"),
+    FakePart("C900002", "KF-R4K7-0603", "4k7", "0603", "R0603", "base", 800000, 0.0023, "Chip Resistor", fp_descr="4k7 1%", rated="4.7kΩ"),
+    FakePart("C900003", "KF-C100N-0603", "100nF", "0603", "C0603", "base", 1000000, 0.0031, "Capacitor", rated="100nF"),
+    FakePart("C900004", "KF-C4U7-0805", "4.7uF", "0805", "C0805", "expand", 50000, 0.0102, "Capacitor", attr_bug=True, rated="4.7uF"),
     FakePart("C900005", "KF-MOD-1", "KF-MOD-1", "SMD,18x13mm", "MOD-SMD_KF1", "expand", 1200, 6.5, "Radio Module"),
     FakePart("C900006", "KF-HDR-2X4", "hdr", "2x4 2.54mm", "HDR-TH_8P", "expand", 100, 0.12, "Pin Header", through_hole=True),
-    FakePart("C900007", "KF-C100N-0603-X", "100nF", "0603", "C0603", "expand", 0, 0.0055, "Capacitor"),
+    FakePart("C900007", "KF-C100N-0603-X", "100nF", "0603", "C0603", "expand", 0, 0.0055, "Capacitor", rated="100nF"),
     FakePart("C900008", "KF-LED-0603", "LED", "0603", "LED0603", "expand", 70000, 0.011, "LED", preferred=True),
+    # passives for the quick search (R 4k7, C 18p, L 10u)
+    FakePart("C900009", "KF-R5K1-0603", "5k1", "0603", "R0603", "base", 300000, 0.0022, "Chip Resistor", rated="5.1kΩ"),
+    FakePart("C900010", "KF-R4K3-0603", "4k3", "0603", "R0603", "expand", 20000, 0.0035, "Chip Resistor", rated="4.3kΩ"),
+    FakePart("C900011", "KF-R4K7-0603-B", "4k7", "0603", "R0603", "expand", 0, 0.004, "Chip Resistor", rated="4.7kΩ"),
+    FakePart("C900012", "KF-C18P-0402", "18pF", "0402", "C0402", "base", 400000, 0.0018, "Capacitor", rated="18pF"),
+    FakePart("C900013", "KF-L10U-0805", "10uH", "0805", "L0805", "expand", 9000, 0.03, "Inductor", rated="10uH"),
+    FakePart("C900014", "KF-NTC-4K7-0603", "NTC 4k7", "0603", "R0603", "expand", 15000, 0.02, "NTC Thermistor", rated="4.7kΩ"),
 )  # fmt: skip
 BY_ID = {p.id: p for p in PARTS}
 #: parts whose easyeda2kicad output is captured (C900007/8 are catalogue-only)
 FETCHABLE = ("C900001", "C900002", "C900003", "C900004", "C900005", "C900006")
+#: parts the catalogue shows a product image for (served from jlcpcb_search/images)
+WITH_IMAGE = FETCHABLE + ("C900008",)
+IMAGE_URL = "https://example.invalid/images/{id}.png"
 
 
 # ---------------------------------------------------------------- catalogue
 
 
+RATED_ATTRIBUTE = {
+    "Chip Resistor": "Resistance",
+    "NTC Thermistor": "Resistance",
+    "Capacitor": "Capacitance",
+    "Inductor": "Inductance",
+}
+
+
 def catalog_item(p: FakePart) -> dict[str, object]:
+    attributes = [
+        {"attribute_name_en": "Value", "attribute_value_name": p.value},
+        {"attribute_name_en": "Package", "attribute_value_name": p.package},
+    ]
+    if p.rated:
+        attributes.append(
+            {
+                "attribute_name_en": RATED_ATTRIBUTE[p.category],
+                "attribute_value_name": p.rated,
+            }
+        )
     return {
-        "attributes": [
-            {"attribute_name_en": "Value", "attribute_value_name": p.value},
-            {"attribute_name_en": "Package", "attribute_value_name": p.package},
-        ],
+        "attributes": attributes,
         "componentBrandEn": "Example Components",
         "componentCode": p.id,
         "componentLibraryType": p.kind,
@@ -96,7 +126,76 @@ def catalog_item(p: FakePart) -> dict[str, object]:
         "minPurchaseNum": 1,
         "preferredComponentFlag": p.preferred,
         "stockCount": p.stock,
-    }  # fmt: skip
+    } | (
+        {"imageList": [{"productBigImage": IMAGE_URL.format(id=p.id)}]}
+        if p.id in WITH_IMAGE
+        else {}
+    )  # fmt: skip
+
+
+# ---------------------------------------------------------------- product images
+
+RGB = tuple[int, int, int]
+WHITE: RGB = (250, 250, 250)
+METAL: RGB = (190, 190, 196)
+BODY: dict[str, RGB] = {
+    "Chip Resistor": (35, 35, 38),
+    "Capacitor": (176, 140, 92),
+    "Radio Module": (40, 110, 60),
+    "Pin Header": (30, 30, 30),
+    "LED": (235, 235, 200),
+}
+
+
+def png(width: int, height: int, pixel: Callable[[int, int], RGB]) -> bytes:
+    """A tiny deterministic RGB PNG."""
+
+    def chunk(kind: bytes, data: bytes) -> bytes:
+        body = kind + data
+        return struct.pack(">I", len(data)) + body + struct.pack(">I", zlib.crc32(body))
+
+    rows = b"".join(
+        b"\x00" + b"".join(bytes(pixel(x, y)) for x in range(width))
+        for y in range(height)
+    )
+    header = struct.pack(">IIBBBBB", width, height, 8, 2, 0, 0, 0)
+    return (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", header)
+        + chunk(b"IDAT", zlib.compress(rows, 9))
+        + chunk(b"IEND", b"")
+    )
+
+
+def part_image(p: FakePart) -> bytes:
+    """A made-up product photo: the part's body and terminals as rectangles."""
+    w, h = 120, 80
+    body = BODY.get(p.category, (90, 90, 90))
+
+    def pixel(x: int, y: int) -> RGB:
+        if p.category == "Pin Header":
+            if 20 <= x < 100 and 30 <= y < 50:
+                return body
+            if (x - 30) % 20 < 4 and 10 <= y < 70 and 26 <= x < 98:
+                return (200, 170, 60)  # gold pins
+            return WHITE
+        if p.category == "Radio Module":
+            if 15 <= x < 105 and 10 <= y < 70:
+                inner = 35 <= x < 85 and 20 <= y < 60
+                return METAL if inner else body
+            return WHITE
+        if 25 <= x < 95 and 25 <= y < 55:
+            return METAL if x < 37 or x >= 83 else body
+        return WHITE
+
+    return png(w, h, pixel)
+
+
+def write_images(root: Path) -> None:
+    for part_id in WITH_IMAGE:
+        path = root / "jlcpcb_search" / "images" / f"{part_id}.png"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(part_image(BY_ID[part_id]))
 
 
 def answer(parts: list[FakePart], total: int | None = None) -> dict[str, object]:
@@ -119,11 +218,22 @@ KEYWORDS = {
     "330R_0603": (["C900001", "C900002"], None),
     "330R_0603_base": (["C900001"], None),
     "100nF_0603": (["C900007", "C900003"], 1534),  # more pages exist
+    "100nF_0603_p2": (["C900012", "C900004"], 1534),  # page 2 (invented filler)
     "100nF_0603_base": (["C900003"], None),
     "KF_MOD_1": (["C900005"], None),
     "KF_MOD_1_base": ([], None),
     "xyzzy_no_such_part": ([], None),
     "xyzzy_no_such_part_base": ([], None),
+    # quick search (kifab.core.quick): "<value><unit> [extra terms]"
+    "4_7k__0603": (["C900002", "C900011", "C900014"], None),
+    "4_7k__0603_base": (["C900002"], None),
+    "4_3k__0603": (["C900010"], None),
+    "4_3k__0603_base": ([], None),
+    "5_1k__0603": (["C900009"], None),
+    "5_1k__0603_base": (["C900009"], None),
+    "4_7k_": (["C900002", "C900011", "C900014"], None),
+    "18pF": (["C900012"], None),
+    "10uH": (["C900013"], None),
 }
 
 
@@ -192,13 +302,13 @@ E2K_SYMBOL = """\
       (pin unspecified line
         (at -5.08 0 0)
         (length 2.54)
-        (name "1" (effects (font (size 1.27 1.27))))
+        (name "{name1}" (effects (font (size 1.27 1.27))))
         (number "1" (effects (font (size 1.27 1.27))))
       )
       (pin unspecified line
         (at 5.08 0 180)
         (length 2.54)
-        (name "2" (effects (font (size 1.27 1.27))))
+        (name "{name2}" (effects (font (size 1.27 1.27))))
         (number "2" (effects (font (size 1.27 1.27))))
       )
     )
@@ -210,7 +320,16 @@ def e2k_symbol_lib(p: FakePart) -> str:
     ref = {"Chip Resistor": "R", "Capacitor": "C", "LED": "D", "Pin Header": "J"}.get(
         p.category, "U"
     )
-    body = E2K_SYMBOL.format(mpn=p.mpn, ref=ref, footprint=p.footprint, id=p.id)
+    # simple parts: pins named like their numbers, as EasyEDA does
+    names = ("VCC", "GND") if p.category == "Radio Module" else ("1", "2")
+    body = E2K_SYMBOL.format(
+        mpn=p.mpn,
+        ref=ref,
+        footprint=p.footprint,
+        id=p.id,
+        name1=names[0],
+        name2=names[1],
+    )
     return (
         "(kicad_symbol_lib\n  (version 20211014)\n"
         "  (generator https://github.com/uPesy/easyeda2kicad.py)\n\n" + body + ")\n"
@@ -231,6 +350,7 @@ def e2k_footprint(p: FakePart, capture_dir: str) -> str:
         "\t\t(effects (font (size 1 1) (thickness 0.15)))",
         "\t)",
     ]
+    lines += [f"\t{line}" for line in e2k_silk(p)]
     if p.through_hole:
         for i in range(8):
             x, y = (i // 2) * 2.54, (i % 2) * 2.54
@@ -254,6 +374,32 @@ def e2k_footprint(p: FakePart, capture_dir: str) -> str:
         ")",
     ]
     return "\n".join(lines) + "\n"
+
+
+def e2k_silk(p: FakePart) -> list[str]:
+    """Silkscreen in easyeda2kicad's legacy syntax (lines, a circle, an arc)."""
+    w = "(layer F.SilkS) (width 0.15)"
+    if p.through_hole:  # 2x4 header: outline and a pin-1 mark
+        x0, y0, x1, y1 = -1.27, -1.27, 8.89, 3.81
+        return [
+            f"(fp_line (start {x0:g} {y0:g}) (end {x1:g} {y0:g}) {w})",
+            f"(fp_line (start {x1:g} {y0:g}) (end {x1:g} {y1:g}) {w})",
+            f"(fp_line (start {x1:g} {y1:g}) (end {x0:g} {y1:g}) {w})",
+            f"(fp_line (start {x0:g} {y1:g}) (end {x0:g} {y0:g}) {w})",
+            f"(fp_circle (center -2 -2) (end -1.8 -2) {w})",
+        ]
+    if p.category == "Radio Module":  # an antenna arc over the body outline
+        return [
+            f"(fp_line (start -2 -1.5) (end 2 -1.5) {w})",
+            f"(fp_line (start 2 -1.5) (end 2 1.5) {w})",
+            f"(fp_line (start 2 1.5) (end -2 1.5) {w})",
+            f"(fp_line (start -2 1.5) (end -2 -1.5) {w})",
+            f"(fp_arc (start 0 -1.5) (end -1 -1.5) (angle 180) {w})",
+        ]
+    return [  # two-terminal chip: lines above and below the body
+        f"(fp_line (start -0.3 -0.7) (end 0.3 -0.7) {w})",
+        f"(fp_line (start -0.3 0.7) (end 0.3 0.7) {w})",
+    ]
 
 
 def write_e2k(root: Path) -> None:
@@ -927,6 +1073,7 @@ def generate(root: Path) -> None:
     write_project(root)
     write_kicad_cli_samples(root)
     write_catalog(root)
+    write_images(root)
     write_e2k(root)
 
 

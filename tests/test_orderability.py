@@ -11,7 +11,7 @@ from kifab.core.issues import Code, Severity
 from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
-from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchPage
+from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
 from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from tests.conftest import DEMO, EXPECTED, FIXTURES
@@ -33,6 +33,7 @@ class FakeCatalog:
         page: int = 1,
         page_size: int = 10,
         basic_only: bool = False,
+        sort: SearchSort = SearchSort.RELEVANCE,
     ) -> SearchPage:
         raise NotImplementedError
 
@@ -41,6 +42,9 @@ class FakeCatalog:
         if self.fail:
             raise CatalogError("offline")
         return self.hits.get(part_id)
+
+    def image(self, url: str) -> bytes:
+        raise CatalogError("no images")
 
 
 def hit(pn: str, stock: int, kind: LibraryType = LibraryType.BASIC) -> PartHit:

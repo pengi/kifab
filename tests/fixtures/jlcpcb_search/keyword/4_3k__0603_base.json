@@ -1,0 +1,12 @@
+{
+  "code": 200,
+  "data": {
+    "componentPageInfo": {
+      "list": null,
+      "pageNum": 1,
+      "pageSize": 10,
+      "total": 0
+    }
+  },
+  "message": null
+}

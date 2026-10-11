@@ -12,6 +12,10 @@
             {
               "attribute_name_en": "Package",
               "attribute_value_name": "0603"
+            },
+            {
+              "attribute_name_en": "Resistance",
+              "attribute_value_name": "330Ω"
             }
           ],
           "componentBrandEn": "Example Components",
@@ -40,6 +44,11 @@
           "dataManualUrl": "https://example.invalid/datasheet/C900001.pdf",
           "describe": "330R 0603 Chip Resistor (synthetic test part)",
           "firstSortName": "Chip Resistor",
+          "imageList": [
+            {
+              "productBigImage": "https://example.invalid/images/C900001.png"
+            }
+          ],
           "lcscGoodsUrl": "https://example.invalid/part/C900001",
           "minPurchaseNum": 1,
           "preferredComponentFlag": false,

@@ -13,7 +13,14 @@ from pathlib import Path
 from typing import Any
 
 from kifab.core.net import HttpClient, NetError
-from kifab.core.parts import CatalogError, LibraryType, PartHit, PriceBreak, SearchPage
+from kifab.core.parts import (
+    CatalogError,
+    LibraryType,
+    PartHit,
+    PriceBreak,
+    SearchPage,
+    SearchSort,
+)
 
 SEARCH_URL = (
     "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/"
@@ -21,6 +28,14 @@ SEARCH_URL = (
 )
 HEADERS = {"Origin": "https://jlcpcb.com", "Referer": "https://jlcpcb.com/parts"}
 PART_ID = re.compile(r"^C\d+$", re.IGNORECASE)
+#: request fields for a sorted search. UNVERIFIED (no access to JLCPCB here):
+#: modelled on what the parts website offers; if JLCPCB ignores them, results
+#: come back in its own order and the frontends sort what was loaded.
+#: scripts/local_verify.py checks whether the order is honoured.
+SORT_FIELDS: dict[SearchSort, dict[str, str]] = {
+    SearchSort.STOCK: {"sortMode": "STOCK_SORT", "sortASC": "DESC"},
+    SearchSort.PRICE: {"sortMode": "PRICE_SORT", "sortASC": "ASC"},
+}
 
 
 def _str(item: dict[str, Any], key: str) -> str:
@@ -69,6 +84,28 @@ def _prices(item: dict[str, Any]) -> tuple[PriceBreak, ...]:
     return tuple(sorted(out, key=lambda b: b.min_qty))
 
 
+#: image fields of a catalogue item, largest first. The answer's layout is not
+#: documented; kifab takes whichever of these are present.
+_IMAGE_LIST_KEYS = ("productBigImage", "productImage", "productMinImage")
+_IMAGE_KEYS = ("componentImageUrl", "productBigImage", "productImage", "minImage")
+
+
+def _images(item: dict[str, Any]) -> tuple[str, ...]:
+    urls: list[str] = []
+    entries = item.get("imageList")
+    for entry in entries if isinstance(entries, list) else []:
+        if isinstance(entry, dict):
+            urls += [_str(entry, k) for k in _IMAGE_LIST_KEYS]
+    urls += [_str(item, k) for k in _IMAGE_KEYS]
+    out: list[str] = []
+    for url in urls:
+        if url.startswith("//"):
+            url = "https:" + url
+        if url.startswith(("https://", "http://")) and url not in out:
+            out.append(url)
+    return tuple(out)
+
+
 def parse_part(item: dict[str, Any]) -> PartHit:
     attrs = []
     for a in item.get("attributes") or []:
@@ -90,6 +127,7 @@ def parse_part(item: dict[str, Any]) -> PartHit:
         url=_str(item, "lcscGoodsUrl"),
         min_order=max(1, _int(item, "minPurchaseNum", 1)),
         attributes=tuple(attrs),
+        images=_images(item),
     )
 
 
@@ -121,6 +159,7 @@ def search(
     page: int = 1,
     page_size: int = 10,
     basic_only: bool = False,
+    sort: SearchSort = SearchSort.RELEVANCE,
 ) -> SearchPage:
     payload: dict[str, Any] = {
         "keyword": query,
@@ -129,6 +168,7 @@ def search(
     }
     if basic_only:
         payload["componentLibraryType"] = "base"
+    payload.update(SORT_FIELDS.get(sort, {}))
     try:
         answer = client.post_json(SEARCH_URL, payload, HEADERS)
     except NetError as exc:
@@ -144,15 +184,24 @@ def lookup(client: HttpClient, part_id: str) -> PartHit | None:
 
 
 def _slug(text: str) -> str:
-    return "".join(c if c.isalnum() else "_" for c in text)
+    return "".join(c if c.isascii() and c.isalnum() else "_" for c in text)
+
+
+def image(client: HttpClient, url: str) -> bytes:
+    try:
+        return client.get_bytes(url, {"Referer": HEADERS["Referer"]})
+    except NetError as exc:
+        raise CatalogError(f"JLCPCB image: {exc}") from exc
 
 
 class FixtureClient:
     """Answers search requests from ``<root>/jlcpcb_search`` (offline mode).
 
     ``{"keyword": "C123456"}`` -> ``by_id/C123456.json``; text queries ->
-    ``keyword/<slug>[_base].json``. Anything else is an empty result (page 1)
-    or an empty later page, like the real endpoint.
+    ``keyword/<slug>[_base].json``, later pages ``..._p<n>.json``. Anything
+    else is an empty result (page 1) or an empty later page, like the real
+    endpoint. Sorted requests are sorted here, as the fab would. Downloads are served from
+    ``images/<last path component>``.
     """
 
     def __init__(self, root: Path) -> None:
@@ -171,12 +220,33 @@ class FixtureClient:
                 / "keyword"
                 / f"{_slug(keyword)}{'_base' if base else ''}.json"
             )
-        if payload.get("currentPage", 1) != 1 or not path.is_file():
+        page = int(payload.get("currentPage", 1))
+        if page > 1:  # later pages: <slug>[_base]_p<page>.json
+            path = path.with_name(f"{path.stem}_p{page}.json")
+        if not path.is_file():
             return {
                 "code": 200,
                 "data": {"componentPageInfo": {"list": None, "total": 0}},
             }
-        return json.loads(path.read_text(encoding="utf-8"))
+        answer = json.loads(path.read_text(encoding="utf-8"))
+        mode = payload.get("sortMode")
+        items = answer["data"]["componentPageInfo"]["list"]
+        if mode and items:  # emulate the fab sorting before it pages
+
+            def key(item: dict[str, Any]) -> float:
+                if mode == "STOCK_SORT":
+                    return float(item.get("stockCount") or 0)
+                prices = item.get("componentPrices") or [{}]
+                return float(prices[0].get("productPrice", 1e9))
+
+            items.sort(key=key, reverse=payload.get("sortASC") == "DESC")
+        return answer
+
+    def get_bytes(self, url: str, headers: dict[str, str]) -> bytes:
+        path = self.root / "images" / url.rstrip("/").rsplit("/", 1)[-1]
+        if not path.is_file():
+            raise NetError(f"{url}: 404 Not Found (offline)")
+        return path.read_bytes()
 
 
 class JlcpcbCatalog:
@@ -193,10 +263,19 @@ class JlcpcbCatalog:
         page: int = 1,
         page_size: int = 10,
         basic_only: bool = False,
+        sort: SearchSort = SearchSort.RELEVANCE,
     ) -> SearchPage:
         return search(
-            self.client, query, page=page, page_size=page_size, basic_only=basic_only
+            self.client,
+            query,
+            page=page,
+            page_size=page_size,
+            basic_only=basic_only,
+            sort=sort,
         )
+
+    def image(self, url: str) -> bytes:
+        return image(self.client, url)
 
     def lookup(self, part_id: str) -> PartHit | None:
         key = part_id.strip().upper()

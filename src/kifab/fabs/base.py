@@ -11,12 +11,12 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from importlib.metadata import entry_points
 from pathlib import Path
-from typing import Protocol
+from typing import Protocol, runtime_checkable
 
 from kifab.core.issues import Issue
 from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.core.net import HttpClient
-from kifab.core.parts import PartHit, SearchPage
+from kifab.core.parts import PartHit, SearchPage, SearchSort
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 
 ENTRY_POINT_GROUP = "kifab.fabs"
@@ -47,6 +47,13 @@ class PartSource(Protocol):
         """Fetch ``part_id`` into ``workdir``; raise :class:`FetchError`."""
 
 
+@runtime_checkable
+class CachingPartSource(PartSource, Protocol):
+    """A part source that keeps fetched parts; ``forget`` forces a fresh fetch."""
+
+    def forget(self, part_id: str) -> None: ...
+
+
 class Catalog(Protocol):
     """The fab's parts catalogue (online; ``$KIFAB_OFFLINE`` serves fixtures)."""
 
@@ -57,10 +64,17 @@ class Catalog(Protocol):
         page: int = 1,
         page_size: int = 10,
         basic_only: bool = False,
+        sort: SearchSort = SearchSort.RELEVANCE,
     ) -> SearchPage: ...
 
     def lookup(self, part_id: str) -> PartHit | None:
         """The part with exactly this number, or ``None`` if the fab has none."""
+
+    def image(self, url: str) -> bytes:
+        """A product image of a hit (one of :attr:`PartHit.images`).
+
+        Raises :class:`kifab.core.parts.CatalogError`.
+        """
 
 
 class Fab(ABC):

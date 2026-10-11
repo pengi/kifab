@@ -7,7 +7,8 @@ from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.core.net import HttpClient, UrllibClient, offline_root
 from kifab.fabs.base import Catalog, Fab, PartSource
 from kifab.fabs.jlcpcb import export, rules
-from kifab.fabs.jlcpcb.fetch import Easyeda2kicad, FixturePartSource
+from kifab.core.cache import user_cache_dir
+from kifab.fabs.jlcpcb.fetch import CachedPartSource, Easyeda2kicad, FixturePartSource
 from kifab.fabs.jlcpcb.search import FixtureClient, JlcpcbCatalog
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 from kifab.kicad.schematic import LCSC_FIELDS
@@ -59,4 +60,6 @@ class JlcpcbFab(Fab):
 
     def part_source(self) -> PartSource:
         root = offline_root()
-        return FixturePartSource(root) if root else Easyeda2kicad()
+        if root:
+            return FixturePartSource(root)
+        return CachedPartSource(Easyeda2kicad(), user_cache_dir() / "easyeda2kicad")

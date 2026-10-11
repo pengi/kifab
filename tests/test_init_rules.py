@@ -1,5 +1,7 @@
 import json
+from collections.abc import Callable
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -235,3 +237,104 @@ def test_cli_rules_apply_needs_config(
 ) -> None:
     assert main(["rules", "apply", str(demo_copy)]) == 2
     assert "kifab.toml" in capsys.readouterr().err
+
+
+def _edit_pro(project: Project, edit: Callable[[dict[str, Any]], None]) -> None:
+    data = json.loads(project.kicad.pro.read_text())
+    edit(data)
+    project.kicad.pro.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+
+
+def _messages(project: Project) -> list[tuple[Severity, str]]:
+    return [
+        (i.severity, i.message)
+        for i in check_rules(project)
+        if i.code in (Code.RULES_LOOSENED, Code.RULES_DRIFT)
+    ]
+
+
+def test_net_classes_and_sizes_against_the_fab(tmp_path: Path) -> None:
+    project = init_project(tmp_path / "p", "p", "jlcpcb", git=None).project
+    assert check_rules(project) == []
+
+    def edit(data: dict[str, Any]) -> None:
+        # KiCad 10's layout: net_settings.classes, design_settings.*_dimensions
+        data["net_settings"] = {
+            "classes": [
+                {"name": "Default", "clearance": 0.2, "track_width": 0.25,
+                 "via_diameter": 0.8, "via_drill": 0.3, "diff_pair_width": 0.2,
+                 "diff_pair_gap": 0.25},
+                {"name": "Fine", "clearance": 0.1, "track_width": 0.1,
+                 "via_diameter": 0.45, "via_drill": 0.2},
+                {"name": "Power", "track_width": 0.5},  # the rest inherited
+            ]
+        }  # fmt: skip
+        ds = data["board"]["design_settings"]
+        ds["track_widths"] = [0.0, 0.2, 0.1]
+        ds["via_dimensions"] = [
+            {"diameter": 0.0, "drill": 0.0},
+            {"diameter": 0.8, "drill": 0.3},
+            {"diameter": 0.6, "drill": 0.4},  # ring 0.1 mm
+        ]
+        ds["diff_pair_dimensions"] = [{"gap": 0.1, "via_gap": 0.25, "width": 0.2}]
+
+    _edit_pro(project, edit)
+    found = _messages(project)
+    assert all(severity is Severity.ERROR for severity, _ in found)
+    text = "\n".join(m for _, m in found)
+    assert "net class 'Fine': clearance 0.1 mm is below the fab's 0.127 mm" in text
+    assert "net class 'Fine': track width 0.1 mm" in text
+    assert "net class 'Fine': via diameter 0.45 mm" in text
+    assert "net class 'Fine': via drill 0.2 mm" in text
+    assert "'Default'" not in text and "'Power'" not in text
+    assert "pre-defined track width 0.1 mm" in text and "track width 0.2 mm" not in text
+    assert "pre-defined via 0.6/0.4 mm: annular ring 0.1 mm" in text
+    assert "pre-defined via 0.8/0.3" not in text
+    assert "pre-defined diff pair 0.2/0.1 mm" in text
+    assert len(found) == 8  # the Fine via also leaves a 0.125 mm ring
+    # bundle and the CLI see it too
+    assert main(["check", str(project.directory), "--no-git"]) == 1
+
+
+def test_custom_rules_that_loosen_the_fab_are_warned(tmp_path: Path) -> None:
+    project = init_project(tmp_path / "p", "p", "jlcpcb", git=None).project
+    dru = project.kicad.dru
+    dru.write_text(
+        dru.read_text()
+        + "\n# my own rules\n"
+        + '(rule "tight BGA"\n\t(condition "A.Footprint == \'U1\'")\n'
+        + "\t(constraint clearance (min 0.1mm))\n\t(constraint track_width (min 4mil)))\n"
+        + '(rule "fine" (constraint hole_size (min 0.3mm)))\n'
+    )
+    found = _messages(project)
+    assert [s for s, _ in found] == [Severity.WARNING, Severity.WARNING]
+    assert found[0][1] == (
+        "custom rule 'tight BGA' allows clearance 0.1 mm, below the fab's 0.127 mm"
+    )
+    assert "track_width 0.1016 mm" in found[1][1]  # 4 mil
+    assert main(["check", str(project.directory), "--no-git"]) == 0  # warnings only
+    assert main(["check", str(project.directory), "--no-git", "--strict"]) == 1
+
+
+def test_layer_count_must_match_the_config(tmp_path: Path) -> None:
+    project = init_project(tmp_path / "p", "p", "jlcpcb", layers=4, git=None).project
+    assert check_rules(project) == []
+    cfg = project.directory / "kifab.toml"
+    cfg.write_text(cfg.read_text().replace("layers = 4", "layers = 2"))
+    found = _messages(Project.open(project.directory))
+    assert (
+        Severity.ERROR,
+        "the board has 4 copper layers but kifab.toml says 2; the fab's limits "
+        "depend on it",
+    ) in found
+
+
+def test_parse_length() -> None:
+    from kifab.core.design_rules import parse_length
+
+    assert parse_length("0.1mm") == 0.1
+    assert parse_length("4mil") == pytest.approx(0.1016)
+    assert parse_length("0.004in") == pytest.approx(0.1016)
+    assert parse_length("100um") == pytest.approx(0.1)
+    assert parse_length("0.2") == 0.2
+    assert parse_length("wide") is None

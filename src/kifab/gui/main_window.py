@@ -1,4 +1,4 @@
-"""The kifab main window: project, issue list, check/bundle with live progress."""
+"""The kifab main window: start page, project parts and library, check/bundle."""
 
 from __future__ import annotations
 
@@ -6,7 +6,13 @@ from collections.abc import Callable
 from pathlib import Path
 
 from PySide6.QtCore import QSortFilterProxyModel, Qt, QUrl
-from PySide6.QtGui import QAction, QDesktopServices, QKeySequence
+from PySide6.QtGui import (
+    QAction,
+    QCloseEvent,
+    QDesktopServices,
+    QIcon,
+    QKeySequence,
+)
 from PySide6.QtWidgets import (
     QCheckBox,
     QComboBox,
@@ -14,17 +20,23 @@ from PySide6.QtWidgets import (
     QFileDialog,
     QFormLayout,
     QGroupBox,
+    QHBoxLayout,
     QHeaderView,
+    QInputDialog,
     QLabel,
+    QListWidget,
+    QListWidgetItem,
     QMainWindow,
+    QMenu,
     QMessageBox,
     QPlainTextEdit,
-    QInputDialog,
+    QPushButton,
     QSpinBox,
     QSplitter,
+    QStackedWidget,
+    QStyle,
     QTabWidget,
     QTableView,
-    QToolBar,
     QVBoxLayout,
     QWidget,
 )
@@ -44,6 +56,7 @@ from kifab.gui.issues import SORT_ROLE, IssueModel
 from kifab.gui.jobs import Job
 from kifab.gui.new_project import NewProjectDialog, NewProjectRequest
 from kifab.gui.parts import PartsPanel
+from kifab.gui.settings import GuiSettings, cache_dir
 
 _SEVERITY_FILTER = (("All", -1), ("Errors", 2), ("Errors + warnings", 1))
 
@@ -65,11 +78,74 @@ class SeverityFilter(QSortFilterProxyModel):
         return isinstance(rank, int) and rank >= self.min_rank
 
 
+class StartPage(QWidget):
+    """Shown while no project is open: new, open, and the recent projects."""
+
+    def __init__(self, window: MainWindow) -> None:
+        super().__init__()
+        self.window_ = window
+        title = QLabel(
+            f"<h1>kifab</h1><p>KiCad projects with the fab built in "
+            f"(version {__version__})</p>"
+        )
+        new = QPushButton("New project...")
+        new.clicked.connect(window.new_project)
+        open_ = QPushButton("Open project...")
+        open_.clicked.connect(window.choose_project)
+        for button in (new, open_):
+            button.setMinimumHeight(36)
+        self.recent = QListWidget()
+        self.recent.itemActivated.connect(self._activated)
+        self.empty = QLabel("No recent projects yet.")
+        buttons = QHBoxLayout()
+        buttons.addWidget(new)
+        buttons.addWidget(open_)
+        buttons.addStretch()
+        column = QVBoxLayout()
+        column.addWidget(title)
+        column.addLayout(buttons)
+        column.addSpacing(16)
+        column.addWidget(QLabel("<b>Recent projects</b> (double-click to open)"))
+        column.addWidget(self.recent, 1)
+        column.addWidget(self.empty)
+        outer = QHBoxLayout(self)
+        outer.addStretch(1)
+        outer.addLayout(column, 3)
+        outer.addStretch(1)
+
+    def update_recent(self, recent: list[Path]) -> None:
+        self.recent.clear()
+        for path in recent:
+            exists = path.exists()
+            text = f"{path.stem}    {path.parent}" + ("" if exists else "  (missing)")
+            item = QListWidgetItem(text)
+            item.setData(Qt.ItemDataRole.UserRole, str(path))
+            item.setToolTip(str(path))
+            if not exists:
+                item.setForeground(Qt.GlobalColor.gray)
+            self.recent.addItem(item)
+        self.empty.setVisible(not recent)
+
+    def _activated(self, item: QListWidgetItem) -> None:
+        self.window_.open_recent(Path(str(item.data(Qt.ItemDataRole.UserRole))))
+
+
+def _button(action: QAction) -> QPushButton:
+    """A real push button for ``action`` (a flat tool bar reads like a menu bar)."""
+    button = QPushButton(action.icon(), action.text().replace("&", ""))
+    button.setToolTip(action.toolTip())
+    button.clicked.connect(action.trigger)
+    button.setEnabled(action.isEnabled())
+    action.changed.connect(lambda: button.setEnabled(action.isEnabled()))
+    return button
+
+
 class MainWindow(QMainWindow):
-    def __init__(self) -> None:
+    def __init__(self, settings: GuiSettings | None = None) -> None:
         super().__init__()
         self.setWindowTitle(f"kifab {__version__}")
-        self.resize(1100, 700)
+        self.resize(1280, 800)
+        self.settings = settings if settings is not None else GuiSettings.load()
         self.project: Project | None = None
         self.job: Job | None = None
         self.last_bundle: BundleResult | None = None
@@ -138,10 +214,12 @@ class MainWindow(QMainWindow):
         issues_layout.setContentsMargins(0, 0, 0, 0)
         issues_layout.addWidget(self.table)
         issues_layout.addWidget(self.detail)
-        self.parts = PartsPanel(self.start_job, lambda: self.project, self._say)
+        self.parts = PartsPanel(
+            self.start_job, lambda: self.project, self._say, cache_dir()
+        )
         self.tabs = QTabWidget()
-        self.tabs.addTab(issues_tab, "Issues")
         self.tabs.addTab(self.parts, "Parts")
+        self.tabs.addTab(issues_tab, "Check && bundle results")
         right = QSplitter(Qt.Orientation.Vertical)
         right.addWidget(self.tabs)
         right.addWidget(self.log)
@@ -151,31 +229,107 @@ class MainWindow(QMainWindow):
         main.addWidget(side)
         main.addWidget(right)
         main.setStretchFactor(1, 1)
-        self.setCentralWidget(main)
+        self.start_page = StartPage(self)
+        self.button_bar = QHBoxLayout()
+        self.project_page = QWidget()
+        page_layout = QVBoxLayout(self.project_page)
+        page_layout.addLayout(self.button_bar)
+        page_layout.addWidget(main, 1)
+        self.pages = QStackedWidget()
+        self.pages.addWidget(self.start_page)
+        self.pages.addWidget(self.project_page)
+        self.setCentralWidget(self.pages)
+        self._build_actions()
+        self._update_actions()
+        self.statusBar().showMessage("Ready")
 
+    # ------------------------------------------------------------ actions
+
+    def _icon(self, pixmap: QStyle.StandardPixmap) -> QIcon:
+        return self.style().standardIcon(pixmap)
+
+    def _build_actions(self) -> None:
+        sp = QStyle.StandardPixmap
         self.toolbar_actions: dict[str, QAction] = {}
-        toolbar = QToolBar("Main")
-        toolbar.setMovable(False)
-        self.addToolBar(toolbar)
-        for key, label, slot, shortcut in (
-            ("new", "New...", self.new_project, QKeySequence.StandardKey.New),
-            ("open", "Open...", self.choose_project, QKeySequence.StandardKey.Open),
-            ("check", "Check", self.run_check, QKeySequence("F5")),
-            ("bundle", "Bundle", self.run_bundle, QKeySequence("F6")),
-            ("rules", "Apply rules", self.apply_rules, None),
-            ("kicad", "Open in KiCad", self.open_in_kicad, None),
-            ("build", "Open build folder", self.open_build_dir, None),
-            ("order", "Record order", self.record_order, None),
-            ("tag", "Tag release...", self.tag_release, None),
-        ):
+        specs: tuple[
+            tuple[str, str, object, QKeySequence | None, QStyle.StandardPixmap | None],
+            ...,
+        ] = (
+            ("new", "&New project...", self.new_project, QKeySequence(QKeySequence.StandardKey.New), sp.SP_FileDialogNewFolder),
+            ("open", "&Open project...", self.choose_project, QKeySequence(QKeySequence.StandardKey.Open), sp.SP_DialogOpenButton),
+            ("close", "&Close project", self.close_project, QKeySequence(QKeySequence.StandardKey.Close), sp.SP_DialogCloseButton),
+            ("quit", "&Quit", self.close, QKeySequence(QKeySequence.StandardKey.Quit), None),
+            ("check", "&Check", self.run_check, QKeySequence("F5"), sp.SP_DialogApplyButton),
+            ("bundle", "&Bundle for the fab", self.run_bundle, QKeySequence("F6"), sp.SP_DialogSaveButton),
+            ("rules", "Apply the fab's design &rules", self.apply_rules, None, None),
+            ("kicad", "Open in &KiCad", self.open_in_kicad, None, sp.SP_DesktopIcon),
+            ("build", "Open &build folder", self.open_build_dir, None, sp.SP_DirOpenIcon),
+            ("order", "Record &order", self.record_order, None, None),
+            ("tag", "&Tag release...", self.tag_release, None, None),
+        )  # fmt: skip
+        for key, label, slot, shortcut, icon in specs:
             action = QAction(label, self)
             action.triggered.connect(slot)
             if shortcut is not None:
                 action.setShortcut(shortcut)
-            toolbar.addAction(action)
+            if icon is not None:
+                action.setIcon(self._icon(icon))
             self.toolbar_actions[key] = action
-        self._update_actions()
-        self.statusBar().showMessage("Ready")
+        a = self.toolbar_actions
+
+        menu = self.menuBar()
+        file_menu = menu.addMenu("&File")
+        file_menu.addAction(a["new"])
+        file_menu.addAction(a["open"])
+        self.recent_menu = QMenu("Open &recent", self)
+        self.recent_menu.aboutToShow.connect(self._fill_recent_menu)
+        file_menu.addMenu(self.recent_menu)
+        file_menu.addAction(a["close"])
+        file_menu.addSeparator()
+        file_menu.addAction(a["quit"])
+        project_menu = menu.addMenu("&Project")
+        for key in ("check", "bundle", "rules"):
+            project_menu.addAction(a[key])
+        project_menu.addSeparator()
+        for key in ("order", "tag"):
+            project_menu.addAction(a[key])
+        project_menu.addSeparator()
+        for key in ("kicad", "build"):
+            project_menu.addAction(a[key])
+
+        self.buttons: dict[str, QPushButton] = {}
+        for group in (("check", "bundle"), ("kicad", "build")):
+            for key in group:
+                self.buttons[key] = _button(a[key])
+                self.button_bar.addWidget(self.buttons[key])
+            self.button_bar.addSpacing(16)
+        self.button_bar.addStretch()
+        self._show_page()
+
+    def _fill_recent_menu(self) -> None:
+        self.recent_menu.clear()
+        for path in self.settings.recent:
+            action = self.recent_menu.addAction(f"{path.stem}  ({path.parent})")
+            action.triggered.connect(lambda _=False, p=path: self.open_recent(p))
+        if self.settings.recent:
+            self.recent_menu.addSeparator()
+            self.recent_menu.addAction("Clear list").triggered.connect(
+                self.clear_recent
+            )
+        else:
+            self.recent_menu.addAction("(none)").setEnabled(False)
+
+    def clear_recent(self) -> None:
+        self.settings.recent = []
+        self.settings.save()
+        self.start_page.update_recent([])
+
+    def _show_page(self) -> None:
+        if self.project is None:
+            self.start_page.update_recent(self.settings.recent)
+            self.pages.setCurrentWidget(self.start_page)
+        else:
+            self.pages.setCurrentWidget(self.project_page)
 
     # ------------------------------------------------------------ state
 
@@ -206,8 +360,8 @@ class MainWindow(QMainWindow):
             and (self.project.directory / "build").is_dir()
         )
         self.toolbar_actions["tag"].setEnabled(has and idle)
-        if hasattr(self, "parts"):
-            self.parts.refresh()
+        self.toolbar_actions["close"].setEnabled(has and idle)
+        self.parts.refresh()
         self.toolbar_actions["open"].setEnabled(idle)
 
     def _say(self, text: str) -> None:
@@ -235,16 +389,50 @@ class MainWindow(QMainWindow):
     # ------------------------------------------------------------ project
 
     def open_project(self, path: Path) -> bool:
+        if self._busy():
+            return False
         try:
-            self.project = Project.open(path)
+            project = Project.open(path)
         except Exception as exc:  # InputError, ConfigError, ...
             self._error("Cannot open project", str(exc))
             return False
+        self.project = project
         self.model.clear()
+        self.parts.detail.clear()
         self._show_project()
-        self._say(f"opened {self.project.directory}")
+        self._say(f"opened {project.directory}")
+        self.settings.add_recent(project.kicad.pro)
+        self.settings.save()
         self._update_actions()
+        self._show_page()
+        self.tabs.setCurrentWidget(self.parts)
         return True
+
+    def open_recent(self, path: Path) -> bool:
+        if not path.exists():
+            self._error(
+                "Open recent", f"{path} no longer exists; removed from the list"
+            )
+            self.settings.forget(path)
+            self.settings.save()
+            self.start_page.update_recent(self.settings.recent)
+            return False
+        return self.open_project(path)
+
+    def close_project(self) -> None:
+        if self._busy() or self.project is None:
+            return
+        self._say(f"closed {self.project.directory}")
+        self.project = None
+        self.last_bundle = None
+        self.model.clear()
+        self.parts.detail.clear()
+        self.parts.query.clear()
+        self.parts.model.set_hits([])
+        self._show_project()
+        self.setWindowTitle(f"kifab {__version__}")
+        self._update_actions()
+        self._show_page()
 
     def choose_project(self) -> None:
         start = str(self.project.directory) if self.project else str(Path.home())
@@ -355,6 +543,12 @@ class MainWindow(QMainWindow):
             build = self.project.directory / "build"
             QDesktopServices.openUrl(QUrl.fromLocalFile(str(build)))
 
+    def closeEvent(self, event: QCloseEvent) -> None:
+        if self.job is not None:
+            self.job.wait(10000)
+        self.parts.wait()
+        super().closeEvent(event)
+
     # ------------------------------------------------------------ jobs
 
     def start_job(
@@ -408,6 +602,7 @@ class MainWindow(QMainWindow):
                 self._say(text)
                 self.statusBar().showMessage(text)
 
+        self.tabs.setCurrentIndex(1)
         return self.start_job(
             "check",
             lambda reporter: run_check(project, git=GitCli(), reporter=reporter),
@@ -439,6 +634,7 @@ class MainWindow(QMainWindow):
             self.statusBar().showMessage(text)
             self._update_actions()
 
+        self.tabs.setCurrentIndex(1)
         return self.start_job(
             "bundle",
             lambda reporter: bundle(project, options, git=GitCli(), reporter=reporter),
