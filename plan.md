@@ -1,5 +1,8 @@
 # kifab plan
 
+Branch model and session workflow: see `INSTRUCTIONS.md` (it overrides any
+branch named below).
+
 Status: **plan approved and extended with the user's workflow (2026-10-10); reference material and fixtures imported. Go given for increments 0-4 (see Implementation instructions).**
 
 ## Implementation instructions (go given by the user for increments 0-4)
