@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 from importlib.metadata import entry_points
-from typing import Protocol
+from typing import NamedTuple, Protocol
 
 from kifab.core.net import HttpClient
 from kifab.core.parts import PartHit, SearchPage, SearchSort
@@ -40,11 +40,27 @@ class Catalog(Protocol):
     def lookup(self, part_id: str) -> PartHit | None:
         """The part with exactly this number, or ``None`` if the supplier has none."""
 
+    def lookup_mpn(self, mpn: str, manufacturer: str = "") -> PartHit | None:
+        """The supplier's offer of this manufacturer part number, ``None`` if none.
+
+        ``manufacturer``, when given, must match too (case-insensitive) where
+        the supplier names one. With several offers, the one with most stock.
+        """
+
     def image(self, url: str) -> bytes:
         """A product image of a hit (one of :attr:`PartHit.images`).
 
         Raises :class:`kifab.core.parts.CatalogError`.
         """
+
+
+class SupplierCatalog(NamedTuple):
+    """A supplier's catalogue, as the availability check asks it."""
+
+    name: str  # the supplier's registry name
+    title: str
+    sku_kind: str
+    catalog: Catalog
 
 
 class Supplier(ABC):

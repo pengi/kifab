@@ -1,13 +1,14 @@
 """Orderability: can the fab assemble this BOM, and what does it cost?
 
-Per BOM line: the part exists, enough is in stock for ``boards`` boards, and
-whether it is a Basic, Preferred or Extended part (Extended parts carry a setup
-fee per part type). Uses the fab's live catalogue (``$KIFAB_OFFLINE`` for the
-captured fixtures).
+Per BOM line: the part exists at one of the project's suppliers, enough is in
+stock for ``boards`` boards, and whether it is a Basic, Preferred or Extended
+part at JLCPCB (Extended parts carry a setup fee per part type). Uses the
+suppliers' live catalogues (``$KIFAB_OFFLINE`` for the synthetic fixtures).
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from dataclasses import dataclass, field
 
 from kifab.core.issues import Code, Issue, error, info, warning
@@ -15,7 +16,7 @@ from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.partref import PartRef, field_specs, part_ref
 from kifab.core.parts import CatalogError, LibraryType, PartHit
 from kifab.core.project import Project
-from kifab.suppliers.base import Catalog
+from kifab.suppliers.base import SupplierCatalog
 from kifab.kicad import sexpr
 from kifab.kicad.board import read_board
 from kifab.kicad.schematic import read_schematic, ref_sort_key, sorted_refs
@@ -29,6 +30,7 @@ class LineStatus:
     line: BomLine
     needed: int
     hit: PartHit | None
+    supplier: str = ""  # where ``hit`` is from
 
     @property
     def unit_price(self) -> float | None:
@@ -47,6 +49,7 @@ class LineStatus:
             "type": hit.library_type.value if hit else "missing",
             "needed": self.needed,
             "unit_price": self.unit_price if self.unit_price is not None else 0.0,
+            "supplier": self.supplier,
         }
 
 
@@ -74,35 +77,67 @@ class AvailabilityReport:
         return {s.line.part.label: s.snapshot() for s in self.lines}
 
 
+def _lookup(source: SupplierCatalog, part: PartRef) -> PartHit | None:
+    """The part at one supplier: by its number, else by the MPN."""
+    number = part.sku(source.sku_kind)
+    if number:
+        return source.catalog.lookup(number)
+    if part.mpn:
+        return source.catalog.lookup_mpn(part.mpn, part.manufacturer)
+    return None
+
+
 def check_availability(
-    bom: Bom, catalog: Catalog, *, boards: int = 1, sku_kind: str = "lcsc"
+    bom: Bom, sources: Sequence[SupplierCatalog], *, boards: int = 1
 ) -> AvailabilityReport:
-    """Look each line up in ``catalog`` by its ``sku_kind`` number."""
+    """Look each line up at the suppliers, preferred first.
+
+    A line is found by the supplier's own number when the symbol has one, else
+    by its MPN. The first supplier with enough stock is chosen, else the one
+    with the most. A supplier that cannot be reached is not asked again.
+    """
     report = AvailabilityReport(boards=boards)
+    reachable = list(sources)
     for line in bom.lines:
-        pn = line.part.sku(sku_kind)
-        if not pn:
+        if line.part.empty:
             continue  # reported by Fab.check_parts
         refs = ",".join(line.references)
         needed = len(line.references) * boards
-        try:
-            hit = catalog.lookup(pn)
-        except CatalogError as exc:
-            report.issues.append(error(Code.CATALOG_ERROR, str(exc), ref=refs))
-            break  # the catalogue is unreachable; do not hammer it
-        report.lines.append(LineStatus(line, needed, hit))
-        if hit is None:
+        found: list[tuple[SupplierCatalog, PartHit]] = []
+        asked: list[SupplierCatalog] = []
+        for source in list(reachable):
+            try:
+                hit = _lookup(source, line.part)
+            except CatalogError as exc:
+                report.issues.append(error(Code.CATALOG_ERROR, str(exc), ref=refs))
+                reachable.remove(source)  # unreachable; do not hammer it
+                continue
+            asked.append(source)
+            if hit is not None:
+                found.append((source, hit))
+                if hit.stock >= needed:
+                    break
+        if not asked:
+            continue  # the catalogue errors are reported
+        pn = line.part.label
+        if not found:
+            report.lines.append(LineStatus(line, needed, None))
+            where = ", ".join(s.title for s in asked)
             report.issues.append(
-                error(
-                    Code.PART_NOT_FOUND, f"{pn} is not in the fab's catalogue", ref=refs
-                )
+                error(Code.PART_NOT_FOUND, f"{pn} is not found at {where}", ref=refs)
             )
             continue
+        source, hit = next(
+            ((s, h) for s, h in found if h.stock >= needed),
+            max(found, key=lambda f: f[1].stock),
+        )
+        report.lines.append(LineStatus(line, needed, hit, source.name))
+        at = f" at {source.title}" if len(sources) > 1 else ""
         if hit.stock < needed:
             report.issues.append(
                 error(
                     Code.OUT_OF_STOCK,
-                    f"{pn} ({hit.mpn}): {hit.stock} in stock, {needed} needed",
+                    f"{pn} ({hit.mpn}): {hit.stock} in stock{at}, {needed} needed",
                     ref=refs,
                     hint="pick an alternative with `kifab component search`",
                 )
@@ -111,7 +146,8 @@ def check_availability(
             report.issues.append(
                 warning(
                     Code.LOW_STOCK,
-                    f"{pn} ({hit.mpn}): only {hit.stock} in stock for {needed} needed",
+                    f"{pn} ({hit.mpn}): only {hit.stock} in stock{at} for {needed} "
+                    "needed",
                     ref=refs,
                 )
             )

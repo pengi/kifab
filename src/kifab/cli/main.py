@@ -536,12 +536,7 @@ def _cmd_component_check(args: argparse.Namespace) -> int:
         or bool(config and config.bundle.assemble_through_hole),
     )
     issues = fab.check_parts(bom)
-    report = check_availability(
-        bom,
-        sourcing.catalog(),
-        boards=args.boards,
-        sku_kind=sourcing.supplier.sku_kind,
-    )
+    report = check_availability(bom, sourcing.supplier_catalogs(), boards=args.boards)
     issues += report.issues
     code = _exit_code(issues, args.strict)
     if args.json:
@@ -563,10 +558,11 @@ def _cmd_component_check(args: argparse.Namespace) -> int:
             print(f"  {status.line.part.label:<10} NOT FOUND             {refs}")
             continue
         price = status.unit_price
+        where = f"  ({status.supplier})" if len(sourcing.suppliers) > 1 else ""
         print(
             f"  {hit.id:<10} {_TYPE_LABEL[hit.library_type]:<5} "
             f"{hit.stock:>9} in stock, need {status.needed:<5} "
-            f"{'$%.4f' % price if price is not None else '-':>9}  {refs}"
+            f"{'$%.4f' % price if price is not None else '-':>9}  {refs}{where}"
         )
     print_issues(issues)
     print(

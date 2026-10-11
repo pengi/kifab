@@ -26,7 +26,13 @@ from kifab.libraries.base import (
     UnknownLibrarySource,
     get_library_source,
 )
-from kifab.suppliers.base import Catalog, Supplier, UnknownSupplier, get_supplier
+from kifab.suppliers.base import (
+    Catalog,
+    Supplier,
+    SupplierCatalog,
+    UnknownSupplier,
+    get_supplier,
+)
 
 
 @dataclass(frozen=True)
@@ -44,6 +50,15 @@ class Sourcing:
     def catalog(self, client: HttpClient | None = None) -> Catalog:
         """The preferred supplier's catalogue."""
         return self.supplier.catalog(client)
+
+    def supplier_catalogs(
+        self, client: HttpClient | None = None
+    ) -> tuple[SupplierCatalog, ...]:
+        """Every supplier's catalogue, preferred first (availability checks)."""
+        return tuple(
+            SupplierCatalog(s.name, s.title, s.sku_kind, s.catalog(client))
+            for s in self.suppliers
+        )
 
     def part_source(self) -> PartSource:
         return self.library.part_source()

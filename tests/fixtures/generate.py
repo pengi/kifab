@@ -221,6 +221,8 @@ KEYWORDS = {
     "100nF_0603_p2": (["C900012", "C900004"], 1534),  # page 2 (invented filler)
     "100nF_0603_base": (["C900003"], None),
     "KF_MOD_1": (["C900005"], None),
+    # an MPN search (lookup by MPN): the part and a similar one
+    "KF_R330_0603": (["C900002", "C900001"], None),
     "KF_MOD_1_base": ([], None),
     "xyzzy_no_such_part": ([], None),
     "xyzzy_no_such_part_base": ([], None),

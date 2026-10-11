@@ -397,12 +397,8 @@ class _Run:
         for issue in self.fab.check_parts(bom):
             self.add(issue)
         if self.options.stock:
-            sourcing = self.sourcing()
             report = check_availability(
-                bom,
-                sourcing.catalog(),
-                boards=self.options.boards,
-                sku_kind=sourcing.supplier.sku_kind,
+                bom, self.sourcing().supplier_catalogs(), boards=self.options.boards
             )
             self.result.availability = report
             for issue in report.issues:
