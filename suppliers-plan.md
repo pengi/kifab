@@ -299,4 +299,15 @@ library source is a small, independent plugin.
 
 Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
 
-(nothing yet)
+- Step 1 done (cce0755): `kifab.suppliers` (Supplier `jlcpcb`, Catalog) and
+  `kifab.libraries` (LibrarySource `easyeda`, PartSource, FetchError), own
+  registries and entry-point groups `kifab.suppliers` / `kifab.libraries`.
+- Step 2 done (299c2b4): `kifab.core.sourcing.Sourcing` (fab + suppliers +
+  library source + library nickname), `[parts]` in `kifab.toml`,
+  `Project.sourcing()`, `component search --supplier`. Fab lost
+  `catalog()`/`part_source()`. Library nickname is the project's (default the
+  fab's), and the design rules follow it. kifab.lock v2: `library_source`
+  instead of `fab`; v1 is read and upgraded on the next write (a one-time
+  diff in existing projects' locks).
+  Decision taken (simplest; see "Needs from you"): new projects keep
+  `lib/<fab>/`; `[parts] library` overrides.
