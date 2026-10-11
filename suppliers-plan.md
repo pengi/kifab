@@ -321,3 +321,14 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
   (`SupplierCatalog`), by supplier number else MPN (`Catalog.lookup_mpn`),
   first with enough stock wins. Credentials loader postponed to the first
   supplier that needs a key (Mouser).
+- Fix (c0a684d): vendored symbols' Footprint field is relinked to the
+  project's library nickname (easyeda2kicad writes `jlcpcb:`).
+- Step 5 done (115c9f3): fab `aisler` (profiles `hasl` default, `enig`;
+  BOM by MPN + manufacturer + supplier-number columns; KiCad-style
+  placement; gerber zip) and supplier `lcsc` (JLCPCB's search without
+  Basic/Extended, LCSC product links). Verified with real kicad-cli 10:
+  fresh AISLER projects (2 and 4 layers) bundle clean, the HASL track rule
+  fires. UNVERIFIED: every AISLER rule value (from the 2024 forum post;
+  edge/hole/annular values are conservative guesses), the column names
+  AISLER's BOM and placement import recognise, LCSC stock vs JLCPCB stock,
+  the LCSC product URL format.
