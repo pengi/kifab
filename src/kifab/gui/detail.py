@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+import time
 from collections.abc import Callable
+from datetime import datetime
 from pathlib import Path
 
-from PySide6.QtCore import QPointF, QRectF, Qt
+from PySide6.QtCore import QPointF, QRectF, QSize, Qt, QTimer
 from PySide6.QtGui import (
     QBrush,
     QColor,
@@ -19,7 +21,6 @@ from PySide6.QtGui import (
 from PySide6.QtWidgets import (
     QGraphicsScene,
     QGraphicsView,
-    QGridLayout,
     QHeaderView,
     QLabel,
     QPushButton,
@@ -30,6 +31,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+from kifab.core.factscache import FactsCache
 from kifab.core.inventory import LibraryPart
 from kifab.core.parts import LibraryType, PartHit
 from kifab.core.project import Project
@@ -63,7 +65,11 @@ TYPE_LABEL = {
     LibraryType.EXTENDED: "Extended (setup fee per part type)",
     LibraryType.UNKNOWN: "unknown",
 }
-PREVIEW_SIZE = 180
+#: cached price/stock older than this is refreshed once the user stays on a part
+STALE_AFTER = 24 * 3600.0
+#: how long the user must stay on a part before its stale facts are refreshed
+DWELL_MS = 2000
+_DIMMED = QColor(160, 160, 160)
 
 # KiCad-like colours
 _BOARD_BG = QColor(0, 16, 35)
@@ -91,8 +97,7 @@ class DrawingView(QGraphicsView):
         super().__init__()
         self.symbol = symbol
         self.setScene(QGraphicsScene(self))
-        self.setMinimumSize(PREVIEW_SIZE, PREVIEW_SIZE)
-        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        self.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Ignored)
         self.setBackgroundBrush(QBrush(_SYMBOL_BG if symbol else _BOARD_BG))
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
@@ -242,10 +247,45 @@ class DrawingView(QGraphicsView):
         self._fit()
 
 
-def _caption(text: str) -> QLabel:
-    label = QLabel(text)
-    label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-    return label
+class PictureArea(QWidget):
+    """Symbol above footprint on the left, the photo on the right.
+
+    Always twice as wide as high: symbol and footprint are 2:1 each and form a
+    square together, the photo is a square of the same size. The children are
+    placed by hand so the proportions hold whatever the panel does.
+    """
+
+    MIN_WIDTH = 280
+
+    def __init__(
+        self, symbol: QWidget, footprint: QWidget, photo: QWidget, parent: QWidget
+    ) -> None:
+        super().__init__(parent)
+        self.symbol, self.footprint, self.photo = symbol, footprint, photo
+        for child in (symbol, footprint, photo):
+            child.setParent(self)
+        policy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        policy.setHeightForWidth(True)
+        self.setSizePolicy(policy)
+        self.setMinimumWidth(self.MIN_WIDTH)
+
+    def hasHeightForWidth(self) -> bool:
+        return True
+
+    def heightForWidth(self, width: int) -> int:
+        return width // 2
+
+    def sizeHint(self) -> QSize:
+        return QSize(2 * 200, 200)
+
+    def resizeEvent(self, event: QResizeEvent) -> None:
+        super().resizeEvent(event)
+        side = min(self.width() // 2, self.height())
+        x0 = (self.width() - 2 * side) // 2
+        half = side // 2
+        self.symbol.setGeometry(x0, 0, side, half)
+        self.footprint.setGeometry(x0, half, side, side - half)
+        self.photo.setGeometry(x0 + side, 0, side, side)
 
 
 class PartDetail(QWidget):
@@ -265,6 +305,16 @@ class PartDetail(QWidget):
         self.cache = cache
         self._jobs: list[Job] = []
         self._lookups: dict[str, PartHit | None] = {}
+        self.facts = FactsCache(cache / "facts.sqlite")
+        self.clock: Callable[[], float] = time.time  # tests replace it
+        self.dwell_ms = DWELL_MS
+        self.stale_after = STALE_AFTER
+        #: when the shown hit was fetched, if it came from the cache (dimmed)
+        self.cached_at: float | None = None
+        self.refresh_timer = QTimer(self)
+        self.refresh_timer.setSingleShot(True)
+        self.refresh_timer.timeout.connect(self._refresh_facts)
+        self._pixmap: QPixmap | None = None
         self.part_id: str | None = None
         self.hit: PartHit | None = None
         self.library_part: LibraryPart | None = None
@@ -274,12 +324,10 @@ class PartDetail(QWidget):
         self.title.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
         self.photo = QLabel("")
         self.photo.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.photo.setMinimumSize(PREVIEW_SIZE, PREVIEW_SIZE * 2 // 3)
         self.photo.setStyleSheet("QLabel { background: white; color: gray; }")
+        self.photo.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Ignored)
         self.footprint_view = DrawingView(symbol=False)
         self.symbol_view = DrawingView(symbol=True)
-        self.footprint_caption = _caption("Footprint")
-        self.symbol_caption = _caption("Symbol")
         self.fetch_button = QPushButton("Show footprint and symbol")
         self.fetch_button.setToolTip(
             "Fetch the part's footprint and symbol from the fab's library for a look "
@@ -301,16 +349,13 @@ class PartDetail(QWidget):
         self.info.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
         self.info.setWordWrap(True)
 
-        pictures = QGridLayout()
-        pictures.addWidget(self.photo, 0, 0, 1, 2)
-        pictures.addWidget(self.footprint_view, 1, 0)
-        pictures.addWidget(self.symbol_view, 1, 1)
-        pictures.addWidget(self.footprint_caption, 2, 0)
-        pictures.addWidget(self.symbol_caption, 2, 1)
+        self.pictures = PictureArea(
+            self.symbol_view, self.footprint_view, self.photo, self
+        )
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.addWidget(self.title)
-        layout.addLayout(pictures)
+        layout.addWidget(self.pictures)
         layout.addWidget(self.fetch_button)
         layout.addWidget(self.links)
         layout.addWidget(self.info, 1)
@@ -327,11 +372,14 @@ class PartDetail(QWidget):
         self.hit = None
         self.library_part = None
         self.title.setText("Select a part to see its details.")
+        self.refresh_timer.stop()
+        self.cached_at = None
+        self._pixmap = None
         self.photo.clear()
         self.footprint_view.show_message("")
         self.symbol_view.show_message("")
-        self.footprint_caption.setText("Footprint")
-        self.symbol_caption.setText("Symbol")
+        self.footprint_view.setToolTip("")
+        self.symbol_view.setToolTip("")
         self.fetch_button.hide()
         self.links.setText("")
         self.info.setRowCount(0)
@@ -350,12 +398,20 @@ class PartDetail(QWidget):
         self.title.setText(f"<b>{part_id}</b>")
         self._fill_info()
         self._load_drawings()
-        if hit is not None:
+        if hit is not None:  # from a search answer: fresh
+            self.facts.put(hit, self.clock())
             self._load_image()
-        elif part_id in self._lookups:
+        elif part_id in self._lookups:  # looked up earlier this session
             self.hit = self._lookups[part_id]
             self._fill_info()
             self._load_image()
+        elif (cached := self.facts.get(part_id)) is not None:
+            self.hit = cached.hit
+            self.cached_at = cached.fetched
+            self._fill_info()
+            self._load_image()
+            if self.clock() - cached.fetched > self.stale_after:
+                self.refresh_timer.start(self.dwell_ms)
         else:
             self.photo.setText("looking up...")
             self._run(
@@ -418,13 +474,35 @@ class PartDetail(QWidget):
         hit = result if isinstance(result, PartHit) else None
         if self.part_id is not None:
             self._lookups[self.part_id] = hit
+        if hit is not None:
+            self.facts.put(hit, self.clock())
         self.hit = hit
         self._fill_info()
         self._load_image()
 
+    def _refresh_facts(self) -> None:
+        """The user stayed on a part whose cached price/stock is stale."""
+        part_id = self.part_id
+        if part_id is None or self.cached_at is None:
+            return
+        catalog = self._catalog()
+        self._run(
+            lambda _r: catalog.lookup(part_id), self._refreshed, part_id
+        )  # on failure the facts stay dimmed
+
+    def _refreshed(self, result: object) -> None:
+        if not isinstance(result, PartHit):
+            return
+        self._lookups[result.id] = result
+        self.facts.put(result, self.clock())
+        self.hit = result
+        self.cached_at = None
+        self._fill_info()
+
     def _load_image(self) -> None:
         hit = self.hit
         if hit is None or not hit.images:
+            self._pixmap = None
             self.photo.setText(
                 "no photo from the fab" if hit else "not in the catalogue"
             )
@@ -434,7 +512,7 @@ class PartDetail(QWidget):
         cache = self.cache
         url = hit.images[0]
         self._run(
-            lambda _r: load_image(catalog, cache, url),
+            lambda _r: load_image(catalog, cache, url, hit.id),
             self._show_image,
             hit.id,
             failed=lambda msg: self.photo.setText("photo not available"),
@@ -445,14 +523,22 @@ class PartDetail(QWidget):
         if not isinstance(data, bytes) or not pixmap.loadFromData(data):
             self.photo.setText("photo not readable")
             return
-        self.photo.setPixmap(
-            pixmap.scaled(
-                PREVIEW_SIZE * 2,
-                PREVIEW_SIZE,
-                Qt.AspectRatioMode.KeepAspectRatio,
-                Qt.TransformationMode.SmoothTransformation,
+        self._pixmap = pixmap
+        self._scale_photo()
+
+    def resizeEvent(self, event: QResizeEvent) -> None:
+        super().resizeEvent(event)
+        self._scale_photo()
+
+    def _scale_photo(self) -> None:
+        if self._pixmap is not None:
+            self.photo.setPixmap(
+                self._pixmap.scaled(
+                    self.photo.size(),
+                    Qt.AspectRatioMode.KeepAspectRatio,
+                    Qt.TransformationMode.SmoothTransformation,
+                )
             )
-        )
 
     def _load_drawings(self) -> None:
         project = self._project()
@@ -478,8 +564,8 @@ class PartDetail(QWidget):
         self.fetch_button.hide()
         self.footprint_view.set_drawing(preview.footprint, "no footprint")
         self.symbol_view.set_drawing(preview.symbol, "no symbol")
-        self.footprint_caption.setText(f"Footprint {preview.footprint_name}".strip())
-        self.symbol_caption.setText(f"Symbol {preview.symbol_name}".strip())
+        self.footprint_view.setToolTip(preview.footprint_name)
+        self.symbol_view.setToolTip(preview.symbol_name)
 
     def _fetch_failed(self, message: str) -> None:
         self.fetch_button.setEnabled(True)
@@ -491,6 +577,7 @@ class PartDetail(QWidget):
 
     def _fill_info(self) -> None:
         rows: list[tuple[str, str]] = []
+        dimmed: set[str] = set()  # row names whose value may be out of date
         hit = self.hit
         part = self.library_part
         if hit is not None:
@@ -508,9 +595,16 @@ class PartDetail(QWidget):
                 ("Stock", f"{hit.stock:,}"),
                 ("Minimum order", str(hit.min_order)),
             ]
+            if self.cached_at is not None:
+                when = datetime.fromtimestamp(self.cached_at).strftime("%Y-%m-%d %H:%M")
+                rows.append(("Stock and prices as of", when))
+                dimmed.add("Stock")
             for brk in hit.prices:
                 upper = f"-{brk.max_qty}" if brk.max_qty is not None else "+"
-                rows.append((f"Price {brk.min_qty}{upper}", f"${brk.unit_price:.4f}"))
+                name = f"Price {brk.min_qty}{upper}"
+                rows.append((name, f"${brk.unit_price:.4f}"))
+                if self.cached_at is not None:
+                    dimmed.add(name)
             rows += list(hit.attributes)
             links = []
             if _safe_url(hit.datasheet):
@@ -533,5 +627,8 @@ class PartDetail(QWidget):
             key = QTableWidgetItem(name)
             key.setForeground(QBrush(QColor(110, 110, 110)))
             self.info.setItem(i, 0, key)
-            self.info.setItem(i, 1, QTableWidgetItem(value))
+            item = QTableWidgetItem(value)
+            if name in dimmed:
+                item.setForeground(QBrush(_DIMMED))
+            self.info.setItem(i, 1, item)
         self.info.resizeRowsToContents()

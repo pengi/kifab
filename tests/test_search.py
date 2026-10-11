@@ -10,7 +10,7 @@ import pytest
 
 from kifab.cli.main import main
 from kifab.core.net import NetError, UrllibClient
-from kifab.core.parts import CatalogError, LibraryType
+from kifab.core.parts import CatalogError, LibraryType, PartHit
 from kifab.suppliers.base import get_supplier
 from kifab.suppliers.jlcpcb.search import (
     FixtureClient,
@@ -65,6 +65,17 @@ def test_images(client: FixtureClient) -> None:
         "https://img.invalid/big.jpg",
         "https://img.invalid/min.jpg",
     )
+    # only file access ids (what the live answer gives): big picture first
+    ids = {
+        "componentCode": "C2",
+        "productBigImageAccessId": "11",
+        "minImageAccessId": "22",
+    }
+    assert parse_part(ids).images == (
+        "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/11",
+        "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/22",
+    )
+    assert parse_part({"productBigImageAccessId": None}).images == ()
 
 
 def test_keyword_search_and_basic_filter(client: FixtureClient) -> None:
@@ -209,3 +220,26 @@ def test_sorted_search(client: FixtureClient) -> None:
     page2 = catalog.search("100nF 0603", page=2)
     assert [h.id for h in page2.hits] == ["C900012", "C900004"] and page2.page == 2
     assert catalog.search("100nF 0603", page=3).hits == ()
+
+
+def test_part_json_round_trip_and_facts_cache(
+    client: FixtureClient, tmp_path: Path
+) -> None:
+    from kifab.core.factscache import FactsCache
+
+    hit = lookup(client, "C900001")
+    assert hit is not None and hit.prices and hit.attributes
+    assert PartHit.from_json(hit.to_json()) == hit
+    with pytest.raises(ValueError):
+        PartHit.from_json({"id": "C1"})
+    cache = FactsCache(tmp_path / "sub" / "facts.sqlite")
+    assert cache.get("C900001") is None
+    cache.put(hit, 12.5)
+    cached = cache.get("c900001")
+    assert cached is not None and cached.hit == hit and cached.fetched == 12.5
+    cache.put(hit, 20.0)  # replaces
+    assert cache.get("C900001") == type(cached)(hit, 20.0)
+    (tmp_path / "bad.sqlite").write_text("not a database")
+    broken = FactsCache(tmp_path / "bad.sqlite")
+    assert broken.get("C900001") is None
+    broken.put(hit, 1.0)  # ignored, no exception

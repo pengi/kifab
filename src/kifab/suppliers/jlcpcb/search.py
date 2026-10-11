@@ -88,6 +88,11 @@ def _prices(item: dict[str, Any]) -> tuple[PriceBreak, ...]:
 #: documented; kifab takes whichever of these are present.
 _IMAGE_LIST_KEYS = ("productBigImage", "productImage", "productMinImage")
 _IMAGE_KEYS = ("componentImageUrl", "productBigImage", "productImage", "minImage")
+#: the answer's url fields are usually empty; the pictures are then only named
+#: by file access ids, which jlcpcb.com serves anonymously (verified: C77540
+#: gives a 900x900 jpeg for the big id, 96x96 for the min id).
+FILE_URL = "https://jlcpcb.com/api/file/downloadByFileSystemAccessId/{}"
+_ACCESS_ID_KEYS = ("productBigImageAccessId", "minImageAccessId")
 
 
 def _images(item: dict[str, Any]) -> tuple[str, ...]:
@@ -97,6 +102,11 @@ def _images(item: dict[str, Any]) -> tuple[str, ...]:
         if isinstance(entry, dict):
             urls += [_str(entry, k) for k in _IMAGE_LIST_KEYS]
     urls += [_str(item, k) for k in _IMAGE_KEYS]
+    urls += [
+        FILE_URL.format(i)
+        for i in (_str(item, k) for k in _ACCESS_ID_KEYS)
+        if i.isdigit()
+    ]
     out: list[str] = []
     for url in urls:
         if url.startswith("//"):

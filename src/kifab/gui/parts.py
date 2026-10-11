@@ -302,6 +302,12 @@ def _select_source_row(
         table.selectRow(index.row())
 
 
+def _selected_source_row(table: QTableView, proxy: QSortFilterProxyModel) -> int:
+    """The selected row in the source model, -1 if nothing is selected."""
+    rows = table.selectionModel().selectedRows()
+    return proxy.mapToSource(rows[0]).row() if rows else -1
+
+
 class PartsPanel(QWidget):
     def __init__(
         self,
@@ -325,13 +331,12 @@ class PartsPanel(QWidget):
         for col in (0, 1, 2):
             header.setSectionResizeMode(col, QHeaderView.ResizeMode.ResizeToContents)
         header.setSectionResizeMode(6, QHeaderView.ResizeMode.Stretch)
-        self.library_table.selectionModel().currentRowChanged.connect(
-            lambda current, _: self._library_selected(
-                self.library_proxy.mapToSource(current).row()
-            )
-        )
+        # driven by the selection, not the current row: clicking the row that
+        # is still "current" after the other list took over must update too
         self.library_table.selectionModel().selectionChanged.connect(
-            lambda *_: self._update_remove()
+            lambda *_: self._library_selected(
+                _selected_source_row(self.library_table, self.library_proxy)
+            )
         )
         self.library_status = QLabel("")
         self.sync_button = QPushButton("Sync from schematic")
@@ -377,8 +382,8 @@ class PartsPanel(QWidget):
             6, QHeaderView.ResizeMode.Stretch
         )
         self.table.doubleClicked.connect(lambda _: self.add_selected())
-        self.table.selectionModel().currentRowChanged.connect(
-            lambda current, _: self._hit_selected(self.proxy.mapToSource(current).row())
+        self.table.selectionModel().selectionChanged.connect(
+            lambda *_: self._hit_selected(_selected_source_row(self.table, self.proxy))
         )
         self.more_button = QPushButton("Load more")
         self.more_button.setToolTip("Fetch the next page of results from the fab")

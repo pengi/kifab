@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import subprocess
 import time
+from dataclasses import replace
 from collections.abc import Iterator
 from pathlib import Path
 
@@ -461,7 +462,6 @@ def test_part_detail(
     assert detail.photo.pixmap() is not None and not detail.photo.pixmap().isNull()
     # vendored: drawn from the project library straight away
     assert detail.footprint_view.drawing is not None
-    assert "MOD-SMD_KF1" in detail.footprint_caption.text()
     assert detail.symbol_view.drawing is not None
     assert detail.fetch_button.isHidden()
     # not vendored: fetched on request into the GUI cache, not the project
@@ -641,3 +641,128 @@ def test_fab_sorts_truncated_results_and_more_load(
     # ascending stock sorts what is loaded, without asking the fab
     parts.table.sortByColumn(2, Qt.SortOrder.AscendingOrder)
     assert not parts.searching and parts.sort is SearchSort.STOCK
+
+
+def test_image_cache_names_say_what_is_cached(tmp_path: Path) -> None:
+    from kifab.gui.previews import load_image
+
+    class Counting:
+        calls = 0
+
+        def image(self, url: str) -> bytes:
+            self.calls += 1
+            return b"\xff\xd8jpeg"
+
+    catalog = Counting()
+    for _ in range(2):
+        data = load_image(catalog, tmp_path, "https://x.invalid/1", "C77540")  # type: ignore[arg-type]  # minimal stub
+        assert data == b"\xff\xd8jpeg"
+    assert catalog.calls == 1
+    (cached,) = (tmp_path / "images").iterdir()
+    assert cached.name.endswith("-C77540.jpg") and len(cached.name) == 64 + 11
+
+
+def test_picture_area_keeps_its_proportions(app: QApplication) -> None:
+    from PySide6.QtWidgets import QWidget
+
+    from kifab.gui.detail import PictureArea
+
+    holder = QWidget()
+    symbol, footprint, photo = QWidget(), QWidget(), QWidget()
+    area = PictureArea(symbol, footprint, photo, holder)
+    holder.show()  # hidden widgets get their resize events only when shown
+    for width, height in ((400, 200), (900, 200), (300, 500), (601, 301)):
+        area.resize(width, height)
+        QCoreApplication.processEvents()
+        side = min(width // 2, height)
+        assert area.heightForWidth(width) == width // 2
+        assert photo.width() == photo.height() == side
+        assert symbol.width() == footprint.width() == side
+        assert symbol.height() + footprint.height() == side
+        assert abs(symbol.height() - footprint.height()) <= 1
+        assert symbol.y() == 0 and footprint.y() == symbol.height()
+        assert photo.x() == symbol.x() + side
+
+
+def test_stale_facts_refresh_only_after_dwelling(
+    window: MainWindow, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from kifab.suppliers.jlcpcb.search import FixtureClient, JlcpcbCatalog
+    from tests.conftest import FIXTURES
+
+    class Counting(JlcpcbCatalog):
+        lookups = 0
+
+        def lookup(self, part_id: str):  # type: ignore[no-untyped-def]  # test stub
+            self.lookups += 1
+            return super().lookup(part_id)
+
+    catalog = Counting(FixtureClient(FIXTURES))
+    detail = window.parts.detail
+    detail._catalog = lambda: catalog
+    hit = catalog.lookup("C900001")
+    assert hit is not None
+    catalog.lookups = 0
+    now = [1_000_000.0]
+    detail.clock = lambda: now[0]
+    detail.dwell_ms = 50
+    detail.facts.put(hit, now[0] - 3600)  # an hour old: shown dimmed, never refreshed
+    detail.facts.put(replace(hit, id="C900002"), now[0] - 3 * 86400)  # stale
+
+    def settle(ms: int) -> None:
+        deadline = time.monotonic() + ms / 1000
+        while time.monotonic() < deadline:
+            QCoreApplication.processEvents()
+            time.sleep(0.005)
+        detail.wait()
+        QCoreApplication.processEvents()
+
+    def dimmed() -> bool:
+        item = detail.info.item(6, 1)  # Stock
+        assert item is not None and detail.info.item(6, 0).text() == "Stock"  # type: ignore[union-attr]
+        return item.foreground().color().red() == 160
+
+    detail.show_part("C900001")
+    assert detail.hit == hit and dimmed()
+    settle(200)
+    assert catalog.lookups == 0 and dimmed()  # fresh enough: no request
+
+    detail.show_part("C900002")  # stale, but the user moves on in time
+    assert dimmed()
+    detail.show_part("C900001")
+    settle(200)
+    assert catalog.lookups == 0
+
+    detail._lookups.clear()
+    detail.show_part("C900002")  # stays: refreshed once
+    assert dimmed() and catalog.lookups == 0
+    settle(300)
+    assert catalog.lookups == 1 and not dimmed() and detail.cached_at is None
+    cached = detail.facts.get("C900002")
+    assert cached is not None and cached.fetched == now[0]
+
+
+def test_one_selection_across_both_lists(
+    window: MainWindow, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from tests.conftest import FIXTURES
+
+    monkeypatch.setenv("KIFAB_OFFLINE", str(FIXTURES))
+    _library_project(window, tmp_path)
+    parts = window.parts
+    parts.query.setText("KF-MOD-1")
+    parts.search_now()
+    wait_search(window)
+    parts.table.selectRow(0)
+    wait_detail(window)
+    first = parts.detail.part_id
+    parts.library_table.selectRow(0)
+    wait_detail(window)
+    assert parts.detail.part_id != first
+    assert not parts.table.selectionModel().selectedRows()
+    # back to the row that is still the fab list's current row
+    parts.table.selectRow(0)
+    wait_detail(window)
+    assert parts.detail.part_id == first
+    assert not parts.library_table.selectionModel().selectedRows()
+    assert len(parts.table.selectionModel().selectedRows()) == 1

@@ -79,8 +79,44 @@ class PartHit:
             ],
             "datasheet": self.datasheet,
             "url": self.url,
+            "min_order": self.min_order,
+            "attributes": [list(a) for a in self.attributes],
             "images": list(self.images),
         }
+
+    @staticmethod
+    def from_json(data: object) -> PartHit:
+        """Inverse of :meth:`to_json` (raises ValueError on anything else)."""
+        if not isinstance(data, dict):
+            raise ValueError("a part is a JSON object")
+        try:
+            return PartHit(
+                id=str(data["id"]),
+                mpn=str(data["mpn"]),
+                manufacturer=str(data["manufacturer"]),
+                package=str(data["package"]),
+                description=str(data["description"]),
+                category=str(data["category"]),
+                stock=int(data["stock"]),
+                library_type=LibraryType(data["type"]),
+                prices=tuple(
+                    PriceBreak(
+                        int(p["min"]),
+                        None if p["max"] is None else int(p["max"]),
+                        float(p["price"]),
+                    )
+                    for p in data["prices"]
+                ),
+                datasheet=str(data.get("datasheet", "")),
+                url=str(data.get("url", "")),
+                min_order=int(data.get("min_order", 1)),
+                attributes=tuple(
+                    (str(a[0]), str(a[1])) for a in data.get("attributes", [])
+                ),
+                images=tuple(str(u) for u in data.get("images", [])),
+            )
+        except (KeyError, TypeError, IndexError) as exc:
+            raise ValueError(f"not a part: {exc!r}") from exc
 
 
 @dataclass(frozen=True)

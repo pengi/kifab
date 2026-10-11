@@ -123,15 +123,33 @@ def load_preview(files: PreviewFiles) -> Preview:
     return Preview(footprint, footprint_name, symbol, symbol_name)
 
 
-def load_image(catalog: Catalog, cache: Path, url: str) -> bytes:
+def _image_name(url: str, label: str) -> str:
+    """``<sha256 of url>-<label>``: the hash keys the cache, the label (a part
+    id) only tells a person listing the folder what is in there."""
+    safe = "".join(c if c.isascii() and c.isalnum() else "_" for c in label)[:40]
+    digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
+    return f"{digest}-{safe}" if safe else digest
+
+
+def _image_suffix(data: bytes) -> str:
+    if data.startswith(b"\x89PNG"):
+        return ".png"
+    if data.startswith(b"\xff\xd8"):
+        return ".jpg"
+    return ""
+
+
+def load_image(catalog: Catalog, cache: Path, url: str, label: str = "") -> bytes:
     """A product image, downloaded once (raises CatalogError)."""
-    path = cache / "images" / hashlib.sha256(url.encode("utf-8")).hexdigest()
-    if path.is_file():
-        return path.read_bytes()
+    folder = cache / "images"
+    stem = _image_name(url, label)
+    for path in sorted(folder.glob(f"{stem}*")) if folder.is_dir() else []:
+        if path.is_file():
+            return path.read_bytes()
     data = catalog.image(url)
     try:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(data)
+        folder.mkdir(parents=True, exist_ok=True)
+        (folder / f"{stem}{_image_suffix(data)}").write_bytes(data)
     except OSError:
         pass  # the cache is only a convenience
     return data
