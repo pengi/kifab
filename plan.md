@@ -65,9 +65,11 @@ export for manufacturing.
 
 1. **Multi-vendor: split fab / supplier / library source** (user's go,
    2026-10-11). Plan and survey in `suppliers-plan.md`. Branch
-   `feature/multi-vendor`. First visible result: Aisler as fab with LCSC as
-   supplier and EasyEDA libraries. Progress is tracked in `suppliers-plan.md`
-   under "Progress".
+   `feature/multi-vendor`. Steps 1-5 done and part of 6 (2026-10-11): fab /
+   supplier / library source split, `[parts]` config, part model with MPN,
+   multi-supplier stock check, AISLER fab + LCSC supplier, vendoring by MPN.
+   Branch ready for the user to try and merge; progress and what is left in
+   `suppliers-plan.md` under "Progress".
 2. PCBWay fab (after 1; needs PCBWay's BOM/centroid template from the user).
 
 ## Needs the user
@@ -88,6 +90,11 @@ export for manufacturing.
    block), so boards are not GPL-bound by it.
 6. `CLAUDE.md` on `dev/main` still says work goes to `feature/implement`;
    update it to point at `INSTRUCTIONS.md` on `meta/plan`.
+7. Try `feature/multi-vendor` with AISLER: `kifab init x aisler`, add parts,
+   `kifab bundle`, upload the BOM/CPL to AISLER and report which columns its
+   import recognises; check the rule values against aisler.net (they are from
+   a 2024 forum post, some are guesses). Existing projects: the first vendor
+   after merging rewrites kifab.lock to version 2 (one-time diff).
 
 ## Unverified (no access to the real service or desktop from the cloud)
 

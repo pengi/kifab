@@ -332,3 +332,13 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
   edge/hole/annular values are conservative guesses), the column names
   AISLER's BOM and placement import recognise, LCSC stock vs JLCPCB stock,
   the LCSC product URL format.
+- Step 6 partly done (af5a3f8): parts known only by MPN are vendored from
+  EasyEDA through the LCSC number a supplier gives for the MPN
+  (`component add <MPN>`, `component sync` for MPN-only symbols;
+  `LibrarySource.parse_id`, `resolve_part`). Not done: the `import` source
+  (SamacSys / Ultra Librarian / SnapMagic zips) and the `kicad` source
+  (generic KiCad footprints).
+
+Next (needs the user's go): rest of step 6, then Mouser (step 7, needs a
+credentials loader and the user's API key for a manual test), PCBWay
+(step 8, needs its BOM template), DigiKey, GUI supplier picker.
