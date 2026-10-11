@@ -339,6 +339,12 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
   (SamacSys / Ultra Librarian / SnapMagic zips) and the `kicad` source
   (generic KiCad footprints).
 
+- AISLER zip (ddbca97, user's finding: AISLER takes the BOM from the
+  uploaded archive): the bundle writes `<name>_aisler.zip` with gerbers,
+  drills, BOM and placement (CSV files also next to it).
+  `Fab.bundle_files(built, order_files)` gets the BOM/CPL files. Assumed,
+  not confirmed: that AISLER also reads the placement file from the zip.
+
 Next (needs the user's go): rest of step 6, then Mouser (step 7, needs a
 credentials loader and the user's API key for a manual test), PCBWay
 (step 8, needs its BOM template), DigiKey, GUI supplier picker.
