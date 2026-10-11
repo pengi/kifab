@@ -58,6 +58,13 @@ class Supplier(ABC):
     #: number space share the kind (JLCPCB's parts library and the LCSC shop
     #: both use LCSC numbers, ``"lcsc"``).
     sku_kind: str = ""
+    #: Symbol fields that may hold such a number (case-insensitive), preferred
+    #: first.
+    sku_fields: tuple[str, ...] = ()
+
+    def parse_sku(self, text: str) -> str | None:
+        """The number in a field's text, normalised, or ``None``."""
+        return text.strip() or None
 
     @abstractmethod
     def catalog(self, client: HttpClient | None = None) -> Catalog:

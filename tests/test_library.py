@@ -1,3 +1,4 @@
+import dataclasses
 import io
 import json
 import shlex
@@ -232,7 +233,13 @@ def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     assert '(property "ki_description" "' + text in lib_path.read_text()
     assert run_check(project).issues == []  # the lock follows
     # an explicit description (from the selected search hit) wins over a lookup
-    vendor_part(project, "C900005", description="Radio module, 2.4 GHz")
+    hit = catalog.lookup("C900005")
+    assert hit is not None
+    vendor_part(
+        project,
+        "C900005",
+        hit=dataclasses.replace(hit, description="Radio module, 2.4 GHz"),
+    )
     contents = library_contents(project)
     assert [(p.id, p.description) for p in contents.parts] == [
         ("C900001", text),

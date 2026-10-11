@@ -50,11 +50,6 @@ class Fab(ABC):
     def design_rules(self, profile: str, options: RuleOptions) -> DesignRuleProfile:
         """The capabilities as KiCad constraints and custom rules."""
 
-    @property
-    @abstractmethod
-    def part_number_fields(self) -> tuple[str, ...]:
-        """Schematic field names that hold this fab's part number (first preferred)."""
-
     @abstractmethod
     def check_parts(self, bom: Bom) -> list[Issue]:
         """Problems with the BOM for ordering (offline: e.g. missing part numbers)."""

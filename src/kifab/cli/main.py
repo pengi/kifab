@@ -285,7 +285,7 @@ def _offer_add(args: argparse.Namespace, hits: Sequence[PartHit], first: int) ->
             vendor_part(
                 project,
                 chosen,
-                description=picked.description if picked else "",
+                hit=picked,
                 catalog=(
                     sourcing.library_catalog() if sourcing and picked is None else None
                 ),
@@ -536,7 +536,12 @@ def _cmd_component_check(args: argparse.Namespace) -> int:
         or bool(config and config.bundle.assemble_through_hole),
     )
     issues = fab.check_parts(bom)
-    report = check_availability(bom, sourcing.catalog(), boards=args.boards)
+    report = check_availability(
+        bom,
+        sourcing.catalog(),
+        boards=args.boards,
+        sku_kind=sourcing.supplier.sku_kind,
+    )
     issues += report.issues
     code = _exit_code(issues, args.strict)
     if args.json:
@@ -555,7 +560,7 @@ def _cmd_component_check(args: argparse.Namespace) -> int:
         hit = status.hit
         refs = ",".join(status.line.references)
         if hit is None:
-            print(f"  {status.line.part_number:<10} NOT FOUND             {refs}")
+            print(f"  {status.line.part.label:<10} NOT FOUND             {refs}")
             continue
         price = status.unit_price
         print(

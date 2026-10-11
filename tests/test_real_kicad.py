@@ -94,7 +94,7 @@ def test_exports_match_the_format_samples(
         tmp_path / "bom.csv",
         BomColumns(
             ("Value", "Reference", "Footprint", "LCSC"),
-            ("Value", "Reference", "Footprint", "Part"),
+            ("Value", "Reference", "Footprint", "sku:lcsc"),
             ("Value", "Footprint", "LCSC"),
         ),
     )

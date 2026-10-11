@@ -35,7 +35,6 @@ from kifab.core.issues import (
 from kifab.core.orderability import AvailabilityReport, check_availability
 from kifab.core.manufacturing import (
     BOM_FOOTPRINT,
-    BOM_PART,
     BOM_REFS,
     BOM_VALUE,
     Bom,
@@ -49,6 +48,7 @@ from kifab.core.manufacturing import (
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
 from kifab.core.reproducible import normalize_timestamps, source_date
+from kifab.core.partref import FieldSpec, field_specs, sku_key
 from kifab.core.sourcing import Sourcing, sourcing_for
 from kifab.fabs.base import Fab
 from kifab.kicad import sexpr
@@ -136,15 +136,39 @@ def input_hashes(project: Project, schematic: Schematic | None) -> dict[str, str
     }
 
 
-def _part_number_field(schematic: Schematic, fab: Fab) -> str:
-    """The field name the schematic actually uses for the fab's part numbers."""
-    wanted = {f.lower() for f in fab.part_number_fields}
-    used: Counter[str] = Counter()
-    for part in schematic.parts():
-        for name, value in part.properties.items():
-            if name.lower() in wanted and value.strip():
-                used[name] += 1
-    return used.most_common(1)[0][0] if used else fab.part_number_fields[0]
+def bom_columns(
+    schematic: Schematic, sourcing: Sourcing
+) -> tuple[BomColumns, tuple[FieldSpec, ...]]:
+    """The kicad-cli BOM columns for the part fields the schematic uses.
+
+    Each :class:`FieldSpec` (MPN, manufacturer, supplier numbers) becomes a
+    column under its key, read from the field name the schematic uses most;
+    the configured suppliers' number columns are always there.
+    """
+    always = {sku_key(s.sku_kind) for s in sourcing.suppliers}
+    fields: list[str] = []
+    specs: list[FieldSpec] = []
+    for spec in field_specs():
+        used: Counter[str] = Counter(
+            name
+            for part in schematic.parts()
+            if (name := spec.field_name(part.properties))
+        )
+        if used:
+            fields.append(used.most_common(1)[0][0])
+        elif spec.key in always:
+            fields.append(spec.names[0])
+        else:
+            continue
+        specs.append(spec)
+    return (
+        BomColumns(
+            fields=("Value", "Reference", "Footprint", *fields),
+            labels=(BOM_VALUE, BOM_REFS, BOM_FOOTPRINT, *(s.key for s in specs)),
+            group_by=("Value", "Footprint", *fields),
+        ),
+        tuple(specs),
+    )
 
 
 class _Run:
@@ -330,18 +354,13 @@ class _Run:
     def bom_and_placement(self, tmp: Path) -> tuple[Bom, Placement]:
         assert self.schematic is not None
         kicad = self.project.kicad
-        pn_field = _part_number_field(self.schematic, self.fab)
-        columns = BomColumns(
-            fields=("Value", "Reference", "Footprint", pn_field),
-            labels=(BOM_VALUE, BOM_REFS, BOM_FOOTPRINT, BOM_PART),
-            group_by=("Value", "Footprint", pn_field),
-        )
+        columns, specs = bom_columns(self.schematic, self.sourcing())
         raw_bom, pos_all, pos_smd = (tmp / n for n in ("bom.csv", "all.csv", "smd.csv"))
         try:
             self.cli.export_bom(kicad.sch, raw_bom, columns)
             self.cli.export_pos(kicad.pcb, pos_all, smd_only=False)
             self.cli.export_pos(kicad.pcb, pos_smd, smd_only=True)
-            bom = parse_kicad_bom(raw_bom.read_text(encoding="utf-8"))
+            bom = parse_kicad_bom(raw_bom.read_text(encoding="utf-8"), specs)
             every = parse_kicad_pos(pos_all.read_text(encoding="utf-8"))
             smd = parse_kicad_pos(pos_smd.read_text(encoding="utf-8"))
         except (ToolMissing, ToolFailed, ParseError, OSError) as exc:
@@ -378,8 +397,12 @@ class _Run:
         for issue in self.fab.check_parts(bom):
             self.add(issue)
         if self.options.stock:
+            sourcing = self.sourcing()
             report = check_availability(
-                bom, self.sourcing().catalog(), boards=self.options.boards
+                bom,
+                sourcing.catalog(),
+                boards=self.options.boards,
+                sku_kind=sourcing.supplier.sku_kind,
             )
             self.result.availability = report
             for issue in report.issues:

@@ -32,7 +32,12 @@ def bom_csv(bom: Bom) -> bytes:
     rows = [list(BOM_COLUMNS)]
     for line in bom.lines:
         rows.append(
-            [line.value, ",".join(line.references), line.footprint, line.part_number]
+            [
+                line.value,
+                ",".join(line.references),
+                line.footprint,
+                line.part.sku("lcsc"),
+            ]
         )
     return _csv(rows, quote_all=True)
 

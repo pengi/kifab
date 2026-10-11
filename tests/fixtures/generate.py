@@ -1000,7 +1000,7 @@ def write_kicad_cli_samples(root: Path) -> None:
     dump_json(d / "rules_drc.json", rules)
     write(
         d / "bom_raw.csv",
-        '"Value","Reference","Footprint","Part"\n'
+        '"Value","Reference","Footprint","sku:lcsc"\n'
         '"100nF","C1,C3","jlcpcb:C0603","C900003"\n'
         '"4.7uF","C2","jlcpcb:C0805","C900004"\n'
         '"LED","D1","demo-board:LED_0603","C900008"\n'

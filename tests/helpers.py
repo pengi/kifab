@@ -31,11 +31,13 @@ def symbol(
     lib_id: str = "Device:X",
     project: str = "p",
     in_bom: str = "yes",
+    fields: tuple[tuple[str, str], ...] = (),
 ) -> str:
     refs = "".join(
         f'(path "/{r}" (reference "{r}") (unit 1))' for r in (ref, *extra_refs)
     )
     lcsc_prop = f'(property "{field}" "{lcsc}")' if lcsc else ""
+    lcsc_prop += "".join(f' (property "{k}" "{v}")' for k, v in fields)
     return (
         f'(symbol (lib_id "{lib_id}") (at 0 0 0) (in_bom {in_bom}) (dnp {dnp}) '
         f'(property "Reference" "{ref}") (property "Value" "{value}") '

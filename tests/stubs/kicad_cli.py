@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 from kifab.kicad.board import read_board
-from kifab.kicad.schematic import find_lcsc, read_schematic, ref_sort_key, sorted_refs
+from kifab.kicad.schematic import read_schematic, ref_sort_key, sorted_refs
 
 EXT = {
     "F.Cu": "gtl",
@@ -103,24 +103,28 @@ def pos(args: list[str], pcb: Path) -> None:
 
 
 def bom(args: list[str], sch: Path) -> None:
+    """Like kicad-cli: any fields (missing ones are empty), grouped by --group-by."""
     schematic = read_schematic(sch)
     fields = opt(args, "--fields").split(",")
     labels = opt(args, "--labels").split(",")
-    groups: dict[tuple[str, str, str], list[str]] = {}
+    group_by = opt(args, "--group-by").split(",")
+    groups: dict[tuple[str, ...], list[str]] = {}
+    values: dict[tuple[str, ...], dict[str, str]] = {}
     for part in schematic.parts():
         if not part.in_bom or ("--exclude-dnp" in args and part.dnp):
             continue
-        key = (part.value, part.footprint, find_lcsc(part.properties) or "")
+        props = {**part.properties, "Value": part.value, "Footprint": part.footprint}
+        key = tuple(props.get(f, "") for f in group_by)
         groups.setdefault(key, []).append(part.reference)
+        values.setdefault(key, props)
     buf = io.StringIO()
     writer = csv.writer(buf, quoting=csv.QUOTE_ALL, lineterminator="\n")
     writer.writerow(labels)
     rows = []
-    for (value, footprint, lcsc), refs in groups.items():
-        values = {"Value": value, "Footprint": footprint, "LCSC": lcsc}
+    for key, refs in groups.items():
         refs = sorted_refs(refs)
-        values["Reference"] = ",".join(refs)
-        rows.append((refs[0], [values.get(f, "") for f in fields]))
+        props = {**values[key], "Reference": ",".join(refs)}
+        rows.append((refs[0], [props.get(f, "") for f in fields]))
     for _, row in sorted(rows, key=lambda r: ref_sort_key(r[0])):
         writer.writerow(row)
     Path(opt(args, "-o")).write_text(buf.getvalue(), encoding="utf-8")

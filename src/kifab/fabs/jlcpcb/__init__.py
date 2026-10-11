@@ -7,7 +7,6 @@ from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.fabs.base import Fab
 from kifab.fabs.jlcpcb import export, rules
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
-from kifab.kicad.schematic import LCSC_FIELDS
 
 
 class JlcpcbFab(Fab):
@@ -24,10 +23,6 @@ class JlcpcbFab(Fab):
             raise ValueError(f"unknown JLCPCB rules profile {profile!r}")
         return rules.standard(options, options.library or self.library_name)
 
-    @property
-    def part_number_fields(self) -> tuple[str, ...]:
-        return LCSC_FIELDS
-
     def check_parts(self, bom: Bom) -> list[Issue]:
         return [
             warning(
@@ -38,7 +33,7 @@ class JlcpcbFab(Fab):
                 hint="add an LCSC field to the symbol",
             )
             for line in bom.lines
-            if not line.part_number
+            if not line.part.sku("lcsc")
         ]
 
     def export_bom(self, bom: Bom, board_name: str) -> FileArtifact:

@@ -16,7 +16,8 @@ is limited to known problems:
   dropped; with no real names left, pin names are hidden, and for two-pin
   parts the pin numbers too (as KiCad's own ``Device:R``).
 * A symbol without a description gets the catalogue's description of the part,
-  so KiCad's symbol chooser and the placed symbol show it.
+  so KiCad's symbol chooser and the placed symbol show it; likewise ``MPN``
+  and ``Manufacturer`` fields, which fabs buying from distributors order by.
 
 Several parts can share a footprint name (all 0603 resistors -> ``R0603``) while
 EasyEDA's copies differ in details such as the description. The first vendored
@@ -44,7 +45,8 @@ from kifab.core.lockfile import (
 )
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
-from kifab.core.parts import CatalogError
+from kifab.core.partref import MANUFACTURER_FIELD, MPN_FIELD
+from kifab.core.parts import CatalogError, PartHit
 from kifab.core.sourcing import Sourcing
 from kifab.libraries.base import (
     CachingPartSource,
@@ -69,6 +71,8 @@ from kifab.kicad.symbol_lib import (
     read_symbol_library,
 )
 
+#: Fields kifab writes into vendored symbols (besides the description).
+PART_FIELDS = (MPN_FIELD, MANUFACTURER_FIELD)
 _MODEL = re.compile(r'(\(model\s+)"([^"]*)"')
 
 
@@ -155,9 +159,15 @@ def _merge_symbols(
     changed = False
     for sym in fetched.symbols:
         old = merged.get(sym.name)
-        if old is not None and old.description and not sym.description:
-            # kifab added the description: compare (and refresh) with it kept
-            sym = sym.with_description(old.description, existing.version)
+        if old is not None:
+            # kifab added these fields: compare (and refresh) with them kept
+            if old.description and not sym.description:
+                sym = sym.with_description(old.description, existing.version)
+            for name in PART_FIELDS:
+                if old.field_value(name) and not sym.field_value(name):
+                    sym = sym.with_property(
+                        name, old.field_value(name), existing.version
+                    )
         if old is not None and old.digest() == sym.digest():
             continue
         if old is not None and not refresh:
@@ -180,23 +190,35 @@ def _merge_symbols(
     result.written.append(rel)
 
 
-def _describe(
+def _annotate(
     paths: LibraryPaths,
     names: list[str],
-    description: str,
+    hit: PartHit,
     result: VendorResult,
     rel: str,
 ) -> None:
-    """Give the named symbols ``description`` where they have none."""
-    if not description or not paths.symbols.is_file():
+    """Fill in what the named symbols lack of the catalogue's facts.
+
+    The description (KiCad's symbol chooser shows it), and the MPN and
+    manufacturer: fabs that buy from distributors order by them.
+    """
+    if not paths.symbols.is_file():
         return
     library = read_symbol_library(paths.symbols)
     changed = False
     symbols = []
     for sym in library.symbols:
-        if sym.name in names and not sym.description:
-            sym = sym.with_description(description, library.version)
-            changed = True
+        if sym.name in names:
+            if hit.description and not sym.description:
+                sym = sym.with_description(hit.description, library.version)
+                changed = True
+            for name, value in (
+                (MPN_FIELD, hit.mpn),
+                (MANUFACTURER_FIELD, hit.manufacturer),
+            ):
+                if value and not sym.field_value(name):
+                    sym = sym.with_property(name, value, library.version)
+                    changed = True
         symbols.append(sym)
     if not changed:
         return
@@ -206,15 +228,16 @@ def _describe(
         result.written.append(rel)
 
 
-def _catalog_description(catalog: Catalog, part_id: str, result: VendorResult) -> str:
+def _catalog_hit(
+    catalog: Catalog, part_id: str, result: VendorResult
+) -> PartHit | None:
     try:
-        hit = catalog.lookup(part_id)
+        return catalog.lookup(part_id)
     except CatalogError as exc:
         result.issues.append(
             info(Code.CATALOG_ERROR, f"no description: {exc}", ref=part_id)
         )
-        return ""
-    return hit.description if hit is not None else ""
+        return None
 
 
 def tidy_pins(library: SymbolLibrary) -> SymbolLibrary:
@@ -308,15 +331,15 @@ def vendor_part(
     source: PartSource | None = None,
     *,
     refresh: bool = False,
-    description: str = "",
+    hit: PartHit | None = None,
     catalog: Catalog | None = None,
     fresh: bool | None = None,
 ) -> VendorResult:
     """Fetch ``part_id`` and vendor it into ``lib/<name>/``; update ``kifab.lock``.
 
-    ``description`` (or, if empty, the one ``catalog`` has for the part) goes
-    into symbols that have none; vendoring an already vendored part again fills
-    it in. ``fresh`` (default: ``refresh``) bypasses the part source's cache.
+    What ``hit`` (the selected search result; else ``catalog``'s entry for the
+    part) says of the part goes into symbols that lack it: description, MPN
+    and manufacturer. Vendoring an already vendored part again fills them in. ``fresh`` (default: ``refresh``) bypasses the part source's cache.
     Raises :class:`FetchError` when the part cannot be fetched and
     :class:`ConfigError` for a project without ``kifab.toml``.
     """
@@ -353,9 +376,10 @@ def vendor_part(
             _merge_symbols(paths, lib, refresh, result, project.rel(paths.symbols))
             symbols = sorted(lib.names())
             result.symbols = [f"{paths.nickname}:{n}" for n in symbols]
-            if not description and catalog is not None:
-                description = _catalog_description(catalog, result.part_id, result)
-            _describe(paths, symbols, description, result, project.rel(paths.symbols))
+            if hit is None and catalog is not None:
+                hit = _catalog_hit(catalog, result.part_id, result)
+            if hit is not None:
+                _annotate(paths, symbols, hit, result, project.rel(paths.symbols))
         _lock_part(project, sourcing.library.name, fetched, files_rel, symbols)
     for kept in result.kept:
         result.issues.append(

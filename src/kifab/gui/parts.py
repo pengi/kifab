@@ -774,7 +774,6 @@ class PartsPanel(QWidget):
             part_id = row.id
         else:
             return None
-        description = hit.description if hit is not None else ""
         catalog = None if hit is not None else self._catalog()
 
         def done(result: object) -> None:
@@ -788,9 +787,7 @@ class PartsPanel(QWidget):
 
         return self._run_job(
             f"add {part_id}",
-            lambda _r: vendor_part(
-                project, part_id, description=description, catalog=catalog
-            ),
+            lambda _r: vendor_part(project, part_id, hit=hit, catalog=catalog),
             done,
         )
 

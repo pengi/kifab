@@ -72,23 +72,35 @@ class LibrarySymbol:
         props = sexpr.properties(self.node)
         return next((props[n] for n in _DESCRIPTION_NAMES if props.get(n)), "")
 
+    def field_value(self, name: str) -> str:
+        """The value of field ``name`` (exact name), ``""`` if absent."""
+        return sexpr.properties(self.node).get(name, "")
+
     def with_description(self, text: str, version: str) -> LibrarySymbol:
         """A copy whose description is ``text``, written as ``version`` expects."""
+        name = (
+            "Description" if version >= DESCRIPTION_FIELD_VERSION else "ki_description"
+        )
+        return self._with_property(name, text, version, _DESCRIPTION_NAMES)
+
+    def with_property(self, name: str, text: str, version: str) -> LibrarySymbol:
+        """A copy with field ``name`` set to ``text`` (a hidden field)."""
+        return self._with_property(name, text, version, (name,))
+
+    def _with_property(
+        self, name: str, text: str, version: str, replaces: tuple[str, ...]
+    ) -> LibrarySymbol:
         node: sexpr.Node = [
             item
             for item in self.node
             if not (
                 isinstance(item, list)
                 and sexpr.head(item) == "property"
-                and sexpr.atom(item) in _DESCRIPTION_NAMES
+                and sexpr.atom(item) in replaces
             )
         ]
         new = version >= DESCRIPTION_FIELD_VERSION
-        prop: sexpr.Node = [
-            sexpr.Sym("property"),
-            "Description" if new else "ki_description",
-            text,
-        ]
+        prop: sexpr.Node = [sexpr.Sym("property"), name, text]
         if not new:  # KiCad 6/7 properties carry an id
             ids = [
                 int(i)

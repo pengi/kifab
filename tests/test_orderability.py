@@ -8,6 +8,7 @@ from kifab.cli.main import main
 from kifab.core import toml
 from kifab.core.bundle import BundleOptions, bundle
 from kifab.core.issues import Code, Severity
+from kifab.core.partref import PartRef
 from kifab.core.manufacturing import Bom, BomLine
 from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
@@ -47,6 +48,10 @@ class FakeCatalog:
         raise CatalogError("no images")
 
 
+def lcsc(number: str) -> PartRef:
+    return PartRef.with_sku("lcsc", number)
+
+
 def hit(pn: str, stock: int, kind: LibraryType = LibraryType.BASIC) -> PartHit:
     return PartHit(pn, "mpn", "m", "0603", "", "", stock, kind)
 
@@ -54,11 +59,11 @@ def hit(pn: str, stock: int, kind: LibraryType = LibraryType.BASIC) -> PartHit:
 def test_rules() -> None:
     bom = Bom(
         (
-            BomLine("a", ("R1", "R2"), "f", "C1"),
-            BomLine("b", ("R3",), "f", "C2"),
-            BomLine("c", ("R4",), "f", "C3"),
-            BomLine("d", ("R5",), "f", "C4"),
-            BomLine("e", ("R6",), "f", ""),  # no part number: not looked up
+            BomLine("a", ("R1", "R2"), "f", lcsc("C1")),
+            BomLine("b", ("R3",), "f", lcsc("C2")),
+            BomLine("c", ("R4",), "f", lcsc("C3")),
+            BomLine("d", ("R5",), "f", lcsc("C4")),
+            BomLine("e", ("R6",), "f", lcsc("")),  # no part number: not looked up
         )
     )
     catalog = FakeCatalog(
@@ -81,7 +86,9 @@ def test_rules() -> None:
 
 
 def test_catalog_failure_stops_lookups() -> None:
-    bom = Bom((BomLine("a", ("R1",), "f", "C1"), BomLine("b", ("R2",), "f", "C2")))
+    bom = Bom(
+        (BomLine("a", ("R1",), "f", lcsc("C1")), BomLine("b", ("R2",), "f", lcsc("C2")))
+    )
     catalog = FakeCatalog({}, fail=True)
     report = check_availability(bom, catalog)
     assert [i.code for i in report.issues] == [Code.CATALOG_ERROR]
@@ -93,7 +100,7 @@ def test_schematic_bom_matches_the_expected_bom() -> None:
     bom = schematic_bom(Project.open(DEMO))
     rows = EXPECTED_BOM.read_text().splitlines()[1:]
     expected = [r.split('","')[3].rstrip('"') for r in rows]
-    assert [line.part_number for line in bom.lines] == expected
+    assert [line.part.sku("lcsc") for line in bom.lines] == expected
     assert bom.part_count == 8
     with_tht = schematic_bom(Project.open(DEMO), assemble_through_hole=True)
     assert "J1" in {r for line in with_tht.lines for r in line.references}

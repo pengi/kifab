@@ -12,6 +12,7 @@ from dataclasses import dataclass, field
 
 from kifab.core.issues import Code, Issue, error, info, warning
 from kifab.core.manufacturing import Bom, BomLine
+from kifab.core.partref import PartRef, field_specs, part_ref
 from kifab.core.parts import CatalogError, LibraryType, PartHit
 from kifab.core.project import Project
 from kifab.suppliers.base import Catalog
@@ -70,25 +71,26 @@ class AvailabilityReport:
         return sum(s.cost or 0.0 for s in self.lines)
 
     def snapshot(self) -> dict[str, dict[str, object]]:
-        return {s.line.part_number: s.snapshot() for s in self.lines}
+        return {s.line.part.label: s.snapshot() for s in self.lines}
 
 
 def check_availability(
-    bom: Bom, catalog: Catalog, *, boards: int = 1
+    bom: Bom, catalog: Catalog, *, boards: int = 1, sku_kind: str = "lcsc"
 ) -> AvailabilityReport:
+    """Look each line up in ``catalog`` by its ``sku_kind`` number."""
     report = AvailabilityReport(boards=boards)
     for line in bom.lines:
-        if not line.part_number:
+        pn = line.part.sku(sku_kind)
+        if not pn:
             continue  # reported by Fab.check_parts
         refs = ",".join(line.references)
         needed = len(line.references) * boards
         try:
-            hit = catalog.lookup(line.part_number)
+            hit = catalog.lookup(pn)
         except CatalogError as exc:
             report.issues.append(error(Code.CATALOG_ERROR, str(exc), ref=refs))
             break  # the catalogue is unreachable; do not hammer it
         report.lines.append(LineStatus(line, needed, hit))
-        pn = line.part_number
         if hit is None:
             report.issues.append(
                 error(
@@ -144,15 +146,16 @@ def schematic_bom(project: Project, *, assemble_through_hole: bool = False) -> B
                 for ref, fp in board.by_reference().items()
                 if fp.footprint.through_hole
             }
-    groups: dict[tuple[str, str, str], list[str]] = {}
+    specs = field_specs()
+    groups: dict[tuple[str, str, PartRef], list[str]] = {}
     for part in sch.parts():
         if part.dnp or not part.in_bom or part.reference in tht:
             continue
-        key = (part.value, part.footprint, part.lcsc or "")
+        key = (part.value, part.footprint, part_ref(part.properties, specs))
         groups.setdefault(key, []).append(part.reference)
     lines = [
-        BomLine(value, tuple(sorted_refs(refs)), footprint, pn)
-        for (value, footprint, pn), refs in groups.items()
+        BomLine(value, tuple(sorted_refs(refs)), footprint, ref)
+        for (value, footprint, ref), refs in groups.items()
     ]
     lines.sort(key=lambda line: ref_sort_key(line.references[0]))
     return Bom(tuple(lines))
