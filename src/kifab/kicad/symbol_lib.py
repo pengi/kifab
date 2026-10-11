@@ -76,6 +76,14 @@ class LibrarySymbol:
         """The value of field ``name`` (exact name), ``""`` if absent."""
         return sexpr.properties(self.node).get(name, "")
 
+    def with_field_value(self, name: str, text: str) -> LibrarySymbol:
+        """A copy with the existing field ``name`` set to ``text`` (layout kept)."""
+        node = copy.deepcopy(self.node)
+        for prop in sexpr.children(node, "property"):
+            if sexpr.atom(prop) == name and len(prop) > 2:
+                prop[2] = text
+        return LibrarySymbol(self.name, node)
+
     def with_description(self, text: str, version: str) -> LibrarySymbol:
         """A copy whose description is ``text``, written as ``version`` expects."""
         name = (

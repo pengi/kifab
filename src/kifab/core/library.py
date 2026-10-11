@@ -62,6 +62,7 @@ from kifab.kicad.libtable import (
     project_uri,
     read_lib_table,
 )
+from kifab.kicad.libid import LibId
 from kifab.kicad.schematic import read_schematic, sorted_refs
 from kifab.kicad.symbol_lib import (
     SYMBOL_LIB_VERSION,
@@ -240,6 +241,24 @@ def _catalog_hit(
         return None
 
 
+def relink_footprints(
+    library: SymbolLibrary, nickname: str, footprints: Iterable[str]
+) -> SymbolLibrary:
+    """Point the symbols' Footprint fields at ``nickname`` for fetched footprints.
+
+    The library source names its own library (easyeda2kicad: ``jlcpcb:R0603``);
+    the project's may be called differently.
+    """
+    names = set(footprints)
+    symbols = []
+    for sym in library.symbols:
+        lib_id = LibId.parse(sym.field_value("Footprint"))
+        if lib_id.name in names and lib_id.nickname != nickname:
+            sym = sym.with_field_value("Footprint", f"{nickname}:{lib_id.name}")
+        symbols.append(sym)
+    return SymbolLibrary(tuple(symbols), library.version, library.generator)
+
+
 def tidy_pins(library: SymbolLibrary) -> SymbolLibrary:
     """:meth:`LibrarySymbol.with_tidy_pins` for every symbol of a fetched library."""
     return SymbolLibrary(
@@ -370,8 +389,12 @@ def vendor_part(
             result.footprints.append(f"{paths.nickname}:{fp.stem}")
         symbols: list[str] = []
         if fetched.symbol_library is not None:
-            lib = tidy_pins(
-                parse_symbol_library(fetched.symbol_library.read_text("utf-8"))
+            lib = relink_footprints(
+                tidy_pins(
+                    parse_symbol_library(fetched.symbol_library.read_text("utf-8"))
+                ),
+                paths.nickname,
+                (fp.stem for fp in fetched.footprints),
             )
             _merge_symbols(paths, lib, refresh, result, project.rel(paths.symbols))
             symbols = sorted(lib.names())

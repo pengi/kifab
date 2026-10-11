@@ -15,6 +15,7 @@ from kifab.core.lockfile import LOCK_VERSION, load_lockfile, parse_lockfile
 from kifab.core.project import Project
 from kifab.core.sourcing import sourcing_for
 from kifab.fabs.base import get_fab
+from kifab.kicad.symbol_lib import read_symbol_library
 from kifab.libraries.base import available_library_sources
 from kifab.suppliers.base import available_suppliers
 from tests.conftest import FIXTURES
@@ -94,7 +95,9 @@ def test_vendor_into_a_named_library(tmp_path: Path, offline: None) -> None:
     project = _with_parts(project, PartsConfig(library="parts"))
     result = vendor_part(project, "C900001")
     assert result.symbols and all(s.startswith("parts:") for s in result.symbols)
-    assert (project.directory / "lib/parts/parts.kicad_sym").is_file()
+    lib = read_symbol_library(project.directory / "lib/parts/parts.kicad_sym")
+    sym = lib.get("KF-R330-0603")
+    assert sym is not None and sym.field_value("Footprint") == "parts:R0603"
     assert '(name "parts")' in (project.directory / "sym-lib-table").read_text()
     lock = load_lockfile(project.lock_path)
     assert lock is not None and lock.parts[0].library_source == "easyeda"
