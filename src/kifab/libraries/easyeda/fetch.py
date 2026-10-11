@@ -27,7 +27,10 @@ from pathlib import Path
 from kifab.libraries.base import FetchedPart, FetchError, PartSource
 
 ENV_COMMAND = "KIFAB_EASYEDA2KICAD"
-OUTPUT_NAME = "jlcpcb"  # easyeda2kicad's library name: footprints become jlcpcb:<name>
+#: easyeda2kicad's output library name, in a scratch directory: its symbols'
+#: Footprint fields say easyeda:<name>; vendoring renames files and fields to
+#: the project's library.
+OUTPUT_NAME = "easyeda"
 _VERSION = re.compile(r"easyeda2kicad(?:\.py)?\s+v?(\d+(?:\.\d+)+)", re.IGNORECASE)
 LCSC_ID = re.compile(r"^C\d+$")
 
@@ -245,6 +248,8 @@ class CachedPartSource:
 
     def _fresh(self, entry: Path) -> bool:
         stamp = entry / COMPLETE
+        if not (entry / f"{OUTPUT_NAME}.pretty").is_dir():
+            return False  # older cache layout (jlcpcb.*): fetch again
         return stamp.is_file() and self.now() - stamp.stat().st_mtime < self.max_age
 
     def fetch(self, part_id: str, workdir: Path) -> FetchedPart:

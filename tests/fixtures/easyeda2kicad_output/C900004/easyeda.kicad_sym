@@ -2,45 +2,45 @@
   (version 20211014)
   (generator https://github.com/uPesy/easyeda2kicad.py)
 
-  (symbol "KF-R4K7-0603"
+  (symbol "KF-C4U7-0805"
     (in_bom yes)
     (on_board yes)
     (property
       "Reference"
-      "R"
+      "C"
       (id 0)
       (at 0 5.08 0)
       (effects (font (size 1.27 1.27) ) )
     )
     (property
       "Value"
-      "KF-R4K7-0603"
+      "KF-C4U7-0805"
       (id 1)
       (at 0 -5.08 0)
       (effects (font (size 1.27 1.27) ) )
     )
     (property
       "Footprint"
-      "jlcpcb:R0603"
+      "easyeda:C0805"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
     (property
       "Datasheet"
-      "https://example.invalid/datasheet/C900002.pdf"
+      "https://example.invalid/datasheet/C900004.pdf"
       (id 3)
       (at 0 -10.16 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
     (property
       "LCSC Part"
-      "C900002"
+      "C900004"
       (id 5)
       (at 0 -12.7 0)
       (effects (font (size 1.27 1.27) ) hide)
     )
-    (symbol "KF-R4K7-0603_0_1"
+    (symbol "KF-C4U7-0805_0_1"
       (rectangle
         (start -2.54 2.54)
         (end 2.54 -2.54)

@@ -13,6 +13,7 @@ from kifab.core.lockfile import (
     Lockfile,
     sha256_file,
 )
+from kifab.core.library import relink_footprints
 from kifab.core.project import Project
 from kifab.kicad.symbol_lib import SymbolLibrary, read_symbol_library
 
@@ -90,14 +91,16 @@ def vendor_r0603(project: Project, project_relative: bool = True) -> None:
     ``project_relative`` rewrites it the way a vendored part must look.
     """
     lib = project.directory / "lib" / "jlcpcb"
-    mod = (R0603 / "jlcpcb.pretty" / "R0603.kicad_mod").read_text()
+    mod = (R0603 / "easyeda.pretty" / "R0603.kicad_mod").read_text()
     if project_relative:
         mod = re.sub(
             r'\(model "[^"]*/', '(model "${KIPRJMOD}/lib/jlcpcb/jlcpcb.3dshapes/', mod
         )
     (lib / "jlcpcb.pretty" / "R0603.kicad_mod").write_text(mod)
-    shutil.copy(R0603 / "jlcpcb.3dshapes" / "R0603.wrl", lib / "jlcpcb.3dshapes")
-    sym = read_symbol_library(R0603 / "jlcpcb.kicad_sym")
+    shutil.copy(R0603 / "easyeda.3dshapes" / "R0603.wrl", lib / "jlcpcb.3dshapes")
+    sym = relink_footprints(
+        read_symbol_library(R0603 / "easyeda.kicad_sym"), "jlcpcb", ["R0603"]
+    )
     (lib / "jlcpcb.kicad_sym").write_text(SymbolLibrary(sym.symbols).dumps())
 
 

@@ -59,8 +59,8 @@ def main() -> int:
         print(f"[ERROR] Failed to fetch data from EasyEDA API for part {lcsc}")
         return 1
     for item in captured.iterdir():
-        if item.name.startswith("jlcpcb"):
-            target = out.parent / (out.name + item.name[len("jlcpcb") :])
+        if item.name.startswith("easyeda"):
+            target = out.parent / (out.name + item.name[len("easyeda") :])
             if item.is_dir():
                 shutil.copytree(item, target, dirs_exist_ok=True)
             else:

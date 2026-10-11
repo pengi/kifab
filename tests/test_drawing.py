@@ -25,7 +25,7 @@ E2K = FIXTURES / "easyeda2kicad_output"
 
 def test_legacy_footprint() -> None:
     drawing = read_footprint_drawing(
-        E2K / "C900005/jlcpcb.pretty/MOD-SMD_KF1.kicad_mod"
+        E2K / "C900005/easyeda.pretty/MOD-SMD_KF1.kicad_mod"
     )
     pads = [s for s in drawing.shapes if isinstance(s, Pad)]
     assert [(p.number, p.center, p.width) for p in pads] == [
@@ -40,7 +40,7 @@ def test_legacy_footprint() -> None:
     assert arc.end.x == pytest.approx(1) and arc.end.y == pytest.approx(-1.5)
     bounds = drawing.bounds()
     assert bounds is not None and (bounds.width, bounds.height) == (4, 4)
-    header = read_footprint_drawing(E2K / "C900006/jlcpcb.pretty/HDR-TH_8P.kicad_mod")
+    header = read_footprint_drawing(E2K / "C900006/easyeda.pretty/HDR-TH_8P.kicad_mod")
     th = [s for s in header.shapes if isinstance(s, Pad)]
     assert len(th) == 8 and all(p.drill == 1 for p in th)
     (mark,) = [s for s in header.shapes if isinstance(s, Circle)]
@@ -70,7 +70,7 @@ def test_current_footprint_syntax() -> None:
 
 
 def test_symbol() -> None:
-    lib = read_symbol_library(E2K / "C900005/jlcpcb.kicad_sym")
+    lib = read_symbol_library(E2K / "C900005/easyeda.kicad_sym")
     drawing = library_symbol_drawing(lib, "KF-MOD-1")
     assert drawing is not None and drawing.y_up
     body = [s for s in drawing.shapes if isinstance(s, Polygon)]

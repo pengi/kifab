@@ -39,12 +39,12 @@ def test_inner_layers_in_stack_order(tmp_path: Path) -> None:
 
 def test_legacy_module_footprint_file() -> None:
     fp = read_footprint_file(
-        FIXTURES / "easyeda2kicad_output/C900004/jlcpcb.pretty/C0805.kicad_mod"
+        FIXTURES / "easyeda2kicad_output/C900004/easyeda.pretty/C0805.kicad_mod"
     )
     assert fp.lib_id.name == "C0805"
     assert fp.through_hole and not fp.has_drilled_pads  # the easyeda2kicad bug
     assert fp.models
     header = read_footprint_file(
-        FIXTURES / "easyeda2kicad_output/C900006/jlcpcb.pretty" / "HDR-TH_8P.kicad_mod"
+        FIXTURES / "easyeda2kicad_output/C900006/easyeda.pretty" / "HDR-TH_8P.kicad_mod"
     )
     assert header.has_drilled_pads

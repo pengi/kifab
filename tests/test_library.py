@@ -381,6 +381,13 @@ def test_fetched_parts_are_cached(
     assert calls() == 4
     vendor_part(project, "C900001", refresh=True, fresh=False)  # just fetched
     assert calls() == 4
+    # entries in the layout before the rename (jlcpcb.*) are fetched again
+    entry = source.root / "C900001"
+    for item in list(entry.iterdir()):
+        if item.name.startswith("easyeda."):
+            item.rename(entry / item.name.replace("easyeda.", "jlcpcb.", 1))
+    renamed = source.fetch("C900001", tmp_path / "old-layout")
+    assert calls() == 5 and renamed.footprints
 
 
 def test_redundant_pin_names_are_dropped(offline: None, tmp_path: Path) -> None:

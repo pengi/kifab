@@ -275,7 +275,7 @@ E2K_SYMBOL = """\
     )
     (property
       "Footprint"
-      "jlcpcb:{footprint}"
+      "easyeda:{footprint}"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -368,7 +368,7 @@ def e2k_footprint(p: FakePart, capture_dir: str) -> str:
                 "(layers F.Cu F.Paste F.Mask))"
             )
     lines += [
-        f'\t(model "{capture_dir}/jlcpcb.3dshapes/{p.footprint}.wrl"',
+        f'\t(model "{capture_dir}/easyeda.3dshapes/{p.footprint}.wrl"',
         "\t\t(offset (xyz 0 0 0))",
         "\t\t(scale (xyz 1 1 1))",
         "\t\t(rotate (xyz 0 0 0))",
@@ -411,12 +411,12 @@ def write_e2k(root: Path) -> None:
         capture = (
             f"/tmp/easyeda2kicad-capture/{part_id}"  # absolute, as the tool writes
         )
-        write(d / "jlcpcb.kicad_sym", e2k_symbol_lib(p))
+        write(d / "easyeda.kicad_sym", e2k_symbol_lib(p))
         write(
-            d / "jlcpcb.pretty" / f"{p.footprint}.kicad_mod", e2k_footprint(p, capture)
+            d / "easyeda.pretty" / f"{p.footprint}.kicad_mod", e2k_footprint(p, capture)
         )
         write(
-            d / "jlcpcb.3dshapes" / f"{p.footprint}.wrl",
+            d / "easyeda.3dshapes" / f"{p.footprint}.wrl",
             f"#VRML V2.0 utf8\n# synthetic 3D model for {p.footprint} (test data)\n",
         )
         write(

@@ -13,7 +13,7 @@
 	(fp_arc (start 0 -1.5) (end -1 -1.5) (angle 180) (layer F.SilkS) (width 0.15))
 	(pad 1 smd rect (at -0.8 0 0) (size 0.9 0.95) (layers F.Cu F.Paste F.Mask))
 	(pad 2 smd rect (at 0.8 0 0) (size 0.9 0.95) (layers F.Cu F.Paste F.Mask))
-	(model "/tmp/easyeda2kicad-capture/C900005/jlcpcb.3dshapes/MOD-SMD_KF1.wrl"
+	(model "/tmp/easyeda2kicad-capture/C900005/easyeda.3dshapes/MOD-SMD_KF1.wrl"
 		(offset (xyz 0 0 0))
 		(scale (xyz 1 1 1))
 		(rotate (xyz 0 0 0))

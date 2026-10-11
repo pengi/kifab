@@ -127,7 +127,7 @@ def test_project_uri(tmp_path: Path) -> None:
 
 
 def test_symbol_library_sorted_and_digest() -> None:
-    text = (FIXTURES / "easyeda2kicad_output/C900001/jlcpcb.kicad_sym").read_text()
+    text = (FIXTURES / "easyeda2kicad_output/C900001/easyeda.kicad_sym").read_text()
     lib = parse_symbol_library(text)
     assert lib.names() == {"KF-R330-0603"}
     sym = lib.get("KF-R330-0603")
