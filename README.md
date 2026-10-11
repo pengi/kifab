@@ -46,6 +46,9 @@ if neither works.
 
 ![kifab-gui showing a project's parts](docs/gui.png)
 
+On Linux, `kifab-gui --install-desktop` adds kifab to the application menu
+(`--uninstall-desktop` removes it).
+
 The Parts tab lists the project's library: each part's symbol and footprint, and
 where it is used. Search the fab's catalogue as you type (`R 4k7 0603`,
 `C 18p`), see stock, price and Basic/Extended class, and add a part to the
