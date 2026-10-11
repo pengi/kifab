@@ -9,6 +9,11 @@ The writer formats like KiCad's own ``KICAD_FORMAT::Prettify`` (tab indentation,
 one list per line, short atom-only lists inline, runs of ``(xy ...)`` points kept
 on one line up to column 99), so files written by kifab look like files saved by
 KiCad and re-saving them in KiCad gives small diffs.
+
+:func:`prettify` is a port of ``KICAD_FORMAT::Prettify`` from KiCad's source
+code, copyright The KiCad Developers, licensed under the GNU GPL version 3 or
+later (https://www.kicad.org); it is used here under version 3, the licence of
+kifab.
 """
 
 from __future__ import annotations

@@ -176,3 +176,13 @@ checks the live search, a part-number lookup, a real easyeda2kicad fetch and
 the real-KiCad tests, and prints a pass/fail report. Captured answers stay in a
 scratch directory: they are third-party data and are not committed; what they
 teach goes into the synthetic fixtures.
+
+## License
+
+kifab is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License, version 3 only, as published by the
+Free Software Foundation. See [LICENSE](LICENSE). It comes with no warranty.
+
+kifab's S-expression formatter is ported from KiCad (GPL-3.0-or-later, used
+under version 3). easyeda2kicad (AGPL-3.0) is run as a separate program;
+PySide6 (LGPL-3.0) is used for the GUI.

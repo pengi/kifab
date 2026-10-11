@@ -4,12 +4,36 @@ version = "0.1.0"
 description = "Manage KiCad projects in a git-friendly way, with the fabrication service as part of the project"
 readme = "README.md"
 requires-python = ">=3.10"
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
 authors = [{ name = "Max Sikström" }]
+keywords = ["kicad", "pcb", "jlcpcb", "eda", "fabrication", "bom", "gerber"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Environment :: X11 Applications :: Qt",
+    "Intended Audience :: Manufacturing",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+    "Typing :: Typed",
+]
 dependencies = [
     "easyeda2kicad>=1.0.1",
     "certifi",  # easyeda2kicad verifies easyeda.com with it when installed
     "tomli>=2.0; python_version < '3.11'",
 ]
+
+[project.urls]
+Homepage = "https://github.com/pengi/kifab"
+Repository = "https://github.com/pengi/kifab"
+Issues = "https://github.com/pengi/kifab/issues"
 
 [project.scripts]
 kifab = "kifab.cli.main:main"
@@ -40,6 +64,11 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/kifab"]
+
+[tool.hatch.build.targets.sdist]
+# what a user needs to build, test and change kifab; not the working notes
+include = ["src", "tests", "scripts", "README.md", "LICENSE", "pyproject.toml", "uv.lock"]
+exclude = ["**/__pycache__"]
 
 [tool.black]
 line-length = 88
