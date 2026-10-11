@@ -130,8 +130,12 @@ def test_bundle(env: None, tmp_path: Path) -> None:
     cpl = (build / "p_cpl_aisler.csv").read_text().splitlines()
     assert cpl[0] == "Ref,Val,Package,PosX,PosY,Rot,Side"
     assert cpl[1].startswith("R1,") and cpl[1].endswith(",90.0000,top")
-    with zipfile.ZipFile(build / "p_gerbers.zip") as zf:
-        assert any(n.endswith(".gtl") for n in zf.namelist())
+    assert not (build / "p_gerbers.zip").exists()
+    with zipfile.ZipFile(build / "p_aisler.zip") as zf:
+        names = zf.namelist()
+        assert any(n.endswith(".gtl") for n in names)
+        assert "p_bom_aisler.csv" in names and "p_cpl_aisler.csv" in names
+        assert zf.read("p_bom_aisler.csv") == (build / "p_bom_aisler.csv").read_bytes()
     assert result.availability is not None
     assert [s.supplier for s in result.availability.lines] == ["lcsc"]
     codes = {i.code for i in result.issues}

@@ -1,4 +1,4 @@
-"""AISLER order files: gerber zip, BOM by MPN, placement as KiCad writes it.
+"""AISLER order files: one zip with gerbers, drill files, BOM and placement.
 
 AISLER's BOM import matches parts by what the columns say (MPN, manufacturer,
 distributor numbers) and asks the user to confirm its guesses, so the BOM
@@ -9,7 +9,7 @@ matched well); the placement columns are KiCad's own position export.
 
 from __future__ import annotations
 
-from kifab.core.manufacturing import Bom, Placement
+from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.core.partref import field_specs, sku_key
 from kifab.fabs.files import csv_bytes, gerber_zip
 from kifab.kicad.board import Side
@@ -17,7 +17,14 @@ from kifab.kicad.schematic import ref_sort_key
 
 BOM_COLUMNS = ("Designator", "Quantity", "Value", "Footprint", "Manufacturer", "MPN")
 CPL_COLUMNS = ("Ref", "Val", "Package", "PosX", "PosY", "Rot", "Side")
-__all__ = ["bom_csv", "cpl_csv", "gerber_zip"]
+__all__ = ["bom_csv", "cpl_csv", "gerber_zip", "upload_zip"]
+
+
+def upload_zip(
+    built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+) -> FileArtifact:
+    """``<board>_aisler.zip``: what is uploaded to AISLER in one go."""
+    return gerber_zip(built, order_files, f"{built.board_name}_aisler.zip")
 
 
 def _sku_titles() -> dict[str, str]:

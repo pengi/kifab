@@ -553,13 +553,17 @@ class _Run:
                     others=tuple(p for p in plotted if p.suffix == ".pdf"),
                     stamp=self.stamp,
                 )
-                uploads = [self.write(stage, a) for a in self.fab.bundle_files(built)]
-                self.reporter.step("zip", ", ".join(p.name for p in uploads))
                 bom, placement = self.bom_and_placement(tmp)
-                uploads.append(self.write(stage, self.fab.export_bom(bom, self.name)))
-                uploads.append(
-                    self.write(stage, self.fab.export_placement(placement, self.name))
+                order_files = (
+                    self.fab.export_bom(bom, self.name),
+                    self.fab.export_placement(placement, self.name),
                 )
+                uploads = [
+                    self.write(stage, a)
+                    for a in self.fab.bundle_files(built, order_files)
+                ]
+                self.reporter.step("zip", ", ".join(p.name for p in uploads))
+                uploads += [self.write(stage, a) for a in order_files]
                 report = self.write(
                     stage,
                     FileArtifact(

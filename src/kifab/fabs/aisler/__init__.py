@@ -63,5 +63,11 @@ class AislerFab(Fab):
     def export_placement(self, placement: Placement, board_name: str) -> FileArtifact:
         return FileArtifact(f"{board_name}_cpl_aisler.csv", export.cpl_csv(placement))
 
-    def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:
-        return [export.gerber_zip(built)]
+    def bundle_files(
+        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+    ) -> list[FileArtifact]:
+        """One zip to upload: gerbers, drill files, BOM and placement.
+
+        AISLER reads the BOM (and placement) from the uploaded archive.
+        """
+        return [export.upload_zip(built, order_files)]

@@ -65,7 +65,9 @@ class Fab(ABC):
     ) -> FileArtifact: ...
 
     @abstractmethod
-    def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:
+    def bundle_files(
+        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+    ) -> list[FileArtifact]:
         """Files made from the plotted outputs, e.g. the zip uploaded as "PCB"."""
 
 

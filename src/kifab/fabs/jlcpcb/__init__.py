@@ -42,5 +42,7 @@ class JlcpcbFab(Fab):
     def export_placement(self, placement: Placement, board_name: str) -> FileArtifact:
         return FileArtifact(f"{board_name}_cpl_jlcpcb.csv", export.cpl_csv(placement))
 
-    def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:
-        return [export.gerber_zip(built)]
+    def bundle_files(
+        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+    ) -> list[FileArtifact]:
+        return [export.gerber_zip(built)]  # BOM and CPL are uploaded separately

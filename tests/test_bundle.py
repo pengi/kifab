@@ -81,9 +81,9 @@ def test_golden_demo(stub: pytest.MonkeyPatch, demo_copy: Path) -> None:
         "DRC",
         "gerbers",
         "drill",
-        "zip",
         "BOM",
         "placement",
+        "zip",
         "report",
     ]
     # the zip holds gerbers, drill and job file, with normalised time stamps
