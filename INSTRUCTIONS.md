@@ -23,6 +23,15 @@ what it means. Follow it before touching code.
 * Plans, notes and survey results go to `meta/plan` and never to a feature
   branch or `dev/main`. Code and tests never go to `meta/plan`.
 
+## Keep meta/plan on the remote up to date
+
+`meta/plan` on GitHub is the shared memory between sessions and the user.
+Commit and push it (`git push origin meta/plan`) whenever plans, state,
+decisions or notes change: after each finished step, when the user decides
+something, and always before ending a turn. Never leave plan changes only in a
+local checkout or worktree. Fetch it first (`git fetch origin meta/plan`) and
+build on the remote version; the user may have edited it.
+
 ## Starting a session
 
 1. `git fetch origin dev/main meta/plan`
@@ -52,7 +61,8 @@ switching the code checkout:
   on `scripts/check.sh` (black, mypy --strict, pytest).
 * Push the feature branch with `git push -u origin feature/<name>`.
 * Update `plan.md` on `meta/plan` when a step is done: what exists, how to run
-  it, deviations, and anything unverified. Keep the todo list current.
+  it, deviations, and anything unverified. Keep the todo list current, and
+  push `meta/plan` right away.
 * Finish by telling the user which feature branch is ready to merge and what
   it contains.
 
