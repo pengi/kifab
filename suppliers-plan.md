@@ -342,8 +342,25 @@ Branch `feature/multi-vendor` (from `dev/main` v0.1.0).
 - AISLER zip (ddbca97, user's finding: AISLER takes the BOM from the
   uploaded archive): the bundle writes `<name>_aisler.zip` with gerbers,
   drills, BOM and placement (CSV files also next to it).
-  `Fab.bundle_files(built, order_files)` gets the BOM/CPL files. Assumed,
-  not confirmed: that AISLER also reads the placement file from the zip.
+  `Fab.bundle_files(built, order_files)` gets the BOM/CPL files.
+  Result: AISLER did NOT accept that zip (user, 2026-10-11).
+- AISLER zip in the plugin's layout (9cdb55f): learned from the zip AISLER's
+  "Push for KiCad" plugin made for the user's test project (accepted by
+  AISLER; not committed) and the plugin's source (MIT): `<board>-<layer>.gbr`
+  (F_SilkS/B_SilkS names), PTH/NPTH .drl, `netlist.ipc` (IPC-D-356),
+  `components.json` (list of {pos_x, pos_y (y up), rotation, side,
+  designator, mpn|null, pack (footprint name), value, mount_type smt|tht,
+  place}), `odb.zip` (ODB++, mm, precision 6). kifab makes them with
+  kicad-cli 10 (`pcb export ipcd356`, `pcb export odb --compression none`,
+  dates normalised, zipped deterministically). Differences to the plugin,
+  untested at AISLER: kifab subtracts mask from silkscreen (plugin does not),
+  metric Excellon (plugin: inch), DNP and hand-soldered THT parts are left
+  out of components.json (plugin lists them with place=false / tht), the
+  plugin sets solder-mask margin 0 before plotting (kifab plots the board's
+  settings). Bottom-side rotation in components.json: KiCad's position
+  export vs the plugin's raw orientation, unverified.
+  Not done: uploading from kifab (the plugin POSTs the zip to
+  aisler.net/p/new.json -> upload_url; AISLER also has "Push for CLI").
 
 Next (needs the user's go): rest of step 6, then Mouser (step 7, needs a
 credentials loader and the user's API key for a manual test), PCBWay
