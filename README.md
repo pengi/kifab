@@ -157,6 +157,17 @@ Fabs, suppliers and library sources are plugins.
 The tests need neither KiCad nor network; see
 [docs/development.md](docs/development.md).
 
+### AI disclaimer
+
+At the time of writing (October 2026), AI only became good enough a little more
+than a month ago to fulfil my quality requirements for supporting tools. This is
+exactly one of those tools: in my opinion, AI can help a lot with tools that are
+only there for support.
+
+Therefore, this is developed largely with AI, but I have set strict requirements
+on design and process, and the parts I have reviewed are to my taste for a
+supporting tool.
+
 ## License
 
 kifab is free software: you can redistribute it and/or modify it under the
