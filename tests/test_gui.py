@@ -122,6 +122,20 @@ def test_bundle_example(
     assert window.filter.rowCount() == 0 < window.model.rowCount()
 
 
+def test_update_readme(
+    window: MainWindow, demo_copy: Path, kicad_cli_stub: str
+) -> None:
+    assert not window.toolbar_actions["readme"].isEnabled()  # no project
+    assert window.open_project(demo_copy)
+    assert window.toolbar_actions["readme"].isEnabled()
+    assert window.run_readme() is not None
+    assert not window.toolbar_actions["readme"].isEnabled()  # busy
+    finish(window)
+    assert "README updated" in window.log.toPlainText()
+    assert (demo_copy / "README.md").is_file()
+    assert (demo_copy / "images" / "pcb-top.png").is_file()
+
+
 def test_bundle_failure_is_shown(
     window: MainWindow, demo_copy: Path, kicad_cli_stub: str
 ) -> None:

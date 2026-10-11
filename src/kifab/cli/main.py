@@ -33,6 +33,13 @@ from kifab.core.issues import Issue, Severity
 from kifab.core.order import record_order
 from kifab.core.orderability import check_availability, schematic_bom
 from kifab.core.project import KicadOpen, Project
+from kifab.core.readme import (
+    DEFAULT_VIEWS,
+    ReadmeOptions,
+    ReadmeResult,
+    VIEWS,
+    generate_readme,
+)
 from kifab.core.quick import QuickQuery, format_value, parse_quick, quick_search
 from kifab.core.inventory import RemoveError, library_contents, remove_part
 from kifab.core.library import VendorResult, resolve_part, sync_parts, vendor_part
@@ -183,6 +190,37 @@ def _cmd_bundle(args: argparse.Namespace) -> int:
         )
     else:
         print(f"  FAILED: {summary_line(result.issues)}")
+    return code
+
+
+def _readme_json(result: ReadmeResult) -> dict[str, object]:
+    return {
+        "ok": result.ok,
+        "readme": str(result.path),
+        "images": [str(p) for p in result.images],
+        "issues": issues_json(result.issues),
+    }
+
+
+def _cmd_readme(args: argparse.Namespace) -> int:
+    project = Project.open(args.project)
+    options = ReadmeOptions(
+        views=tuple(v for v in args.views.split(",") if v),
+        width=args.width,
+        bom=not args.no_bom,
+        quality=args.quality,
+        force=args.force,
+    )
+    result = generate_readme(
+        project, options, reporter=None if args.json else TextReporter()
+    )
+    code = _exit_code(result.issues, False)
+    if args.json:
+        print_json(_readme_json(result))
+        return code
+    print_issues(result.issues)
+    if result.ok:
+        print(f"  -> {result.path}  ({len(result.images)} images)")
     return code
 
 
@@ -670,6 +708,34 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--json", action="store_true", help="machine-readable output")
     p.add_argument("--strict", action="store_true", help="warnings fail too")
     p.set_defaults(func=_cmd_bundle)
+
+    p = sub.add_parser(
+        "readme",
+        help="write README.md with PCB renders, schematic SVGs and the BOM",
+        description="Updates the section between the kifab markers in README.md "
+        "(text around it is kept; the section is appended if there is none) and "
+        "writes the images to images/. Run it before committing.",
+    )
+    p.add_argument("project", nargs="?", type=Path, default=Path("."))
+    p.add_argument(
+        "--views",
+        default=",".join(DEFAULT_VIEWS),
+        help="comma separated 3D views: " + ", ".join(VIEWS) + " (default: top,bottom)",
+    )
+    p.add_argument("--width", type=int, default=1200, help="render width in pixels")
+    p.add_argument("--no-bom", action="store_true", help="leave out the BOM")
+    p.add_argument(
+        "--quality",
+        choices=("basic", "high"),
+        default="high",
+        help="3D render quality (default high: shadows; images are only "
+        "replaced when they differ by more than render noise)",
+    )
+    p.add_argument(
+        "--force", action="store_true", help="run even if KiCad seems to be open"
+    )
+    p.add_argument("--json", action="store_true", help="machine-readable output")
+    p.set_defaults(func=_cmd_readme)
 
     ci = sub.add_parser("ci", help="continuous integration")
     ci_sub = ci.add_subparsers(dest="ci_command", metavar="ACTION")

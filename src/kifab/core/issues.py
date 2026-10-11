@@ -54,6 +54,7 @@ class Code(Enum):
     UNLOCKED_SYMBOL = "unlocked-symbol"
     # design rules
     NO_CONFIG = "no-config"
+    README_APPENDED = "readme-appended"
     RULES_MISSING = "rules-missing"
     RULES_DRIFT = "rules-drift"
     RULES_LOOSENED = "rules-loosened"

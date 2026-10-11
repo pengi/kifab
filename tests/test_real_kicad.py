@@ -175,3 +175,36 @@ def test_kicad_reads_the_description(
     assert pin_names is not None and ["hide", "yes"] in pin_names
     pin_numbers = sexpr.first(sym.node, "pin_numbers")
     assert pin_numbers is not None and ["hide", "yes"] in pin_numbers
+
+
+def test_readme_images(real_cli: list[str], tmp_path: Path) -> None:
+    from kifab.core.pngdiff import compare
+    from kifab.core.readme import generate_readme
+
+    project = tmp_path / DEMO_NAME
+    shutil.copytree(FIXTURES / DEMO_NAME, project)
+    result = generate_readme(Project.open(project))
+    assert result.ok, result.issues
+    top = project / "images" / "pcb-top.png"
+    png = top.read_bytes()
+    assert png.startswith(b"\x89PNG")
+    svg = (project / "images" / "schematic-demo-board.svg").read_text()
+    assert "<svg" in svg and "<title>demo-board</title>" in svg
+    readme = (project / "README.md").read_bytes()
+    # Ray traced renders differ per run; only noise, so the files are kept.
+    again = generate_readme(Project.open(project))
+    assert again.ok
+    assert top.read_bytes() == png
+    assert (project / "README.md").read_bytes() == readme
+    # The noise is really there, and below the floor; a changed label is not.
+    fresh = project / "fresh.png"
+    KicadCli().render_pcb(
+        project / "demo-board.kicad_pcb", fresh, side="top", width=1200, height=900
+    )
+    assert fresh.read_bytes() != png and not compare(png, fresh.read_bytes()).real()
+    pcb = project / "demo-board.kicad_pcb"
+    pcb.write_text(pcb.read_text().replace('"R3"', '"R9"'))
+    KicadCli().render_pcb(pcb, fresh, side="top", width=1200, height=900)
+    assert compare(png, fresh.read_bytes()).real()
+    assert generate_readme(Project.open(project)).ok
+    assert top.read_bytes() != png

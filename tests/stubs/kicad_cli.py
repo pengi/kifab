@@ -9,6 +9,8 @@ Switches (environment variables):
   STUB_DRC_FAIL=1         ``pcb drc`` reports one error violation
   STUB_DRC_EXCLUDED=1     ``pcb drc`` reports one violation the user excluded
   STUB_FAIL=<subcommand>  that sub-command (e.g. "export drill") exits 1
+  STUB_RENDER_SEED=<n>    ``pcb render`` jitters a few edge pixels (like ray tracing)
+  STUB_RENDER_MARK=<n>    ``pcb render`` draws a label-sized mark at position n
   STUB_CLI_LOG=<file>     every invocation is appended to this file
 """
 
@@ -18,7 +20,9 @@ import csv
 import io
 import json
 import os
+import struct
 import sys
+import zlib
 from pathlib import Path
 
 from kifab.kicad.board import read_board
@@ -153,6 +157,64 @@ def bom(args: list[str], sch: Path) -> None:
     Path(opt(args, "-o")).write_text(buf.getvalue(), encoding="utf-8")
 
 
+def png(
+    width: int, height: int, pixels: list[list[tuple[int, int, int, int]]]
+) -> bytes:
+    def chunk(kind: bytes, body: bytes) -> bytes:
+        crc = zlib.crc32(kind + body)
+        return struct.pack(">I", len(body)) + kind + body + struct.pack(">I", crc)
+
+    raw = b"".join(b"\x00" + b"".join(bytes(px) for px in row) for row in pixels)
+    return (
+        b"\x89PNG\r\n\x1a\n"
+        + chunk(b"IHDR", struct.pack(">IIBBBBB", width, height, 8, 6, 0, 0, 0))
+        + chunk(b"IDAT", zlib.compress(raw))
+        + chunk(b"IEND", b"")
+    )
+
+
+def render_png(side: str) -> bytes:
+    """A 96x64 board: green, an edge with jittered pixels, an optional mark."""
+    width, height = 96, 64
+    green = (30, 70, 40, 255)
+    pixels = [[green] * width for _ in range(height)]
+    pixels[0] = [(0, 0, 0, 0)] * width  # a transparent row; colour is invisible
+    if side == "bottom":
+        pixels[1] = [(200, 200, 200, 255)] * width
+    seed = os.environ.get("STUB_RENDER_SEED")
+    if seed:
+        for k in range(12):  # single pixels flip between two colours
+            x, y = (int(seed) * 7 + k * 13) % width, 8 + (int(seed) + k * 5) % 40
+            pixels[y][x] = (230, 230, 230, 255)
+        pixels[0][int(seed) % width] = (9, 9, 9, 0)
+    mark = os.environ.get("STUB_RENDER_MARK")
+    if mark:
+        x0 = 8 * (int(mark) % 10)
+        for y in range(24, 32):
+            for x in range(x0, x0 + 8):
+                pixels[y][x] = (255, 255, 255, 255)
+    return png(width, height, pixels)
+
+
+def sch_svg(args: list[str], sch: Path) -> None:
+    """One SVG per sheet; like kicad-cli it stamps the date into the title."""
+    out = Path(opt(args, "-o"))
+    root = read_schematic(sch)
+    for path in root.sheets:
+        name = sch.stem if path == root.sheets[0] else f"{sch.stem}-{path.stem}"
+        (out / f"{name}.svg").write_text(
+            '<?xml version="1.0" standalone="no"?>\n'
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 297 210">\n'
+            f"<title>SVG Image created as {name}.svg date 2026-10-11T18:24:55 </title>\n"
+            f"<!-- sheet {path.name} -->\n</svg>\n"
+        )
+
+
+def render(args: list[str]) -> None:
+    assert "--perspective" in args
+    Path(opt(args, "-o")).write_bytes(render_png(opt(args, "--side")))
+
+
 def drc(args: list[str]) -> None:
     violations: list[dict[str, object]] = []
     if os.environ.get("STUB_DRC_FAIL"):
@@ -209,6 +271,10 @@ def main() -> int:
         odb(args, target)
     elif cmd == "pcb export pos":
         pos(args, target)
+    elif cmd == "sch export svg":
+        sch_svg(args, target)
+    elif cmd == "pcb render":
+        render(args)
     elif cmd == "sch export bom":
         bom(args, target)
     else:

@@ -47,6 +47,7 @@ from PySide6.QtWidgets import (
 
 from kifab import __version__
 from kifab.core.bundle import BundleOptions, BundleResult, bundle
+from kifab.core.readme import ReadmeResult, generate_readme
 from kifab.core.check import CheckResult, run_check
 from kifab.core.ci import init_ci
 from kifab.core.design_rules import apply_rules
@@ -301,6 +302,7 @@ class MainWindow(QMainWindow):
             ("quit", "&Quit", self.close, QKeySequence(QKeySequence.StandardKey.Quit), None),
             ("check", "&Check", self.run_check, QKeySequence("F5"), sp.SP_DialogApplyButton),
             ("bundle", "&Bundle for the fab", self.run_bundle, QKeySequence("F6"), sp.SP_DialogSaveButton),
+            ("readme", "Update &README", self.run_readme, QKeySequence("F7"), sp.SP_FileDialogDetailedView),
             ("rules", "Apply the fab's design &rules", self.apply_rules, None, None),
             ("kicad", "Open in &KiCad", self.open_in_kicad, None, sp.SP_DesktopIcon),
             ("build", "Open &build folder", self.open_build_dir, None, sp.SP_DirOpenIcon),
@@ -328,7 +330,7 @@ class MainWindow(QMainWindow):
         file_menu.addSeparator()
         file_menu.addAction(a["quit"])
         project_menu = menu.addMenu("&Project")
-        for key in ("check", "bundle", "rules"):
+        for key in ("check", "bundle", "readme", "rules"):
             project_menu.addAction(a[key])
         project_menu.addSeparator()
         for key in ("order", "tag"):
@@ -338,7 +340,7 @@ class MainWindow(QMainWindow):
             project_menu.addAction(a[key])
 
         self.buttons: dict[str, QPushButton] = {}
-        for group in (("check", "bundle"), ("kicad", "build")):
+        for group in (("check", "bundle", "readme"), ("kicad", "build")):
             for key in group:
                 self.buttons[key] = _button(a[key])
                 self.button_bar.addWidget(self.buttons[key])
@@ -379,7 +381,7 @@ class MainWindow(QMainWindow):
     def _update_actions(self) -> None:
         has = self.project is not None
         idle = not self._busy()
-        for key in ("check", "bundle", "kicad"):
+        for key in ("check", "bundle", "readme", "kicad"):
             self.toolbar_actions[key].setEnabled(has and idle)
         self.toolbar_actions["rules"].setEnabled(
             has
@@ -646,6 +648,29 @@ class MainWindow(QMainWindow):
         return self.start_job(
             "check",
             lambda reporter: run_check(project, git=GitCli(), reporter=reporter),
+            done,
+        )
+
+    def run_readme(self) -> Job | None:
+        project = self.project
+        if project is None:
+            return None
+
+        def done(result: object) -> None:
+            if not isinstance(result, ReadmeResult):
+                return
+            self.model.set_issues(result.issues)
+            if result.ok:
+                text = f"README updated: {result.path}"
+            else:
+                text = f"README FAILED: {self._summary(result.issues)}"
+            self._say(text)
+            self.statusBar().showMessage(text)
+
+        self.tabs.setCurrentIndex(1)
+        return self.start_job(
+            "README",
+            lambda reporter: generate_readme(project, reporter=reporter),
             done,
         )
 

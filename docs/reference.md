@@ -69,6 +69,27 @@ the fab (warnings: later rules override kifab's), and the board's copper layer
 count against `kifab.toml`. Run it from the GUI's Check button or `kifab check`
 whenever you change Board Setup.
 
+## README preview: `kifab readme`
+
+Writes the project's `README.md` section with 3D renders of the board (PNG,
+`--views top,bottom,iso`), every schematic sheet (SVG) and the BOM (DNP parts
+left out, LCSC numbers linked). Images go to `images/` (`pcb-*.png`,
+`schematic-*.svg`; stale ones of these names are removed, other files are not
+touched). The generated section sits between `<!-- kifab:begin ... -->` and
+`<!-- kifab:end -->`; a run replaces only that section. A README without the
+markers gets the section appended, a missing README is created with a title.
+Nothing is written if a step fails, and it refuses while KiCad has the project
+open (`--force` overrides). The output is deterministic: the date `kicad-cli`
+puts in SVGs is removed. The renders use perspective and `--quality high` (ray
+traced, so two renders of the same board differ in the jittered edge pixels).
+A new render replaces `images/pcb-*.png` only if it differs from the existing
+file by more than that noise: both are averaged over 8x8 pixel blocks and the
+largest block difference anywhere (not an average over the image) must exceed
+24 of 255. Measured noise peaks at about 12; changing one character of a label
+gives about 48. This keeps git free of binary churn. `--quality basic` renders
+flat but identical bytes every run. Run it by hand
+before committing; the GUI has **Update README** (F7).
+
 ## Bundling: `kifab bundle`
 
 KiCad must be closed, unless `--force`. It runs `kifab check`, KiCad's DRC

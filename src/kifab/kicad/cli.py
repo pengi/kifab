@@ -326,3 +326,50 @@ class KicadCli:
         )
         if result.returncode != 0:
             raise ToolFailed("placement export", result)
+
+    def export_sch_svg(self, sch: Path, out_dir: Path) -> list[Path]:
+        """One SVG per sheet into ``out_dir`` (root sheet ``<name>.svg``)."""
+        result = self.run("sch", "export", "svg", "-o", out_dir, sch)
+        svgs = sorted(out_dir.glob("*.svg"))
+        if result.returncode != 0 or not svgs:
+            raise ToolFailed("schematic SVG export", result)
+        return svgs
+
+    def render_pcb(
+        self,
+        pcb: Path,
+        out: Path,
+        *,
+        side: str,
+        width: int,
+        height: int,
+        rotate: str | None = None,
+        quality: str = "high",
+    ) -> None:
+        """A 3D render of the board as PNG (transparent background, perspective).
+
+        ``basic`` renders the same bytes every time; ``high`` is ray traced with
+        random sampling, so each run differs slightly (see
+        :mod:`kifab.core.pngdiff`)."""
+        extra = ["--rotate", rotate] if rotate else []
+        result = self.run(
+            "pcb",
+            "render",
+            "--side",
+            side,
+            "--width",
+            str(width),
+            "--height",
+            str(height),
+            "--background",
+            "transparent",
+            "--perspective",
+            "--quality",
+            quality,
+            *extra,
+            "-o",
+            out,
+            pcb,
+        )
+        if result.returncode != 0 or not out.is_file():
+            raise ToolFailed("PCB render", result)

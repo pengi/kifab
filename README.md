@@ -52,7 +52,7 @@ On Linux, `kifab-gui --install-desktop` adds kifab to the application menu
 The Parts tab lists the project's library: each part's symbol and footprint, and
 where it is used. Search the fab's catalogue as you type (`R 4k7 0603`,
 `C 18p`), see stock, price and Basic/Extended class, and add a part to the
-project with one click. **Check** and **Bundle for the fab** run with live
+project with one click. **Check**, **Bundle for the fab** and **Update README** run with live
 progress, and **Open in KiCad** is a click away.
 
 ## Using the CLI
@@ -80,6 +80,11 @@ non-zero on errors, so it fits CI.
 
     kifab bundle
 
+**Preview on GitHub.** Before committing, (re)create the README's PCB renders,
+schematic SVGs and BOM. Text you wrote around the generated section is kept.
+
+    kifab readme
+
 **Release from a git tag.** A workflow that attaches the bundle to a GitHub
 release.
 
@@ -93,6 +98,7 @@ release.
 | `kifab rules apply` | Write the fab's design rules into the project |
 | `kifab check` | Is it self-contained? Rules respected? Git clean? (`--json`, `--strict`) |
 | `kifab bundle` | Gerbers, BOM, placement and report into `build/` (`--skip-drc`, `--json`) |
+| `kifab readme` | README.md with PCB renders (PNG), schematic sheets (SVG) and BOM, images in `images/` (`--views top,bottom,iso`, `--quality basic`, `--no-bom`) |
 | `kifab ci init` | GitHub workflow that builds a release on `v*` tags |
 | `kifab order record` | Archive what you ordered in `orders/` |
 | `kifab component search TEXT` | Search the supplier's catalogue (`--basic`, `--sort stock\|price`, `--add`) |
