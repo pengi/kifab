@@ -115,6 +115,13 @@ Details, configuration and file formats are in
 
 Fabs, suppliers and library sources are plugins.
 
+> **Verify before you order.** kifab's design rules, catalogue data, stock,
+> prices, vendored libraries and generated manufacturing files come from
+> third-party sources and from interpretations of them. They may be wrong,
+> incomplete or out of date. It is your responsibility to review the result,
+> for example in the fab's own file viewer and checks, before ordering. No
+> guarantee of correctness can be made.
+
 | Fab | Design rules | Order files |
 | --- | --- | --- |
 | JLCPCB | `standard` | Gerbers, BOM and placement for assembly |
@@ -134,13 +141,6 @@ Fabs, suppliers and library sources are plugins.
 | KiCad 10 | `kicad-cli` for DRC and plots; optional toolbar plugin |
 | git | `.gitignore` block, deterministic output, `kifab check` hygiene rules |
 | GitHub Actions | Release workflow from `kifab ci init` |
-
-> **Verify before you order.** kifab's design rules, catalogue data, stock,
-> prices, vendored libraries and generated manufacturing files come from
-> third-party sources and from interpretations of them. They may be wrong,
-> incomplete or out of date. It is your responsibility to review the result,
-> for example in the fab's own file viewer and checks, before ordering. No
-> guarantee of correctness can be made.
 
 ## Development
 
