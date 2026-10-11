@@ -14,7 +14,7 @@ def default_client() -> HttpClient:
 
 class JlcpcbSupplier(Supplier):
     name = "jlcpcb"
-    title = "JLCPCB parts"
+    title = "JLCPCB"
     sku_kind = "lcsc"
 
     def catalog(self, client: HttpClient | None = None) -> Catalog:

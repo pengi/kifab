@@ -49,6 +49,7 @@ from kifab.core.manufacturing import (
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
 from kifab.core.reproducible import normalize_timestamps, source_date
+from kifab.core.sourcing import Sourcing, sourcing_for
 from kifab.fabs.base import Fab
 from kifab.kicad import sexpr
 from kifab.kicad.board import Board, read_board
@@ -184,6 +185,9 @@ class _Run:
     def tool(self, what: str, exc: Exception) -> StepFailed:
         code = Code.TOOL_MISSING if isinstance(exc, ToolMissing) else Code.TOOL_FAILED
         return self.fail(error(code, f"{what}: {exc}"))
+
+    def sourcing(self) -> Sourcing:
+        return self.project.sourcing() or sourcing_for(self.fab)
 
     # ------------------------------------------------------------ steps
 
@@ -375,7 +379,7 @@ class _Run:
             self.add(issue)
         if self.options.stock:
             report = check_availability(
-                bom, self.fab.catalog(), boards=self.options.boards
+                bom, self.sourcing().catalog(), boards=self.options.boards
             )
             self.result.availability = report
             for issue in report.issues:

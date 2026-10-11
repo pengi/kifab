@@ -51,6 +51,19 @@ in `demo.kicad_dru` and the board-setup constraints in `demo.kicad_pro`, a
 `.gitignore` with a kifab-managed block, and runs `git init` (unless the
 directory is already inside a repository).
 
+Parts have three independent roles, each a plugin: the **fab** (design rules,
+order files), the **suppliers** (search, stock, price) and the **library
+source** (symbols, footprints and 3D models). The fab brings defaults (JLCPCB:
+supplier `jlcpcb`, library source `easyeda`, library `jlcpcb`); a `[parts]`
+table in `kifab.toml` overrides them:
+
+    [parts]
+    suppliers = ["jlcpcb"]        # preferred first; searches go to the first
+    library_source = "easyeda"    # where vendored parts come from
+    library = "jlcpcb"            # nickname of lib/<name>/ (keep it once used)
+
+`kifab component search --supplier NAME` searches another supplier once.
+
 `kifab rules apply` (KiCad must be closed) rewrites the kifab block of the
 `.kicad_dru` (your own rules after it are kept) and raises board-setup
 constraints that are below the fab's minimum; changed files are backed up to

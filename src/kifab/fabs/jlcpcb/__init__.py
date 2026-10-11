@@ -22,7 +22,7 @@ class JlcpcbFab(Fab):
     def design_rules(self, profile: str, options: RuleOptions) -> DesignRuleProfile:
         if profile != "standard":
             raise ValueError(f"unknown JLCPCB rules profile {profile!r}")
-        return rules.standard(options, self.library_name)
+        return rules.standard(options, options.library or self.library_name)
 
     @property
     def part_number_fields(self) -> tuple[str, ...]:

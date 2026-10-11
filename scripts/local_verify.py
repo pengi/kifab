@@ -135,9 +135,9 @@ def main() -> int:
         return "; ".join(found)
 
     def image() -> str:
-        from kifab.fabs.base import get_fab
+        from kifab.suppliers.base import get_supplier
 
-        catalog = get_fab("jlcpcb").catalog()
+        catalog = get_supplier("jlcpcb").catalog()
         hit = catalog.lookup(args.part)
         if hit is None:
             raise RuntimeError(f"{args.part} not found")

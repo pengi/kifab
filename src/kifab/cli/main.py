@@ -38,7 +38,8 @@ from kifab.core.inventory import RemoveError, library_contents, remove_part
 from kifab.core.library import VendorResult, sync_parts, vendor_part
 from kifab.core.lockfile import LockError
 from kifab.core.parts import CatalogError, LibraryType, PartHit, SearchSort
-from kifab.fabs.base import Fab, UnknownFab, available_fabs, get_fab
+from kifab.core.sourcing import Sourcing, sourcing_for
+from kifab.fabs.base import UnknownFab, available_fabs, get_fab
 from kifab.libraries.base import FetchError
 from kifab.kicad.project import InputError
 from kifab.kicad.schematic import sorted_refs
@@ -223,15 +224,26 @@ def _cmd_order_record(args: argparse.Namespace) -> int:
     return EXIT_OK
 
 
-def _fab_for(args: argparse.Namespace) -> Fab:
-    """``--fab`` if given, else the fab of the project in ``--project``/cwd."""
+def _sourcing_for(args: argparse.Namespace) -> Sourcing:
+    """``--fab``'s defaults if given, else the project's (``--project``/cwd),
+    else JLCPCB's; ``--supplier`` puts that supplier first."""
+    sourcing: Sourcing | None = None
     if getattr(args, "fab", None):
-        return get_fab(args.fab)
-    try:
-        project = Project.open(args.project)
-    except InputError:
-        return get_fab("jlcpcb")
-    return project.fab() or get_fab("jlcpcb")
+        sourcing = sourcing_for(get_fab(args.fab))
+    else:
+        try:
+            sourcing = Project.open(args.project).sourcing()
+        except InputError:
+            pass
+    sourcing = sourcing or sourcing_for(get_fab("jlcpcb"))
+    if getattr(args, "supplier", None):
+        sourcing = sourcing.with_supplier(args.supplier)
+    return sourcing
+
+
+def _project_sourcing(project: Project) -> Sourcing:
+    """The project's sourcing, or JLCPCB's defaults without ``kifab.toml``."""
+    return project.sourcing() or sourcing_for(get_fab("jlcpcb"))
 
 
 _TYPE_LABEL = {
@@ -267,14 +279,16 @@ def _offer_add(args: argparse.Namespace, hits: Sequence[PartHit], first: int) ->
         chosen = hits[int(answer) - first - 1].id
     project = Project.open(args.project)
     picked = next((h for h in hits if h.id == chosen), None)
-    fab = project.fab()
+    sourcing = project.sourcing()
     try:
         _print_vendored(
             vendor_part(
                 project,
                 chosen,
                 description=picked.description if picked else "",
-                catalog=fab.catalog() if fab and picked is None else None,
+                catalog=(
+                    sourcing.library_catalog() if sourcing and picked is None else None
+                ),
             )
         )
     except FetchError as exc:
@@ -287,10 +301,13 @@ def _offer_add(args: argparse.Namespace, hits: Sequence[PartHit], first: int) ->
 _HEADER = f"  # {'part':<10} {'type':<5} {'stock':>9} {'1 pc':>9}  {'package':<12} mpn"
 
 
-def _quick_search(args: argparse.Namespace, fab: Fab, query: QuickQuery) -> int:
+def _quick_search(
+    args: argparse.Namespace, sourcing: Sourcing, query: QuickQuery
+) -> int:
+    supplier = sourcing.supplier
     try:
         result = quick_search(
-            fab.catalog(),
+            supplier.catalog(),
             query,
             with_alternatives=args.alternatives,
             basic_only=args.basic,
@@ -303,7 +320,8 @@ def _quick_search(args: argparse.Namespace, fab: Fab, query: QuickQuery) -> int:
         print_json(
             {
                 "query": " ".join(args.query),
-                "fab": fab.name,
+                "fab": sourcing.fab.name,
+                "supplier": supplier.name,
                 "quick": {
                     "kind": query.kind.value,
                     "value": query.value,
@@ -320,7 +338,7 @@ def _quick_search(args: argparse.Namespace, fab: Fab, query: QuickQuery) -> int:
         return EXIT_OK
     searched = ", ".join(repr(s) for s in result.searched)
     if not result.hits:
-        print(f"no {fab.title} parts found for {searched}")
+        print(f"no {supplier.title} parts found for {searched}")
         return EXIT_OK
     print(_HEADER)
     for i, quick in enumerate(result.hits, start=1):
@@ -336,13 +354,14 @@ def _quick_search(args: argparse.Namespace, fab: Fab, query: QuickQuery) -> int:
 
 
 def _cmd_component_search(args: argparse.Namespace) -> int:
-    fab = _fab_for(args)
+    sourcing = _sourcing_for(args)
+    supplier = sourcing.supplier
     query = " ".join(args.query)
     quick = None if args.plain else parse_quick(query)
     if quick is not None:
-        return _quick_search(args, fab, quick)
+        return _quick_search(args, sourcing, quick)
     try:
-        page = fab.catalog().search(
+        page = supplier.catalog().search(
             query,
             page=args.page,
             page_size=args.limit,
@@ -356,7 +375,8 @@ def _cmd_component_search(args: argparse.Namespace) -> int:
         print_json(
             {
                 "query": query,
-                "fab": fab.name,
+                "fab": sourcing.fab.name,
+                "supplier": supplier.name,
                 "page": page.page,
                 "pages": page.pages,
                 "total": page.total,
@@ -365,7 +385,7 @@ def _cmd_component_search(args: argparse.Namespace) -> int:
         )
         return EXIT_OK
     if not page.hits:
-        print(f"no {fab.title} parts found for {query!r}")
+        print(f"no {supplier.title} parts found for {query!r}")
         return EXIT_OK
     print(_HEADER)
     first = (page.page - 1) * page.page_size
@@ -392,8 +412,9 @@ _RELOAD_NOTE = (
 
 def _cmd_component_add(args: argparse.Namespace) -> int:
     project = Project.open(args.project)
-    fab = project.fab()
-    catalog = fab.catalog() if fab else None  # for the parts' descriptions
+    sourcing = project.sourcing()
+    # for the parts' descriptions
+    catalog = sourcing.library_catalog() if sourcing else None
     code = EXIT_OK
     for i, part_id in enumerate(args.ids):
         if i and args.delay:
@@ -421,7 +442,7 @@ def _cmd_component_sync(args: argparse.Namespace) -> int:
         only=only,
         delay=args.delay,
         reporter=TextReporter(),
-        catalog=fab.catalog() if (fab := project.fab()) else None,
+        catalog=s.library_catalog() if (s := project.sourcing()) else None,
     )
     if args.json:
         print_json(
@@ -450,7 +471,7 @@ def _cmd_component_list(args: argparse.Namespace) -> int:
                 "parts": [
                     {
                         "id": p.id,
-                        "fab": p.part.fab,
+                        "library_source": p.part.library_source,
                         "source": p.part.source,
                         "symbols": list(p.part.symbols),
                         "footprints": list(p.footprints),
@@ -506,7 +527,8 @@ def _cmd_component_remove(args: argparse.Namespace) -> int:
 
 def _cmd_component_check(args: argparse.Namespace) -> int:
     project = Project.open(args.project)
-    fab = project.fab() or get_fab("jlcpcb")
+    sourcing = _project_sourcing(project)
+    fab = sourcing.fab
     config = project.config
     bom = schematic_bom(
         project,
@@ -514,7 +536,7 @@ def _cmd_component_check(args: argparse.Namespace) -> int:
         or bool(config and config.bundle.assemble_through_hole),
     )
     issues = fab.check_parts(bom)
-    report = check_availability(bom, fab.catalog(), boards=args.boards)
+    report = check_availability(bom, sourcing.catalog(), boards=args.boards)
     issues += report.issues
     code = _exit_code(issues, args.strict)
     if args.json:
@@ -698,6 +720,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--page", type=int, default=1)
     p.add_argument("--limit", type=int, default=10, help="results per page")
     p.add_argument("--fab", help="fab to search (default: the project's, or jlcpcb)")
+    p.add_argument(
+        "--supplier",
+        help="supplier to search (default: the project's first, or the fab's)",
+    )
     p.add_argument("--project", type=Path, default=Path("."), help=argparse.SUPPRESS)
     p.add_argument("--json", action="store_true", help="machine-readable output")
     p.add_argument(

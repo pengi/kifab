@@ -12,10 +12,7 @@ from importlib.metadata import entry_points
 
 from kifab.core.issues import Issue
 from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
-from kifab.core.net import HttpClient
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
-from kifab.libraries.base import PartSource, get_library_source
-from kifab.suppliers.base import Catalog, get_supplier
 
 ENTRY_POINT_GROUP = "kifab.fabs"
 
@@ -39,7 +36,10 @@ class Fab(ABC):
 
     @property
     def library_name(self) -> str:
-        """Nickname of the project library vendored parts go into (``lib/<name>/``)."""
+        """Default nickname of the vendored parts library (``lib/<name>/``).
+
+        A project can name another (``[parts] library`` in ``kifab.toml``).
+        """
         return self.name
 
     @abstractmethod
@@ -66,14 +66,6 @@ class Fab(ABC):
     def export_placement(
         self, placement: Placement, board_name: str
     ) -> FileArtifact: ...
-
-    def catalog(self, client: HttpClient | None = None) -> Catalog:
-        """The preferred default supplier's catalogue."""
-        return get_supplier(self.default_suppliers[0]).catalog(client)
-
-    def part_source(self) -> PartSource:
-        """Where symbols, footprints and 3D models of the fab's parts come from."""
-        return get_library_source(self.default_library_source).part_source()
 
     @abstractmethod
     def bundle_files(self, built: BuildOutputs) -> list[FileArtifact]:

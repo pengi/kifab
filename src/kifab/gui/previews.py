@@ -86,13 +86,13 @@ def fetch_preview(source: PartSource, cache: Path, part_id: str) -> PreviewFiles
 
 def library_preview(project: Project, part: LibraryPart) -> PreviewFiles:
     """The vendored footprint and symbol of a part in the project library."""
-    fab = project.fab()
+    nickname = project.library_name
     footprints = tuple(
         project.directory / f for f in part.part.files if f.endswith(".kicad_mod")
     )
     sym: Path | None = None
-    if fab is not None:
-        sym = project.lib_dir / fab.library_name / f"{fab.library_name}.kicad_sym"
+    if nickname:
+        sym = project.lib_dir / nickname / f"{nickname}.kicad_sym"
     return PreviewFiles(
         tuple(p for p in footprints if p.is_file()),
         sym if sym is not None and sym.is_file() else None,

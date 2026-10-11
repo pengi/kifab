@@ -44,7 +44,8 @@ from kifab.core.parts import LibraryType, PartHit, SearchPage, SearchSort
 from kifab.core.project import Project
 from kifab.core.quick import QuickResult, format_value, parse_quick, quick_search
 from kifab.core.reporter import Reporter
-from kifab.fabs.base import Fab, get_fab
+from kifab.core.sourcing import Sourcing, sourcing_for
+from kifab.fabs.base import get_fab
 from kifab.libraries.base import PartSource
 from kifab.suppliers.base import Catalog
 from kifab.gui.detail import PartDetail
@@ -444,16 +445,16 @@ class PartsPanel(QWidget):
 
     # ------------------------------------------------------------ state
 
-    def _fab(self) -> Fab:
+    def _sourcing(self) -> Sourcing:
         project = self._project()
-        fab = project.fab() if project else None
-        return fab or get_fab("jlcpcb")
+        sourcing = project.sourcing() if project else None
+        return sourcing or sourcing_for(get_fab("jlcpcb"))
 
     def _catalog(self) -> Catalog:
-        return self._fab().catalog()
+        return self._sourcing().catalog()
 
     def _part_source(self) -> PartSource:
-        return self._fab().part_source()
+        return self._sourcing().part_source()
 
     def refresh(self) -> None:
         """Reload the project library and update buttons and "in project" marks."""

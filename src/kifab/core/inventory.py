@@ -14,7 +14,6 @@ from pathlib import Path
 from kifab.core.config import CONFIG_NAME, ConfigError
 from kifab.core.lockfile import LockedPart, Lockfile, load_lockfile
 from kifab.core.project import Project
-from kifab.fabs.base import Fab
 from kifab.kicad.board import read_board
 from kifab.kicad.libid import LibId
 from kifab.kicad.schematic import read_schematic, sorted_refs
@@ -77,17 +76,16 @@ def _footprint_names(part: LockedPart) -> tuple[str, ...]:
     )
 
 
-def _fab(project: Project) -> Fab:
-    fab = project.fab()
-    if fab is None:
-        raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the fab")
-    return fab
+def _library_name(project: Project) -> str:
+    name = project.library_name
+    if name is None:
+        raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the library")
+    return name
 
 
 def library_contents(project: Project) -> LibraryContents:
     """The parts in ``kifab.lock`` with their usage in the schematic and board."""
-    fab = project.fab()
-    nickname = fab.library_name if fab else ""
+    nickname = project.library_name or ""
     lock = load_lockfile(project.lock_path) or Lockfile()
     sch = read_schematic(project.kicad.sch, project.name)
     by_number: dict[str, set[str]] = {}
@@ -107,7 +105,7 @@ def library_contents(project: Project) -> LibraryContents:
                 continue
             by_footprint.setdefault(fp.lib_id.name, set()).add(fp.reference)
     symbols: dict[str, str] = {}
-    if fab is not None:
+    if nickname:
         sym_path = project.lib_dir / nickname / f"{nickname}.kicad_sym"
         try:
             library = read_symbol_library(sym_path) if sym_path.is_file() else None
@@ -116,7 +114,7 @@ def library_contents(project: Project) -> LibraryContents:
         if library is not None:
             symbols = {s.name: s.description for s in library.symbols}
     parts = []
-    for locked in sorted(lock.parts, key=lambda p: (p.fab, p.id)):
+    for locked in sorted(lock.parts, key=lambda p: (p.library_source, p.id)):
         footprints = _footprint_names(locked)
         sch_refs = set(by_number.get(locked.id, set()))
         for name in locked.symbols:
@@ -171,10 +169,10 @@ def remove_part(project: Project, part_id: str, *, force: bool = False) -> Remov
     Refuses (:class:`RemoveError`) while the schematic or board uses the part,
     unless ``force``. Never edits the schematic or the board.
     """
-    fab = _fab(project)
+    nickname = _library_name(project)
     wanted = part_id.strip().upper()
     lock = load_lockfile(project.lock_path) or Lockfile()
-    part = next((p for p in lock.parts if (p.fab, p.id) == (fab.name, wanted)), None)
+    part = next((p for p in lock.parts if p.id == wanted), None)
     if part is None:
         raise RemoveError(f"{wanted} is not vendored in this project")
     entry = library_contents(project).get(wanted)
@@ -189,7 +187,7 @@ def remove_part(project: Project, part_id: str, *, force: bool = False) -> Remov
     result = RemoveResult(part_id=wanted, used_by=refs)
     others = [p for p in lock.parts if p is not part]
     other_files = {f for p in others for f in p.files}
-    other_symbols = {s for p in others if p.fab == fab.name for s in p.symbols}
+    other_symbols = {s for p in others for s in p.symbols}
     for rel in sorted(part.files):
         if rel in other_files:
             result.kept.append(rel)
@@ -199,7 +197,7 @@ def remove_part(project: Project, part_id: str, *, force: bool = False) -> Remov
             path.unlink()
         result.deleted.append(rel)
     drop = sorted(set(part.symbols) - other_symbols)
-    lib_path = project.lib_dir / fab.library_name / f"{fab.library_name}.kicad_sym"
+    lib_path = project.lib_dir / nickname / f"{nickname}.kicad_sym"
     lib_rel = project.rel(lib_path)
     if drop and lib_path.is_file():
         library = read_symbol_library(lib_path)
@@ -211,7 +209,7 @@ def remove_part(project: Project, part_id: str, *, force: bool = False) -> Remov
                 ).dumps(),
                 encoding="utf-8",
             )
-    result.symbols = [str(LibId(fab.library_name, name)) for name in drop]
+    result.symbols = [str(LibId(nickname, name)) for name in drop]
     deleted = set(result.deleted)
     Lockfile(
         parts=tuple(others),

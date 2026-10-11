@@ -112,7 +112,7 @@ def lock_everything(project: Project) -> None:
         parts=(
             LockedPart(
                 "C900001",
-                "jlcpcb",
+                "easyeda",
                 "easyeda2kicad 1.0.1",
                 tuple(s.name for s in sym_lib.symbols),
                 tuple(project.rel(f) for f in files),

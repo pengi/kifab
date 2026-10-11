@@ -150,12 +150,12 @@ def test_vendored_library_is_readable(
 def test_kicad_reads_the_description(
     real_cli: list[str], tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    from kifab.fabs.base import get_fab
+    from kifab.suppliers.base import get_supplier
     from kifab.kicad.symbol_lib import read_symbol_library
 
     monkeypatch.setenv("KIFAB_OFFLINE", str(FIXTURES))
     project = init_project(tmp_path / "d", "d", "jlcpcb").project
-    vendor_part(project, "C900001", catalog=get_fab("jlcpcb").catalog())
+    vendor_part(project, "C900001", catalog=get_supplier("jlcpcb").catalog())
     lib = project.directory / "lib/jlcpcb/jlcpcb.kicad_sym"
     assert "ki_description" in lib.read_text()  # the file's 20211014 syntax
     upgraded = tmp_path / "upgraded.kicad_sym"

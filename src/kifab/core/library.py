@@ -1,12 +1,16 @@
-"""Vendor fab parts into the project library (``lib/<fab>/``) and keep the lock.
+"""Vendor parts into the project library (``lib/<name>/``) and keep the lock.
 
-Library files stay the fab's output, deterministic and sorted. Post-processing
+The files come from the project's library source (EasyEDA via easyeda2kicad
+today); the library's nickname is the fab's by default (``jlcpcb``) or
+``[parts] library`` in ``kifab.toml``.
+
+Library files stay the source's output, deterministic and sorted. Post-processing
 is limited to known problems:
 
 * easyeda2kicad marks some all-SMD footprints ``(attr through_hole)`` (seen on
   C0805 and a 3.2x1.5 mm crystal): KiCad's ``--smd-only`` position export would
   drop them and DRC reports a library mismatch. Fixed when no pad is drilled.
-* 3D model paths are rewritten to ``${KIPRJMOD}/lib/<fab>/<fab>.3dshapes/...``
+* 3D model paths are rewritten to ``${KIPRJMOD}/lib/<name>/<name>.3dshapes/...``
   (the tool writes absolute or cwd-relative paths).
 * Pin names that only repeat the pin number ("1", "2" on a resistor) are
   dropped; with no real names left, pin names are hidden, and for two-pin
@@ -41,7 +45,7 @@ from kifab.core.lockfile import (
 from kifab.core.project import Project
 from kifab.core.reporter import NullReporter, Reporter
 from kifab.core.parts import CatalogError
-from kifab.fabs.base import Fab
+from kifab.core.sourcing import Sourcing
 from kifab.libraries.base import (
     CachingPartSource,
     FetchedPart,
@@ -96,8 +100,10 @@ class LibraryPaths:
     models: Path
 
     @classmethod
-    def of(cls, project: Project, fab: Fab) -> LibraryPaths:
-        name = fab.library_name
+    def of(cls, project: Project) -> LibraryPaths:
+        name = project.library_name
+        if name is None:
+            raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the library")
         root = project.lib_dir / name
         return cls(
             name,
@@ -220,13 +226,21 @@ def tidy_pins(library: SymbolLibrary) -> SymbolLibrary:
     )
 
 
-def ensure_library_tables(project: Project, fab: Fab) -> list[Issue]:
-    """Register the fab library in the project tables if it is missing.
+def _sourcing(project: Project) -> Sourcing:
+    sourcing = project.sourcing()
+    if sourcing is None:
+        raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the fab")
+    return sourcing
+
+
+def ensure_library_tables(project: Project) -> list[Issue]:
+    """Register the parts library in the project tables if it is missing.
 
     Library tables are read when KiCad opens the project, so this needs KiCad
     closed (raises :class:`kifab.core.project.KicadOpen`).
     """
-    paths = LibraryPaths.of(project, fab)
+    paths = LibraryPaths.of(project)
+    title = _sourcing(project).fab.title
     issues: list[Issue] = []
     for kind, target in (
         (TableKind.SYMBOL, paths.symbols),
@@ -239,7 +253,7 @@ def ensure_library_tables(project: Project, fab: Fab) -> list[Issue]:
         entry = LibTableEntry(
             paths.nickname,
             project_uri(project.directory, target),
-            descr=f"{fab.title} parts (vendored by kifab)",
+            descr=f"{title} parts (vendored by kifab)",
         )
         (project.directory / kind.file_name).write_text(
             table.with_entry(entry).dumps(), encoding="utf-8"
@@ -256,21 +270,22 @@ def ensure_library_tables(project: Project, fab: Fab) -> list[Issue]:
 
 def _lock_part(
     project: Project,
-    fab: Fab,
+    library_source: str,
     fetched: FetchedPart,
     paths_rel: list[str],
     symbols: list[str],
 ) -> None:
     lock = load_lockfile(project.lock_path) or Lockfile()
-    lib_rel = project.rel(LibraryPaths.of(project, fab).symbols)
+    lib_rel = project.rel(LibraryPaths.of(project).symbols)
     part = LockedPart(
         id=fetched.part_id,
-        fab=fab.name,
+        library_source=library_source,
         source=fetched.source,
         symbols=tuple(sorted(symbols)),
         files=tuple(sorted(paths_rel)),
     )
-    parts = [p for p in lock.parts if (p.fab, p.id) != (fab.name, fetched.part_id)]
+    key = (library_source, fetched.part_id)
+    parts = [p for p in lock.parts if (p.library_source, p.id) != key]
     files = {f.path: f for f in lock.files}
     for rel in paths_rel:
         files[rel] = LockedFile(rel, sha256_file(project.directory / rel))
@@ -297,7 +312,7 @@ def vendor_part(
     catalog: Catalog | None = None,
     fresh: bool | None = None,
 ) -> VendorResult:
-    """Fetch ``part_id`` and vendor it into ``lib/<fab>/``; update ``kifab.lock``.
+    """Fetch ``part_id`` and vendor it into ``lib/<name>/``; update ``kifab.lock``.
 
     ``description`` (or, if empty, the one ``catalog`` has for the part) goes
     into symbols that have none; vendoring an already vendored part again fills
@@ -305,15 +320,13 @@ def vendor_part(
     Raises :class:`FetchError` when the part cannot be fetched and
     :class:`ConfigError` for a project without ``kifab.toml``.
     """
-    fab = project.fab()
-    if fab is None:
-        raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the fab")
-    source = source or fab.part_source()
-    paths = LibraryPaths.of(project, fab)
+    sourcing = _sourcing(project)
+    source = source or sourcing.part_source()
+    paths = LibraryPaths.of(project)
     result = VendorResult(part_id=part_id.strip().upper())
     if (refresh if fresh is None else fresh) and isinstance(source, CachingPartSource):
         source.forget(result.part_id)
-    result.issues += ensure_library_tables(project, fab)
+    result.issues += ensure_library_tables(project)
     model_prefix = project_uri(project.directory, paths.models) + "/"
     with tempfile.TemporaryDirectory(prefix="kifab-fetch-") as tmp:
         fetched = source.fetch(result.part_id, Path(tmp))
@@ -343,7 +356,7 @@ def vendor_part(
             if not description and catalog is not None:
                 description = _catalog_description(catalog, result.part_id, result)
             _describe(paths, symbols, description, result, project.rel(paths.symbols))
-        _lock_part(project, fab, fetched, files_rel, symbols)
+        _lock_part(project, sourcing.library.name, fetched, files_rel, symbols)
     for kept in result.kept:
         result.issues.append(
             info(
@@ -398,9 +411,7 @@ def sync_parts(
     """
     reporter = reporter or NullReporter()
     result = SyncResult()
-    fab = project.fab()
-    if fab is None:
-        raise ConfigError(f"no {CONFIG_NAME}: kifab does not know the fab")
+    library_source = _sourcing(project).library.name
     numbers, missing = schematic_part_numbers(project)
     if missing:
         issue = warning(
@@ -412,7 +423,7 @@ def sync_parts(
         reporter.issue(issue)
     wanted = {o.strip().upper() for o in only if o.strip()}
     lock = load_lockfile(project.lock_path) or Lockfile()
-    locked = {p.id for p in lock.parts if p.fab == fab.name}
+    locked = {p.id for p in lock.parts if p.library_source == library_source}
     todo = [n for n in numbers if not wanted or n in wanted]
     first = True
     for number in todo:

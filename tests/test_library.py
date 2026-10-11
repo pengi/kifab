@@ -214,7 +214,7 @@ def test_fixture_source_has_a_log(tmp_path: Path) -> None:
 
 def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     from kifab.core.inventory import library_contents
-    from kifab.fabs.base import get_fab
+    from kifab.suppliers.base import get_supplier
     from kifab.kicad.symbol_lib import parse_symbol_library
 
     project = new_project(tmp_path)
@@ -223,7 +223,7 @@ def test_description_from_the_catalogue(offline: None, tmp_path: Path) -> None:
     symbol = read_symbol_library(lib_path).get("KF-R330-0603")
     assert symbol is not None and symbol.description == ""
     # vendoring again with the catalogue fills it in, without a "kept" note
-    catalog = get_fab("jlcpcb").catalog()
+    catalog = get_supplier("jlcpcb").catalog()
     again = vendor_part(project, "C900001", catalog=catalog)
     assert again.issues == [] and again.written == ["lib/jlcpcb/jlcpcb.kicad_sym"]
     text = "330R 0603 Chip Resistor (synthetic test part)"
@@ -338,7 +338,7 @@ def test_fetched_parts_are_cached(
     monkeypatch: pytest.MonkeyPatch,
     kifab_cache: Path,
 ) -> None:
-    from kifab.fabs.base import get_fab
+    from kifab.libraries.base import get_library_source
     from kifab.libraries.easyeda.fetch import CachedPartSource
 
     log = tmp_path / "calls.log"
@@ -347,7 +347,7 @@ def test_fetched_parts_are_cached(
     def calls() -> int:
         return len(log.read_text().splitlines()) if log.is_file() else 0
 
-    source = get_fab("jlcpcb").part_source()
+    source = get_library_source("easyeda").part_source()
     assert isinstance(source, CachedPartSource)
     assert source.root == kifab_cache / "easyeda2kicad"
     first = source.fetch("C900001", tmp_path / "a")

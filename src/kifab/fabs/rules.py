@@ -86,6 +86,8 @@ class RuleOptions:
 
     layers: int = 2
     relax_fab_footprint_silk: bool = True
+    #: Nickname of the vendored parts library ("" = the fab's default).
+    library: str = ""
 
 
 @dataclass(frozen=True)
