@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (
 )
 
 from kifab.core.config import SUPPORTED_LAYERS
-from kifab.fabs.base import available_fabs
+from kifab.fabs.base import DEFAULT_FAB, available_fabs
 
 
 @dataclass(frozen=True)
@@ -48,6 +48,7 @@ class NewProjectDialog(QDialog):
         self.fab = QComboBox()
         for key, cls in available_fabs().items():
             self.fab.addItem(cls.title or key, key)
+        self.fab.setCurrentIndex(max(self.fab.findData(DEFAULT_FAB), 0))
         self.layers = QSpinBox()
         self.layers.setRange(min(SUPPORTED_LAYERS), max(SUPPORTED_LAYERS))
         self.layers.setSingleStep(2)

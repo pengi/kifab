@@ -89,8 +89,9 @@ class Supplier(ABC):
 
 def _builtin() -> dict[str, type[Supplier]]:
     from kifab.suppliers.jlcpcb import JlcpcbSupplier
+    from kifab.suppliers.lcsc import LcscSupplier
 
-    return {JlcpcbSupplier.name: JlcpcbSupplier}
+    return {JlcpcbSupplier.name: JlcpcbSupplier, LcscSupplier.name: LcscSupplier}
 
 
 def available_suppliers() -> dict[str, type[Supplier]]:

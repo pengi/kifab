@@ -15,6 +15,8 @@ from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 
 ENTRY_POINT_GROUP = "kifab.fabs"
+#: The fab offered first (and used where no project names one).
+DEFAULT_FAB = "jlcpcb"
 
 
 class UnknownFab(Exception):
@@ -68,9 +70,10 @@ class Fab(ABC):
 
 
 def _builtin() -> dict[str, type[Fab]]:
+    from kifab.fabs.aisler import AislerFab
     from kifab.fabs.jlcpcb import JlcpcbFab
 
-    return {JlcpcbFab.name: JlcpcbFab}
+    return {JlcpcbFab.name: JlcpcbFab, AislerFab.name: AislerFab}
 
 
 def available_fabs() -> dict[str, type[Fab]]:

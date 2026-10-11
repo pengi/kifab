@@ -48,12 +48,14 @@ def test_version(real_cli: list[str]) -> None:
     assert KicadCli().version().startswith("10.")
 
 
-@pytest.mark.parametrize("layers", [2, 4])
+@pytest.mark.parametrize(
+    "fab, layers", [("jlcpcb", 2), ("jlcpcb", 4), ("aisler", 2), ("aisler", 4)]
+)
 def test_new_project_bundles_clean(
-    real_cli: list[str], tmp_path: Path, layers: int
+    real_cli: list[str], tmp_path: Path, fab: str, layers: int
 ) -> None:
     project = init_project(
-        tmp_path / "p", "p", "jlcpcb", layers=layers, git=GitCli()
+        tmp_path / "p", "p", fab, layers=layers, git=GitCli()
     ).project
     commit_all(project.directory)
     result = bundle(project, git=GitCli())

@@ -2,30 +2,14 @@
 
 from __future__ import annotations
 
-import csv
-import io
-import re
-
-from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
-from kifab.core.reproducible import deterministic_zip
+from kifab.core.manufacturing import Bom, Placement
+from kifab.fabs.files import csv_bytes, gerber_zip
 from kifab.kicad.board import Side
 from kifab.kicad.schematic import ref_sort_key
 
 BOM_COLUMNS = ("Comment", "Designator", "Footprint", "LCSC Part #")
 CPL_COLUMNS = ("Designator", "Mid X", "Mid Y", "Layer", "Rotation")
-#: Files uploaded as "PCB": gerbers (incl. inner layers .g1, .g2 ...), job, drill.
-_ZIP_MEMBER = re.compile(r".*\.(gtl|gbl|gts|gbs|gto|gbo|gtp|gbp|gm1|g\d+|gbrjob|drl)$")
-
-
-def _csv(rows: list[list[str]], quote_all: bool) -> bytes:
-    buf = io.StringIO()
-    writer = csv.writer(
-        buf,
-        quoting=csv.QUOTE_ALL if quote_all else csv.QUOTE_MINIMAL,
-        lineterminator="\r\n",
-    )
-    writer.writerows(rows)
-    return buf.getvalue().encode("utf-8")
+__all__ = ["bom_csv", "cpl_csv", "gerber_zip"]  # gerber_zip: uploaded as "PCB"
 
 
 def bom_csv(bom: Bom) -> bytes:
@@ -39,7 +23,7 @@ def bom_csv(bom: Bom) -> bytes:
                 line.part.sku("lcsc"),
             ]
         )
-    return _csv(rows, quote_all=True)
+    return csv_bytes(rows, quote_all=True)
 
 
 def _rotation(degrees: float) -> str:
@@ -61,15 +45,4 @@ def cpl_csv(placement: Placement) -> bytes:
                 _rotation(part.rotation),
             ]
         )
-    return _csv(rows, quote_all=False)
-
-
-def gerber_zip(built: BuildOutputs) -> FileArtifact:
-    members = [
-        (p.name, p.read_bytes())
-        for p in (*built.gerbers, *built.drills, *([built.job] if built.job else []))
-        if _ZIP_MEMBER.match(p.name)
-    ]
-    return FileArtifact(
-        f"{built.board_name}_gerbers.zip", deterministic_zip(members, built.stamp)
-    )
+    return csv_bytes(rows, quote_all=False)

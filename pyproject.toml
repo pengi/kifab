@@ -7,7 +7,7 @@ requires-python = ">=3.10"
 license = "GPL-3.0-only"
 license-files = ["LICENSE"]
 authors = [{ name = "Max Sikström" }]
-keywords = ["kicad", "pcb", "jlcpcb", "eda", "fabrication", "bom", "gerber"]
+keywords = ["kicad", "pcb", "jlcpcb", "aisler", "eda", "fabrication", "bom", "gerber"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
@@ -43,9 +43,11 @@ kifab-gui = "kifab.gui.app:main"
 
 [project.entry-points."kifab.fabs"]
 jlcpcb = "kifab.fabs.jlcpcb:JlcpcbFab"
+aisler = "kifab.fabs.aisler:AislerFab"
 
 [project.entry-points."kifab.suppliers"]
 jlcpcb = "kifab.suppliers.jlcpcb:JlcpcbSupplier"
+lcsc = "kifab.suppliers.lcsc:LcscSupplier"
 
 [project.entry-points."kifab.libraries"]
 easyeda = "kifab.libraries.easyeda:EasyedaLibrary"
