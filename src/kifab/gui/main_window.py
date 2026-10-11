@@ -5,14 +5,18 @@ from __future__ import annotations
 from collections.abc import Callable
 from pathlib import Path
 
-from PySide6.QtCore import QSortFilterProxyModel, Qt, QUrl
+from PySide6.QtCore import QRectF, QSortFilterProxyModel, Qt, QUrl
 from PySide6.QtGui import (
     QAction,
     QCloseEvent,
     QDesktopServices,
+    QGuiApplication,
     QIcon,
     QKeySequence,
+    QPainter,
+    QPixmap,
 )
+from PySide6.QtSvg import QSvgRenderer
 from PySide6.QtWidgets import (
     QCheckBox,
     QComboBox,
@@ -52,6 +56,7 @@ from kifab.core.issues import Issue, Severity
 from kifab.core.order import record_order
 from kifab.core.project import Project
 from kifab.core.reporter import Reporter
+from kifab.gui.assets import read_asset
 from kifab.gui.issues import SORT_ROLE, IssueModel
 from kifab.gui.jobs import Job
 from kifab.gui.new_project import NewProjectDialog, NewProjectRequest
@@ -78,15 +83,48 @@ class SeverityFilter(QSortFilterProxyModel):
         return isinstance(rank, int) and rank >= self.min_rank
 
 
+def app_icon() -> QIcon:
+    """The kifab application icon."""
+    pixmap = QPixmap()
+    pixmap.loadFromData(read_asset("kifab-icon.svg"))
+    return QIcon(pixmap)
+
+
+def logo_pixmap(height: int) -> QPixmap:
+    """The kifab logo, rendered ``height`` px tall with a wordmark that reads on
+    the current theme (Qt's SVG renderer ignores the file's dark-mode query)."""
+    app = QGuiApplication.instance()
+    assert isinstance(app, QGuiApplication)
+    text = app.palette().windowText().color().name()
+    svg = (
+        read_asset("kifab-logo.svg")
+        .decode()
+        .replace(".word { stroke: #1d5c3f; }", f".word {{ stroke: {text}; }}")
+    )
+    renderer = QSvgRenderer(svg.encode())
+    ratio = app.devicePixelRatio()
+    size = renderer.defaultSize()
+    width = round(height * size.width() / size.height())
+    pixmap = QPixmap(round(width * ratio), round(height * ratio))
+    pixmap.setDevicePixelRatio(ratio)
+    pixmap.fill(Qt.GlobalColor.transparent)
+    painter = QPainter(pixmap)
+    renderer.render(painter, QRectF(0, 0, width, height))
+    painter.end()
+    return pixmap
+
+
 class StartPage(QWidget):
     """Shown while no project is open: new, open, and the recent projects."""
 
     def __init__(self, window: MainWindow) -> None:
         super().__init__()
         self.window_ = window
+        logo = QLabel()
+        logo.setPixmap(logo_pixmap(96))
+        logo.setAccessibleName("kifab")
         title = QLabel(
-            f"<h1>kifab</h1><p>KiCad projects with the fab built in "
-            f"(version {__version__})</p>"
+            f"<p>KiCad projects with the fab built in (version {__version__})</p>"
         )
         new = QPushButton("New project...")
         new.clicked.connect(window.new_project)
@@ -102,6 +140,7 @@ class StartPage(QWidget):
         buttons.addWidget(open_)
         buttons.addStretch()
         column = QVBoxLayout()
+        column.addWidget(logo)
         column.addWidget(title)
         column.addLayout(buttons)
         column.addSpacing(16)
@@ -144,6 +183,7 @@ class MainWindow(QMainWindow):
     def __init__(self, settings: GuiSettings | None = None) -> None:
         super().__init__()
         self.setWindowTitle(f"kifab {__version__}")
+        self.setWindowIcon(app_icon())
         self.resize(1280, 800)
         self.settings = settings if settings is not None else GuiSettings.load()
         self.project: Project | None = None

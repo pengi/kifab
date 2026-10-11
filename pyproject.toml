@@ -1,6 +1,6 @@
 [project]
 name = "kifab"
-version = "0.2.0"
+dynamic = ["version"]
 description = "Manage KiCad projects in a git-friendly way, with the fabrication service as part of the project"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -69,6 +69,9 @@ dev = [
 [build-system]
 requires = ["hatchling>=1.26"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "src/kifab/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/kifab"]

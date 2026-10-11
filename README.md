@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="src/kifab/gui/assets/kifab-logo.svg" alt="kifab" height="96">
+</p>
+
 # kifab
 
 Manage KiCad projects in a git-friendly way, with the fabrication service as a

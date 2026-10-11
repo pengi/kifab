@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <title>kifab</title>
+  <!-- Board: soldermask green -->
+  <rect x="8" y="8" width="240" height="240" rx="52" fill="#1d5c3f"/>
+  <!-- Silkscreen courtyard corners -->
+  <g fill="none" stroke="#e9efe9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85">
+    <path d="M44 78 V44 H78"/>
+    <path d="M178 212 H212 V178"/>
+  </g>
+  <!-- Fiducial -->
+  <circle cx="56" cy="200" r="13" fill="none" stroke="#e8b04a" stroke-width="4" opacity="0.6"/>
+  <circle cx="56" cy="200" r="6" fill="#e8b04a"/>
+  <!-- Routed trace forming a check mark (fab-compatible: passes DRC) -->
+  <path d="M64 136 L106 178 L190 94" fill="none" stroke="#e8b04a" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Vias at both ends -->
+  <circle cx="64" cy="136" r="21" fill="#e8b04a"/>
+  <circle cx="64" cy="136" r="8" fill="#123d29"/>
+  <circle cx="190" cy="94" r="21" fill="#e8b04a"/>
+  <circle cx="190" cy="94" r="8" fill="#123d29"/>
+</svg>
