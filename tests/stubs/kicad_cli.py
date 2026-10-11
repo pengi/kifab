@@ -78,6 +78,29 @@ def drill(args: list[str], pcb: Path) -> None:
             (out / f"{pcb.stem}-{kind}-drl_map.pdf").write_text("%PDF\n")
 
 
+def ipcd356(args: list[str], pcb: Path) -> None:
+    Path(opt(args, "-o")).write_text(
+        "P  CODE 00\nP  UNITS CUST 0\nP  arrayDim   N\n"
+        + "".join(f"327N/C  {fp.reference}  -1\n" for fp in read_board(pcb).footprints)
+        + "999\n"
+    )
+
+
+def odb(args: list[str], pcb: Path) -> None:
+    """The layout of kicad-cli's uncompressed ODB++ (empty dirs, stamped files)."""
+    out = Path(opt(args, "-o"))
+    for d in ("fonts", "input", "matrix", "misc", "symbols", "user", "wheels"):
+        (out / d).mkdir(parents=True, exist_ok=True)
+    (out / "misc" / "info").write_text(
+        "JOB_NAME=job\nUNITS=MM\nCREATION_DATE=20261010.195502\n"
+        "SAVE_DATE=20261010.195502\nSAVE_APP=KiCad EDA 10.0.6\n"
+    )
+    (out / "matrix" / "matrix").write_text("STEP {\nNAME=PCB\n}\n")
+    eda = out / "steps" / "pcb" / "eda"
+    eda.mkdir(parents=True)
+    (eda / "data").write_text("# 2026-10-10T19:55:02\nUNITS=MM\n")
+
+
 def pos(args: list[str], pcb: Path) -> None:
     board = read_board(pcb)
     smd_only = "--smd-only" in args
@@ -180,6 +203,10 @@ def main() -> int:
         gerbers(args, target)
     elif cmd == "pcb export drill":
         drill(args, target)
+    elif cmd == "pcb export ipcd356":
+        ipcd356(args, target)
+    elif cmd == "pcb export odb":
+        odb(args, target)
     elif cmd == "pcb export pos":
         pos(args, target)
     elif cmd == "sch export bom":

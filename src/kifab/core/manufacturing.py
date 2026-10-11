@@ -6,6 +6,7 @@ import csv
 import io
 from dataclasses import dataclass
 from datetime import datetime
+from enum import Enum
 from pathlib import Path
 
 from kifab.core.partref import FieldSpec, PartRef, field_specs
@@ -53,6 +54,7 @@ class PlacedPart:
     y: float
     rotation: float  # degrees, as KiCad exports it
     side: Side
+    through_hole: bool = False  # not in KiCad's SMD-only position export
 
 
 @dataclass(frozen=True)
@@ -74,6 +76,13 @@ class FileArtifact:
     data: bytes
 
 
+class ExtraOutput(Enum):
+    """Outputs a fab can ask the bundle for besides gerbers and drill files."""
+
+    IPC_D356 = "ipc-d-356"  # netlist for the electrical test
+    ODB = "odb++"  # ODB++ directory
+
+
 @dataclass(frozen=True)
 class BuildOutputs:
     """What kicad-cli produced for one board, in the staging directory."""
@@ -84,6 +93,17 @@ class BuildOutputs:
     job: Path | None
     others: tuple[Path, ...]  # drill maps etc.
     stamp: datetime | None = None  # the reproducible time stamp of this build
+    netlist: Path | None = None  # IPC-D-356, if the fab asked for it
+    odb: Path | None = None  # ODB++ directory (time stamps normalised), if asked
+
+
+@dataclass(frozen=True)
+class OrderFiles:
+    """The assembly data of a bundle: BOM, placement and the fab's files of them."""
+
+    bom: Bom
+    placement: Placement
+    files: tuple[FileArtifact, ...]  # the fab's BOM and placement exports
 
 
 # ---------------------------------------------------------------- parsing

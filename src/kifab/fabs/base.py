@@ -11,7 +11,14 @@ from abc import ABC, abstractmethod
 from importlib.metadata import entry_points
 
 from kifab.core.issues import Issue
-from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
+from kifab.core.manufacturing import (
+    Bom,
+    BuildOutputs,
+    ExtraOutput,
+    FileArtifact,
+    OrderFiles,
+    Placement,
+)
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
 
 ENTRY_POINT_GROUP = "kifab.fabs"
@@ -64,11 +71,18 @@ class Fab(ABC):
         self, placement: Placement, board_name: str
     ) -> FileArtifact: ...
 
+    #: Outputs the fab's upload files need besides gerbers and drill files.
+    extra_outputs: frozenset[ExtraOutput] = frozenset()
+
     @abstractmethod
     def bundle_files(
-        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+        self, built: BuildOutputs, order: OrderFiles
     ) -> list[FileArtifact]:
-        """Files made from the plotted outputs, e.g. the zip uploaded as "PCB"."""
+        """Files to upload made from the build: e.g. the zip uploaded as "PCB".
+
+        ``order`` has the BOM and placement, and the fab's files of them
+        (they are written to the bundle as well).
+        """
 
 
 def _builtin() -> dict[str, type[Fab]]:

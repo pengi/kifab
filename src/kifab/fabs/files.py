@@ -26,20 +26,13 @@ def csv_bytes(rows: list[list[str]], quote_all: bool) -> bytes:
     return buf.getvalue().encode("utf-8")
 
 
-def gerber_zip(
-    built: BuildOutputs,
-    extra: tuple[FileArtifact, ...] = (),
-    name: str = "",
-) -> FileArtifact:
-    """``<board>_gerbers.zip`` (or ``name``): gerbers, job and drill files, plus
-    ``extra`` files; reproducible."""
+def gerber_zip(built: BuildOutputs) -> FileArtifact:
+    """``<board>_gerbers.zip``: gerbers, job and drill files, reproducible."""
     members = [
         (p.name, p.read_bytes())
         for p in (*built.gerbers, *built.drills, *([built.job] if built.job else []))
         if _ZIP_MEMBER.match(p.name)
     ]
-    members += [(a.name, a.data) for a in extra]
     return FileArtifact(
-        name or f"{built.board_name}_gerbers.zip",
-        deterministic_zip(members, built.stamp),
+        f"{built.board_name}_gerbers.zip", deterministic_zip(members, built.stamp)
     )

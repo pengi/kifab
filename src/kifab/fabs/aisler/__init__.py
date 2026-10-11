@@ -9,7 +9,14 @@ others.
 from __future__ import annotations
 
 from kifab.core.issues import Code, Issue, info, warning
-from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
+from kifab.core.manufacturing import (
+    Bom,
+    BuildOutputs,
+    ExtraOutput,
+    FileArtifact,
+    OrderFiles,
+    Placement,
+)
 from kifab.fabs.aisler import export, rules
 from kifab.fabs.base import Fab
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
@@ -63,11 +70,10 @@ class AislerFab(Fab):
     def export_placement(self, placement: Placement, board_name: str) -> FileArtifact:
         return FileArtifact(f"{board_name}_cpl_aisler.csv", export.cpl_csv(placement))
 
-    def bundle_files(
-        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
-    ) -> list[FileArtifact]:
-        """One zip to upload: gerbers, drill files, BOM and placement.
+    extra_outputs = frozenset({ExtraOutput.IPC_D356, ExtraOutput.ODB})
 
-        AISLER reads the BOM (and placement) from the uploaded archive.
-        """
-        return [export.upload_zip(built, order_files)]
+    def bundle_files(
+        self, built: BuildOutputs, order: OrderFiles
+    ) -> list[FileArtifact]:
+        """One zip to upload, laid out like AISLER's KiCad plugin's."""
+        return [export.upload_zip(built, order)]

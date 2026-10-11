@@ -3,7 +3,13 @@
 from __future__ import annotations
 
 from kifab.core.issues import Code, Issue, warning
-from kifab.core.manufacturing import Bom, BuildOutputs, FileArtifact, Placement
+from kifab.core.manufacturing import (
+    Bom,
+    BuildOutputs,
+    FileArtifact,
+    OrderFiles,
+    Placement,
+)
 from kifab.fabs.base import Fab
 from kifab.fabs.jlcpcb import export, rules
 from kifab.fabs.rules import DesignRuleProfile, RuleOptions
@@ -43,6 +49,6 @@ class JlcpcbFab(Fab):
         return FileArtifact(f"{board_name}_cpl_jlcpcb.csv", export.cpl_csv(placement))
 
     def bundle_files(
-        self, built: BuildOutputs, order_files: tuple[FileArtifact, ...]
+        self, built: BuildOutputs, order: OrderFiles
     ) -> list[FileArtifact]:
         return [export.gerber_zip(built)]  # BOM and CPL are uploaded separately

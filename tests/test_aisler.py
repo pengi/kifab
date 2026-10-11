@@ -1,6 +1,7 @@
 """AISLER as fab, LCSC as supplier, EasyEDA libraries: init to bundle."""
 
 import csv
+import json
 import io
 import zipfile
 from pathlib import Path
@@ -113,6 +114,7 @@ def test_bundle(env: None, tmp_path: Path) -> None:
     result = bundle(project, BundleOptions(stock=True, boards=2))
     assert result.ok, result.issues
     build = project.directory / "build"
+    zipfile_bytes = (build / "p_aisler.zip").read_bytes()
     rows = list(csv.reader(io.StringIO((build / "p_bom_aisler.csv").read_text())))
     assert rows == [
         ["Designator", "Quantity", "Value", "Footprint", "Manufacturer", "MPN", "LCSC"],
@@ -131,11 +133,71 @@ def test_bundle(env: None, tmp_path: Path) -> None:
     assert cpl[0] == "Ref,Val,Package,PosX,PosY,Rot,Side"
     assert cpl[1].startswith("R1,") and cpl[1].endswith(",90.0000,top")
     assert not (build / "p_gerbers.zip").exists()
+    # the layout AISLER's KiCad plugin uploads (and AISLER accepts)
     with zipfile.ZipFile(build / "p_aisler.zip") as zf:
-        names = zf.namelist()
-        assert any(n.endswith(".gtl") for n in names)
-        assert "p_bom_aisler.csv" in names and "p_cpl_aisler.csv" in names
-        assert zf.read("p_bom_aisler.csv") == (build / "p_bom_aisler.csv").read_bytes()
+        assert zf.namelist() == [
+            "components.json",
+            "netlist.ipc",
+            "odb.zip",
+            "p-B_Cu.gbr",
+            "p-B_Mask.gbr",
+            "p-B_Paste.gbr",
+            "p-B_SilkS.gbr",
+            "p-Edge_Cuts.gbr",
+            "p-F_Cu.gbr",
+            "p-F_Mask.gbr",
+            "p-F_Paste.gbr",
+            "p-F_SilkS.gbr",
+            "p-NPTH.drl",
+            "p-PTH.drl",
+        ]
+        components = json.loads(zf.read("components.json"))
+        with zipfile.ZipFile(io.BytesIO(zf.read("odb.zip"))) as odb:
+            assert "user/" in odb.namelist()  # empty directories are kept
+            info = odb.read("misc/info").decode()
+            assert "CREATION_DATE=20260101.000000" in info  # the build's stamp
+            assert odb.read("steps/pcb/eda/data").startswith(b"# 2026-01-01T00:00:00")
+    assert components == [
+        {
+            "pos_x": 100.0,
+            "pos_y": -50.0,
+            "rotation": 90.0,
+            "side": "top",
+            "designator": "R1",
+            "mpn": "KF-R330-0603",
+            "pack": "R0603",
+            "value": "v",
+            "mount_type": "smt",
+            "place": True,
+        },
+        {
+            "pos_x": 104.0,
+            "pos_y": -50.0,
+            "rotation": 0.0,
+            "side": "top",
+            "designator": "R2",
+            "mpn": "KF-R330-0603",
+            "pack": "R0603",
+            "value": "v",
+            "mount_type": "smt",
+            "place": True,
+        },
+        {
+            "pos_x": 102.0,
+            "pos_y": -50.0,
+            "rotation": 180.0,
+            "side": "top",
+            "designator": "R3",
+            "mpn": None,
+            "pack": "R0603",
+            "value": "v",
+            "mount_type": "smt",
+            "place": True,
+        },
+    ]
+    again = bundle(project, BundleOptions())
+    assert again.ok
+    assert (build / "p_aisler.zip").read_bytes() == zipfile_bytes  # reproducible
     assert result.availability is not None
     assert [s.supplier for s in result.availability.lines] == ["lcsc"]
     codes = {i.code for i in result.issues}

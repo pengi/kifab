@@ -68,8 +68,10 @@ Fabs: **jlcpcb** (profile `standard`; BOM by LCSC number) and **aisler**
 (profiles `hasl`, the default, and `enig` for the finer limits ENIG allows;
 supplier `lcsc` by default; BOM by MPN with manufacturer and supplier numbers,
 which AISLER's BOM import matches and asks you to confirm; placement as KiCad
-writes it; `kifab bundle` puts gerbers, drill files, BOM and placement into one
-`<name>_aisler.zip` to upload). Suppliers: **jlcpcb** (JLCPCB's parts library: Basic/Extended,
+writes it; `kifab bundle` writes `<name>_aisler.zip` to upload, laid out like the zip
+AISLER's own KiCad plugin uploads: gerbers, drill files, an IPC-D-356 netlist,
+`components.json` (parts with position, MPN and package) and the board as
+ODB++; the BOM and placement CSVs next to it are for reading). Suppliers: **jlcpcb** (JLCPCB's parts library: Basic/Extended,
 JLCPCB's stock) and **lcsc** (the same catalogue by LCSC number, without
 JLCPCB's part classes; its stock is JLCPCB's, an approximation of LCSC's).
 The stock check (`component check`, `bundle --stock`) asks the suppliers in

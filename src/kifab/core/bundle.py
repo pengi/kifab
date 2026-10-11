@@ -9,6 +9,8 @@ failed run leaves the previous results untouched.
 
 from __future__ import annotations
 
+import dataclasses
+
 import hashlib
 import json
 import re
@@ -39,7 +41,9 @@ from kifab.core.manufacturing import (
     BOM_VALUE,
     Bom,
     BuildOutputs,
+    ExtraOutput,
     FileArtifact,
+    OrderFiles,
     ParseError,
     Placement,
     parse_kicad_bom,
@@ -341,11 +345,33 @@ class _Run:
         self.reporter.step("drill", ", ".join(kinds))
         return moved
 
-    def normalize(self, files: list[Path]) -> None:
+    def extra_outputs(self, tmp: Path) -> tuple[Path | None, Path | None]:
+        """The IPC-D-356 netlist and ODB++ directory, if the fab wants them."""
+        wanted = self.fab.extra_outputs
+        pcb = self.project.kicad.pcb
+        netlist = odb = None
+        try:
+            if ExtraOutput.IPC_D356 in wanted:
+                netlist = tmp / "netlist.ipc"
+                self.cli.export_ipcd356(pcb, netlist)
+                self.reporter.step("netlist", "IPC-D-356")
+            if ExtraOutput.ODB in wanted:
+                odb = tmp / "odb"
+                self.cli.export_odb(pcb, odb)
+                # misc/info and steps/*/eda/data carry the export time
+                stamped = [odb / "misc" / "info", *odb.glob("steps/*/eda/data")]
+                self.normalize([p for p in stamped if p.is_file()], any_name=True)
+                self.reporter.step("ODB++", "exported")
+        except (ToolMissing, ToolFailed) as exc:
+            raise self.tool("export for the fab", exc)
+        return netlist, odb
+
+    def normalize(self, files: list[Path], *, any_name: bool = False) -> None:
+        """Set the plot time in text outputs to the build's stamp."""
         if self.stamp is None:
             return
         for f in files:
-            if TEXT_OUTPUTS.search(f.name):
+            if any_name or TEXT_OUTPUTS.search(f.name):
                 text = f.read_text(encoding="utf-8")
                 new = normalize_timestamps(text, self.stamp)
                 if new != text:
@@ -367,6 +393,12 @@ class _Run:
             raise self.tool("BOM/placement export", exc)
 
         through_hole = every.references() - smd.references()
+        every = Placement(
+            tuple(
+                dataclasses.replace(p, through_hole=p.reference in through_hole)
+                for p in every.parts
+            )
+        )
         assemble_tht = self.options.assemble_through_hole
         if assemble_tht is None:
             config = self.project.config
@@ -545,6 +577,7 @@ class _Run:
                 plotted = self.gerbers(stage, plot)
                 plotted += self.drill(stage, plot)
                 self.normalize(plotted)
+                netlist, odb = self.extra_outputs(tmp)
                 built = BuildOutputs(
                     board_name=self.name,
                     gerbers=tuple(p for p in plotted if GERBER_SUFFIX.search(p.name)),
@@ -552,15 +585,17 @@ class _Run:
                     job=next((p for p in plotted if p.suffix == ".gbrjob"), None),
                     others=tuple(p for p in plotted if p.suffix == ".pdf"),
                     stamp=self.stamp,
+                    netlist=netlist,
+                    odb=odb,
                 )
                 bom, placement = self.bom_and_placement(tmp)
                 order_files = (
                     self.fab.export_bom(bom, self.name),
                     self.fab.export_placement(placement, self.name),
                 )
+                order = OrderFiles(bom, placement, order_files)
                 uploads = [
-                    self.write(stage, a)
-                    for a in self.fab.bundle_files(built, order_files)
+                    self.write(stage, a) for a in self.fab.bundle_files(built, order)
                 ]
                 self.reporter.step("zip", ", ".join(p.name for p in uploads))
                 uploads += [self.write(stage, a) for a in order_files]

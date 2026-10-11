@@ -258,6 +258,31 @@ class KicadCli:
         if result.returncode != 0:
             raise ToolFailed("drill export", result)
 
+    def export_ipcd356(self, pcb: Path, out: Path) -> None:
+        """IPC-D-356 netlist (for the fab's electrical test)."""
+        result = self.run("pcb", "export", "ipcd356", "-o", out, pcb)
+        if result.returncode != 0 or not out.is_file():
+            raise ToolFailed("IPC-D-356 export", result)
+
+    def export_odb(self, pcb: Path, out_dir: Path) -> None:
+        """ODB++ into ``out_dir`` (uncompressed, mm, 6 digits: what AISLER uses)."""
+        result = self.run(
+            "pcb",
+            "export",
+            "odb",
+            "--units",
+            "mm",
+            "--precision",
+            "6",
+            "--compression",
+            "none",
+            "-o",
+            out_dir,
+            pcb,
+        )
+        if result.returncode != 0 or not out_dir.is_dir():
+            raise ToolFailed("ODB++ export", result)
+
     def export_bom(self, sch: Path, out: Path, columns: BomColumns) -> None:
         result = self.run(
             "sch",
